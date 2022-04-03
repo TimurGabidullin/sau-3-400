@@ -1,13 +1,20 @@
 import React from 'react';
-import Header from "./components/header/Header";
-import Main from "./components/main/Main";
+import Home from "./components/home/Home";
+import {Navigate, Route, Routes} from "react-router-dom";
+
+
+
+
 
 
 function App() {
     return (
         <div className="App">
-            <Header/>
-            <Main/>
+            <Routes>
+                <Route path="/" element={<Navigate replace to="/home/content"/>}/>
+                <Route path={'home'} element={<Home/>}/>
+                <Route path={'home/:page'} element={<Home/>}/>
+            </Routes>
         </div>
     );
 }
