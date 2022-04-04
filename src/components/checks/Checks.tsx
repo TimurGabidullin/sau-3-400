@@ -9,9 +9,9 @@ function Checks() {
 
     return (
         <div>
-            Checks
-  <Paginator/>
+            <Paginator/>
         </div>
     );
 }
+
 export default Checks;

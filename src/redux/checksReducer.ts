@@ -14,13 +14,13 @@ const initialState = {
         {
             title: "Название проверки 1",
             idHeader: "1",
-            idTech: 'Tech1',
+            idTech: 'check1',
             pageNumber: 234,
         } as CheckType,
         {
             title: "Название проверки 2",
             idHeader: "1",
-            idTech: 'Tech2',
+            idTech: 'check2',
             pageNumber: 235,
         } as CheckType
     ] ,
@@ -28,7 +28,7 @@ const initialState = {
         {
             idHeader: "1",
             title: "Название проверки 3",
-            idTech: 'Tech3',
+            idTech: 'check3',
             pageNumber: 236,
 
         } as CheckType

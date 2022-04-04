@@ -8,7 +8,7 @@ import {CheckType} from "../../redux/checksReducer";
 
 type ContentPropsType={
     setSelectedTab:(value:number)=>void
-
+    LinkToCheck:(url:string)=>void
 }
 
 
@@ -17,8 +17,8 @@ function Content(props:ContentPropsType) {
     const header = useSelector((state: AppStateType) => state.header)
     const checks = useSelector((state: AppStateType) => state.checks)
 
-    // @ts-ignore
-    console.log('ura', checks[header[0].idHeader].map((chInH: CheckType[]) => chInH).map((ch: CheckType) => ch.title))
+
+
 
 
 
@@ -34,9 +34,16 @@ function Content(props:ContentPropsType) {
                             {
                                 checks[h.idHeader]
                                     .map((chsInH: CheckType[]) => chsInH)
-                                    .map((ch: CheckType) => ch.title)
-                                    .map((t: string) => <li onClick={()=>props.setSelectedTab(1)} >
-                                        <NavLink to={'/home/checks/check1'}>{t}</NavLink>
+                                    .map((ch: CheckType) => {
+                                    return { title:ch.title,url:ch.idTech}
+                                    })
+                                    .map((t: any) => <li onClick={()=>{
+                                        // props.setSelectedTab(1)};
+                                        props.LinkToCheck(`${t.url}`)}
+
+                                    }>
+                                        <NavLink to={`/home/checks/${t.url}`}>{t.title}</NavLink>
+
                                     </li>)
                             }
                         </ul>

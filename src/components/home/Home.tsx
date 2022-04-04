@@ -22,6 +22,14 @@ import {useEffect} from "react";
 
 const Home = () => {
 
+    const [checkUrl, setCheckUrl] = React.useState('check1');
+
+
+const LinkToCheck=(p:string)=>{
+    setCheckUrl(p)
+    setSelectedTab(1)
+    }
+
     const tabNameToIndex = {
         "content": 0,
 
@@ -30,33 +38,32 @@ const Home = () => {
         "check1":1,
         "check2":1,
         "check3":1,
-        "q": 3
-    }
 
-    let check1='check1'
+    }
+    // let check='check1'
     const indexToTabName = {
         0: "content",
-
-        1: `checks/${check1}`,
+        1: `checks/${checkUrl}`,
         2: "report",
-        3: "q",
     }
 
+
+
     const params = useParams();
-    console.log(params)
     // @ts-ignore
     const [selectedTab, setSelectedTab] = React.useState(tabNameToIndex[params.page]);
+
+
     const navigate = useNavigate();
+
+
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
         setSelectedTab(newValue);
     };
 
     useEffect(()=>{
-
-console.log(selectedTab)
         // @ts-ignore
-
         navigate(`/home/${indexToTabName[selectedTab]}`)
     },[selectedTab])
 
@@ -82,7 +89,6 @@ console.log(selectedTab)
     const handleCloseUserMenu = () => {
         setAnchorElUser(null)
     }
-
 
     return (
         <div>
@@ -208,9 +214,8 @@ console.log(selectedTab)
                 </Container>
             </AppBar>
             <div className={styles.main}>
-                {selectedTab === 0 && <Content setSelectedTab={setSelectedTab}/>}
+                {selectedTab === 0 && <Content setSelectedTab={setSelectedTab} LinkToCheck={LinkToCheck}/>}
                 {selectedTab === 1 && <Checks/>}
-                {selectedTab === 3 && <div>q</div>}
                 {selectedTab === 2 && <Report/>}
             </div>
         </div>
