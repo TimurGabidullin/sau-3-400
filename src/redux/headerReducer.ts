@@ -1,18 +1,23 @@
 
-export type InitialStateType = typeof initialState
+
+
+export type HeaderType={
+    title: string,
+    idHeader:string
+}
 
 const initialState= [
     {
         title: "Заголовок проверки 1",
-        idHeader:'Заголовок тех карты 1'
-    },
+        idHeader:"head1"
+    } as HeaderType,
     {
         title: "Заголовок проверки 2",
-        idHeader:'Заголовок тех карты 2'
-    }
+        idHeader:'head2'
+    } as HeaderType
 ]
 
-export const headerReducer = (state: InitialStateType = initialState): InitialStateType => {
+export const headerReducer = (state: HeaderType[] = initialState): HeaderType[] => {
             return state
     }
 

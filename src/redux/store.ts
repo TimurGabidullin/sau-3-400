@@ -1,9 +1,10 @@
 import { combineReducers, createStore} from "redux";
 import headerReducer from "./headerReducer";
+import checksReducer from "./checksReducer";
 
 let reducers = combineReducers({
 header:headerReducer,
-
+checks:checksReducer
 })
 
 export type AppStateType = ReturnType<typeof reducers>

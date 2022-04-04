@@ -24,18 +24,26 @@ const Home = () => {
 
     const tabNameToIndex = {
         "content": 0,
-        "report": 1,
-        "checks": 2,
+
+        "checks": 1,
+        "report": 2,
+        "check1":1,
+        "check2":1,
+        "check3":1,
+        "q": 3
     }
 
+    let check1='check1'
     const indexToTabName = {
         0: "content",
-        1: "report",
-        2: "checks",
+
+        1: `checks/${check1}`,
+        2: "report",
+        3: "q",
     }
 
     const params = useParams();
-
+    console.log(params)
     // @ts-ignore
     const [selectedTab, setSelectedTab] = React.useState(tabNameToIndex[params.page]);
     const navigate = useNavigate();
@@ -45,7 +53,10 @@ const Home = () => {
     };
 
     useEffect(()=>{
+
+console.log(selectedTab)
         // @ts-ignore
+
         navigate(`/home/${indexToTabName[selectedTab]}`)
     },[selectedTab])
 
@@ -197,8 +208,9 @@ const Home = () => {
                 </Container>
             </AppBar>
             <div className={styles.main}>
-                {selectedTab === 0 && <Content/>}
+                {selectedTab === 0 && <Content setSelectedTab={setSelectedTab}/>}
                 {selectedTab === 1 && <Checks/>}
+                {selectedTab === 3 && <div>q</div>}
                 {selectedTab === 2 && <Report/>}
             </div>
         </div>
