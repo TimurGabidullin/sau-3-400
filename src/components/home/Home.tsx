@@ -20,52 +20,60 @@ import {useNavigate, useParams} from 'react-router-dom'
 import {useEffect} from "react";
 
 
+
 const Home = () => {
 
     const [checkUrl, setCheckUrl] = React.useState('check1');
+    const [paginatorPageNumber, setPaginatorPageNumber] = React.useState(1);
 
 
-const LinkToCheck=(p:string)=>{
-    setCheckUrl(p)
-    setSelectedTab(1)
+    const LinkToCheck = (p: string, prPageNum: number) => {
+
+        setCheckUrl(p)
+        setPaginatorPageNumber(prPageNum)
+        setCheckUrl(p)
+
+        setSelectedTab(1)
     }
 
     const tabNameToIndex = {
         "content": 0,
-
         "checks": 1,
         "report": 2,
-        "check1":1,
-        "check2":1,
-        "check3":1,
 
     }
-    // let check='check1'
+
     const indexToTabName = {
         0: "content",
         1: `checks/${checkUrl}`,
         2: "report",
+
     }
 
-
-
     const params = useParams();
-    // @ts-ignore
-    const [selectedTab, setSelectedTab] = React.useState(tabNameToIndex[params.page]);
 
+
+
+    // @ts-ignore
+    const [selectedTab, setSelectedTab] = React.useState(tabNameToIndex[params.page]>2?1:tabNameToIndex[params.page]);
 
     const navigate = useNavigate();
-
 
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
         setSelectedTab(newValue);
     };
 
-    useEffect(()=>{
-        // @ts-ignore
-        navigate(`/home/${indexToTabName[selectedTab]}`)
-    },[selectedTab])
+    useEffect(() => {
+            // alert("ura")
+            // console.log('ura', checkUrl)
+            // @ts-ignore
+            navigate(`/home/${indexToTabName[selectedTab]}`)
+        }, [
+            selectedTab
+            , checkUrl
+        ]
+    )
 
     const pages = ['Содержание', 'Отчет'];
     const settings = ['1 очередь', '2 очередь'];
@@ -90,9 +98,13 @@ const LinkToCheck=(p:string)=>{
         setAnchorElUser(null)
     }
 
+
+
+
+
     return (
         <div>
-            <AppBar position="static">
+            <AppBar position="sticky">
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
 
@@ -154,11 +166,13 @@ const LinkToCheck=(p:string)=>{
                         {/*Содержание и отчет на большом экране*/}
 
                         <Tabs
-                            sx={{flexGrow: 2, display: {xs: 'none', md: 'flex'}, width: "100px"}}
+                            sx={{flexGrow: 2, display: {xs: 'none', md: 'flex'}, width: "100px",}}
                             value={selectedTab}
                             onChange={handleChange}
                             indicatorColor="secondary"
                             textColor="inherit"
+
+
                             variant="fullWidth"
                             aria-label="full width tabs example"
                             // aria-label="nav tabs example"
@@ -167,6 +181,7 @@ const LinkToCheck=(p:string)=>{
                             <Tab
                                 sx={{padding: "26px", maxWidth: "120px"}}
                                 label="Содержание"
+
                             />
                             <Tab
                                 sx={{padding: "26px", maxWidth: "120px"}}
@@ -215,7 +230,7 @@ const LinkToCheck=(p:string)=>{
             </AppBar>
             <div className={styles.main}>
                 {selectedTab === 0 && <Content setSelectedTab={setSelectedTab} LinkToCheck={LinkToCheck}/>}
-                {selectedTab === 1 && <Checks/>}
+                {selectedTab === 1 && <Checks paginatorPageNumber={paginatorPageNumber} LinkToCheck={LinkToCheck}/>}
                 {selectedTab === 2 && <Report/>}
             </div>
         </div>

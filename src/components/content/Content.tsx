@@ -1,48 +1,59 @@
 import React from 'react';
-import {Link, Navigate, NavLink, useNavigate} from 'react-router-dom';
+import { Navigate, NavLink, useNavigate} from 'react-router-dom';
 import styles from './Content.module.css';
 import {useSelector} from "react-redux";
 import {AppStateType} from "../../redux/store";
 import {CheckType} from "../../redux/checksReducer";
+import Container from "@mui/material/Container";
+import Typography from '@mui/material/Typography';
 
 
-type ContentPropsType={
-    setSelectedTab:(value:number)=>void
-    LinkToCheck:(url:string)=>void
+type ContentPropsType = {
+    setSelectedTab: (value: number) => void
+    LinkToCheck: (url: string,prPageNum:number) => void
+
 }
 
 
-function Content(props:ContentPropsType) {
+function Content(props: ContentPropsType) {
 
     const header = useSelector((state: AppStateType) => state.header)
     const checks = useSelector((state: AppStateType) => state.checks)
 
 
-
-
-
-
-
     return (
-        <div>
-
-            Content
+        <Container>
             {header.map((h) => {
-
                     return (
-                        <ul>{h.title}
+                        <ul>
+                            <Typography sx={{padding:0}} variant="h6" component="h6">
+                                {h.title}
+
+                            </Typography>
+
                             {
                                 checks[h.idHeader]
                                     .map((chsInH: CheckType[]) => chsInH)
                                     .map((ch: CheckType) => {
-                                    return { title:ch.title,url:ch.idTech}
+                                        return {
+                                            title: ch.title,
+                                            url: ch.idTech,
+                                            prPageNum: ch.paginatorNumber
+                                        }
                                     })
-                                    .map((t: any) => <li onClick={()=>{
+                                    .map((t: any) => <li onClick={() => {
                                         // props.setSelectedTab(1)};
-                                        props.LinkToCheck(`${t.url}`)}
+                                        props.LinkToCheck(`${t.url}`,t.prPageNum)
+                                    }
 
                                     }>
-                                        <NavLink to={`/home/checks/${t.url}`}>{t.title}</NavLink>
+                                        <NavLink to={`/home/checks/${t.url}`}>
+
+                                                {t.title}
+
+
+
+                                        </NavLink>
 
                                     </li>)
                             }
@@ -51,8 +62,8 @@ function Content(props:ContentPropsType) {
                 }
             )}
 
+        </Container>
 
-        </div>
     );
 }
 
