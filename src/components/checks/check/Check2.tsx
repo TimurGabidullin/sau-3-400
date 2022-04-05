@@ -1,5 +1,5 @@
 import React from 'react';
-import CheckTab from "../../ui-components/checkTab/CheckTab";
+import CheckTab from "../../common/checkTab/CheckTab";
 import Container from "@mui/material/Container";
 
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import {useParams} from "react-router-dom";
-import Paginator from "../ui-components/paginator/paginator.";
+import Paginator from "../common/paginator/paginator.";
 import Check1 from "./check/Check1";
 import Check2 from './check/Check2';
 

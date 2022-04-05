@@ -1,5 +1,5 @@
 import React from 'react';
-import TableExample from "../../ui-components/table/Table";
+import TableExample from "../../common/table/Table";
 
 
 function Check1() {
