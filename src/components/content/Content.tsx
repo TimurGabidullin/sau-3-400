@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography';
 
 type ContentPropsType = {
     setSelectedTab: (value: number) => void
-    LinkToCheck: (url: string,prPageNum:number) => void
+    LinkToCheck: (h:string,url: string,prPageNum:number) => void
 
 }
 
@@ -24,7 +24,8 @@ function Content(props: ContentPropsType) {
     return (
         <Container>
             {header.map((h) => {
-                    return (
+
+                return (
                         <ul>
                             <Typography sx={{padding:0}} variant="h6" component="h6">
                                 {h.title}
@@ -32,6 +33,7 @@ function Content(props: ContentPropsType) {
                             </Typography>
 
                             {
+
                                 checks[h.idHeader]
                                     .map((chsInH: CheckType[]) => chsInH)
                                     .map((ch: CheckType) => {
@@ -43,11 +45,12 @@ function Content(props: ContentPropsType) {
                                     })
                                     .map((t: any) => <li onClick={() => {
                                         // props.setSelectedTab(1)};
-                                        props.LinkToCheck(`${t.url}`,t.prPageNum)
+                                        props.LinkToCheck(h.idHeader,`${t.url}`,t.prPageNum)
                                     }
 
                                     }>
-                                        <NavLink to={`/home/checks/${t.url}`}>
+                                        {/*<NavLink to={`/home/checks/${t.url}`}>*/}
+                                        <NavLink to={`/home/checks/${h.idHeader}/${t.url}`}>
 
                                                 {t.title}
 

@@ -3,9 +3,10 @@ import TextField from "@mui/material/TextField";
 import {useForm} from "react-hook-form";
 import CalculateIcon from '@mui/icons-material/Calculate';
 import Button from '@mui/material/Button';
+import styles from './Table.module.css';
 
 
-export default function TableExample() {
+export default function TableSize2x5() {
 
 
     const {register, handleSubmit, watch, formState: {errors}} = useForm();
@@ -18,15 +19,17 @@ export default function TableExample() {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <table>
+            <table className={styles.table}>
                 <tr>
                     <td></td>
                     <td>U21/11</td>
                 </tr>
                 <tr>
-                    <td>ВПК</td>
+                    <td>ВПК:</td>
                     <td>
                         <TextField
+                            sx={{marginTop:'10px'}}
+                            color='secondary'
                             id="outlined-helperText"
                             label="1 канал"
                             // defaultValue="Введите Значение"
@@ -35,6 +38,8 @@ export default function TableExample() {
                     </td>
                     <td>
                         <TextField
+                            sx={{marginTop:'10px'}}
+                            color='secondary'
                             id="outlined-helperText"
                             label="2 канал"
                             // defaultValue="Введите Значение"
@@ -43,6 +48,8 @@ export default function TableExample() {
                     </td>
                     <td>
                         <TextField
+                            sx={{marginTop:'10px'}}
+                            color='secondary'
                             id="outlined-helperText"
                             label="3 канал"
                             // defaultValue="Введите Значение"
@@ -51,6 +58,8 @@ export default function TableExample() {
                     </td>
                     <td>
                         <TextField
+                            sx={{marginTop:'10px'}}
+                            color='secondary'
                             id="outlined-helperText"
                             label="4 канал"
                             // defaultValue="Введите Значение"
@@ -62,17 +71,17 @@ export default function TableExample() {
 
             {errors.exampleRequired && <span>This field is required</span>}
 
+            <div className={styles.btn}>
+                <Button type={"submit"}
+                        variant="outlined"
+                        endIcon={<CalculateIcon/>}
+                        color="secondary"
 
-            <Button type={"submit"}
-                    variant="outlined"
-                    endIcon={<CalculateIcon/>}
-                    color="secondary"
-
-                // onClick={onSubmit}
-            >
-                Расчёт
-            </Button>
-
+                    // onClick={onSubmit}
+                >
+                    Расчёт
+                </Button>
+            </div>
             {/*<input type="submit" />*/}
         </form>
     );

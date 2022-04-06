@@ -8,11 +8,11 @@ export type HeaderType={
 
 const initialState= [
     {
-        title: "Заголовок проверки 1",
+        title: "Проверка масштабов по сигналам текущего тангажа, крена, курса.",
         idHeader:"head1"
     } as HeaderType,
     {
-        title: "Заголовок проверки 2",
+        title: "Проверка передаточных коэффициентов угловых скоростей тангажа, курса, крена. ",
         idHeader:'head2'
     } as HeaderType
 ]

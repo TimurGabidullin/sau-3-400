@@ -6,18 +6,19 @@ import {useEffect, useState} from "react";
 
 type PaginatorPropsType = {
     paginatorPageNumber:number
-    LinkToCheck: (url: string , prPageNum: number) => void
+    LinkToCheck: (h:string,url: string , prPageNum: number) => void
 }
 
-
-
+const getHeaderPeremetrUrl=(page:number)=>{
+    if (page<4) return 'head1'
+    else return 'head2'
+}
 
 
 
 export default function Paginator(props:PaginatorPropsType) {
     const params = useParams();
     // console.log(params)
-
 
     const navigate = useNavigate();
 
@@ -41,8 +42,10 @@ const[page,setPage]=useState(1)
 
 
     const onChangeHandler=(e: React.ChangeEvent<unknown>,page:number) => {
+    console.log(e)
+        let headerUrl=getHeaderPeremetrUrl(page)
         let Url=`check${page}`
-        props.LinkToCheck(Url,page)
+        props.LinkToCheck(headerUrl,Url,page)
         setPage(page)
     }
 
@@ -59,10 +62,10 @@ const[page,setPage]=useState(1)
             alignItems="center"
         >
             <Pagination
-
+                shape="rounded"
                 count={35}
                 variant="outlined"
-                color="primary"
+                color="secondary"
                 defaultPage={1}
                 size={'large'}
                 page={props.paginatorPageNumber}

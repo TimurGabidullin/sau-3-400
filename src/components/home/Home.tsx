@@ -22,20 +22,22 @@ import {useEffect} from "react";
 
 
 const Home = () => {
-
+    const [headerUrl, setHeaderUrl] = React.useState('head1');
     const [checkUrl, setCheckUrl] = React.useState('check1');
     const [paginatorPageNumber, setPaginatorPageNumber] = React.useState(1);
 
 
-    const LinkToCheck = (p: string, prPageNum: number) => {
-
+    const LinkToCheck = (h:string,p: string, prPageNum: number) => {
+        setHeaderUrl(h)
         setCheckUrl(p)
+
         setPaginatorPageNumber(prPageNum)
         setCheckUrl(p)
 
         setSelectedTab(1)
     }
 
+    const params = useParams();
     const tabNameToIndex = {
         "content": 0,
         "checks": 1,
@@ -45,13 +47,12 @@ const Home = () => {
 
     const indexToTabName = {
         0: "content",
-        1: `checks/${checkUrl}`,
+        1: `checks/${headerUrl}/${checkUrl}`,
         2: "report",
 
     }
 
-    const params = useParams();
-
+// console.log(params)
 
 
     // @ts-ignore
@@ -65,13 +66,12 @@ const Home = () => {
     };
 
     useEffect(() => {
-            // alert("ura")
-            // console.log('ura', checkUrl)
             // @ts-ignore
             navigate(`/home/${indexToTabName[selectedTab]}`)
         }, [
             selectedTab
-            , checkUrl
+            , checkUrl,
+        headerUrl
         ]
     )
 

@@ -8,18 +8,20 @@ import Check2 from './check/Check2';
 
 type ChecksPropsType = {
     paginatorPageNumber:number
-    LinkToCheck: (url: string,prPageNum:number) => void
+    LinkToCheck: (h:string,url: string,prPageNum:number) => void
+
 }
 
 function Checks(props:ChecksPropsType) {
     const params = useParams();
-    // console.log(params)
+    console.log(params)
 
     return (
         <div>
             <Paginator paginatorPageNumber={props.paginatorPageNumber} LinkToCheck={props.LinkToCheck}/>
-            {params.page==="check1"&&<Check1/>}
+            {params.page==="check1"&&<Check1 checkId={params.page}/>}
             {params.page==="check2"&&<Check2/>}
+            <Paginator paginatorPageNumber={props.paginatorPageNumber} LinkToCheck={props.LinkToCheck}/>
 
         </div>
     );
