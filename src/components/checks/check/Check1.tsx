@@ -22,7 +22,12 @@ type CheckPropsType = {
 const Check1=(props: CheckPropsType)=> {
     const params = useParams();
     const checks = useSelector((state: AppStateType) => state.checks[params.header ? params.header : 'head1'])
-    const headerOfCheck = checks.filter((ch: CheckType) => ch.idTech === params.page)[0].title
+    const headerOfCheck = checks.filter((ch: CheckType) => ch.idCheck === params.page)[0].title
+
+
+
+
+    
 
 
     return (

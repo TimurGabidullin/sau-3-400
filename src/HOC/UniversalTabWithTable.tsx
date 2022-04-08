@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useCallback} from 'react'
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Tabs from "@mui/material/Tabs";
@@ -9,19 +9,11 @@ import SettingsIcon from "@mui/icons-material/Settings";
 
 export  const UniversalTabWithTable=(Table:React.FC,indexOfTable=0)=>{
 
-
-
-
-
-   let TabWithTable=(props:any)=>{
+   const TabWithTable=(props:any)=>{
       const [selectTab, setSelectTab] = React.useState('table');
-      const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-          setSelectTab(newValue);
-      };
-
-
-
-      console.log(props)
+      const handleChange =useCallback( (event: React.SyntheticEvent, newValue: string) => {
+          setSelectTab(newValue)
+      },[]);
 
       return (
           <Container maxWidth={"sm"}>
@@ -40,12 +32,9 @@ export  const UniversalTabWithTable=(Table:React.FC,indexOfTable=0)=>{
                       centered
                       aria-label="secondary tabs example">
 
-
                       <Tab value="table" label="Таблица" icon={<FormatListBulletedIcon/>} iconPosition='end'/>
                       <Tab value="info" label="Инфо" icon={<SettingsIcon/>} iconPosition='end'/>
-
                   </Tabs>
-
                   {selectTab === 'table' ? <Table {...props } indexOfTable={indexOfTable} /> : 'info'}
               </Box>
           </Container>

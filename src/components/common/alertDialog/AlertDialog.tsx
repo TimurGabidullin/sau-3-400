@@ -7,6 +7,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
+import {useCallback} from "react";
 
 const Transition = React.forwardRef(function Transition(
     props: TransitionProps & {
@@ -25,9 +26,10 @@ type AlertDialogPropsType={
 
 export default function AlertDialog(props:AlertDialogPropsType) {
 
-    const handleClose = () => {
+    const handleClose =useCallback( () => {
         props.setOpenDialogAlert(false);
-    };
+        props.setOpenDialogAlert(false)
+    },[]);
 
     return (
         <div>

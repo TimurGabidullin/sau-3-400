@@ -39,7 +39,7 @@ function Content(props: ContentPropsType) {
                                     .map((ch: CheckType) => {
                                         return {
                                             title: ch.title,
-                                            url: ch.idTech,
+                                            url: ch.idCheck,
                                             prPageNum: ch.paginatorNumber
                                         }
                                     })

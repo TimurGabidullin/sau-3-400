@@ -17,7 +17,7 @@ import Report from "../report/Report";
 import styles from "./Home.module.css";
 import Checks from "../checks/Checks";
 import {useNavigate, useParams} from 'react-router-dom'
-import {useEffect} from "react";
+import {useCallback, useEffect} from "react";
 
 
 
@@ -81,22 +81,20 @@ const Home = () => {
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
-    const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-        setAnchorElNav(event.currentTarget);
-
-    };
-    const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+    const handleOpenNavMenu = useCallback((event: React.MouseEvent<HTMLElement>) => {
+        setAnchorElNav(event.currentTarget)
+    },[]);
+    const handleOpenUserMenu = useCallback((event: React.MouseEvent<HTMLElement>) => {
         setAnchorElUser(event.currentTarget);
+    },[]);
 
-    };
-
-    const handleCloseNavMenu = () => {
+    const handleCloseNavMenu = useCallback(() => {
         setAnchorElNav(null);
-    };
+    },[]);
 
-    const handleCloseUserMenu = () => {
+    const handleCloseUserMenu =useCallback( () => {
         setAnchorElUser(null)
-    }
+    },[])
 
 
 

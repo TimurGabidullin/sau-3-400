@@ -1,15 +1,17 @@
+import {ActionsType} from "./store";
+
 export type ChecksType = typeof initialState
 
 export type CheckType = {
     title: string,
     idHeader: string,
-    idTech: string,
+    idCheck: string,
     pageNumber: number,
     paginatorNumber: number
     typesOfBlocks?: string[],
     numbersOfContacts?: string[]
     controlFunction: (inputValue: string) => boolean
-    valuesOfBlocks?:number[]
+    valuesOfBlocks?: number[]
 
 }
 
@@ -24,20 +26,20 @@ const initialState = {
         {
             title: "Проверка нулевых сигналов",
             idHeader: "1",
-            idTech: 'check1',
+            idCheck: 'check1',
             pageNumber: 473,
             paginatorNumber: 1,
             typesOfBlocks: ['ВПК', 'ВБК'],
             numbersOfContacts: ['U21/11 Ш35', 'U24/11 Ш35'],
             controlFunction: f1,
-            valuesOfBlocks:[1,2,3,4]
+            valuesOfBlocks: [1, 2, 3, 4]
 
 
         } as CheckType,
         {
             title: "Проверка коэффициента передачи ВГМ 103-1",
             idHeader: "1",
-            idTech: 'check2',
+            idCheck: 'check2',
             pageNumber: 474,
             paginatorNumber: 2,
             typesOfBlocks: ['ВПК', 'ВБК'],
@@ -47,7 +49,7 @@ const initialState = {
         {
             title: "Проверка масштабов",
             idHeader: "1",
-            idTech: 'check3',
+            idCheck: 'check3',
             pageNumber: 475,
             paginatorNumber: 3
 
@@ -58,7 +60,7 @@ const initialState = {
         {
             idHeader: "2",
             title: "Проверка передаточного коэффициента по сигналу угловой скорости тангажа",
-            idTech: 'check4',
+            idCheck: 'check4',
             pageNumber: 480,
             paginatorNumber: 4
 
@@ -68,7 +70,7 @@ const initialState = {
         {
             idHeader: "2",
             title: "Проверка передаточного коэффициента по сигналу угловой скорости курса",
-            idTech: 'check5',
+            idCheck: 'check5',
             pageNumber: 482,
             paginatorNumber: 5
 
@@ -78,7 +80,7 @@ const initialState = {
         {
             idHeader: "2",
             title: "Проверка передаточного коэффициента по сигналу угловой скорости крена",
-            idTech: 'check6',
+            idCheck: 'check6',
             pageNumber: 483,
             paginatorNumber: 6
 
@@ -90,14 +92,30 @@ const initialState = {
 }
 
 
-export const checksReducer = (state: ChecksType = initialState): any => {
-    return state
+export const checksReducer = (state: ChecksType = initialState, action: ActionsType): any => {
+
+    switch (action.type) {
+        case 'SAVE_DATA':
+            return {...state,
+                // @ts-ignore
+                [action.head]: state[action.head].map((ch: CheckType)=>{
+                    if(ch.idCheck === action.idCheck) return {...ch, valuesOfBlocks:action.data}
+                    else return ch;
+                })
+            }
+
+        default:
+            return state
+    }
 }
 
 
-
-const saveDataAC=(data:number[],head1:string,idCheck:string)=>({})
-
+export const saveDataAC = (data: number[], head: string, idCheck: string) => ({
+    type: 'SAVE_DATA',
+    data,
+    head,
+    idCheck
+}) as const
 
 
 export default checksReducer;

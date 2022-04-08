@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useCallback, useContext, useState} from "react";
 import TextField from "@mui/material/TextField";
 import {useForm} from "react-hook-form";
 import CalculateIcon from '@mui/icons-material/Calculate';
@@ -7,35 +7,47 @@ import styles from './Table.module.css';
 import {useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "../../../redux/store";
-import {CheckType} from "../../../redux/checksReducer";
+import {CheckType, saveDataAC} from "../../../redux/checksReducer";
 import AlertDialog from "../alertDialog/AlertDialog";
-
 
 
 export default function TableSize2x5(props: any) {
 
+
+    console.log('отрисовка компаненты Table')
+
+
+
     const params = useParams()
     const checks = useSelector((state: AppStateType) => state.checks[params.header ? params.header : 'head1'])
-    const headerOfCheck = checks.filter((ch: CheckType) => ch.idTech === params.page)[0].title
-    const numbersOfContacts = checks.filter((ch: CheckType) => ch.idTech === params.page)[0].numbersOfContacts[props.indexOfTable]
-    const typeOfBlock = checks.filter((ch: CheckType) => ch.idTech === params.page)[0].typesOfBlocks[props.indexOfTable]
-    const controlFunction = checks.filter((ch: CheckType) => ch.idTech === params.page)[0].controlFunction
-    const valueOfBlock = checks.filter((ch: CheckType) => ch.idTech === params.page)[0].valuesOfBlocks[0]
+    const headerOfCheck = checks.filter((ch: CheckType) => ch.idCheck === params.page)[0].title
+    const numbersOfContacts = checks.filter((ch: CheckType) => ch.idCheck === params.page)[0].numbersOfContacts[props.indexOfTable]
+    const typeOfBlock = checks.filter((ch: CheckType) => ch.idCheck === params.page)[0].typesOfBlocks[props.indexOfTable]
+    const controlFunction = checks.filter((ch: CheckType) => ch.idCheck === params.page)[0].controlFunction
+    const valueOfBlock = checks.filter((ch: CheckType) => ch.idCheck === params.page)[0].valuesOfBlocks[0]
 
     const [openDialogAlert, setOpenDialogAlert] = React.useState(false);
-
+    const dispatch = useDispatch()
 
     const {register, handleSubmit, watch, formState: {errors}} = useForm();
 
 
-    const onSubmit = (data: any) => {
-      if(+data.channel1===valueOfBlock) setOpenDialogAlert(true)
+    const onSubmit = useCallback((data: any) => {
+        if (Number(data.channel1) !== valueOfBlock) {
+            setOpenDialogAlert(true)
+        }
+        dispatch(saveDataAC(
+            [+data.channel1, +data.channel1, +data.channel1, +data.channel1],
+            params.head ? params.head : "head1",
+            params.page ? params.page : "check1"))
 
-        setStatusError([controlFunction(data.channel1),
-            controlFunction(data.channel2),
-            controlFunction(data.channel3),
-            controlFunction(data.channel4)])
-    }
+        setStatusError(
+            [controlFunction(data.channel1),
+                controlFunction(data.channel2),
+                controlFunction(data.channel3),
+                controlFunction(data.channel4)])
+    }, [])
+
 
     const [statusError, setStatusError] = useState(['', '', '', ''])
 
@@ -60,7 +72,7 @@ export default function TableSize2x5(props: any) {
                             color='secondary'
                             id="outlined-helperText"
                             label="1 канал"
-                            // defaultValue="5"
+                            defaultValue="5"
                             // error={errors.channel1}
                             error={Boolean(statusError[0])}
                             {...register("channel1",)}/>
@@ -113,13 +125,6 @@ export default function TableSize2x5(props: any) {
             <div className={styles.btn}>
 
 
-
-
-
-
-
-
-
                 <Button
                     onClick={onSubmit}
                     type={"submit"}
@@ -131,13 +136,9 @@ export default function TableSize2x5(props: any) {
                 >
                     Расчёт
                 </Button>
-                <AlertDialog openDialogAlert={openDialogAlert } setOpenDialogAlert={setOpenDialogAlert} />
+                <AlertDialog openDialogAlert={openDialogAlert} setOpenDialogAlert={setOpenDialogAlert}/>
             </div>
         </form>
-
-
-
-
 
 
     );

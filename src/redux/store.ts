@@ -1,6 +1,6 @@
 import { combineReducers, createStore} from "redux";
 import headerReducer from "./headerReducer";
-import checksReducer from "./checksReducer";
+import checksReducer, {saveDataAC} from "./checksReducer";
 
 let reducers = combineReducers({
 header:headerReducer,
@@ -13,7 +13,10 @@ const store = createStore(reducers);
 
 
 
-// export type ActionsType = ReturnType<typeof addPostActionCreator>
+
+export type ActionsType = ReturnType<typeof saveDataAC>
+
+
 //     | ReturnType<typeof sendMessageActionCreator>
 //     | ReturnType<typeof followSuccess>
 //     | ReturnType<typeof unfollowSuccess>
