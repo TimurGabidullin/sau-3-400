@@ -7,9 +7,24 @@ import Box from '@mui/material/Box';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import SettingsIcon from '@mui/icons-material/Settings';
 import styles from './Check.module.css';
+import UniversalTabWithTable from "../../../HOC/UniversalTabWithTable";
 
 
-function Check2() {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function Check2(props:any) {
 
     const [selectTab, setSelectTab] = React.useState('table');
     const handleChange = (event: React.SyntheticEvent, newValue: string) => {
@@ -18,7 +33,33 @@ function Check2() {
 
     return (
         <div className="Check">
+
+
+            <p>
+                На пульте ПК-31-01 переключатель ИСКЛЮЧ ПОСАДКА установите в положение 	&#xC9;, ИСКЛЮЧ УСП установите
+                в положение "4".
+                На пульте ПР-173-02 переключатель ежимов установите в положение ЗАХОД.
+                Включите, согласно руководству по эксплуатации аппаратуру КУРС МП-70.
+                На имитаторе МИМ-70 установите переключатель ОТКЛОНЕНИЕ в положение вправо/вверх (влево/вниз) и 2Т.
+                Установите на МИМ-70 соответствующую режиму частоту КРМ.
+                На пульте ПС-72-02, нажмите кнопку-лампочку КРЕН, включите имитатор МИМ-70-I(II), нажмите
+                кнопку-лампочку ГОРИЗ на пульте ПР-173-02.
+
+            </p>
+
+
+            {UniversalTabWithTable(TableSize2x5)(props)}
+
+
+
+
+
+
+
+
             <Container maxWidth={"sm"}>
+
+
 
 
 

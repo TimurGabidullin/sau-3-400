@@ -32,8 +32,8 @@ const[page,setPage]=useState(1)
         let Url=params.page
 
 // alert("ura")
-   //     @ts-ignore
-   //      props.LinkToCheck(Url,page)
+//        @ts-ignore
+//         props.LinkToCheck(Url,page)
 
     },[params])
 
@@ -42,7 +42,7 @@ const[page,setPage]=useState(1)
 
 
     const onChangeHandler=(e: React.ChangeEvent<unknown>,page:number) => {
-    console.log(e)
+    // console.log(e)
         let headerUrl=getHeaderPeremetrUrl(page)
         let Url=`check${page}`
         props.LinkToCheck(headerUrl,Url,page)
