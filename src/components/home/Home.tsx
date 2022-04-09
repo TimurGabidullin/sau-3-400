@@ -22,8 +22,15 @@ import {useCallback, useEffect} from "react";
 
 
 const Home = () => {
-    const [headerUrl, setHeaderUrl] = React.useState('head1');
-    const [checkUrl, setCheckUrl] = React.useState('check1');
+    const params = useParams();
+    // const [headerUrl, setHeaderUrl] = React.useState(params.header?params.header:'head1');
+    // const [checkUrl, setCheckUrl] = React.useState(params.page?params.page:'check1');
+
+    // console.log('home')
+
+    const [headerUrl, setHeaderUrl] = React.useState(params.header);
+    const [checkUrl, setCheckUrl] = React.useState(params.page);
+
     const [paginatorPageNumber, setPaginatorPageNumber] = React.useState(1);
 
 
@@ -37,7 +44,7 @@ const Home = () => {
         setSelectedTab(1)
     }
 
-    const params = useParams();
+
     const tabNameToIndex = {
         "content": 0,
         "checks": 1,

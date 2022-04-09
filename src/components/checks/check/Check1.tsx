@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import Container from "@mui/material/Container";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -24,12 +24,6 @@ const Check1=(props: CheckPropsType)=> {
     const checks = useSelector((state: AppStateType) => state.checks[params.header ? params.header : 'head1'])
     const headerOfCheck = checks.filter((ch: CheckType) => ch.idCheck === params.page)[0].title
 
-
-
-
-    
-
-
     return (
         <div className="Check">
             <Typography sx={{paddingLeft: '20px'}} variant="h6" component="h6">
@@ -53,7 +47,7 @@ const Check1=(props: CheckPropsType)=> {
                 </p>
             </Typography>
 
-            {UniversalTabWithTable(TableSize2x5,1)(props)}
+            {UniversalTabWithTable(TableSize2x5)(props)}
 
 
 

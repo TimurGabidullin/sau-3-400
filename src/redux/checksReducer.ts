@@ -11,7 +11,7 @@ export type CheckType = {
     typesOfBlocks?: string[],
     numbersOfContacts?: string[]
     controlFunction: (inputValue: string) => boolean
-    valuesOfBlocks?: number[]
+    valuesOfBlocks?: number[][]
 
 }
 
@@ -32,7 +32,7 @@ const initialState = {
             typesOfBlocks: ['ВПК', 'ВБК'],
             numbersOfContacts: ['U21/11 Ш35', 'U24/11 Ш35'],
             controlFunction: f1,
-            valuesOfBlocks: [1, 2, 3, 4]
+            valuesOfBlocks: [[1, 2, 3, 4],[1, 2, 3, 4]]
 
 
         } as CheckType,
@@ -98,9 +98,14 @@ export const checksReducer = (state: ChecksType = initialState, action: ActionsT
         case 'SAVE_DATA':
             return {...state,
                 // @ts-ignore
-                [action.head]: state[action.head].map((ch: CheckType)=>{
-                    if(ch.idCheck === action.idCheck) return {...ch, valuesOfBlocks:action.data}
-                    else return ch;
+                [action.head]: state[action.head].map((check: CheckType)=>{
+                    if(check.idCheck === action.idCheck) {
+                        return {...check, valuesOfBlocks:check.valuesOfBlocks?.map((data)=>{
+                            if(data[action.indexOfTable]) return action.data
+                            else return data})
+                        }
+                    }
+                    else return check;
                 })
             }
 
@@ -110,11 +115,12 @@ export const checksReducer = (state: ChecksType = initialState, action: ActionsT
 }
 
 
-export const saveDataAC = (data: number[], head: string, idCheck: string) => ({
+export const saveDataAC = (data: number[], head: string, idCheck: string,indexOfTable:number) => ({
     type: 'SAVE_DATA',
     data,
     head,
-    idCheck
+    idCheck,
+    indexOfTable
 }) as const
 
 

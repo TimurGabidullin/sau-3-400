@@ -1,4 +1,4 @@
-import React, {useCallback, useContext, useState} from "react";
+import React, {useCallback, useContext, useEffect, useState} from "react";
 import TextField from "@mui/material/TextField";
 import {useForm} from "react-hook-form";
 import CalculateIcon from '@mui/icons-material/Calculate';
@@ -13,10 +13,7 @@ import AlertDialog from "../alertDialog/AlertDialog";
 
 export default function TableSize2x5(props: any) {
 
-
     console.log('отрисовка компаненты Table')
-
-
 
     const params = useParams()
     const checks = useSelector((state: AppStateType) => state.checks[params.header ? params.header : 'head1'])
@@ -24,29 +21,37 @@ export default function TableSize2x5(props: any) {
     const numbersOfContacts = checks.filter((ch: CheckType) => ch.idCheck === params.page)[0].numbersOfContacts[props.indexOfTable]
     const typeOfBlock = checks.filter((ch: CheckType) => ch.idCheck === params.page)[0].typesOfBlocks[props.indexOfTable]
     const controlFunction = checks.filter((ch: CheckType) => ch.idCheck === params.page)[0].controlFunction
-    const valueOfBlock = checks.filter((ch: CheckType) => ch.idCheck === params.page)[0].valuesOfBlocks[0]
-
+    const valuesOfBlock = checks.filter((ch: CheckType) => ch.idCheck === params.page)[0].valuesOfBlocks[0]
     const [openDialogAlert, setOpenDialogAlert] = React.useState(false);
     const dispatch = useDispatch()
+
+
+
+
+
 
     const {register, handleSubmit, watch, formState: {errors}} = useForm();
 
 
-    const onSubmit = useCallback((data: any) => {
-        if (Number(data.channel1) !== valueOfBlock) {
+    const onSubmit = (data: any) => {
+        console.log('submit')
+        if (Number(data.channel1) !== valuesOfBlock[0]) {
+// debugger
             setOpenDialogAlert(true)
-        }
-        dispatch(saveDataAC(
-            [+data.channel1, +data.channel1, +data.channel1, +data.channel1],
-            params.head ? params.head : "head1",
-            params.page ? params.page : "check1"))
+            dispatch(saveDataAC(
+                [+data.channel1, +data.channel1, +data.channel1, +data.channel1],
+                params.head ? params.head : "head1",
+                params.page ? params.page : "check1",
+                props.indexOfTable))
 
+        }
+        
         setStatusError(
             [controlFunction(data.channel1),
                 controlFunction(data.channel2),
                 controlFunction(data.channel3),
                 controlFunction(data.channel4)])
-    }, [])
+    }
 
 
     const [statusError, setStatusError] = useState(['', '', '', ''])
@@ -54,7 +59,7 @@ export default function TableSize2x5(props: any) {
 
     console.log(watch("example")); // watch input value by passing the name of it
 
-    // const validate = (value: number) => +value === 1
+
 
 
     return (
@@ -72,10 +77,10 @@ export default function TableSize2x5(props: any) {
                             color='secondary'
                             id="outlined-helperText"
                             label="1 канал"
-                            defaultValue="5"
+                            defaultValue={valuesOfBlock[0]}
                             // error={errors.channel1}
                             error={Boolean(statusError[0])}
-                            {...register("channel1",)}/>
+                            {...register("channel1")}/>
                     </td>
                     <td>
                         <TextField
@@ -126,7 +131,7 @@ export default function TableSize2x5(props: any) {
 
 
                 <Button
-                    onClick={onSubmit}
+                    // onClick={onSubmit}
                     type={"submit"}
                     variant="outlined"
                     endIcon={<CalculateIcon/>}

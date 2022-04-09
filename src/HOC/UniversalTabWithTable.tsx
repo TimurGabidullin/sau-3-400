@@ -7,13 +7,30 @@ import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import SettingsIcon from "@mui/icons-material/Settings";
 
 
-export  const UniversalTabWithTable=(Table:React.FC,indexOfTable=0)=>{
+
+
+
+export  const UniversalTabWithTable= (Table:React.FC,indexOfTable=0)=>{
+
+
+    const [selectTab, setSelectTab] = React.useState('table');
+    const handleChange =useCallback( (event: React.SyntheticEvent, newValue: string) => {
+
+        setSelectTab(newValue)
+    },[]);
+
+
 
    const TabWithTable=(props:any)=>{
-      const [selectTab, setSelectTab] = React.useState('table');
-      const handleChange =useCallback( (event: React.SyntheticEvent, newValue: string) => {
-          setSelectTab(newValue)
-      },[]);
+      // const [selectTab, setSelectTab] = React.useState('table');
+       console.log('TabWithTableProps',props)
+
+      // const handleChange =useCallback( (event: React.SyntheticEvent, newValue: string) => {
+      //
+      //     setSelectTab(newValue)
+      // },[]);
+
+
 
       return (
           <Container maxWidth={"sm"}>
@@ -35,7 +52,7 @@ export  const UniversalTabWithTable=(Table:React.FC,indexOfTable=0)=>{
                       <Tab value="table" label="Таблица" icon={<FormatListBulletedIcon/>} iconPosition='end'/>
                       <Tab value="info" label="Инфо" icon={<SettingsIcon/>} iconPosition='end'/>
                   </Tabs>
-                  {selectTab === 'table' ? <Table {...props } indexOfTable={indexOfTable} /> : 'info'}
+                  {selectTab === 'table' ? <Table {...props } indexOfTable={indexOfTable}  /> : 'info'}
               </Box>
           </Container>
       )
