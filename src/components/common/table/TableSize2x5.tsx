@@ -25,7 +25,6 @@ export default function TableSize2x5(props: any) {
     const [openDialogAlert, setOpenDialogAlert] = React.useState(false);
     const dispatch = useDispatch()
 
-
     const {register, handleSubmit, watch, formState: {errors}, getValues} = useForm();
 
     const onClickCalculateHandler = useCallback(() => {
@@ -34,11 +33,24 @@ export default function TableSize2x5(props: any) {
         const inputValue3 = getValues("channel3");
         const inputValue4 = getValues("channel4");
 
+
+        // switch () {
+        //
+        // }
+
+
         dispatch(saveDataAC(
             [+inputValue1, +inputValue2, +inputValue3, +inputValue4],
             params.head ? params.head : "head1",
             params.page ? params.page : "check1",
             props.indexOfTable))
+
+        if (+inputValue1 !== valuesOfBlock[0] ||
+            +inputValue2 !== valuesOfBlock[1] ||
+            +inputValue3 !== valuesOfBlock[2] ||
+            +inputValue4 !== valuesOfBlock[3]) {
+            setOpenDialogAlert(true)
+        }
 
     }, [])
 
@@ -48,18 +60,11 @@ export default function TableSize2x5(props: any) {
 
     const onSubmit = (data: any) => {
         console.log('submit')
-        if (Number(data.channel1) !== valuesOfBlock[0]) {
-            setOpenDialogAlert(true)
-            dispatch(saveDataAC(
-                [+data.channel1, +data.channel1, +data.channel1, +data.channel1],
-                params.head ? params.head : "head1",
-                params.page ? params.page : "check1",
-                props.indexOfTable));
-        }
+
     }
 
 
-    console.log(watch("example")); // watch input value by passing the name of it
+    // console.log(watch("example")); // watch input value by passing the name of it
 
 
     return (
@@ -130,11 +135,13 @@ export default function TableSize2x5(props: any) {
                     endIcon={<CalculateIcon/>}
                     color="secondary"
                     onClick={onClickCalculateHandler}
-
                 >
                     Расчёт
                 </Button>
-                <AlertDialog openDialogAlert={openDialogAlert} setOpenDialogAlert={setOpenDialogAlert}/>
+                <AlertDialog openDialogAlert={openDialogAlert}
+                             setOpenDialogAlert={setOpenDialogAlert}
+
+                />
             </div>
         </form>
 

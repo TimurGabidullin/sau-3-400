@@ -20,7 +20,6 @@ import {useNavigate, useParams} from 'react-router-dom'
 import {useCallback, useEffect} from "react";
 
 
-
 const Home = () => {
     const params = useParams();
     // const [headerUrl, setHeaderUrl] = React.useState(params.header?params.header:'head1');
@@ -34,7 +33,7 @@ const Home = () => {
     const [paginatorPageNumber, setPaginatorPageNumber] = React.useState(1);
 
 
-    const LinkToCheck = (h:string,p: string, prPageNum: number) => {
+    const LinkToCheck = (h: string, p: string, prPageNum: number) => {
         setHeaderUrl(h)
         setCheckUrl(p)
 
@@ -62,8 +61,11 @@ const Home = () => {
 // console.log(params)
 
 
-    // @ts-ignore
-    const [selectedTab, setSelectedTab] = React.useState(tabNameToIndex[params.page]>2?1:tabNameToIndex[params.page]);
+        // @ts-ignore
+    const [selectedTab, setSelectedTab] = React.useState(tabNameToIndex[params.page] > 2
+        ? 1
+        // @ts-ignore
+        : tabNameToIndex[params.page]);
 
     const navigate = useNavigate();
 
@@ -76,9 +78,9 @@ const Home = () => {
             // @ts-ignore
             navigate(`/home/${indexToTabName[selectedTab]}`)
         }, [
-            selectedTab
-            , checkUrl,
-        headerUrl
+            selectedTab,
+            checkUrl,
+            headerUrl
         ]
     )
 
@@ -90,21 +92,18 @@ const Home = () => {
 
     const handleOpenNavMenu = useCallback((event: React.MouseEvent<HTMLElement>) => {
         setAnchorElNav(event.currentTarget)
-    },[]);
+    }, []);
     const handleOpenUserMenu = useCallback((event: React.MouseEvent<HTMLElement>) => {
         setAnchorElUser(event.currentTarget);
-    },[]);
+    }, []);
 
     const handleCloseNavMenu = useCallback(() => {
         setAnchorElNav(null);
-    },[]);
+    }, []);
 
-    const handleCloseUserMenu =useCallback( () => {
+    const handleCloseUserMenu = useCallback(() => {
         setAnchorElUser(null)
-    },[])
-
-
-
+    }, [])
 
 
     return (
@@ -194,7 +193,7 @@ const Home = () => {
                             />
                             <Tab
                                 sx={{padding: "26px", minWidth: "120px", maxWidth: "120px"}}
-                                label="Отчет"
+                                label="Отчёт"
                             />
                         </Tabs>
 

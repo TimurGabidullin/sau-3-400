@@ -22,14 +22,27 @@ const Transition = React.forwardRef(function Transition(
 type AlertDialogPropsType={
     openDialogAlert:boolean
     setOpenDialogAlert:(value:boolean)=>void
+
+
 }
 
 export default function AlertDialog(props:AlertDialogPropsType) {
 
     const handleClose =useCallback( () => {
         props.setOpenDialogAlert(false);
-        props.setOpenDialogAlert(false)
     },[]);
+
+    // const handleClickYes =useCallback( () => {
+    //     props.setOpenDialogAlert(false);
+    // },[]);
+    //
+    //
+    // const handleClickNo =useCallback( () => {
+    //     props.setOpenDialogAlert(false);
+    // },[]);
+    //
+
+
 
     return (
         <div>
@@ -40,7 +53,7 @@ export default function AlertDialog(props:AlertDialogPropsType) {
                 onClose={handleClose}
                 aria-describedby="alert-dialog-slide-description"
             >
-                <DialogTitle>{"Занести в ОТЧЕТ новое значение?"}</DialogTitle>
+                <DialogTitle>{"Занести регуллировку в ОТЧЁТ?"}</DialogTitle>
                 <DialogContent>
                     <DialogContentText id="alert-dialog-slide-description">
                  Значение 1 канала изменилось.
