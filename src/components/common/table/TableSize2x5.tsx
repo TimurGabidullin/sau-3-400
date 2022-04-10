@@ -1,4 +1,4 @@
-import React, {useCallback, useContext, useEffect, useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import TextField from "@mui/material/TextField";
 import {useForm} from "react-hook-form";
 import CalculateIcon from '@mui/icons-material/Calculate';
@@ -21,45 +21,45 @@ export default function TableSize2x5(props: any) {
     const numbersOfContacts = checks.filter((ch: CheckType) => ch.idCheck === params.page)[0].numbersOfContacts[props.indexOfTable]
     const typeOfBlock = checks.filter((ch: CheckType) => ch.idCheck === params.page)[0].typesOfBlocks[props.indexOfTable]
     const controlFunction = checks.filter((ch: CheckType) => ch.idCheck === params.page)[0].controlFunction
-    const valuesOfBlock = checks.filter((ch: CheckType) => ch.idCheck === params.page)[0].valuesOfBlocks[0]
+    const valuesOfBlock = checks.filter((ch: CheckType) => ch.idCheck === params.page)[0].valuesOfBlocks[props.indexOfTable]
     const [openDialogAlert, setOpenDialogAlert] = React.useState(false);
     const dispatch = useDispatch()
 
 
+    const {register, handleSubmit, watch, formState: {errors}, getValues} = useForm();
+
+    const onClickCalculateHandler = useCallback(() => {
+        const inputValue1 = getValues("channel1");
+        const inputValue2 = getValues("channel2");
+        const inputValue3 = getValues("channel3");
+        const inputValue4 = getValues("channel4");
+
+        dispatch(saveDataAC(
+            [+inputValue1, +inputValue2, +inputValue3, +inputValue4],
+            params.head ? params.head : "head1",
+            params.page ? params.page : "check1",
+            props.indexOfTable))
+
+    }, [])
 
 
-
-
-    const {register, handleSubmit, watch, formState: {errors}} = useForm();
+// useEffect((onClickCalculateHandler),[])
 
 
     const onSubmit = (data: any) => {
         console.log('submit')
         if (Number(data.channel1) !== valuesOfBlock[0]) {
-// debugger
             setOpenDialogAlert(true)
             dispatch(saveDataAC(
                 [+data.channel1, +data.channel1, +data.channel1, +data.channel1],
                 params.head ? params.head : "head1",
                 params.page ? params.page : "check1",
-                props.indexOfTable))
-
+                props.indexOfTable));
         }
-        
-        setStatusError(
-            [controlFunction(data.channel1),
-                controlFunction(data.channel2),
-                controlFunction(data.channel3),
-                controlFunction(data.channel4)])
     }
 
 
-    const [statusError, setStatusError] = useState(['', '', '', ''])
-
-
     console.log(watch("example")); // watch input value by passing the name of it
-
-
 
 
     return (
@@ -78,9 +78,9 @@ export default function TableSize2x5(props: any) {
                             id="outlined-helperText"
                             label="1 канал"
                             defaultValue={valuesOfBlock[0]}
-                            // error={errors.channel1}
-                            error={Boolean(statusError[0])}
-                            {...register("channel1")}/>
+                            error={errors.channel1}
+                            // error={Boolean(statusError[0])}
+                            {...register("channel1", {validate: (value => controlFunction(value))})}/>
                     </td>
                     <td>
                         <TextField
@@ -88,12 +88,9 @@ export default function TableSize2x5(props: any) {
                             color='secondary'
                             id="outlined-helperText"
                             label="2 канал"
-                            defaultValue={'5'}
-                            // value={5}
-                            // error={errors.channel2}
-                            error={Boolean(statusError[1])}
-
-                            {...register("channel2")}
+                            defaultValue={valuesOfBlock[1]}
+                            error={errors.channel2}
+                            {...register("channel2", {validate: (value => controlFunction(value))})}
 
 
                         />
@@ -104,12 +101,9 @@ export default function TableSize2x5(props: any) {
                             color='secondary'
                             id="outlined-helperText"
                             label="3 канал"
-                            // defaultValue="Введите Значение"
-                            // error={errors.channel3}
-                            error={Boolean(statusError[2])}
-
-
-                            {...register("channel3",)}/>
+                            defaultValue={valuesOfBlock[2]}
+                            error={errors.channel3}
+                            {...register("channel3", {validate: (value => controlFunction(value))})}/>
                     </td>
                     <td>
                         <TextField
@@ -117,10 +111,9 @@ export default function TableSize2x5(props: any) {
                             color='secondary'
                             id="outlined-helperText"
                             label="4 канал"
-                            // defaultValue="Введите Значение"
-                            // error={errors.channel4}
-                            error={Boolean(statusError[3])}
-                            {...register("channel4",)}/>
+                            defaultValue={valuesOfBlock[3]}
+                            error={errors.channel4}
+                            {...register("channel4", {validate: (value => controlFunction(value))})}/>
                     </td>
                 </tr>
             </table>
@@ -136,7 +129,7 @@ export default function TableSize2x5(props: any) {
                     variant="outlined"
                     endIcon={<CalculateIcon/>}
                     color="secondary"
-
+                    onClick={onClickCalculateHandler}
 
                 >
                     Расчёт

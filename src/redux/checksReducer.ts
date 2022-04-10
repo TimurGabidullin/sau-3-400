@@ -12,12 +12,13 @@ export type CheckType = {
     numbersOfContacts?: string[]
     controlFunction: (inputValue: string) => boolean
     valuesOfBlocks?: number[][]
+    settingInfo?: string[]
 
 }
 
 const f1 = (inputValue: string) => {
-    if (+inputValue < 0.25) return false
-    else return true
+    if(+inputValue < 0.25) return true
+    else return false
 }
 
 
@@ -32,7 +33,8 @@ const initialState = {
             typesOfBlocks: ['ВПК', 'ВБК'],
             numbersOfContacts: ['U21/11 Ш35', 'U24/11 Ш35'],
             controlFunction: f1,
-            valuesOfBlocks: [[1, 2, 3, 4],[1, 2, 3, 4]]
+            valuesOfBlocks: [[1, 2, 3, 4],[5, 6, 7, 8]],
+            settingsInfo:['Кутак','Бятяк']
 
 
         } as CheckType,
@@ -100,9 +102,12 @@ export const checksReducer = (state: ChecksType = initialState, action: ActionsT
                 // @ts-ignore
                 [action.head]: state[action.head].map((check: CheckType)=>{
                     if(check.idCheck === action.idCheck) {
-                        return {...check, valuesOfBlocks:check.valuesOfBlocks?.map((data)=>{
-                            if(data[action.indexOfTable]) return action.data
-                            else return data})
+                        return {...check, valuesOfBlocks:check.valuesOfBlocks?.map((data,i)=>{
+                            if(i===action.indexOfTable) {
+                                // debugger
+                                return action.data
+                            }
+                             return data})
                         }
                     }
                     else return check;

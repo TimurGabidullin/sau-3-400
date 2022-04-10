@@ -38,7 +38,7 @@ const Check1=(props: CheckPropsType)=> {
                 </p>
             </Typography>
 
-            {UniversalTabWithTable(TableSize2x5)(props)}
+            {UniversalTabWithTable(TableSize2x5,0)(props)}
 
             <Typography sx={{paddingLeft: '20px'}} variant="body1" component='p'>
                 <p> Измерьте с помощью вольтметра ИПI пульта ППН-149 и запишите значения напряжений постоянного тока
@@ -47,7 +47,7 @@ const Check1=(props: CheckPropsType)=> {
                 </p>
             </Typography>
 
-            {UniversalTabWithTable(TableSize2x5)(props)}
+            {UniversalTabWithTable(TableSize2x5,1)(props)}
 
 
 
