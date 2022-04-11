@@ -9,13 +9,14 @@ export default function Info(props: any) {
 
     const params = useParams()
     const checks = useSelector((state: AppStateType) => state.checks[params.header ? params.header : 'head1'])
-    const settingsInfo = checks.filter((ch: CheckType) => ch.idCheck === params.page)[0].settingsInfo[props.indexOfTable]
+
 
 
     return (
         <div>
+            Регулируйте регулировочными винтами резисторов R4 на субблоках ВГМ 103-1 (X14-место установки) блоков
+            ВБК-51-01
 
-            {settingsInfo}
         </div>
 
     );

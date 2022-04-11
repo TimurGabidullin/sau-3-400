@@ -1,12 +1,5 @@
 import React, {useCallback} from 'react';
-import Container from "@mui/material/Container";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
 import TableSize2x5 from "../../common/table/TableSize2x5";
-import Box from '@mui/material/Box';
-import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
-import SettingsIcon from '@mui/icons-material/Settings';
-import styles from './Check.module.css';
 import Typography from "@mui/material/Typography";
 import {useSelector} from "react-redux";
 import {AppStateType} from "../../../redux/store";
@@ -16,7 +9,7 @@ import UniversalTabWithTable from "../../../HOC/UniversalTabWithTable";
 
 
 type CheckPropsType = {
-    checkId: string
+
 }
 
 const Check1=(props: CheckPropsType)=> {
@@ -33,7 +26,7 @@ const Check1=(props: CheckPropsType)=> {
             <Typography sx={{paddingLeft: '20px'}} variant="body1" component='p'>
                 <p> Включите каналы тангажа и крена САУ.</p>
                 <p> Измерьте с помощью пульта ППН-149 и запишите значения напряжений постоянного тока
-                    U&#x394;V0I(II,III,IV) между контактами 20 и 11 контрольного соединителя Ш35 ВПК-52-01
+                    U<span>&#x394;V0</span>I(II,III,IV) между контактами 20 и 11 контрольного соединителя Ш35 ВПК-52-01
                     во всех каналах САУ. Значения напряжения должны быть &#xB1;0,25В.
                 </p>
             </Typography>
@@ -42,7 +35,7 @@ const Check1=(props: CheckPropsType)=> {
 
             <Typography sx={{paddingLeft: '20px'}} variant="body1" component='p'>
                 <p> Измерьте с помощью вольтметра ИПI пульта ППН-149 и запишите значения напряжений постоянного тока
-                    U&#x394;&#x3A8;0I(II,III,IV) между контактами 24 и 11 контрольного соединителя Ш35 ВБК-52-01
+                    U&#x394;&#x3A8;0I(II,III,IV) между контактами 24 и 11 контрольного соединителя Ш35 ВБК-51-01
                     во всех каналах САУ. Значения напряжения должны быть &#xB1;0,1В.
                 </p>
             </Typography>

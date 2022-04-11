@@ -33,7 +33,7 @@ export default function AlertDialog(props:AlertDialogPropsType) {
     },[]);
 
     // const handleClickYes =useCallback( () => {
-    //     props.setOpenDialogAlert(false);
+    //    handleClose()
     // },[]);
     //
     //

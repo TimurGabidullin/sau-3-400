@@ -17,11 +17,14 @@ export default function TableSize2x5(props: any) {
 
     const params = useParams()
     const checks = useSelector((state: AppStateType) => state.checks[params.header ? params.header : 'head1'])
-    const headerOfCheck = checks.filter((ch: CheckType) => ch.idCheck === params.page)[0].title
-    const numbersOfContacts = checks.filter((ch: CheckType) => ch.idCheck === params.page)[0].numbersOfContacts[props.indexOfTable]
-    const typeOfBlock = checks.filter((ch: CheckType) => ch.idCheck === params.page)[0].typesOfBlocks[props.indexOfTable]
-    const controlFunction = checks.filter((ch: CheckType) => ch.idCheck === params.page)[0].controlFunction
-    const valuesOfBlock = checks.filter((ch: CheckType) => ch.idCheck === params.page)[0].valuesOfBlocks[props.indexOfTable]
+    const check = checks.filter((ch: CheckType) => ch.idCheck === params.page)[0]
+    const headerOfCheck = check.title
+    const numbersOfContacts = check.numbersOfContacts[props.indexOfTable]
+    const typeOfBlock = check.typesOfBlocks[props.indexOfTable]
+    const controlFunction = check.controlFunction.bind(checks.filter((ch: CheckType) => ch.idCheck === params.page)[0])
+    const valuesOfBlock = check.valuesOfBlocks[props.indexOfTable]
+    const isHaveSettings = check.isHaveSettings[props.indexOfTable]
+
     const [openDialogAlert, setOpenDialogAlert] = React.useState(false);
     const dispatch = useDispatch()
 
@@ -45,13 +48,13 @@ export default function TableSize2x5(props: any) {
             params.page ? params.page : "check1",
             props.indexOfTable))
 
-        if (+inputValue1 !== valuesOfBlock[0] ||
+        if ((+inputValue1 !== valuesOfBlock[0] ||
             +inputValue2 !== valuesOfBlock[1] ||
             +inputValue3 !== valuesOfBlock[2] ||
-            +inputValue4 !== valuesOfBlock[3]) {
+            +inputValue4 !== valuesOfBlock[3] )&&
+            isHaveSettings) {
             setOpenDialogAlert(true)
         }
-
     }, [])
 
 
@@ -85,7 +88,7 @@ export default function TableSize2x5(props: any) {
                             defaultValue={valuesOfBlock[0]}
                             error={errors.channel1}
                             // error={Boolean(statusError[0])}
-                            {...register("channel1", {validate: (value => controlFunction(value))})}/>
+                            {...register("channel1", {validate: (value => controlFunction(value, props.indexOfTable))})}/>
                     </td>
                     <td>
                         <TextField
@@ -95,7 +98,7 @@ export default function TableSize2x5(props: any) {
                             label="2 канал"
                             defaultValue={valuesOfBlock[1]}
                             error={errors.channel2}
-                            {...register("channel2", {validate: (value => controlFunction(value))})}
+                            {...register("channel2", {validate: (value => controlFunction(value, props.indexOfTable))})}
 
 
                         />
@@ -108,7 +111,7 @@ export default function TableSize2x5(props: any) {
                             label="3 канал"
                             defaultValue={valuesOfBlock[2]}
                             error={errors.channel3}
-                            {...register("channel3", {validate: (value => controlFunction(value))})}/>
+                            {...register("channel3", {validate: (value => controlFunction(value, props.indexOfTable))})}/>
                     </td>
                     <td>
                         <TextField
@@ -118,7 +121,7 @@ export default function TableSize2x5(props: any) {
                             label="4 канал"
                             defaultValue={valuesOfBlock[3]}
                             error={errors.channel4}
-                            {...register("channel4", {validate: (value => controlFunction(value))})}/>
+                            {...register("channel4", {validate: (value => controlFunction(value, props.indexOfTable))})}/>
                     </td>
                 </tr>
             </table>

@@ -10,15 +10,21 @@ export type CheckType = {
     paginatorNumber: number
     typesOfBlocks?: string[],
     numbersOfContacts?: string[]
-    controlFunction: (inputValue: string) => boolean
+    controlFunction: (inputValue: string, indexOfTable: number) => boolean
+    controlValues?: number[]
+    valuesOfErrors?: number[]
     valuesOfBlocks?: number[][]
-    settingInfo?: string[]
+    isHaveSettings?: boolean[]
 
 }
 
-const f1 = (inputValue: string) => {
-    if(+inputValue < 0.25) return true
-    else return false
+function f1(inputValue: string, indexOfTable: number = 0) {
+
+    debugger
+    // @ts-ignore
+    return (+inputValue < this.controlValues[indexOfTable] + this.valuesOfErrors[indexOfTable]
+        // @ts-ignore
+        && +inputValue > this.controlValues[indexOfTable] - this.valuesOfErrors[indexOfTable])
 }
 
 
@@ -33,8 +39,10 @@ const initialState = {
             typesOfBlocks: ['ВПК', 'ВБК'],
             numbersOfContacts: ['U21/11 Ш35', 'U24/11 Ш35'],
             controlFunction: f1,
-            valuesOfBlocks: [[1, 2, 3, 4],[5, 6, 7, 8]],
-            settingsInfo:['Кутак','Бятяк']
+            controlValues: [0, 0],
+            valuesOfErrors: [0.1, 0.25],
+            valuesOfBlocks: [[1, 2, 3, 4], [5, 6, 7, 8]],
+            isHaveSettings: [false, true]
 
 
         } as CheckType,
@@ -44,8 +52,12 @@ const initialState = {
             idCheck: 'check2',
             pageNumber: 474,
             paginatorNumber: 2,
-            typesOfBlocks: ['ВПК', 'ВБК'],
-            numbersOfContacts: ['U2/11 Ш35']
+            typesOfBlocks: ['ВБК', 'ВБК'],
+            numbersOfContacts: ['U23/11 Ш35', 'U24/11 Ш35'],
+            controlFunction: f1,
+            valuesOfBlocks: [[1, 2, 3, 4], [5, 6, 7, 8]],
+            isHaveSettings: [false, true]
+
 
         } as CheckType,
         {
@@ -98,19 +110,21 @@ export const checksReducer = (state: ChecksType = initialState, action: ActionsT
 
     switch (action.type) {
         case 'SAVE_DATA':
-            return {...state,
+            return {
+                ...state,
                 // @ts-ignore
-                [action.head]: state[action.head].map((check: CheckType)=>{
-                    if(check.idCheck === action.idCheck) {
-                        return {...check, valuesOfBlocks:check.valuesOfBlocks?.map((data,i)=>{
-                            if(i===action.indexOfTable) {
-                                // debugger
-                                return action.data
-                            }
-                             return data})
+                [action.head]: state[action.head].map((check: CheckType) => {
+                    if (check.idCheck === action.idCheck) {
+                        return {
+                            ...check, valuesOfBlocks: check.valuesOfBlocks?.map((data, i) => {
+                                if (i === action.indexOfTable) {
+                                    // debugger
+                                    return action.data
+                                }
+                                return data
+                            })
                         }
-                    }
-                    else return check;
+                    } else return check;
                 })
             }
 
@@ -120,7 +134,7 @@ export const checksReducer = (state: ChecksType = initialState, action: ActionsT
 }
 
 
-export const saveDataAC = (data: number[], head: string, idCheck: string,indexOfTable:number) => ({
+export const saveDataAC = (data: number[], head: string, idCheck: string, indexOfTable: number) => ({
     type: 'SAVE_DATA',
     data,
     head,
