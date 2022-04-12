@@ -10,7 +10,7 @@ import UniversalTabWithTable from "../../../HOC/UniversalTabWithTable";
 
 type CheckPropsType = {}
 
-const Check2 = (props: CheckPropsType) => {
+const Check3 = (props: CheckPropsType) => {
     const params = useParams();
     const checks = useSelector((state: AppStateType) => state.checks[params.header ? params.header : 'head1'])
     const headerOfCheck = checks.filter((ch: CheckType) => ch.idCheck === params.page)[0].title
@@ -22,19 +22,19 @@ const Check2 = (props: CheckPropsType) => {
             </Typography>
 
             <Typography sx={{paddingLeft: '20px'}} variant="body1" component='p'>
-                <p> На пульте ПК-31-01 переключатель ИСКЛЮЧ ПОСАДКА установите в положение    &#xC9;, ИСКЛЮЧ УСП
-                    установите в положение "4".</p>
-                <p> На пульте ПР-173-02 переключатель режимов установите в положение ЗАХОД.</p>
-                <p> Включите, согласно руководству по эксплуатации аппаратуру КУРС МП-70.</p>
-                <p> На имитаторе МИМ-70 установите переключатель ОТКЛОНЕНИЕ в положение вправо/вверх (влево/вниз) и 2Т.
-                    Установите на МИМ-70 соответствующую режиму частоту КРМ.</p>
-                <p> На пульте ПС-72-02, нажмите кнопку-лампочку КРЕН, включите имитатор МИМ-70-I(II), нажмите
-                    кнопку-лампочку ГОРИЗ на пульте ПР-173-02.</p>
-                <p> Измерьте и запишите значение напряжения постоянного тока между контактами 23 и 11 контрольного
-                    соединителя Ш35 блоков ВБК-51-01 во всех каналах САУ U<span>23</span>I(II,III,IV)</p>
+                <p> Плавно вращая ручки датчиков ТАНГАЖ на имитаторах ИМБ-5 по (против) часовой стрелке и не допуская
+                    расхождения между ними более, чем на 1&#176;, установите значение угла тангажа:
+                    V<span>к(п)</span>I(II,III)=(7&#xB1;0,05)&#176; на кабрирование (на пикирование).</p>
+                <p> Измерьте с помощью пульта ППН-149 значение напряжения U<span>Vк(п)</span>I(II,III,IV) между
+                    контактами 26 и 11 контрольного соединителя Ш35 на блоках ВПК-52-01 в I, II, III каналах САУ.</p>
+                <p> Проверьте, что отношения:</p>
+                <p> U<span>Vк(п)</span>I/V<span>к(п)</span>, U<span>Vк(п)</span>II/V<span>к(п)</span>,
+                    U<span>Vк(п)</span>III/V<span>к(п)</span> равны +(0,5&#xB1;0,05)В/град&#176;</p>
             </Typography>
 
+
             {UniversalTabWithTable(TableSize2x5, 0)(props)}
+
 
             <Typography sx={{paddingLeft: '20px'}} variant="body1" component='p'>
                 <p> Измерьте с помощью вольтметра ИПI пульта ППН-149 значение напряжения
@@ -54,4 +54,4 @@ const Check2 = (props: CheckPropsType) => {
     );
 }
 
-export default Check2;
+export default Check3;

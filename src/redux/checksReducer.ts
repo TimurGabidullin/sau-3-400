@@ -2,6 +2,9 @@ import {ActionsType} from "./store";
 
 export type ChecksType = typeof initialState
 
+type ControlFunctionType = (inputValue: string, channel: string, indexOfTable: number) => boolean
+
+
 export type CheckType = {
     title: string,
     idHeader: string,
@@ -10,21 +13,32 @@ export type CheckType = {
     paginatorNumber: number
     typesOfBlocks?: string[],
     numbersOfContacts?: string[]
-    controlFunction: (inputValue: string, indexOfTable: number) => boolean
+    controlFunctions: ControlFunctionType[]
     controlValues?: number[]
     valuesOfErrors?: number[]
-    valuesOfBlocks?: number[][]
+    // valuesOfBlocks?: number[][]
+    valuesOfBlocks?: { 'channel1': number, 'channel2': number, 'channel3': number, 'channel4': number }[]
     isHaveSettings?: boolean[]
 
 }
 
-function f1(inputValue: string, indexOfTable: number = 0) {
+function f1(inputValue: string, channel: string, indexOfTable: number = 0) {
 
-    debugger
+    // debugger
     // @ts-ignore
-    return (+inputValue < this.controlValues[indexOfTable] + this.valuesOfErrors[indexOfTable]
+    return (+inputValue <= this.controlValues[indexOfTable] + this.valuesOfErrors[indexOfTable]
         // @ts-ignore
-        && +inputValue > this.controlValues[indexOfTable] - this.valuesOfErrors[indexOfTable])
+        && +inputValue >= this.controlValues[indexOfTable] - this.valuesOfErrors[indexOfTable])
+}
+
+function f0(inputValue: string, channel: string, indexOfTable: number = 0) {
+    return true
+}
+
+function f2(inputValue: string, channel: string, indexOfTable: number = 0) {
+    // @ts-ignore
+    f1(inputValue / this.valuesOfBlocks[0][channel], indexOfTable)
+
 }
 
 
@@ -38,10 +52,12 @@ const initialState = {
             paginatorNumber: 1,
             typesOfBlocks: ['ВПК', 'ВБК'],
             numbersOfContacts: ['U21/11 Ш35', 'U24/11 Ш35'],
-            controlFunction: f1,
+            controlFunctions: [f1, f1],
             controlValues: [0, 0],
-            valuesOfErrors: [0.1, 0.25],
-            valuesOfBlocks: [[1, 2, 3, 4], [5, 6, 7, 8]],
+            valuesOfErrors: [0.25, 0],
+            valuesOfBlocks: [{'channel1': 1, 'channel2': 2, 'channel3': 3, 'channel4': 4},
+                {'channel1': 5, 'channel2': 6, 'channel3': 7, 'channel4': 8}],
+            // valuesOfBlocks: [[1, 2, 3, 4], [5, 6, 7, 8]],
             isHaveSettings: [false, true]
 
 
@@ -54,8 +70,12 @@ const initialState = {
             paginatorNumber: 2,
             typesOfBlocks: ['ВБК', 'ВБК'],
             numbersOfContacts: ['U23/11 Ш35', 'U24/11 Ш35'],
-            controlFunction: f1,
-            valuesOfBlocks: [[1, 2, 3, 4], [5, 6, 7, 8]],
+            controlFunctions: [f0, f1],
+            controlValues: [0, 2.25],
+            valuesOfErrors: [0, 0.05],
+            // valuesOfBlocks: [[1, 2, 3, 4], [5, 6, 7, 8]],
+            valuesOfBlocks: [{'channel1': 1, 'channel2': 2, 'channel3': 3, 'channel4': 4},
+                {'channel1': 5, 'channel2': 6, 'channel3': 7, 'channel4': 8}],
             isHaveSettings: [false, true]
 
 
@@ -65,7 +85,17 @@ const initialState = {
             idHeader: "1",
             idCheck: 'check3',
             pageNumber: 475,
-            paginatorNumber: 3
+            paginatorNumber: 3,
+            typesOfBlocks: ['ВБК', 'ВБК'],
+            numbersOfContacts: ['U23/11 Ш35', 'U24/11 Ш35'],
+            controlFunctions: [f0, f1],
+            controlValues: [0, 2.25],
+            valuesOfErrors: [0, 0.05],
+            // valuesOfBlocks: [[1, 2, 3, 4], [5, 6, 7, 8]],
+            valuesOfBlocks: [{'channel1': 1, 'channel2': 2, 'channel3': 3, 'channel4': 4},
+                {'channel1': 5, 'channel2': 6, 'channel3': 7, 'channel4': 8}],
+
+            isHaveSettings: [false, true]
 
         } as CheckType
 
@@ -119,7 +149,13 @@ export const checksReducer = (state: ChecksType = initialState, action: ActionsT
                             ...check, valuesOfBlocks: check.valuesOfBlocks?.map((data, i) => {
                                 if (i === action.indexOfTable) {
                                     // debugger
-                                    return action.data
+                                    return {
+                                        'channel1': action.data[0],
+                                        'channel2': action.data[1],
+                                        'channel3': action.data[2],
+                                        'channel4': action.data[3]
+                                    }
+
                                 }
                                 return data
                             })
