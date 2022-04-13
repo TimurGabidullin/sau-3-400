@@ -19,12 +19,12 @@ export type CheckType = {
     // valuesOfBlocks?: number[][]
     valuesOfBlocks?: { 'channel1': number, 'channel2': number, 'channel3': number, 'channel4': number }[]
     isHaveSettings?: boolean[]
+    directionsOfChecks?: string[]
 
 }
 
 function f1(inputValue: string, channel: string, indexOfTable: number = 0) {
 
-    // debugger
     // @ts-ignore
     return (+inputValue <= this.controlValues[indexOfTable] + this.valuesOfErrors[indexOfTable]
         // @ts-ignore
@@ -36,8 +36,9 @@ function f0(inputValue: string, channel: string, indexOfTable: number = 0) {
 }
 
 function f2(inputValue: string, channel: string, indexOfTable: number = 0) {
-    // @ts-ignore
-    f1(inputValue / this.valuesOfBlocks[0][channel], indexOfTable)
+
+    // @ts-ignore.
+    return f1.call(this, +inputValue / this.valuesOfBlocks[0][channel], channel, indexOfTable)
 
 }
 
@@ -70,13 +71,13 @@ const initialState = {
             paginatorNumber: 2,
             typesOfBlocks: ['ВБК', 'ВБК'],
             numbersOfContacts: ['U23/11 Ш35', 'U24/11 Ш35'],
-            controlFunctions: [f0, f1],
+            controlFunctions: [f0, f2],
             controlValues: [0, 2.25],
             valuesOfErrors: [0, 0.05],
             // valuesOfBlocks: [[1, 2, 3, 4], [5, 6, 7, 8]],
             valuesOfBlocks: [{'channel1': 1, 'channel2': 2, 'channel3': 3, 'channel4': 4},
                 {'channel1': 5, 'channel2': 6, 'channel3': 7, 'channel4': 8}],
-            isHaveSettings: [false, true]
+            isHaveSettings: [false, true],
 
 
         } as CheckType,
@@ -86,14 +87,39 @@ const initialState = {
             idCheck: 'check3',
             pageNumber: 475,
             paginatorNumber: 3,
-            typesOfBlocks: ['ВБК', 'ВБК'],
-            numbersOfContacts: ['U23/11 Ш35', 'U24/11 Ш35'],
-            controlFunctions: [f0, f1],
+            typesOfBlocks: ['ВПК', 'ВПК', 'ВПК', 'ВПК'],
+            numbersOfContacts: ['U26/11 Ш35', 'U26/11 Ш35'],
+            controlFunctions: [f0, f2],
             controlValues: [0, 2.25],
             valuesOfErrors: [0, 0.05],
             // valuesOfBlocks: [[1, 2, 3, 4], [5, 6, 7, 8]],
-            valuesOfBlocks: [{'channel1': 1, 'channel2': 2, 'channel3': 3, 'channel4': 4},
-                {'channel1': 5, 'channel2': 6, 'channel3': 7, 'channel4': 8}],
+            valuesOfBlocks: [
+                {
+                    'channel1': 1,
+                    'channel2': 2,
+                    'channel3': 3,
+                    'channel4': 4
+                },
+                {
+                    'channel1': 5,
+                    'channel2': 6,
+                    'channel3': 7,
+                    'channel4': 8
+                },
+                {
+                    'channel1': 1,
+                    'channel2': 2,
+                    'channel3': 3,
+                    'channel4': 4
+                },
+                {
+                    'channel1': 5,
+                    'channel2': 6,
+                    'channel3': 7,
+                    'channel4': 8
+                }
+            ],
+            directionsOfChecks:['На пикирование','На кабрирование','На пикирование','На кабрирование'],
 
             isHaveSettings: [false, true]
 
@@ -150,6 +176,7 @@ export const checksReducer = (state: ChecksType = initialState, action: ActionsT
                                 if (i === action.indexOfTable) {
                                     // debugger
                                     return {
+                                        ...data,
                                         'channel1': action.data[0],
                                         'channel2': action.data[1],
                                         'channel3': action.data[2],

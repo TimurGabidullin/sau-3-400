@@ -40,7 +40,7 @@ export default function AlertDialog(props:AlertDialogPropsType) {
     // const handleClickNo =useCallback( () => {
     //     props.setOpenDialogAlert(false);
     // },[]);
-    //
+
 
 
 

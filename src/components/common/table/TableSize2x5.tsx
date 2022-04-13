@@ -24,6 +24,7 @@ export default function TableSize2x5(props: any) {
     const controlFunction = check.controlFunctions[props.indexOfTable].bind(check)
     const valuesOfBlock = check.valuesOfBlocks[props.indexOfTable]
     const isHaveSettings = check.isHaveSettings[props.indexOfTable]
+    const directionOfCheck = check.directionsOfChecks
 
     const [openDialogAlert, setOpenDialogAlert] = React.useState(false);
     const dispatch = useDispatch()
@@ -31,29 +32,29 @@ export default function TableSize2x5(props: any) {
     const {register, handleSubmit, formState: {errors}, getValues} = useForm();
 
     const onClickCalculateHandler = useCallback(() => {
-        const inputValue1 = getValues("channel1");
-        const inputValue2 = getValues("channel2");
-        const inputValue3 = getValues("channel3");
-        const inputValue4 = getValues("channel4");
+        let inputValue1 = getValues("channel1");
+        let inputValue2 = getValues("channel2");
+        let inputValue3 = getValues("channel3");
+       let inputValue4 = getValues("channel4");
 
 
         // switch () {
         //
         // }
-
-
-        dispatch(saveDataAC(
-            [+inputValue1, +inputValue2, +inputValue3, +inputValue4],
-            params.head ? params.head : "head1",
-            params.page ? params.page : "check1",
-            props.indexOfTable))
-
         if ((+inputValue1 !== valuesOfBlock["channel1"] ||
             +inputValue2 !== valuesOfBlock["channel2"] ||
             +inputValue3 !== valuesOfBlock["channel3"] ||
             +inputValue4 !== valuesOfBlock["channel4"]) && isHaveSettings) {
             setOpenDialogAlert(true)
         }
+
+        dispatch(saveDataAC(
+            [+inputValue1, +inputValue2, +inputValue3, +inputValue4],
+            params.head ? params.head : "head1",
+            params.page ? params.page : "check1",
+            props.indexOfTable))
+        debugger
+
     }, [])
 
 
@@ -61,13 +62,29 @@ export default function TableSize2x5(props: any) {
 
 
     const onSubmit = (data: any) => {
-        console.log('submit')
-        const inputValue1 = getValues("channel1");
-        const inputValue2 = getValues("channel2");
-        const inputValue3 = getValues("channel3");
-        const inputValue4 = getValues("channel4");
-        console.log(inputValue1)
-        console.log(inputValue4)
+        let inputValue1 = getValues("channel1");
+        let inputValue2 = getValues("channel2");
+        let inputValue3 = getValues("channel3");
+        let inputValue4 = getValues("channel4");
+
+
+        // switch () {
+        //
+        // }
+        if ((+inputValue1 !== valuesOfBlock["channel1"] ||
+            +inputValue2 !== valuesOfBlock["channel2"] ||
+            +inputValue3 !== valuesOfBlock["channel3"] ||
+            +inputValue4 !== valuesOfBlock["channel4"]) && isHaveSettings) {
+            setOpenDialogAlert(true)
+        }
+
+        dispatch(saveDataAC(
+            [+inputValue1, +inputValue2, +inputValue3, +inputValue4],
+            params.head ? params.head : "head1",
+            params.page ? params.page : "check1",
+            props.indexOfTable))
+        debugger
+
 
     }
 
@@ -80,7 +97,7 @@ export default function TableSize2x5(props: any) {
             <table className={styles.table}>
                 <tr>
                     <td></td>
-                    <td>{numbersOfContacts}</td>
+                    <td>{numbersOfContacts} {directionOfCheck?directionOfCheck[props.indexOfTable]:''}</td>
                 </tr>
                 <tr>
                     <td>{typeOfBlock} </td>
@@ -136,12 +153,12 @@ export default function TableSize2x5(props: any) {
             <div className={styles.btn}>
 
                 <Button
-                    // onClick={onSubmit}
+                    onClick={onSubmit}
                     type={"submit"}
                     variant="outlined"
                     endIcon={<CalculateIcon/>}
                     color="secondary"
-                    onClick={onClickCalculateHandler}
+                    // onClick={onClickCalculateHandler}
                 >
                     Расчёт
                 </Button>
