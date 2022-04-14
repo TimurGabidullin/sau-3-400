@@ -31,34 +31,31 @@ export default function TableSize2x5(props: any) {
 
     const {register, handleSubmit, formState: {errors}, getValues} = useForm();
 
-    const onClickCalculateHandler = useCallback(() => {
-        let inputValue1 = getValues("channel1");
-        let inputValue2 = getValues("channel2");
-        let inputValue3 = getValues("channel3");
-       let inputValue4 = getValues("channel4");
-
-
-        // switch () {
-        //
-        // }
-        if ((+inputValue1 !== valuesOfBlock["channel1"] ||
-            +inputValue2 !== valuesOfBlock["channel2"] ||
-            +inputValue3 !== valuesOfBlock["channel3"] ||
-            +inputValue4 !== valuesOfBlock["channel4"]) && isHaveSettings) {
-            setOpenDialogAlert(true)
-        }
-
-        dispatch(saveDataAC(
-            [+inputValue1, +inputValue2, +inputValue3, +inputValue4],
-            params.head ? params.head : "head1",
-            params.page ? params.page : "check1",
-            props.indexOfTable))
-        debugger
-
-    }, [])
-
-
-// useEffect((onClickCalculateHandler),[])
+    // const onClickCalculateHandler = useCallback(() => {
+    //     let inputValue1 = getValues("channel1");
+    //     let inputValue2 = getValues("channel2");
+    //     let inputValue3 = getValues("channel3");
+    //    let inputValue4 = getValues("channel4");
+    //
+    //
+    //     // switch () {
+    //     //
+    //     // }
+    //     if ((+inputValue1 !== valuesOfBlock["channel1"] ||
+    //         +inputValue2 !== valuesOfBlock["channel2"] ||
+    //         +inputValue3 !== valuesOfBlock["channel3"] ||
+    //         +inputValue4 !== valuesOfBlock["channel4"]) && isHaveSettings) {
+    //         setOpenDialogAlert(true)
+    //     }
+    //
+    //     dispatch(saveDataAC(
+    //         [+inputValue1, +inputValue2, +inputValue3, +inputValue4],
+    //         params.head ? params.head : "head1",
+    //         params.page ? params.page : "check1",
+    //         props.indexOfTable))
+    //     debugger
+    //
+    // }, [])
 
 
     const onSubmit = (data: any) => {
@@ -68,9 +65,6 @@ export default function TableSize2x5(props: any) {
         let inputValue4 = getValues("channel4");
 
 
-        // switch () {
-        //
-        // }
         if ((+inputValue1 !== valuesOfBlock["channel1"] ||
             +inputValue2 !== valuesOfBlock["channel2"] ||
             +inputValue3 !== valuesOfBlock["channel3"] ||
@@ -83,13 +77,7 @@ export default function TableSize2x5(props: any) {
             params.head ? params.head : "head1",
             params.page ? params.page : "check1",
             props.indexOfTable))
-        debugger
-
-
     }
-
-
-    // console.log(watch("example")); // watch input value by passing the name of it
 
 
     return (
@@ -109,8 +97,9 @@ export default function TableSize2x5(props: any) {
                             label="1 канал"
                             defaultValue={valuesOfBlock['channel1']}
                             error={errors.channel1}
-                            // error={Boolean(statusError[0])}
-                            {...register("channel1", {validate: (value => controlFunction(value, 'channel1', props.indexOfTable))})}/>
+                            {...register("channel1",
+                                {validate: (value => controlFunction(value, 'channel1', props.indexOfTable))})}
+                        />
                     </td>
                     <td>
                         <TextField
@@ -120,9 +109,8 @@ export default function TableSize2x5(props: any) {
                             label="2 канал"
                             defaultValue={valuesOfBlock['channel2']}
                             error={errors.channel2}
-                            {...register("channel2", {validate: (value => controlFunction(value, 'channel2', props.indexOfTable))})}
-
-
+                            {...register("channel2",
+                                {validate: (value => controlFunction(value, 'channel2', props.indexOfTable))})}
                         />
                     </td>
                     <td>
@@ -133,7 +121,9 @@ export default function TableSize2x5(props: any) {
                             label="3 канал"
                             defaultValue={valuesOfBlock['channel3']}
                             error={errors.channel3}
-                            {...register("channel3", {validate: ((value) => controlFunction(value, 'channel3', props.indexOfTable))})}/>
+                            {...register("channel3",
+                                {validate: ((value) => controlFunction(value, 'channel3', props.indexOfTable))})}
+                        />
                     </td>
                     <td>
                         <TextField
@@ -143,7 +133,9 @@ export default function TableSize2x5(props: any) {
                             label="4 канал"
                             defaultValue={valuesOfBlock['channel4']}
                             error={errors.channel4}
-                            {...register("channel4", {validate: (value => controlFunction(value, 'channel4', props.indexOfTable))})}/>
+                            {...register("channel4",
+                                {validate: (value => controlFunction(value, 'channel4', props.indexOfTable))})}
+                        />
                     </td>
                 </tr>
             </table>
@@ -158,7 +150,6 @@ export default function TableSize2x5(props: any) {
                     variant="outlined"
                     endIcon={<CalculateIcon/>}
                     color="secondary"
-                    // onClick={onClickCalculateHandler}
                 >
                     Расчёт
                 </Button>

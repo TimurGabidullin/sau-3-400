@@ -6,6 +6,7 @@ import {AppStateType} from "../../../redux/store";
 import {useParams} from "react-router-dom";
 import {CheckType} from "../../../redux/checksReducer";
 import UniversalTabWithTable from "../../../HOC/UniversalTabWithTable";
+import styles from "./Check.module.css";
 
 
 type CheckPropsType = {}
@@ -16,7 +17,7 @@ const Check3 = (props: CheckPropsType) => {
     const headerOfCheck = checks.filter((ch: CheckType) => ch.idCheck === params.page)[0].title
 
     return (
-        <div className="Check">
+        <div className={styles.g}>
             <Typography sx={{paddingLeft: '20px'}} variant="h6" component="h6">
                 {headerOfCheck}
             </Typography>

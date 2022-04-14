@@ -58,9 +58,6 @@ const Home = () => {
 
     }
 
-// console.log(params)
-
-
         // @ts-ignore
     const [selectedTab, setSelectedTab] = React.useState(tabNameToIndex[params.page] > 2
         ? 1
@@ -175,8 +172,6 @@ const Home = () => {
                             onChange={handleChange}
                             indicatorColor="secondary"
                             textColor="inherit"
-
-
                             variant="fullWidth"
                             aria-label="full width tabs example"
                             // aria-label="nav tabs example"

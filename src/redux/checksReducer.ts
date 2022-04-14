@@ -56,9 +56,10 @@ const initialState = {
             controlFunctions: [f1, f1],
             controlValues: [0, 0],
             valuesOfErrors: [0.25, 0],
-            valuesOfBlocks: [{'channel1': 1, 'channel2': 2, 'channel3': 3, 'channel4': 4},
-                {'channel1': 5, 'channel2': 6, 'channel3': 7, 'channel4': 8}],
-            // valuesOfBlocks: [[1, 2, 3, 4], [5, 6, 7, 8]],
+            valuesOfBlocks: [
+                {'channel1': 1, 'channel2': 2, 'channel3': 3, 'channel4': 4},
+                {'channel1': 5, 'channel2': 6, 'channel3': 7, 'channel4': 8}]
+            ,
             isHaveSettings: [false, true]
 
 
@@ -69,16 +70,25 @@ const initialState = {
             idCheck: 'check2',
             pageNumber: 474,
             paginatorNumber: 2,
-            typesOfBlocks: ['ВБК', 'ВБК'],
-            numbersOfContacts: ['U23/11 Ш35', 'U24/11 Ш35'],
-            controlFunctions: [f0, f2],
-            controlValues: [0, 2.25],
-            valuesOfErrors: [0, 0.05],
-            // valuesOfBlocks: [[1, 2, 3, 4], [5, 6, 7, 8]],
-            valuesOfBlocks: [{'channel1': 1, 'channel2': 2, 'channel3': 3, 'channel4': 4},
-                {'channel1': 5, 'channel2': 6, 'channel3': 7, 'channel4': 8}],
-            isHaveSettings: [false, true],
-
+            typesOfBlocks: ['ВБК', 'ВБК', 'ВБК', 'ВБК'],
+            numbersOfContacts: [
+                'U23/11 Ш35', 'U24/11 Ш35',
+                'U23/11 Ш35', 'U24/11 Ш35'
+            ],
+            controlFunctions: [f0, f2, f0, f2],
+            controlValues: [0, 2.25, 0, 2.25,],
+            valuesOfErrors: [0, 0.05, 0, 0.05],
+            valuesOfBlocks: [
+                {'channel1': 1, 'channel2': 2, 'channel3': 3, 'channel4': 4},
+                {'channel1': 5, 'channel2': 6, 'channel3': 7, 'channel4': 8},
+                {'channel1': 1, 'channel2': 2, 'channel3': 3, 'channel4': 4},
+                {'channel1': 5, 'channel2': 6, 'channel3': 7, 'channel4': 8}
+            ],
+            directionsOfChecks: [
+                'вправо/вверх и 2Т', 'вправо/вверх и 2Т',
+                'влево/вниз и 2Т', 'влево/вниз и 2Т',
+            ],
+            isHaveSettings: [false, true, false, true],
 
         } as CheckType,
         {
@@ -87,11 +97,13 @@ const initialState = {
             idCheck: 'check3',
             pageNumber: 475,
             paginatorNumber: 3,
-            typesOfBlocks: ['ВПК', 'ВПК', 'ВПК', 'ВПК','ВБК', 'ВБК', 'ВБК', 'ВБК'],
-            numbersOfContacts: ['U26/11 Ш35', 'U26/11 Ш35',
+            typesOfBlocks: ['ВПК', 'ВПК', 'ВПК', 'ВПК', 'ВБК', 'ВБК', 'ВБК', 'ВБК'],
+            numbersOfContacts: [
+                'U26/11 Ш35', 'U26/11 Ш35',
                 'U20/11 Ш35', 'U20/11 Ш35',
                 'U26/11 Ш35', 'U26/11 Ш35',
-                'U24/11 Ш35', 'U24/11 Ш35'],
+                'U24/11 Ш35', 'U24/11 Ш35'
+            ],
             controlFunctions: [f0, f0, f0, f0, f0, f0, f0, f0],
             controlValues: [0, 2.25],
             valuesOfErrors: [0, 0.05],

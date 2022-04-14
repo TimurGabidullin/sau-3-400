@@ -22,18 +22,15 @@ export const UniversalTabWithTable = (Table: React.FC, indexOfTable = 0) => {
         // const [selectTab, setSelectTab] = React.useState('table');
         console.log('TabWithTableProps', props)
 
-        // const handleChange =useCallback( (event: React.SyntheticEvent, newValue: string) => {
-        //
-        //     setSelectTab(newValue)
-        // },[]);
-
-
         return (
             <Container maxWidth={"sm"}>
                 <Box sx={{
                     maxWidth: '100%',
                     backgroundColor: '#f5f5f5',
                     borderRadius: '5px',
+                    // border: '2px solid #1976d2'
+                    border: '1px solid #9c27b0',
+                    minHeight:'216px'
                 }}>
 
                     <Tabs
