@@ -97,7 +97,7 @@ export default function TableSize2x5(props: any) {
             <table className={styles.table}>
                 <tr>
                     <td></td>
-                    <td>{numbersOfContacts} {directionOfCheck?directionOfCheck[props.indexOfTable]:''}</td>
+                    <td colSpan={4}>{numbersOfContacts} {directionOfCheck?directionOfCheck[props.indexOfTable]:''}</td>
                 </tr>
                 <tr>
                     <td>{typeOfBlock} </td>

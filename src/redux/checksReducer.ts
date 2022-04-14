@@ -87,41 +87,30 @@ const initialState = {
             idCheck: 'check3',
             pageNumber: 475,
             paginatorNumber: 3,
-            typesOfBlocks: ['ВПК', 'ВПК', 'ВПК', 'ВПК'],
-            numbersOfContacts: ['U26/11 Ш35', 'U26/11 Ш35'],
-            controlFunctions: [f0, f2],
+            typesOfBlocks: ['ВПК', 'ВПК', 'ВПК', 'ВПК','ВБК', 'ВБК', 'ВБК', 'ВБК'],
+            numbersOfContacts: ['U26/11 Ш35', 'U26/11 Ш35',
+                'U20/11 Ш35', 'U20/11 Ш35',
+                'U26/11 Ш35', 'U26/11 Ш35',
+                'U24/11 Ш35', 'U24/11 Ш35'],
+            controlFunctions: [f0, f0, f0, f0, f0, f0, f0, f0],
             controlValues: [0, 2.25],
             valuesOfErrors: [0, 0.05],
-            // valuesOfBlocks: [[1, 2, 3, 4], [5, 6, 7, 8]],
             valuesOfBlocks: [
-                {
-                    'channel1': 1,
-                    'channel2': 2,
-                    'channel3': 3,
-                    'channel4': 4
-                },
-                {
-                    'channel1': 5,
-                    'channel2': 6,
-                    'channel3': 7,
-                    'channel4': 8
-                },
-                {
-                    'channel1': 1,
-                    'channel2': 2,
-                    'channel3': 3,
-                    'channel4': 4
-                },
-                {
-                    'channel1': 5,
-                    'channel2': 6,
-                    'channel3': 7,
-                    'channel4': 8
-                }
+                {'channel1': 1, 'channel2': 2, 'channel3': 3, 'channel4': 4},
+                {'channel1': 1, 'channel2': 2, 'channel3': 3, 'channel4': 4},
+                {'channel1': 1, 'channel2': 2, 'channel3': 3, 'channel4': 4},
+                {'channel1': 1, 'channel2': 2, 'channel3': 3, 'channel4': 4},
+                {'channel1': 1, 'channel2': 2, 'channel3': 3, 'channel4': 4},
+                {'channel1': 1, 'channel2': 2, 'channel3': 3, 'channel4': 4},
+                {'channel1': 1, 'channel2': 2, 'channel3': 3, 'channel4': 4},
+                {'channel1': 1, 'channel2': 2, 'channel3': 3, 'channel4': 4},
             ],
-            directionsOfChecks:['На пикирование','На кабрирование','На пикирование','На кабрирование'],
-
-            isHaveSettings: [false, true]
+            directionsOfChecks: [
+                'На кабрирование', 'На пикирование',
+                'На кабрирование', 'На пикирование',
+                'Вправо', 'Влево',
+                'Вправо', 'Влево'],
+            isHaveSettings: [true, true, true, true, true, true, true, true]
 
         } as CheckType
 
