@@ -54,12 +54,13 @@ const Check3 = (props: CheckPropsType) => {
                 <p>(U<span>&#x394;Vк(п)</span>&#8547;-U<span>&#x394;V0</span>&#8547;)/V<span>к(п)</span>&#8547;=-(0,5±0,05)В/°.</p>
             </Typography>
 
-            {UniversalTabWithTable(TableSize2x5, 2)(props)}
+            {UniversalTabWithTable(TableSize2x5, 1)(props)}
 
             <Typography sx={{paddingLeft: '20px'}} variant="body1" component='p'>
                 <p>Произведите проверку, изменив направление задания тангажа.</p>
             </Typography>
 
+            {UniversalTabWithTable(TableSize2x5, 2)(props)}
             {UniversalTabWithTable(TableSize2x5, 3)(props)}
 
             <Typography sx={{paddingLeft: '20px'}} variant="body1" component='p'>
@@ -68,7 +69,7 @@ const Check3 = (props: CheckPropsType) => {
 
             <Typography sx={{paddingLeft: '20px'}} variant="body1" component='p'>
                 <p>Плавно вращая ручки датчиков КРЕН имитаторов ИМБ-5 по (против) часовой стрелке и не допуская
-                    расхождения мезду нимие и не допуская расхождения мезду ними более, чем на 1°, установите
+                    расхождения между ними и не допуская расхождения мезду ними более, чем на 1°, установите
                     значение угла крена:</p>
                 <p>&#611;<span>п(л)</span>&#8544;(&#8545;,&#8546;)=(7±0,05)° вправо (влево).</p>
 
