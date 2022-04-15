@@ -22,8 +22,8 @@ const Transition = React.forwardRef(function Transition(
 type AlertDialogPropsType={
     openDialogAlert:boolean
     setOpenDialogAlert:(value:boolean)=>void
-
-
+    handleAlertBtn1Click:Function
+    handleAlertBtn2Click:Function
 }
 
 export default function AlertDialog(props:AlertDialogPropsType) {
@@ -40,8 +40,12 @@ export default function AlertDialog(props:AlertDialogPropsType) {
     // const handleClickNo =useCallback( () => {
     //     props.setOpenDialogAlert(false);
     // },[]);
-
-
+    const handleBtn1Click =useCallback( () => {
+        props.handleAlertBtn1Click();
+    },[]);
+    const handleBtn2Click =useCallback( () => {
+        props.handleAlertBtn2Click();
+    },[]);
 
 
     return (

@@ -1,25 +1,29 @@
 import {ActionsType} from "./store";
 
-export type ChecksType = {[key:string]:CheckType[]}
+export type ChecksType = {[head:string]:CheckType[]}
 
 type ControlFunctionType = (inputValue: string, channel: string, indexOfTable: number) => boolean
 
 
 export type CheckType = {
-    title: string,
-    idHeader: string,
-    idCheck: string,
-    pageNumber: number,
+    title: string
+    idHeader: string
+    idCheck: string
+    pageNumber: number
     paginatorNumber: number
-    typesOfBlocks?: string[],
+    typesOfBlocks?: string[]
+    typeOfSubBlock?:string[]
+    resistors:string[]
     numbersOfContacts?: string[]
     controlFunctions: ControlFunctionType[]
     controlValues?: number[]
     valuesOfErrors?: number[]
     // valuesOfBlocks?: number[][]
     valuesOfBlocks?: { 'channel1': any, 'channel2': any, 'channel3': any, 'channel4': any }[]
+
     isHaveSettings?: boolean[]
     directionsOfChecks?: string[]
+    subBlocks?:string[]
 
 }
 
@@ -50,10 +54,12 @@ const initialState = {
             pageNumber: 473,
             paginatorNumber: 1,
             typesOfBlocks: ['ВПК', 'ВБК'],
+            typeOfSubBlock:['',''],
+            resistors:['',''],
             numbersOfContacts: ['U21/11 Ш35', 'U24/11 Ш35'],
             controlFunctions: [f1, f1],
             controlValues: [0, 0],
-            valuesOfErrors: [0.25, 0],
+            valuesOfErrors: [0.25, 0.1],
             valuesOfBlocks: [
                 {'channel1': 1, 'channel2': 2, 'channel3': 3, 'channel4': 4},
                 {'channel1': 5, 'channel2': 6, 'channel3': 7, 'channel4': 8}]
@@ -69,6 +75,8 @@ const initialState = {
             pageNumber: 474,
             paginatorNumber: 2,
             typesOfBlocks: ['ВБК', 'ВБК', 'ВБК', 'ВБК'],
+            typeOfSubBlock:['',''],
+            resistors:['',''],
             numbersOfContacts: [
                 'U23/11 Ш35', 'U24/11 Ш35',
                 'U23/11 Ш35', 'U24/11 Ш35'
@@ -96,6 +104,8 @@ const initialState = {
             pageNumber: 475,
             paginatorNumber: 3,
             typesOfBlocks: ['ВПК', 'ВПК', 'ВПК', 'ВПК', 'ВБК', 'ВБК', 'ВБК', 'ВБК'],
+            typeOfSubBlock:['',''],
+            resistors:['',''],
             numbersOfContacts: [
                 'U26/11 Ш35', 'U20/11 Ш35',
                 'U26/11 Ш35', 'U20/11 Ш35',
@@ -115,6 +125,7 @@ const initialState = {
                 {'channel1': 1, 'channel2': 2, 'channel3': 3, 'channel4': 4},
                 {'channel1': 1, 'channel2': 2, 'channel3': 3, 'channel4': 4},
             ],
+
             directionsOfChecks: [
                 'На кабрирование', 'На кабрирование',
                 'На пикирование', 'На пикирование',

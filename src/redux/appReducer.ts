@@ -7,7 +7,7 @@ const initialState = [null]
 
 export const appReducer = (state: AppType = initialState, action: ActionsType): AppType => {
     switch (action.type) {
-        case 'SAVE_SETTINGS_IN_REPORT':
+        case 'ADD_SETTINGS_IN_REPORT':
             return state
 
         default:

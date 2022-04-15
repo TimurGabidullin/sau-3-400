@@ -58,7 +58,13 @@ export default function TableSize2x5(props: any) {
     //
     // }, [])
 
+  const  handleAlertBtn1Click=()=>{
+      setOpenDialogAlert(false)
+  }
 
+    const  handleAlertBtn2Click=()=>{
+        setOpenDialogAlert(false)
+    }
 
 
 
@@ -103,7 +109,6 @@ export default function TableSize2x5(props: any) {
                     <td>{typeOfBlock} </td>
                     <td>
                         <TextField
-                            type={'number'}
                             sx={{marginTop: '10px'}}
                             color='secondary'
                             id="outlined-helperText"
@@ -116,7 +121,7 @@ export default function TableSize2x5(props: any) {
                     </td>
                     <td>
                         <TextField
-                            type={'number'}
+
                             sx={{marginTop: '10px'}}
                             color='secondary'
                             id="outlined-helperText"
@@ -129,7 +134,7 @@ export default function TableSize2x5(props: any) {
                     </td>
                     <td>
                         <TextField
-                            type={'number'}
+
                             sx={{marginTop: '10px'}}
                             color='secondary'
                             id="outlined-helperText"
@@ -142,7 +147,7 @@ export default function TableSize2x5(props: any) {
                     </td>
                     <td>
                         <TextField
-                            type={'number'}
+
                             sx={{marginTop: '10px'}}
                             color='secondary'
                             id="outlined-helperText"
@@ -171,7 +176,11 @@ export default function TableSize2x5(props: any) {
                     Расчёт
                 </Button>
                 <AlertDialog openDialogAlert={openDialogAlert}
-                             setOpenDialogAlert={setOpenDialogAlert}/>
+                             setOpenDialogAlert={setOpenDialogAlert}
+                             handleAlertBtn1Click={handleAlertBtn1Click}
+                             handleAlertBtn2Click={handleAlertBtn2Click}
+
+                />
             </div>
         </form>
 

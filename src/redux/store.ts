@@ -1,7 +1,7 @@
 import {combineReducers, createStore} from "redux";
 import headerReducer from "./headerReducer";
 import checksReducer, {saveDataAC} from "./checksReducer";
-import reportReducer, {saveSettingsInReportAC} from "./reportReducer";
+import reportReducer, {addSettingsInReportAC} from "./reportReducer";
 import appReducer from "./appReducer";
 
 let reducers = combineReducers({
@@ -17,7 +17,7 @@ const store = createStore(reducers);
 
 
 export type ActionsType = ReturnType<typeof saveDataAC>
-    | ReturnType<typeof saveSettingsInReportAC>
+    | ReturnType<typeof addSettingsInReportAC>
 
 
 export type StoreType = typeof store
