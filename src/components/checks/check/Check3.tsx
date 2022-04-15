@@ -7,13 +7,14 @@ import {useParams} from "react-router-dom";
 import {CheckType} from "../../../redux/checksReducer";
 import UniversalTabWithTable from "../../../HOC/UniversalTabWithTable";
 import styles from "./Check.module.css";
+import {ParamsType} from "../../home/Home";
 
 
 type CheckPropsType = {}
 
 const Check3 = (props: CheckPropsType) => {
-    const params = useParams();
-    const checks = useSelector((state: AppStateType) => state.checks[params.header ? params.header : 'head1'])
+    const params:ParamsType = useParams();
+    const checks = useSelector((state: AppStateType) => state.checks[params.header? params.header : 'head1'])
     const headerOfCheck = checks.filter((ch: CheckType) => ch.idCheck === params.page)[0].title
 
     return (

@@ -1,6 +1,6 @@
 import {ActionsType} from "./store";
 
-export type ChecksType = typeof initialState
+export type ChecksType = {[key:string]:CheckType[]}
 
 type ControlFunctionType = (inputValue: string, channel: string, indexOfTable: number) => boolean
 
@@ -17,7 +17,7 @@ export type CheckType = {
     controlValues?: number[]
     valuesOfErrors?: number[]
     // valuesOfBlocks?: number[][]
-    valuesOfBlocks?: { 'channel1': number, 'channel2': number, 'channel3': number, 'channel4': number }[]
+    valuesOfBlocks?: { 'channel1': any, 'channel2': any, 'channel3': any, 'channel4': any }[]
     isHaveSettings?: boolean[]
     directionsOfChecks?: string[]
 
@@ -36,15 +36,13 @@ function f0(inputValue: string, channel: string, indexOfTable: number = 0) {
 }
 
 function f2(inputValue: string, channel: string, indexOfTable: number = 0) {
-
     // @ts-ignore.
     return f1.call(this, +inputValue / this.valuesOfBlocks[0][channel], channel, indexOfTable)
-
 }
 
 
 const initialState = {
-    "head1": [
+"head1": [
         {
             title: "Проверка нулевых сигналов",
             idHeader: "1",
@@ -105,8 +103,8 @@ const initialState = {
                 'U24/11 Ш35', 'U24/11 Ш35'
             ],
             controlFunctions: [f0, f0, f0, f0, f0, f0, f0, f0],
-            controlValues: [0, 2.25],
-            valuesOfErrors: [0, 0.05],
+            controlValues: [5, -5, 5, -5, -0.27, -0.27, 0.32, 0.32],
+            valuesOfErrors: [0.05, 0.05, 0.05, 0.05, 0.03, 0.03, 0.03, 0.03],
             valuesOfBlocks: [
                 {'channel1': 1, 'channel2': 2, 'channel3': 3, 'channel4': 4},
                 {'channel1': 1, 'channel2': 2, 'channel3': 3, 'channel4': 4},
@@ -169,7 +167,6 @@ export const checksReducer = (state: ChecksType = initialState, action: ActionsT
         case 'SAVE_DATA':
             return {
                 ...state,
-                // @ts-ignore
                 [action.head]: state[action.head].map((check: CheckType) => {
                     if (check.idCheck === action.idCheck) {
                         return {

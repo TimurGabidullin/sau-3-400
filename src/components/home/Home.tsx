@@ -18,17 +18,23 @@ import styles from "./Home.module.css";
 import Checks from "../checks/Checks";
 import {useNavigate, useParams} from 'react-router-dom'
 import {useCallback, useEffect} from "react";
+import AlertDialog from "../common/alertDialog/AlertDialog";
+
+export type ParamsType={
+    page?:string
+    header?:string
+}
 
 
 const Home = () => {
-    const params = useParams();
+    const params:ParamsType= useParams();
     // const [headerUrl, setHeaderUrl] = React.useState(params.header?params.header:'head1');
     // const [checkUrl, setCheckUrl] = React.useState(params.page?params.page:'check1');
 
-    // console.log('home')
+    console.log(params)
 
-    const [headerUrl, setHeaderUrl] = React.useState(params.header);
-    const [checkUrl, setCheckUrl] = React.useState(params.page);
+    const [headerUrl, setHeaderUrl] = React.useState(params.header?params.header:'head1');
+    const [checkUrl, setCheckUrl] = React.useState(params.page?params.page:'check1');
 
     const [paginatorPageNumber, setPaginatorPageNumber] = React.useState(1);
 
@@ -58,7 +64,7 @@ const Home = () => {
 
     }
 
-        // @ts-ignore
+    // @ts-ignore
     const [selectedTab, setSelectedTab] = React.useState(tabNameToIndex[params.page] > 2
         ? 1
         // @ts-ignore
@@ -82,24 +88,35 @@ const Home = () => {
     )
 
     const pages = ['Содержание', 'Отчет'];
-    const settings = ['1 очередь', '2 очередь'];
+    const settings = ['RA82043', 'RA82081'];
 
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+    const [openDialogAlert, setOpenDialogAlert] = React.useState(false);
 
     const handleOpenNavMenu = useCallback((event: React.MouseEvent<HTMLElement>) => {
         setAnchorElNav(event.currentTarget)
     }, []);
-    const handleOpenUserMenu = useCallback((event: React.MouseEvent<HTMLElement>) => {
-        setAnchorElUser(event.currentTarget);
-    }, []);
+
 
     const handleCloseNavMenu = useCallback(() => {
         setAnchorElNav(null);
     }, []);
 
+    const handleOpenUserMenu = useCallback((event: React.MouseEvent<HTMLElement>) => {
+        setAnchorElUser(event.currentTarget);
+    }, []);
+
     const handleCloseUserMenu = useCallback(() => {
         setAnchorElUser(null)
+    }, [])
+
+    const handleOnClickUserMenu = useCallback((e) => {
+        console.log(e)
+        handleCloseUserMenu()
+        if (e.target.innerHTML === 'RA82043') {
+            setOpenDialogAlert(true)
+        }
     }, [])
 
 
@@ -218,7 +235,7 @@ const Home = () => {
                                 onClose={handleCloseUserMenu}
                             >
                                 {settings.map((setting) => (
-                                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                                    <MenuItem key={setting} onClick={handleOnClickUserMenu}>
                                         <Typography textAlign="center">{setting}</Typography>
                                     </MenuItem>
                                 ))}
@@ -232,6 +249,8 @@ const Home = () => {
                 {selectedTab === 1 && <Checks paginatorPageNumber={paginatorPageNumber} LinkToCheck={LinkToCheck}/>}
                 {selectedTab === 2 && <Report/>}
             </div>
+            {/*<AlertDialog openDialogAlert={openDialogAlert}*/}
+            {/*             setOpenDialogAlert={setOpenDialogAlert}/>*/}
         </div>
     );
 }

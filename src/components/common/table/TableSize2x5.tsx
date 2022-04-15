@@ -9,13 +9,14 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "../../../redux/store";
 import {CheckType, saveDataAC} from "../../../redux/checksReducer";
 import AlertDialog from "../alertDialog/AlertDialog";
+import {ParamsType} from "../../home/Home";
 
 
 export default function TableSize2x5(props: any) {
 
     console.log('отрисовка компаненты Table')
 
-    const params = useParams()
+    const params:ParamsType = useParams()
     const checks = useSelector((state: AppStateType) => state.checks[params.header ? params.header : 'head1'])
     const check = checks.filter((ch: CheckType) => ch.idCheck === params.page)[0]
     const headerOfCheck = check.title
@@ -29,7 +30,7 @@ export default function TableSize2x5(props: any) {
     const [openDialogAlert, setOpenDialogAlert] = React.useState(false);
     const dispatch = useDispatch()
 
-    const {register, handleSubmit, formState: {errors}, getValues} = useForm();
+    const {register,trigger, handleSubmit, formState: {errors}, getValues} = useForm();
 
     // const onClickCalculateHandler = useCallback(() => {
     //     let inputValue1 = getValues("channel1");
@@ -58,12 +59,17 @@ export default function TableSize2x5(props: any) {
     // }, [])
 
 
-    const onSubmit = (data: any) => {
+
+
+
+    const onSubmit = () => {
+
+        console.log("submit")
         let inputValue1 = getValues("channel1");
         let inputValue2 = getValues("channel2");
         let inputValue3 = getValues("channel3");
         let inputValue4 = getValues("channel4");
-
+// const result=await trigger()
 
         if ((+inputValue1 !== valuesOfBlock["channel1"] ||
             +inputValue2 !== valuesOfBlock["channel2"] ||
@@ -74,10 +80,16 @@ export default function TableSize2x5(props: any) {
 
         dispatch(saveDataAC(
             [+inputValue1, +inputValue2, +inputValue3, +inputValue4],
-            params.head ? params.head : "head1",
+            params.header ? params.header : "head1",
             params.page ? params.page : "check1",
             props.indexOfTable))
     }
+
+
+
+    useEffect(()=>{
+          trigger()}
+    ,[])
 
 
     return (
@@ -85,12 +97,13 @@ export default function TableSize2x5(props: any) {
             <table className={styles.table}>
                 <tr>
                     <td></td>
-                    <td colSpan={4}>{numbersOfContacts} {directionOfCheck?directionOfCheck[props.indexOfTable]:''}</td>
+                    <td colSpan={4}>{numbersOfContacts} {directionOfCheck ? directionOfCheck[props.indexOfTable] : ''}</td>
                 </tr>
                 <tr>
                     <td>{typeOfBlock} </td>
                     <td>
                         <TextField
+                            type={'number'}
                             sx={{marginTop: '10px'}}
                             color='secondary'
                             id="outlined-helperText"
@@ -103,6 +116,7 @@ export default function TableSize2x5(props: any) {
                     </td>
                     <td>
                         <TextField
+                            type={'number'}
                             sx={{marginTop: '10px'}}
                             color='secondary'
                             id="outlined-helperText"
@@ -115,6 +129,7 @@ export default function TableSize2x5(props: any) {
                     </td>
                     <td>
                         <TextField
+                            type={'number'}
                             sx={{marginTop: '10px'}}
                             color='secondary'
                             id="outlined-helperText"
@@ -127,6 +142,7 @@ export default function TableSize2x5(props: any) {
                     </td>
                     <td>
                         <TextField
+                            type={'number'}
                             sx={{marginTop: '10px'}}
                             color='secondary'
                             id="outlined-helperText"
@@ -150,13 +166,12 @@ export default function TableSize2x5(props: any) {
                     variant="outlined"
                     endIcon={<CalculateIcon/>}
                     color="secondary"
+
                 >
                     Расчёт
                 </Button>
                 <AlertDialog openDialogAlert={openDialogAlert}
-                             setOpenDialogAlert={setOpenDialogAlert}
-
-                />
+                             setOpenDialogAlert={setOpenDialogAlert}/>
             </div>
         </form>
 

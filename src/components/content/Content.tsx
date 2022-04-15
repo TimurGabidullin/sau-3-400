@@ -30,7 +30,7 @@ function Content(props: ContentPropsType) {
                             </Typography>
                             {
                                 checks[h.idHeader]
-                                    .map((chsInH: CheckType[]) => chsInH)
+                                    .map((chsInH: CheckType) => chsInH)
                                     .map((ch: CheckType) => {
                                         return {
                                             title: ch.title,
