@@ -65,7 +65,7 @@ export default function AlertDialog(props:AlertDialogPropsType) {
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Нет</Button>
-                    <Button onClick={handleClose}>Да</Button>
+                    <Button onClick={handleBtn2Click}>Да</Button>
                 </DialogActions>
             </Dialog>
         </div>

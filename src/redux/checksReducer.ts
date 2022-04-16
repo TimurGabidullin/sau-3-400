@@ -12,7 +12,7 @@ export type CheckType = {
     pageNumber: number
     paginatorNumber: number
     typesOfBlocks?: string[]
-    typeOfSubBlock?:string[]
+    typesOfSubBlocks?:string[]
     resistors:string[]
     numbersOfContacts?: string[]
     controlFunctions: ControlFunctionType[]
@@ -54,8 +54,8 @@ const initialState = {
             pageNumber: 473,
             paginatorNumber: 1,
             typesOfBlocks: ['ВПК', 'ВБК'],
-            typeOfSubBlock:['',''],
-            resistors:['',''],
+            typesOfSubBlocks:['2','2'],
+            resistors:['2','2'],
             numbersOfContacts: ['U21/11 Ш35', 'U24/11 Ш35'],
             controlFunctions: [f1, f1],
             controlValues: [0, 0],
@@ -75,8 +75,8 @@ const initialState = {
             pageNumber: 474,
             paginatorNumber: 2,
             typesOfBlocks: ['ВБК', 'ВБК', 'ВБК', 'ВБК'],
-            typeOfSubBlock:['',''],
-            resistors:['',''],
+            typesOfSubBlocks:['2','2'],
+            resistors:['2','2'],
             numbersOfContacts: [
                 'U23/11 Ш35', 'U24/11 Ш35',
                 'U23/11 Ш35', 'U24/11 Ш35'
@@ -104,7 +104,7 @@ const initialState = {
             pageNumber: 475,
             paginatorNumber: 3,
             typesOfBlocks: ['ВПК', 'ВПК', 'ВПК', 'ВПК', 'ВБК', 'ВБК', 'ВБК', 'ВБК'],
-            typeOfSubBlock:['',''],
+            typesOfSubBlocks:['',''],
             resistors:['',''],
             numbersOfContacts: [
                 'U26/11 Ш35', 'U20/11 Ш35',

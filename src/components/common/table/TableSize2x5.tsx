@@ -10,15 +10,20 @@ import {AppStateType} from "../../../redux/store";
 import {CheckType, saveDataAC} from "../../../redux/checksReducer";
 import AlertDialog from "../alertDialog/AlertDialog";
 import {ParamsType} from "../../home/Home";
+import {addSettingsInReportAC} from "../../../redux/reportReducer";
 
 
 export default function TableSize2x5(props: any) {
 
     console.log('отрисовка компаненты Table')
 
-    const params:ParamsType = useParams()
+    const params: ParamsType = useParams()
     const checks = useSelector((state: AppStateType) => state.checks[params.header ? params.header : 'head1'])
     const check = checks.filter((ch: CheckType) => ch.idCheck === params.page)[0]
+    const idCheck = check.idCheck
+    const pageNumber = check.pageNumber
+    const typeOfSubBlock = check.typesOfSubBlocks[props.indexOfTable]
+    const resistor = check.resistors[props.indexOfTable]
     const headerOfCheck = check.title
     const numbersOfContacts = check.numbersOfContacts[props.indexOfTable]
     const typeOfBlock = check.typesOfBlocks[props.indexOfTable]
@@ -30,7 +35,7 @@ export default function TableSize2x5(props: any) {
     const [openDialogAlert, setOpenDialogAlert] = React.useState(false);
     const dispatch = useDispatch()
 
-    const {register,trigger, handleSubmit, formState: {errors}, getValues} = useForm();
+    const {register, trigger, handleSubmit, formState: {errors}, getValues} = useForm();
 
     // const onClickCalculateHandler = useCallback(() => {
     //     let inputValue1 = getValues("channel1");
@@ -58,14 +63,15 @@ export default function TableSize2x5(props: any) {
     //
     // }, [])
 
-  const  handleAlertBtn1Click=()=>{
-      setOpenDialogAlert(false)
-  }
-
-    const  handleAlertBtn2Click=()=>{
+    const handleAlertBtn1Click = () => {
         setOpenDialogAlert(false)
     }
 
+    const handleAlertBtn2Click = () => {
+        debugger
+        dispatch(addSettingsInReportAC(idCheck, pageNumber, typeOfBlock, typeOfSubBlock, resistor))
+        setOpenDialogAlert(false)
+    }
 
 
     const onSubmit = () => {
@@ -92,10 +98,10 @@ export default function TableSize2x5(props: any) {
     }
 
 
-
-    useEffect(()=>{
-          trigger()}
-    ,[])
+    useEffect(() => {
+            trigger()
+        }
+        , [])
 
 
     return (
