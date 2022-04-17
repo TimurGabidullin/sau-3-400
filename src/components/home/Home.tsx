@@ -19,22 +19,22 @@ import Checks from "../checks/Checks";
 import {useNavigate, useParams} from 'react-router-dom'
 import {useCallback, useEffect} from "react";
 import AlertDialog from "../common/alertDialog/AlertDialog";
+import {useDispatch, useSelector} from "react-redux";
+import {AppStateType} from "../../redux/store";
+import {loginAppAC} from "../../redux/appReducer";
 
-export type ParamsType={
-    page?:string
-    header?:string
+export type ParamsType = {
+    check?: string
+    header?: string
 }
 
 
 const Home = () => {
-    const params:ParamsType= useParams();
-    // const [headerUrl, setHeaderUrl] = React.useState(params.header?params.header:'head1');
-    // const [checkUrl, setCheckUrl] = React.useState(params.page?params.page:'check1');
+    const params: ParamsType = useParams();
+    const dispatch = useDispatch()
 
-    console.log(params)
-
-    const [headerUrl, setHeaderUrl] = React.useState(params.header?params.header:'head1');
-    const [checkUrl, setCheckUrl] = React.useState(params.page?params.page:'check1');
+    const [headerUrl, setHeaderUrl] = React.useState(params.header ? params.header : 'head1');
+    const [checkUrl, setCheckUrl] = React.useState(params.check ? params.check : 'check1');
 
     const [paginatorPageNumber, setPaginatorPageNumber] = React.useState(1);
 
@@ -42,10 +42,8 @@ const Home = () => {
     const LinkToCheck = (h: string, p: string, prPageNum: number) => {
         setHeaderUrl(h)
         setCheckUrl(p)
-
         setPaginatorPageNumber(prPageNum)
         setCheckUrl(p)
-
         setSelectedTab(1)
     }
 
@@ -54,6 +52,7 @@ const Home = () => {
         "content": 0,
         "checks": 1,
         "report": 2,
+        "": 3,
 
     }
 
@@ -61,20 +60,17 @@ const Home = () => {
         0: "content",
         1: `checks/${headerUrl}/${checkUrl}`,
         2: "report",
+        3: ""
 
     }
 
-    // @ts-ignore
-    const [selectedTab, setSelectedTab] = React.useState(tabNameToIndex[params.page] > 2
-        ? 1
-        // @ts-ignore
-        : tabNameToIndex[params.page]);
+    // // @ts-ignore
+    // const [selectedTab, setSelectedTab] = React.useState(tabNameToIndex[params.page] > 2
+    //     ? 1
+    //     // @ts-ignore
+    //     : tabNameToIndex[params.check]);
 
-
-    // const [selectedTab, setSelectedTab] = React.useState(0);
-
-
-
+    const [selectedTab, setSelectedTab] = React.useState(3);
     const navigate = useNavigate();
 
 
@@ -85,7 +81,7 @@ const Home = () => {
     useEffect(() => {
 
             // @ts-ignore
-        navigate(`/home/${indexToTabName[selectedTab]}`)
+            navigate(`/home/${indexToTabName[selectedTab]}`)
         }, [
             selectedTab,
             checkUrl,
@@ -99,6 +95,7 @@ const Home = () => {
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
     const [openDialogAlert, setOpenDialogAlert] = React.useState(false);
+    const isLogin = useSelector((state: AppStateType) => state.app.isLogin)
 
     const handleOpenNavMenu = useCallback((event: React.MouseEvent<HTMLElement>) => {
         setAnchorElNav(event.currentTarget)
@@ -118,12 +115,23 @@ const Home = () => {
     }, [])
 
     const handleOnClickUserMenu = useCallback((e) => {
-        console.log(e)
         handleCloseUserMenu()
         if (e.target.innerHTML === 'RA82043') {
             setOpenDialogAlert(true)
         }
     }, [])
+
+    const handleClickContinueBtn = useCallback(() => {
+        setOpenDialogAlert(false)
+        dispatch(loginAppAC())
+        navigate(`/home/checks`)
+
+    }, []);
+
+    const handleClickNewCheckBtn = useCallback(() => {
+        setOpenDialogAlert(false)
+        dispatch(loginAppAC())
+    }, []);
 
 
     return (
@@ -199,20 +207,18 @@ const Home = () => {
                             aria-label="full width tabs example"
                             // aria-label="nav tabs example"
                         >
-
                             <Tab
-                                sx={{padding: "26px", maxWidth: "120px"}}
+                                sx={{padding: "26px", maxWidth: "120px",}}
                                 label="Содержание"
-
-                            />
+                                disabled={!isLogin}/>
                             <Tab
                                 sx={{padding: "26px", maxWidth: "120px"}}
                                 label="Проверки"
-                            />
+                                disabled={!isLogin}/>
                             <Tab
                                 sx={{padding: "26px", minWidth: "120px", maxWidth: "120px"}}
                                 label="Отчёт"
-                            />
+                                disabled={!isLogin}/>
                         </Tabs>
 
 
@@ -222,6 +228,7 @@ const Home = () => {
                             <Tooltip title="Open settings">
                                 <IconButton onClick={handleOpenUserMenu} sx={{p: 0}}>
                                     <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg"/>
+                                    {/*<Avatar children={'42'}/>*/}
                                 </IconButton>
                             </Tooltip>
                             <Menu
@@ -255,8 +262,15 @@ const Home = () => {
                 {selectedTab === 1 && <Checks paginatorPageNumber={paginatorPageNumber} LinkToCheck={LinkToCheck}/>}
                 {selectedTab === 2 && <Report/>}
             </div>
-            {/*<AlertDialog openDialogAlert={openDialogAlert}*/}
-            {/*             setOpenDialogAlert={setOpenDialogAlert}/>*/}
+            <AlertDialog openDialogAlert={openDialogAlert}
+                         setOpenDialogAlert={setOpenDialogAlert}
+                         handleAlertBtn1Click={handleClickContinueBtn}
+                         handleAlertBtn2Click={handleClickNewCheckBtn}
+                         headerText="Выберите проверку"
+                         mainText="Выберите проверку"
+                         btnText1="Новая проверка"
+                         btnText2="Продолжить проверку"
+            />
         </div>
     );
 }

@@ -19,7 +19,7 @@ export default function TableSize2x5(props: any) {
 
     const params: ParamsType = useParams()
     const checks = useSelector((state: AppStateType) => state.checks[params.header ? params.header : 'head1'])
-    const check = checks.filter((ch: CheckType) => ch.idCheck === params.page)[0]
+    const check = checks.filter((ch: CheckType) => ch.idCheck === params.check)[0]
     const idCheck = check.idCheck
     const pageNumber = check.pageNumber
     const typeOfSubBlock = check.typesOfSubBlocks[props.indexOfTable]
@@ -42,7 +42,6 @@ export default function TableSize2x5(props: any) {
     }
 
     const handleAlertBtn2Click = () => {
-        debugger
         dispatch(addSettingsInReportAC(idCheck, pageNumber, typeOfBlock, typeOfSubBlock, resistor))
         setOpenDialogAlert(false)
     }
@@ -51,10 +50,10 @@ export default function TableSize2x5(props: any) {
     const onSubmit = () => {
 
         console.log("submit")
-        let inputValue1 = getValues("channel1");
-        let inputValue2 = getValues("channel2");
-        let inputValue3 = getValues("channel3");
-        let inputValue4 = getValues("channel4");
+        const inputValue1 = getValues("channel1");
+        const inputValue2 = getValues("channel2");
+        const inputValue3 = getValues("channel3");
+        const inputValue4 = getValues("channel4");
 
 
         if ((+inputValue1 !== valuesOfBlock["channel1"] ||
@@ -67,13 +66,18 @@ export default function TableSize2x5(props: any) {
         dispatch(saveDataAC(
             [+inputValue1, +inputValue2, +inputValue3, +inputValue4],
             params.header ? params.header : "head1",
-            params.page ? params.page : "check1",
+            params.check ? params.check : "check1",
             props.indexOfTable))
     }
 
 
     useEffect(() => {
-            trigger()
+            if (valuesOfBlock['channel1']!==null) trigger('channel1')
+            if (valuesOfBlock['channel2']!==null) trigger('channel2')
+            if (valuesOfBlock['channel3']!==null) trigger('channel3')
+            if (valuesOfBlock['channel4']!==null) trigger('channel4')
+           // trigger()
+
         }
         , [])
 
@@ -159,7 +163,10 @@ export default function TableSize2x5(props: any) {
                              setOpenDialogAlert={setOpenDialogAlert}
                              handleAlertBtn1Click={handleAlertBtn1Click}
                              handleAlertBtn2Click={handleAlertBtn2Click}
-
+                             headerText="Занести регуллировку в ОТЧЁТ?"
+                             mainText="Значение 1 канала изменилось."
+                             btnText1="Нет"
+                             btnText2="Да"
                 />
             </div>
         </form>

@@ -24,6 +24,11 @@ type AlertDialogPropsType={
     setOpenDialogAlert:(value:boolean)=>void
     handleAlertBtn1Click:Function
     handleAlertBtn2Click:Function
+    headerText:string
+    mainText:string
+    btnText1:string
+    btnText2:string
+
 }
 
 export default function AlertDialog(props:AlertDialogPropsType) {
@@ -32,14 +37,6 @@ export default function AlertDialog(props:AlertDialogPropsType) {
         props.setOpenDialogAlert(false);
     },[]);
 
-    // const handleClickYes =useCallback( () => {
-    //    handleClose()
-    // },[]);
-    //
-    //
-    // const handleClickNo =useCallback( () => {
-    //     props.setOpenDialogAlert(false);
-    // },[]);
     const handleBtn1Click =useCallback( () => {
         props.handleAlertBtn1Click();
     },[]);
@@ -57,15 +54,15 @@ export default function AlertDialog(props:AlertDialogPropsType) {
                 onClose={handleClose}
                 aria-describedby="alert-dialog-slide-description"
             >
-                <DialogTitle>{"Занести регуллировку в ОТЧЁТ?"}</DialogTitle>
+                <DialogTitle>{props.headerText}</DialogTitle>
                 <DialogContent>
                     <DialogContentText id="alert-dialog-slide-description">
-                 Значение 1 канала изменилось.
+                        {props.mainText}
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose}>Нет</Button>
-                    <Button onClick={handleBtn2Click}>Да</Button>
+                    <Button onClick={handleBtn1Click}>{props.btnText1}</Button>
+                    <Button onClick={handleBtn2Click}>{props.btnText2}</Button>
                 </DialogActions>
             </Dialog>
         </div>

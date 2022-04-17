@@ -1,24 +1,24 @@
 import {ActionsType} from "./store";
 
 
-export type AppType = (string | null)[]
+export type AppType = typeof initialState
 
-const initialState = [null]
+const initialState = {
+   isLogin:false
+}
 
 export const appReducer = (state: AppType = initialState, action: ActionsType): AppType => {
     switch (action.type) {
-        case 'ADD_SETTINGS_IN_REPORT':
-            return state
-
+        case 'LOGIN_APP':
+            return {...state,isLogin: true}
+        case 'LOGOUT_APP':
+            return {...state,isLogin: false}
         default:
             return state
     }
 }
 
-// export const saveSettingsInReportAC = (indexOfTable: number) => ({
-//     type: 'SAVE_SETTINGS_IN_REPORT',
-//     indexOfTable
-// }) as const
-
+export const loginAppAC = () => ({type: 'LOGIN_APP'}) as const
+export const logoutAppAC = () => ({type: 'LOGOUT_APP'}) as const
 
 export default appReducer;

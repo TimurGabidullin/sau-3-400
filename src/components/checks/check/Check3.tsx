@@ -15,7 +15,7 @@ type CheckPropsType = {}
 const Check3 = (props: CheckPropsType) => {
     const params:ParamsType = useParams();
     const checks = useSelector((state: AppStateType) => state.checks[params.header? params.header : 'head1'])
-    const headerOfCheck = checks.filter((ch: CheckType) => ch.idCheck === params.page)[0].title
+    const headerOfCheck = checks.filter((ch: CheckType) => ch.idCheck === params.check)[0].title
 
     return (
         <div className={styles.g}>

@@ -18,7 +18,7 @@ const Check1=(props: CheckPropsType)=> {
     // @ts-ignore
     const checks = useSelector((state: AppStateType) => state.checks[params.header ? params.header : 'head1'])
     // const checks = useSelector((state: AppStateType) => state.checks[ 'head1'])
-    const headerOfCheck = checks.filter((ch: CheckType) => ch.idCheck === params.page)[0].title
+    const headerOfCheck = checks.filter((ch: CheckType) => ch.idCheck === params.check)[0].title
 
     return (
         <div className="Check">

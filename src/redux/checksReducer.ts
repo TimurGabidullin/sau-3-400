@@ -41,7 +41,8 @@ function f0(inputValue: string, channel: string, indexOfTable: number = 0) {
 
 function f2(inputValue: string, channel: string, indexOfTable: number = 0) {
     // @ts-ignore.
-    return f1.call(this, +inputValue / this.valuesOfBlocks[0][channel], channel, indexOfTable)
+        return f1.call(this, +inputValue / this.valuesOfBlocks[0][channel], channel, indexOfTable)
+
 }
 
 
@@ -61,8 +62,8 @@ const initialState = {
             controlValues: [0, 0],
             valuesOfErrors: [0.25, 0.1],
             valuesOfBlocks: [
-                {'channel1': null, 'channel2': 2, 'channel3': 3, 'channel4': 4},
-                {'channel1': 5, 'channel2': 6, 'channel3': 7, 'channel4': 8}]
+                {'channel1': null, 'channel2': null, 'channel3': null, 'channel4': null},
+                {'channel1': null, 'channel2': null, 'channel3': null, 'channel4': null}]
             ,
             isHaveSettings: [false, true]
 
@@ -85,10 +86,10 @@ const initialState = {
             controlValues: [0, 2.25, 0, 2.25,],
             valuesOfErrors: [0, 0.05, 0, 0.05],
             valuesOfBlocks: [
-                {'channel1': null, 'channel2': 2, 'channel3': 3, 'channel4': 4},
-                {'channel1': 5, 'channel2': 6, 'channel3': 7, 'channel4': 8},
-                {'channel1': 1, 'channel2': 2, 'channel3': 3, 'channel4': 4},
-                {'channel1': 5, 'channel2': 6, 'channel3': 7, 'channel4': 8}
+                {'channel1': null, 'channel2': null, 'channel3': null, 'channel4': null},
+                {'channel1': null, 'channel2': null, 'channel3': null, 'channel4': null},
+                {'channel1': null, 'channel2': null, 'channel3': null, 'channel4': null},
+                {'channel1': null, 'channel2': null, 'channel3': null, 'channel4': null}
             ],
             directionsOfChecks: [
                 'вправо/вверх и 2Т', 'вправо/вверх и 2Т',
@@ -113,17 +114,17 @@ const initialState = {
                 'U24/11 Ш35', 'U24/11 Ш35'
             ],
             controlFunctions: [f0, f0, f0, f0, f0, f0, f0, f0],
-            controlValues: [5, -5, 5, -5, -0.27, -0.27, 0.32, 0.32],
+            controlValues: [3.5, -3.5, 3.5, -3.5, -0.27, -0.27, 0.32, 0.32],
             valuesOfErrors: [0.05, 0.05, 0.05, 0.05, 0.03, 0.03, 0.03, 0.03],
             valuesOfBlocks: [
-                {'channel1': 1, 'channel2': 2, 'channel3': 3, 'channel4': 4},
-                {'channel1': 1, 'channel2': 2, 'channel3': 3, 'channel4': 4},
-                {'channel1': 1, 'channel2': 2, 'channel3': 3, 'channel4': 4},
-                {'channel1': 1, 'channel2': 2, 'channel3': 3, 'channel4': 4},
-                {'channel1': 1, 'channel2': 2, 'channel3': 3, 'channel4': 4},
-                {'channel1': 1, 'channel2': 2, 'channel3': 3, 'channel4': 4},
-                {'channel1': 1, 'channel2': 2, 'channel3': 3, 'channel4': 4},
-                {'channel1': 1, 'channel2': 2, 'channel3': 3, 'channel4': 4},
+                {'channel1': null, 'channel2': null, 'channel3': null, 'channel4': null},
+                {'channel1': null, 'channel2': null, 'channel3': null, 'channel4': null},
+                {'channel1': null, 'channel2': null, 'channel3': null, 'channel4': null},
+                {'channel1': null, 'channel2': null, 'channel3': null, 'channel4': null},
+                {'channel1': null, 'channel2': null, 'channel3': null, 'channel4': null},
+                {'channel1': null, 'channel2': null, 'channel3': null, 'channel4': null},
+                {'channel1': null, 'channel2': null, 'channel3': null, 'channel4': null},
+                {'channel1': null, 'channel2': null, 'channel3': null, 'channel4': null},
             ],
 
             directionsOfChecks: [

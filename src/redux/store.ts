@@ -2,7 +2,7 @@ import {combineReducers, createStore} from "redux";
 import headerReducer from "./headerReducer";
 import checksReducer, {saveDataAC} from "./checksReducer";
 import reportReducer, {addSettingsInReportAC} from "./reportReducer";
-import appReducer from "./appReducer";
+import appReducer, {loginAppAC, logoutAppAC} from "./appReducer";
 
 let reducers = combineReducers({
     header: headerReducer,
@@ -18,6 +18,8 @@ const store = createStore(reducers);
 
 export type ActionsType = ReturnType<typeof saveDataAC>
     | ReturnType<typeof addSettingsInReportAC>
+    | ReturnType<typeof loginAppAC>
+    | ReturnType<typeof logoutAppAC>
 
 
 export type StoreType = typeof store

@@ -24,11 +24,11 @@ function Checks(props:ChecksPropsType) {
     return (
         <div>
             <Paginator paginatorPageNumber={props.paginatorPageNumber} LinkToCheck={props.LinkToCheck}/>
-            {params.page==="check1"&&<Check1 />}
+            {params.check==="check1"&&<Check1 />}
 
-            {params.page==="check2"&&<Check2 />}
+            {params.check==="check2"&&<Check2 />}
 
-            {params.page==="check3"&&<Check3 />}
+            {params.check==="check3"&&<Check3 />}
 
             <Paginator paginatorPageNumber={props.paginatorPageNumber} LinkToCheck={props.LinkToCheck}/>
 
