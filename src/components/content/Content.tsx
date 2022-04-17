@@ -21,6 +21,7 @@ function Content(props: ContentPropsType) {
 
     return (
         <Container>
+            <div className={styles.emptyDiv}></div>
             {header.map((h) => {
 
                 return (

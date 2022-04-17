@@ -70,6 +70,11 @@ const Home = () => {
         // @ts-ignore
         : tabNameToIndex[params.page]);
 
+
+    // const [selectedTab, setSelectedTab] = React.useState(0);
+
+
+
     const navigate = useNavigate();
 
 
@@ -78,8 +83,9 @@ const Home = () => {
     };
 
     useEffect(() => {
+
             // @ts-ignore
-            navigate(`/home/${indexToTabName[selectedTab]}`)
+        navigate(`/home/${indexToTabName[selectedTab]}`)
         }, [
             selectedTab,
             checkUrl,

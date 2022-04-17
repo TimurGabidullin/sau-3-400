@@ -11,23 +11,23 @@ export type CheckType = {
     idCheck: string
     pageNumber: number
     paginatorNumber: number
-    typesOfBlocks?: string[]
-    typesOfSubBlocks?:string[]
+    typesOfBlocks: string[]
+    typesOfSubBlocks:string[]
     resistors:string[]
-    numbersOfContacts?: string[]
+    numbersOfContacts: string[]
     controlFunctions: ControlFunctionType[]
-    controlValues?: number[]
-    valuesOfErrors?: number[]
+    controlValues: number[]
+    valuesOfErrors: number[]
     // valuesOfBlocks?: number[][]
-    valuesOfBlocks?: { 'channel1': any, 'channel2': any, 'channel3': any, 'channel4': any }[]
+    valuesOfBlocks: { 'channel1': number|null, 'channel2': number|null, 'channel3': number|null, 'channel4': number|null }[]
 
-    isHaveSettings?: boolean[]
+    isHaveSettings: boolean[]
     directionsOfChecks?: string[]
     subBlocks?:string[]
 
 }
 
-function f1(inputValue: string, channel: string, indexOfTable: number = 0) {
+function f1( inputValue: string, channel: string, indexOfTable: number = 0) {
 
     // @ts-ignore
     return (+inputValue <= this.controlValues[indexOfTable] + this.valuesOfErrors[indexOfTable]
@@ -61,7 +61,7 @@ const initialState = {
             controlValues: [0, 0],
             valuesOfErrors: [0.25, 0.1],
             valuesOfBlocks: [
-                {'channel1': 1, 'channel2': 2, 'channel3': 3, 'channel4': 4},
+                {'channel1': null, 'channel2': 2, 'channel3': 3, 'channel4': 4},
                 {'channel1': 5, 'channel2': 6, 'channel3': 7, 'channel4': 8}]
             ,
             isHaveSettings: [false, true]
@@ -85,7 +85,7 @@ const initialState = {
             controlValues: [0, 2.25, 0, 2.25,],
             valuesOfErrors: [0, 0.05, 0, 0.05],
             valuesOfBlocks: [
-                {'channel1': 1, 'channel2': 2, 'channel3': 3, 'channel4': 4},
+                {'channel1': null, 'channel2': 2, 'channel3': 3, 'channel4': 4},
                 {'channel1': 5, 'channel2': 6, 'channel3': 7, 'channel4': 8},
                 {'channel1': 1, 'channel2': 2, 'channel3': 3, 'channel4': 4},
                 {'channel1': 5, 'channel2': 6, 'channel3': 7, 'channel4': 8}
@@ -172,7 +172,7 @@ const initialState = {
 }
 
 
-export const checksReducer = (state: ChecksType = initialState, action: ActionsType): any => {
+export const checksReducer = (state: ChecksType = initialState, action: ActionsType): ChecksType => {
 
     switch (action.type) {
         case 'SAVE_DATA':

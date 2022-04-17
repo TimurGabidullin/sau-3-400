@@ -37,32 +37,6 @@ export default function TableSize2x5(props: any) {
 
     const {register, trigger, handleSubmit, formState: {errors}, getValues} = useForm();
 
-    // const onClickCalculateHandler = useCallback(() => {
-    //     let inputValue1 = getValues("channel1");
-    //     let inputValue2 = getValues("channel2");
-    //     let inputValue3 = getValues("channel3");
-    //    let inputValue4 = getValues("channel4");
-    //
-    //
-    //     // switch () {
-    //     //
-    //     // }
-    //     if ((+inputValue1 !== valuesOfBlock["channel1"] ||
-    //         +inputValue2 !== valuesOfBlock["channel2"] ||
-    //         +inputValue3 !== valuesOfBlock["channel3"] ||
-    //         +inputValue4 !== valuesOfBlock["channel4"]) && isHaveSettings) {
-    //         setOpenDialogAlert(true)
-    //     }
-    //
-    //     dispatch(saveDataAC(
-    //         [+inputValue1, +inputValue2, +inputValue3, +inputValue4],
-    //         params.head ? params.head : "head1",
-    //         params.page ? params.page : "check1",
-    //         props.indexOfTable))
-    //     debugger
-    //
-    // }, [])
-
     const handleAlertBtn1Click = () => {
         setOpenDialogAlert(false)
     }
@@ -81,7 +55,7 @@ export default function TableSize2x5(props: any) {
         let inputValue2 = getValues("channel2");
         let inputValue3 = getValues("channel3");
         let inputValue4 = getValues("channel4");
-// const result=await trigger()
+
 
         if ((+inputValue1 !== valuesOfBlock["channel1"] ||
             +inputValue2 !== valuesOfBlock["channel2"] ||
