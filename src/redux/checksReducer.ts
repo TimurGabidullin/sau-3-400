@@ -19,7 +19,7 @@ export type CheckType = {
     controlValues: number[]
     valuesOfErrors: number[]
     // valuesOfBlocks?: number[][]
-    valuesOfBlocks: { 'channel1': number|null, 'channel2': number|null, 'channel3': number|null, 'channel4': number|null }[]
+    valuesOfBlocks: { 'channel1': string, 'channel2': string, 'channel3': string, 'channel4': string }[]
 
     isHaveSettings: boolean[]
     directionsOfChecks?: string[]
@@ -62,8 +62,8 @@ const initialState = {
             controlValues: [0, 0],
             valuesOfErrors: [0.25, 0.1],
             valuesOfBlocks: [
-                {'channel1': null, 'channel2': null, 'channel3': null, 'channel4': null},
-                {'channel1': null, 'channel2': null, 'channel3': null, 'channel4': null}]
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''}]
             ,
             isHaveSettings: [false, true]
 
@@ -86,10 +86,10 @@ const initialState = {
             controlValues: [0, 2.25, 0, 2.25,],
             valuesOfErrors: [0, 0.05, 0, 0.05],
             valuesOfBlocks: [
-                {'channel1': null, 'channel2': null, 'channel3': null, 'channel4': null},
-                {'channel1': null, 'channel2': null, 'channel3': null, 'channel4': null},
-                {'channel1': null, 'channel2': null, 'channel3': null, 'channel4': null},
-                {'channel1': null, 'channel2': null, 'channel3': null, 'channel4': null}
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''}
             ],
             directionsOfChecks: [
                 'вправо/вверх и 2Т', 'вправо/вверх и 2Т',
@@ -113,18 +113,18 @@ const initialState = {
                 'U26/11 Ш35', 'U26/11 Ш35',
                 'U24/11 Ш35', 'U24/11 Ш35'
             ],
-            controlFunctions: [f0, f0, f0, f0, f0, f0, f0, f0],
-            controlValues: [3.5, -3.5, 3.5, -3.5, -0.27, -0.27, 0.32, 0.32],
-            valuesOfErrors: [0.05, 0.05, 0.05, 0.05, 0.03, 0.03, 0.03, 0.03],
+            controlFunctions: [f1, f1, f1, f1, f0, f0, f0, f0],
+            controlValues: [3.5, -3.5, 3.5, -3.5, -1.89, 1.89, -2.24, 2.24],
+            valuesOfErrors: [0.35, 0.35, 0.35, 0.35, 0.21, 0.21, 0.21, 0.21],
             valuesOfBlocks: [
-                {'channel1': null, 'channel2': null, 'channel3': null, 'channel4': null},
-                {'channel1': null, 'channel2': null, 'channel3': null, 'channel4': null},
-                {'channel1': null, 'channel2': null, 'channel3': null, 'channel4': null},
-                {'channel1': null, 'channel2': null, 'channel3': null, 'channel4': null},
-                {'channel1': null, 'channel2': null, 'channel3': null, 'channel4': null},
-                {'channel1': null, 'channel2': null, 'channel3': null, 'channel4': null},
-                {'channel1': null, 'channel2': null, 'channel3': null, 'channel4': null},
-                {'channel1': null, 'channel2': null, 'channel3': null, 'channel4': null},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
             ],
 
             directionsOfChecks: [
@@ -207,7 +207,7 @@ export const checksReducer = (state: ChecksType = initialState, action: ActionsT
 }
 
 
-export const saveDataAC = (data: number[], head: string, idCheck: string, indexOfTable: number) => ({
+export const saveDataAC = (data: string[], head: string, idCheck: string, indexOfTable: number) => ({
     type: 'SAVE_DATA',
     data,
     head,

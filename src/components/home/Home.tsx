@@ -16,7 +16,7 @@ import Content from "../content/Content";
 import Report from "../report/Report";
 import styles from "./Home.module.css";
 import Checks from "../checks/Checks";
-import {useNavigate, useParams} from 'react-router-dom'
+import {Navigate, useNavigate, useParams} from 'react-router-dom'
 import {useCallback, useEffect} from "react";
 import AlertDialog from "../common/alertDialog/AlertDialog";
 import {useDispatch, useSelector} from "react-redux";
@@ -30,6 +30,9 @@ export type ParamsType = {
 
 
 const Home = () => {
+
+    //----------------Hooks----------------------------------------------------
+
     const params: ParamsType = useParams();
     const dispatch = useDispatch()
 
@@ -70,7 +73,9 @@ const Home = () => {
     //     // @ts-ignore
     //     : tabNameToIndex[params.check]);
 
-    const [selectedTab, setSelectedTab] = React.useState(3);
+
+    // @ts-ignore
+    const [selectedTab, setSelectedTab] = React.useState(tabNameToIndex[params.page ? params.page : '']);
     const navigate = useNavigate();
 
 
@@ -123,13 +128,16 @@ const Home = () => {
 
     const handleClickContinueBtn = useCallback(() => {
         setOpenDialogAlert(false)
+        //
         dispatch(loginAppAC())
-        navigate(`/home/checks`)
+
+        setSelectedTab(0)
 
     }, []);
 
     const handleClickNewCheckBtn = useCallback(() => {
         setOpenDialogAlert(false)
+
         dispatch(loginAppAC())
     }, []);
 
@@ -210,15 +218,18 @@ const Home = () => {
                             <Tab
                                 sx={{padding: "26px", maxWidth: "120px",}}
                                 label="Содержание"
-                                disabled={!isLogin}/>
+                                disabled={!isLogin}
+                            />
                             <Tab
                                 sx={{padding: "26px", maxWidth: "120px"}}
                                 label="Проверки"
-                                disabled={!isLogin}/>
+                                disabled={!isLogin}
+                            />
                             <Tab
                                 sx={{padding: "26px", minWidth: "120px", maxWidth: "120px"}}
                                 label="Отчёт"
-                                disabled={!isLogin}/>
+                                disabled={!isLogin}
+                            />
                         </Tabs>
 
 

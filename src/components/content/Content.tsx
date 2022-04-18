@@ -25,7 +25,7 @@ function Content(props: ContentPropsType) {
             {header.map((h) => {
 
                 return (
-                        <ul>
+                        <ul className={styles.list}>
                             <Typography sx={{padding:0}} variant="h6" component='h6'>
                             {h.title}
                             </Typography>
@@ -39,13 +39,19 @@ function Content(props: ContentPropsType) {
                                             prPageNum: ch.paginatorNumber
                                         }
                                     })
-                                    .map((t: any) => <li onClick={() => {
+                                    .map((t) => <li onClick={() => {
                                         props.LinkToCheck(h.idHeader,`${t.url}`,t.prPageNum)
                                     }
 
                                     }>
-                                        <NavLink to={`/home/checks/${h.idHeader}/${t.url}`}>
+                                        <NavLink
+
+                                            className={({isActive})=>(isActive?styles.active:styles.inactive)}
+                                            to={`/home/checks/${h.idHeader}/${t.url}`}
+                                        >
+                                            <Typography sx={{paddingLeft: '20px'}} variant="body1" component='p'>
                                                 {t.title}
+                                            </Typography>
                                         </NavLink>
                                     </li>)
                             }

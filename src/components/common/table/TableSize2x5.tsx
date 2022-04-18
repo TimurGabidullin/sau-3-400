@@ -56,15 +56,15 @@ export default function TableSize2x5(props: any) {
         const inputValue4 = getValues("channel4");
 
 
-        if ((+inputValue1 !== valuesOfBlock["channel1"] ||
-            +inputValue2 !== valuesOfBlock["channel2"] ||
-            +inputValue3 !== valuesOfBlock["channel3"] ||
-            +inputValue4 !== valuesOfBlock["channel4"]) && isHaveSettings) {
+        if ((inputValue1 !== valuesOfBlock["channel1"] ||
+            inputValue2 !== valuesOfBlock["channel2"] ||
+            inputValue3 !== valuesOfBlock["channel3"] ||
+            inputValue4 !== valuesOfBlock["channel4"]) && isHaveSettings) {
             setOpenDialogAlert(true)
         }
 
         dispatch(saveDataAC(
-            [+inputValue1, +inputValue2, +inputValue3, +inputValue4],
+            [inputValue1, inputValue2, inputValue3, inputValue4],
             params.header ? params.header : "head1",
             params.check ? params.check : "check1",
             props.indexOfTable))
@@ -72,12 +72,11 @@ export default function TableSize2x5(props: any) {
 
 
     useEffect(() => {
-            if (valuesOfBlock['channel1']!==null) trigger('channel1')
-            if (valuesOfBlock['channel2']!==null) trigger('channel2')
-            if (valuesOfBlock['channel3']!==null) trigger('channel3')
-            if (valuesOfBlock['channel4']!==null) trigger('channel4')
-           // trigger()
-
+        debugger
+            if (valuesOfBlock['channel1']!=='') trigger('channel1')
+            if (valuesOfBlock['channel2']!=='') trigger('channel2')
+            if (valuesOfBlock['channel3']!=='') trigger('channel3')
+            if (valuesOfBlock['channel4']!=='') trigger('channel4')
         }
         , [])
 

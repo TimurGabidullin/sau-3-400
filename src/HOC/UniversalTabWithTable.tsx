@@ -30,7 +30,8 @@ export const UniversalTabWithTable = (Table: React.FC, indexOfTable = 0) => {
                     borderRadius: '5px',
                     // border: '2px solid #1976d2'
                     border: '1px solid #9c27b0',
-                    minHeight:'216px'
+                    minHeight:'216px',
+                    margin:'5px 0'
                 }}>
 
                     <Tabs
