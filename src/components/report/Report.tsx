@@ -4,8 +4,8 @@ import {AppStateType} from "../../redux/store";
 
 
 
-function Report() {
 
+function Report() {
 const report =useSelector((state:AppStateType)=>state.report)
     return (
         <div>

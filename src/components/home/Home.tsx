@@ -22,6 +22,7 @@ import AlertDialog from "../common/alertDialog/AlertDialog";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "../../redux/store";
 import {loginAppAC} from "../../redux/appReducer";
+import {saveNewDataAC} from "../../redux/checksReducer";
 
 export type ParamsType = {
     check?: string
@@ -128,17 +129,20 @@ const Home = () => {
 
     const handleClickContinueBtn = useCallback(() => {
         setOpenDialogAlert(false)
-        //
         dispatch(loginAppAC())
-
         setSelectedTab(0)
 
     }, []);
 
     const handleClickNewCheckBtn = useCallback(() => {
+        // localStorage.removeItem("reportState")
+        // localStorage.removeItem('checksState')
+        dispatch(saveNewDataAC())
         setOpenDialogAlert(false)
-
         dispatch(loginAppAC())
+
+        setSelectedTab(1)
+
     }, []);
 
 
@@ -275,8 +279,8 @@ const Home = () => {
             </div>
             <AlertDialog openDialogAlert={openDialogAlert}
                          setOpenDialogAlert={setOpenDialogAlert}
-                         handleAlertBtn1Click={handleClickContinueBtn}
-                         handleAlertBtn2Click={handleClickNewCheckBtn}
+                         handleAlertBtn1Click={handleClickNewCheckBtn}
+                         handleAlertBtn2Click={handleClickContinueBtn}
                          headerText="Выберите проверку"
                          mainText="Выберите проверку"
                          btnText1="Новая проверка"

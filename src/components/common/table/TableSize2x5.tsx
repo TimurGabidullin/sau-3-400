@@ -7,7 +7,7 @@ import styles from './Table.module.css';
 import {useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "../../../redux/store";
-import {CheckType, saveDataAC} from "../../../redux/checksReducer";
+import {CheckType, numToFunc, saveDataAC} from "../../../redux/checksReducer";
 import AlertDialog from "../alertDialog/AlertDialog";
 import {ParamsType} from "../../home/Home";
 import {addSettingsInReportAC} from "../../../redux/reportReducer";
@@ -27,7 +27,8 @@ export default function TableSize2x5(props: any) {
     const headerOfCheck = check.title
     const numbersOfContacts = check.numbersOfContacts[props.indexOfTable]
     const typeOfBlock = check.typesOfBlocks[props.indexOfTable]
-    const controlFunction = check.controlFunctions[props.indexOfTable].bind(check)
+    // @ts-ignore
+    const controlFunction = numToFunc[check.controlFunctions[props.indexOfTable]].bind(check)
     const valuesOfBlock = check.valuesOfBlocks[props.indexOfTable]
     const isHaveSettings = check.isHaveSettings[props.indexOfTable]
     const directionOfCheck = check.directionsOfChecks
@@ -72,7 +73,6 @@ export default function TableSize2x5(props: any) {
 
 
     useEffect(() => {
-        debugger
             if (valuesOfBlock['channel1']!=='') trigger('channel1')
             if (valuesOfBlock['channel2']!=='') trigger('channel2')
             if (valuesOfBlock['channel3']!=='') trigger('channel3')

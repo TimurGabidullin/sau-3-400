@@ -24,6 +24,7 @@ function Content(props: ContentPropsType) {
             <div className={styles.emptyDiv}></div>
             {header.map((h) => {
 
+                // @ts-ignore
                 return (
                         <ul className={styles.list}>
                             <Typography sx={{padding:0}} variant="h6" component='h6'>
@@ -39,6 +40,7 @@ function Content(props: ContentPropsType) {
                                             prPageNum: ch.paginatorNumber
                                         }
                                     })
+                                    //@ts-ignore
                                     .map((t) => <li onClick={() => {
                                         props.LinkToCheck(h.idHeader,`${t.url}`,t.prPageNum)
                                     }

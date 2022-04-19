@@ -1,8 +1,8 @@
 import {ActionsType} from "./store";
 
-export type ChecksType = {[head:string]:CheckType[]}
+export type ChecksType = { [head: string]: CheckType[] }
 
-type ControlFunctionType = (inputValue: string, channel: string, indexOfTable: number) => boolean
+// type ControlFunctionType = (inputValue: string, channel: string, indexOfTable: number) => boolean
 
 
 export type CheckType = {
@@ -12,10 +12,10 @@ export type CheckType = {
     pageNumber: number
     paginatorNumber: number
     typesOfBlocks: string[]
-    typesOfSubBlocks:string[]
-    resistors:string[]
+    typesOfSubBlocks: string[]
+    resistors: string[]
     numbersOfContacts: string[]
-    controlFunctions: ControlFunctionType[]
+    controlFunctions: number[]
     controlValues: number[]
     valuesOfErrors: number[]
     // valuesOfBlocks?: number[][]
@@ -23,11 +23,11 @@ export type CheckType = {
 
     isHaveSettings: boolean[]
     directionsOfChecks?: string[]
-    subBlocks?:string[]
+    subBlocks?: string[]
 
 }
 
-function f1( inputValue: string, channel: string, indexOfTable: number = 0) {
+export function f1(inputValue: string, channel: string, indexOfTable: number = 0) {
 
     // @ts-ignore
     return (+inputValue <= this.controlValues[indexOfTable] + this.valuesOfErrors[indexOfTable]
@@ -35,19 +35,26 @@ function f1( inputValue: string, channel: string, indexOfTable: number = 0) {
         && +inputValue >= this.controlValues[indexOfTable] - this.valuesOfErrors[indexOfTable])
 }
 
-function f0(inputValue: string, channel: string, indexOfTable: number = 0) {
+export function f0(inputValue: string, channel: string, indexOfTable: number = 0) {
     return true
 }
 
-function f2(inputValue: string, channel: string, indexOfTable: number = 0) {
+export function f2(inputValue: string, channel: string, indexOfTable: number = 0) {
     // @ts-ignore.
-        return f1.call(this, +inputValue / this.valuesOfBlocks[0][channel], channel, indexOfTable)
+    return f1.call(this, +inputValue / this.valuesOfBlocks[0][channel], channel, indexOfTable)
 
+}
+
+
+export const numToFunc = {
+    0: f0,
+    1: f1,
+    2: f2
 }
 
 
 const initialState = {
-"head1": [
+    "head1": [
         {
             title: "Проверка нулевых сигналов",
             idHeader: "1",
@@ -55,10 +62,11 @@ const initialState = {
             pageNumber: 473,
             paginatorNumber: 1,
             typesOfBlocks: ['ВПК', 'ВБК'],
-            typesOfSubBlocks:['2','2'],
-            resistors:['2','2'],
+            typesOfSubBlocks: ['2', '2'],
+            resistors: ['2', '2'],
             numbersOfContacts: ['U21/11 Ш35', 'U24/11 Ш35'],
-            controlFunctions: [f1, f1],
+            // controlFunctions: [f1, f1],
+            controlFunctions: [1, 1],
             controlValues: [0, 0],
             valuesOfErrors: [0.25, 0.1],
             valuesOfBlocks: [
@@ -76,13 +84,14 @@ const initialState = {
             pageNumber: 474,
             paginatorNumber: 2,
             typesOfBlocks: ['ВБК', 'ВБК', 'ВБК', 'ВБК'],
-            typesOfSubBlocks:['2','2'],
-            resistors:['2','2'],
+            typesOfSubBlocks: ['2', '2'],
+            resistors: ['2', '2'],
             numbersOfContacts: [
                 'U23/11 Ш35', 'U24/11 Ш35',
                 'U23/11 Ш35', 'U24/11 Ш35'
             ],
-            controlFunctions: [f0, f2, f0, f2],
+            // controlFunctions: [f0, f2, f0, f2],
+            controlFunctions: [0, 2, 0, 2],
             controlValues: [0, 2.25, 0, 2.25,],
             valuesOfErrors: [0, 0.05, 0, 0.05],
             valuesOfBlocks: [
@@ -105,15 +114,16 @@ const initialState = {
             pageNumber: 475,
             paginatorNumber: 3,
             typesOfBlocks: ['ВПК', 'ВПК', 'ВПК', 'ВПК', 'ВБК', 'ВБК', 'ВБК', 'ВБК'],
-            typesOfSubBlocks:['',''],
-            resistors:['',''],
+            typesOfSubBlocks: ['', ''],
+            resistors: ['', ''],
             numbersOfContacts: [
                 'U26/11 Ш35', 'U20/11 Ш35',
                 'U26/11 Ш35', 'U20/11 Ш35',
                 'U26/11 Ш35', 'U26/11 Ш35',
                 'U24/11 Ш35', 'U24/11 Ш35'
             ],
-            controlFunctions: [f1, f1, f1, f1, f0, f0, f0, f0],
+            // controlFunctions: [f1, f1, f1, f1, f0, f0, f0, f0],
+            controlFunctions: [1, 1, 1, 1, 1, 1, 1, 1],
             controlValues: [3.5, -3.5, 3.5, -3.5, -1.89, 1.89, -2.24, 2.24],
             valuesOfErrors: [0.35, 0.35, 0.35, 0.35, 0.21, 0.21, 0.21, 0.21],
             valuesOfBlocks: [
@@ -165,15 +175,12 @@ const initialState = {
             pageNumber: 483,
             paginatorNumber: 6
 
-
         } as CheckType,
-
     ],
-
 }
 
 
-export const checksReducer = (state: ChecksType = initialState, action: ActionsType): ChecksType => {
+export const checksReducer = (state: any = initialState, action: ActionsType): any => {
 
     switch (action.type) {
         case 'SAVE_DATA':
@@ -201,9 +208,18 @@ export const checksReducer = (state: ChecksType = initialState, action: ActionsT
                 })
             }
 
+
+        case 'NEW_DATA':
+            return initialState
+
         default:
             return state
     }
+
+
+
+
+
 }
 
 
@@ -214,6 +230,12 @@ export const saveDataAC = (data: string[], head: string, idCheck: string, indexO
     idCheck,
     indexOfTable
 }) as const
+
+export const saveNewDataAC = () => ({
+    type: 'NEW_DATA',
+}) as const
+
+
 
 
 export default checksReducer;
