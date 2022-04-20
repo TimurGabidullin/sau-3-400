@@ -17,11 +17,11 @@ const Check2 = (props: CheckPropsType) => {
 
     return (
         <div className="Check">
-            <Typography sx={{paddingLeft: '20px'}} variant="h6" component="h6">
+            <Typography sx={{padding: '0 20px'}} variant="h6" component="h6">
                 {headerOfCheck}
             </Typography>
 
-            <Typography sx={{paddingLeft: '20px'}} variant="body1" component='p'>
+            <Typography sx={{padding: '0 20px'}} variant="body1" component='p'>
                 <p> На пульте ПК-31-01 переключатель ИСКЛЮЧ ПОСАДКА установите в положение &#xC9;, ИСКЛЮЧ УСП
                     установите в положение "4".</p>
                 <p> На пульте ПР-173-02 переключатель режимов установите в положение ЗАХОД.</p>
@@ -37,7 +37,7 @@ const Check2 = (props: CheckPropsType) => {
 
             {UniversalTabWithTable(TableSize2x5, 0)(props)}
 
-            <Typography sx={{paddingLeft: '20px'}} variant="body1" component='p'>
+            <Typography sx={{padding: '0 20px'}} variant="body1" component='p'>
                 <p> Измерьте с помощью вольтметра ИПI пульта ППН-149 значение напряжения
                     между контактами 24 и 11 контрольного соединителя Ш35 ВБК-51-01
                     во всех каналах САУ - U<span>24</span>&#8544;(&#8545;,&#8546;,&#8547;).</p>
@@ -47,7 +47,7 @@ const Check2 = (props: CheckPropsType) => {
 
             {UniversalTabWithTable(TableSize2x5, 1)(props)}
 
-            <Typography sx={{paddingLeft: '20px'}} variant="body1" component='p'>
+            <Typography sx={{padding: '0 20px'}} variant="body1" component='p'>
                 <p>Произведите проверку, установив переключатель ОТКЛОНЕНИЕ на имитаторе МИМ-70 в положение влево/вниз
                     и 2Т.</p>
             </Typography>
@@ -55,7 +55,7 @@ const Check2 = (props: CheckPropsType) => {
             {UniversalTabWithTable(TableSize2x5, 2)(props)}
             {UniversalTabWithTable(TableSize2x5, 3)(props)}
 
-            <Typography sx={{paddingLeft: '20px'}} variant="body1" component='p'>
+            <Typography sx={{padding: '0 20px'}} variant="body1" component='p'>
                 <p> Установите на имитаторе МИМ-70 переключатели ОТКЛОНЕНИЕ в положение "0".</p>
                 <p> На пульте ПС-172-02 нажмите кнопку КРЕН ОТКЛ. Убедитесь, что горят табло "КУРСОВАЯ СТАБИЛИЗ" на
                     на приборной доске лётчиков.</p>

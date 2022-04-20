@@ -29,6 +29,10 @@ export type CheckType = {
 
 export function f1(inputValue: string, channel: string, indexOfTable: number = 0) {
 
+    if(inputValue===''){
+        return true
+    }
+
     // @ts-ignore
     return (+inputValue <= this.controlValues[indexOfTable] + this.valuesOfErrors[indexOfTable]
         // @ts-ignore
@@ -40,6 +44,11 @@ export function f0(inputValue: string, channel: string, indexOfTable: number = 0
 }
 
 export function f2(inputValue: string, channel: string, indexOfTable: number = 0) {
+
+    if(inputValue===''){
+        return true
+    }
+
     // @ts-ignore.
     return f1.call(this, +inputValue / this.valuesOfBlocks[0][channel], channel, indexOfTable)
 
@@ -101,8 +110,8 @@ const initialState = {
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''}
             ],
             directionsOfChecks: [
-                'вправо/вверх и 2Т', 'вправо/вверх и 2Т',
-                'влево/вниз и 2Т', 'влево/вниз и 2Т',
+                'Вправо/вверх и 2Т', 'Вправо/вверх и 2Т',
+                'Влево/вниз и 2Т', 'Влево/вниз и 2Т',
             ],
             isHaveSettings: [false, true, false, true],
 
@@ -207,7 +216,6 @@ export const checksReducer = (state: any = initialState, action: ActionsType): a
                     } else return check;
                 })
             }
-
 
         case 'NEW_DATA':
             return initialState

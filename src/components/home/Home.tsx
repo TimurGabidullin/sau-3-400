@@ -95,7 +95,7 @@ const Home = () => {
         ]
     )
 
-    const pages = ['Содержание', 'Отчет'];
+    const pages = ['Содержание',"Проверки" , 'Отчет'];
     const settings = ['RA82043', 'RA82081'];
 
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -135,8 +135,6 @@ const Home = () => {
     }, []);
 
     const handleClickNewCheckBtn = useCallback(() => {
-        // localStorage.removeItem("reportState")
-        // localStorage.removeItem('checksState')
         dispatch(saveNewDataAC())
         setOpenDialogAlert(false)
         dispatch(loginAppAC())

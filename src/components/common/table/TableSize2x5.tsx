@@ -57,10 +57,10 @@ export default function TableSize2x5(props: any) {
         const inputValue4 = getValues("channel4");
 
 
-        if ((inputValue1 !== valuesOfBlock["channel1"] ||
-            inputValue2 !== valuesOfBlock["channel2"] ||
-            inputValue3 !== valuesOfBlock["channel3"] ||
-            inputValue4 !== valuesOfBlock["channel4"]) && isHaveSettings) {
+        if ((inputValue1 !== valuesOfBlock["channel1"] && valuesOfBlock["channel1"] !== '' ||
+            inputValue2 !== valuesOfBlock["channel2"] && valuesOfBlock["channel2"] !== '' ||
+            inputValue3 !== valuesOfBlock["channel3"] && valuesOfBlock["channel3"] !== '' ||
+            inputValue4 !== valuesOfBlock["channel4"] && valuesOfBlock["channel4"] !== '') && isHaveSettings) {
             setOpenDialogAlert(true)
         }
 
@@ -73,10 +73,10 @@ export default function TableSize2x5(props: any) {
 
 
     useEffect(() => {
-            if (valuesOfBlock['channel1']!=='') trigger('channel1')
-            if (valuesOfBlock['channel2']!=='') trigger('channel2')
-            if (valuesOfBlock['channel3']!=='') trigger('channel3')
-            if (valuesOfBlock['channel4']!=='') trigger('channel4')
+            if (valuesOfBlock['channel1'] !== '') trigger('channel1')
+            if (valuesOfBlock['channel2'] !== '') trigger('channel2')
+            if (valuesOfBlock['channel3'] !== '') trigger('channel3')
+            if (valuesOfBlock['channel4'] !== '') trigger('channel4')
         }
         , [])
 
@@ -86,7 +86,10 @@ export default function TableSize2x5(props: any) {
             <table className={styles.table}>
                 <tr>
                     <td></td>
-                    <td colSpan={4}>{numbersOfContacts} {directionOfCheck ? directionOfCheck[props.indexOfTable] : ''}</td>
+                    <td colSpan={4}><div className={styles.tableDescription}><span>{numbersOfContacts}</span>
+                        <span>{directionOfCheck
+                            ? directionOfCheck[props.indexOfTable]
+                            : ''} </span></div></td>
                 </tr>
                 <tr>
                     <td>{typeOfBlock} </td>

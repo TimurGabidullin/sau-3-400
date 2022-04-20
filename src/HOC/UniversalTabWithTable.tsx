@@ -35,7 +35,7 @@ export const UniversalTabWithTable = (Table: React.FC, indexOfTable = 0) => {
                 }}>
 
                     <Tabs
-                        sx={{display: {xs: 'none', md: 'flex'}, justifyContent: 'flex-end'}}
+                        sx={{display: {xs: 'flex', md: 'flex'}, justifyContent: 'flex-end'}}
                         value={selectTab}
                         onChange={handleChange}
                         textColor="secondary"

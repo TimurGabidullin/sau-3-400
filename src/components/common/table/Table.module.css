@@ -9,3 +9,8 @@
     margin-top: 5px;
 
 }
+
+.tableDescription{
+    display: flex;
+    justify-content: space-between;
+}

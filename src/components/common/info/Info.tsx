@@ -5,6 +5,7 @@ import {AppStateType} from "../../../redux/store";
 import {useParams} from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import {ParamsType} from "../../home/Home";
+import Container from "@mui/material/Container";
 
 
 export default function Info(props: any) {
@@ -14,10 +15,7 @@ export default function Info(props: any) {
 
 
     return (
-
-
-
-        <Typography sx={{paddingLeft: '20px'}} variant="body1" component='p'>
+        <Typography sx={{padding: '40px 20px' }} variant="body1" component='p'>
             Регулируйте регулировочными винтами резисторов R4 на субблоках ВГМ 103-1 (X14-место установки) блоков
             ВБК-51-01
         </Typography>
