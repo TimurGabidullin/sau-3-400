@@ -22,7 +22,7 @@ import AlertDialog from "../common/alertDialog/AlertDialog";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "../../redux/store";
 import {loginAppAC} from "../../redux/appReducer";
-import {saveNewDataAC} from "../../redux/checksReducer";
+import {saveContinueDataAC, saveNewDataAC} from "../../redux/checksReducer";
 
 export type ParamsType = {
     check?: string
@@ -32,11 +32,12 @@ export type ParamsType = {
 
 const Home = () => {
 
+    console.log("Home render")
+
     //----------------Hooks----------------------------------------------------
 
     const params: ParamsType = useParams();
     const dispatch = useDispatch()
-
     const [headerUrl, setHeaderUrl] = React.useState(params.header ? params.header : 'head1');
     const [checkUrl, setCheckUrl] = React.useState(params.check ? params.check : 'check1');
 
@@ -95,12 +96,16 @@ const Home = () => {
         ]
     )
 
-    const pages = ['Содержание',"Проверки" , 'Отчет'];
+    const pages = ['Содержание', "Проверки", 'Отчет'];
     const settings = ['RA82043', 'RA82081'];
 
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
     const [openDialogAlert, setOpenDialogAlert] = React.useState(false);
+    const [avatar, setAvatar] = React.useState('');
+    const numberOfPlane = useSelector((state: AppStateType) => state.app.numberOfPlane)
+
+
     const isLogin = useSelector((state: AppStateType) => state.app.isLogin)
 
     const handleOpenNavMenu = useCallback((event: React.MouseEvent<HTMLElement>) => {
@@ -120,28 +125,41 @@ const Home = () => {
         setAnchorElUser(null)
     }, [])
 
-    const handleOnClickUserMenu = useCallback((e) => {
-        handleCloseUserMenu()
-        if (e.target.innerHTML === 'RA82043') {
-            setOpenDialogAlert(true)
-        }
-    }, [])
 
-    const handleClickContinueBtn = useCallback(() => {
+
+
+    const handleOnClickUserMenu = (e:any) => {
+        // debugger
+
+        dispatch(loginAppAC(e.target.innerHTML))
+        handleCloseUserMenu()
+        setOpenDialogAlert(true)
+
+    }
+
+
+
+
+    const handleClickContinueBtn = () => {
+        debugger
+        setSelectedTab(0)
+        // dispatch(saveContinueDataAC(avatar))
         setOpenDialogAlert(false)
-        dispatch(loginAppAC())
+        setAvatar(numberOfPlane)
+
+    };
+
+
+    const handleClickNewCheckBtn = () => {
+
+
+        // dispatch(saveNewDataAC())
+        setOpenDialogAlert(false)
+        setAvatar(numberOfPlane)
         setSelectedTab(0)
 
-    }, []);
 
-    const handleClickNewCheckBtn = useCallback(() => {
-        dispatch(saveNewDataAC())
-        setOpenDialogAlert(false)
-        dispatch(loginAppAC())
-
-        setSelectedTab(1)
-
-    }, []);
+    };
 
 
     return (
@@ -240,8 +258,8 @@ const Home = () => {
                         <Box sx={{flexGrow: 0}}>
                             <Tooltip title="Open settings">
                                 <IconButton onClick={handleOpenUserMenu} sx={{p: 0}}>
-                                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg"/>
-                                    {/*<Avatar children={'42'}/>*/}
+                                    {/*<Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg"/>*/}
+                                    <Avatar  children={avatar?avatar.slice(5):'RA'}/>
                                 </IconButton>
                             </Tooltip>
                             <Menu

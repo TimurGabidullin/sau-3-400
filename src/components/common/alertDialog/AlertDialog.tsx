@@ -33,16 +33,26 @@ type AlertDialogPropsType={
 
 export default function AlertDialog(props:AlertDialogPropsType) {
 
-    const handleClose =useCallback( () => {
-        props.setOpenDialogAlert(false);
-    },[]);
 
-    const handleBtn1Click =useCallback( () => {
+
+
+
+
+
+
+
+
+
+    const handleClose =() => {
+        props.setOpenDialogAlert(false);
+    };
+
+    const handleBtn1Click =() => {
         props.handleAlertBtn1Click();
-    },[]);
-    const handleBtn2Click =useCallback( () => {
+    };
+    const handleBtn2Click =() => {
         props.handleAlertBtn2Click();
-    },[]);
+    };
 
 
     return (

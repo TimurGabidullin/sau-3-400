@@ -13,6 +13,8 @@ export const reportReducer = (state: ReportType = initialState, action: ActionsT
              ${action.typeOfSubBlock} блока ${action.typeOfBlock} резистором ${action.resistor}
               (книга 2 ${action.pageNumber})`
             }
+        case 'NEW_DATA':
+            return initialState
         default:
             return state
     }

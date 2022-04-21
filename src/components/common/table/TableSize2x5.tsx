@@ -11,11 +11,13 @@ import {CheckType, numToFunc, saveDataAC} from "../../../redux/checksReducer";
 import AlertDialog from "../alertDialog/AlertDialog";
 import {ParamsType} from "../../home/Home";
 import {addSettingsInReportAC} from "../../../redux/reportReducer";
+import {saveChecksState, saveReportState} from "../../../utils/localStorage";
 
 
 export default function TableSize2x5(props: any) {
 
     console.log('отрисовка компаненты Table')
+    const numberOfPlane = useSelector((state: AppStateType) => state.app.numberOfPlane)
 
     const params: ParamsType = useParams()
     const checks = useSelector((state: AppStateType) => state.checks[params.header ? params.header : 'head1'])
@@ -69,6 +71,9 @@ export default function TableSize2x5(props: any) {
             params.header ? params.header : "head1",
             params.check ? params.check : "check1",
             props.indexOfTable))
+
+
+
     }
 
 
@@ -79,6 +84,8 @@ export default function TableSize2x5(props: any) {
             if (valuesOfBlock['channel4'] !== '') trigger('channel4')
         }
         , [])
+
+
 
 
     return (

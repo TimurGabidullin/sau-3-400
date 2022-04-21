@@ -1,5 +1,8 @@
 import {AppStateType} from "../redux/store";
 
+import avatar from '../components/home/Home'
+
+
 
 export const loadState = () => {
     try {
@@ -24,16 +27,18 @@ export const saveState = (state:AppStateType) => {
 
 export const saveChecksState = (state:AppStateType) => {
     try {
+        debugger
         const serializedState = JSON.stringify(state.checks);
-        localStorage.setItem('checksState', serializedState);
+        localStorage.setItem(`checksState${state.app.numberOfPlane}`, serializedState);
     } catch (err) {
         // Ignore write errors.
     }
 };
 
-export const loadChecksState = () => {
+export const loadChecksState = (numberOfPlane:string) => {
     try {
-        const serializedState = localStorage.getItem('checksState');
+        debugger
+        const serializedState = localStorage.getItem('checksState'+numberOfPlane);
         if (serializedState === null) {
             return undefined;
         }
@@ -42,6 +47,9 @@ export const loadChecksState = () => {
         return undefined;
     }
 };
+
+
+//-------------------Report----------------------------
 
 export const saveReportState = (state:AppStateType) => {
     try {
@@ -52,9 +60,9 @@ export const saveReportState = (state:AppStateType) => {
     }
 };
 
-export const loadReportState = () => {
+export const loadReportState = (numberOfPlane:string) => {
     try {
-        const serializedState = localStorage.getItem('reportState');
+        const serializedState = localStorage.getItem(`reportState${numberOfPlane}`);
         if (serializedState === null) {
             return undefined;
         }

@@ -1,4 +1,5 @@
 import {ActionsType} from "./store";
+import {loadChecksState} from "../utils/localStorage";
 
 export type ChecksType = { [head: string]: CheckType[] }
 
@@ -220,6 +221,9 @@ export const checksReducer = (state: any = initialState, action: ActionsType): a
         case 'NEW_DATA':
             return initialState
 
+        case 'CONTINUE_DATA':
+            return loadChecksState(action.numberOfPlane)
+
         default:
             return state
     }
@@ -241,6 +245,11 @@ export const saveDataAC = (data: string[], head: string, idCheck: string, indexO
 
 export const saveNewDataAC = () => ({
     type: 'NEW_DATA',
+}) as const
+
+export const saveContinueDataAC = (numberOfPlane:string) => ({
+    type: 'CONTINUE_DATA',
+    numberOfPlane
 }) as const
 
 
