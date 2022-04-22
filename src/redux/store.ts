@@ -1,20 +1,8 @@
 import {combineReducers, createStore} from "redux";
 import headerReducer from "./headerReducer";
-import checksReducer, {saveContinueDataAC, saveDataAC, saveNewDataAC} from "./checksReducer";
-import reportReducer, {addSettingsInReportAC} from "./reportReducer";
+import checksReducer, {saveContinueChecksDataAC, saveDataAC, saveNewDataAC} from "./checksReducer";
+import reportReducer, {addSettingsInReportAC, saveContinueReportDataAC} from "./reportReducer";
 import appReducer, {loginAppAC, logoutAppAC} from "./appReducer";
-import {
-    loadChecksState,
-    loadReportState,
-    loadState,
-    saveChecksState,
-    saveReportState,
-    saveState
-} from "../utils/localStorage";
-import {useSelector} from "react-redux";
-
-
-
 
 
 let rootReducer = combineReducers({
@@ -24,16 +12,21 @@ let rootReducer = combineReducers({
     app: appReducer
 })
 
+
 export type AppStateType = ReturnType<typeof rootReducer>
+
 
 const store = createStore(rootReducer);
 
 
 
-store.subscribe(() => {
-    saveChecksState(store.getState())
-    saveReportState(store.getState())
-})
+// store.subscribe(() => {
+//     // debugger
+//     pageOfNumber=store.getState().app.numberOfPlane
+//     saveChecksState(store.getState(),pageOfNumber)
+//     // saveReportState(store.getState())
+//
+// })
 
 
 export type ActionsType = ReturnType<typeof saveDataAC>
@@ -41,7 +34,8 @@ export type ActionsType = ReturnType<typeof saveDataAC>
     | ReturnType<typeof loginAppAC>
     | ReturnType<typeof logoutAppAC>
     | ReturnType<typeof saveNewDataAC>
-    | ReturnType<typeof saveContinueDataAC>
+    | ReturnType<typeof saveContinueChecksDataAC>
+    | ReturnType<typeof saveContinueReportDataAC>
 
 
 export type StoreType = typeof store

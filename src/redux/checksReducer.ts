@@ -219,17 +219,18 @@ export const checksReducer = (state: any = initialState, action: ActionsType): a
             }
 
         case 'NEW_DATA':
+
             return initialState
 
-        case 'CONTINUE_DATA':
-            return loadChecksState(action.numberOfPlane)
+        case 'CONTINUE_DATA': {
 
+
+            // @ts-ignore
+            return action.data;
+        }
         default:
             return state
     }
-
-
-
 
 
 }
@@ -243,13 +244,14 @@ export const saveDataAC = (data: string[], head: string, idCheck: string, indexO
     indexOfTable
 }) as const
 
-export const saveNewDataAC = () => ({
+export const saveNewDataAC = (numberOfPlane:string) => ({
     type: 'NEW_DATA',
+    numberOfPlane
 }) as const
 
-export const saveContinueDataAC = (numberOfPlane:string) => ({
+export const saveContinueChecksDataAC = (data:any) => ({
     type: 'CONTINUE_DATA',
-    numberOfPlane
+    data
 }) as const
 
 

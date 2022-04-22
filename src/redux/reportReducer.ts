@@ -15,6 +15,15 @@ export const reportReducer = (state: ReportType = initialState, action: ActionsT
             }
         case 'NEW_DATA':
             return initialState
+
+        case 'CONTINUE_REPORT_DATA': {
+            debugger
+
+            // @ts-ignore
+            return action.data;
+        }
+
+
         default:
             return state
     }
@@ -33,5 +42,10 @@ export const addSettingsInReportAC = (idCheck: string,
     resistor
 }) as const
 
+
+export const saveContinueReportDataAC = (data:any) => ({
+    type: 'CONTINUE_REPORT_DATA',
+    data
+}) as const
 
 export default reportReducer;

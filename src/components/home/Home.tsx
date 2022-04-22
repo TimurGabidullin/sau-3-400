@@ -22,7 +22,9 @@ import AlertDialog from "../common/alertDialog/AlertDialog";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "../../redux/store";
 import {loginAppAC} from "../../redux/appReducer";
-import {saveContinueDataAC, saveNewDataAC} from "../../redux/checksReducer";
+import {saveContinueChecksDataAC, saveNewDataAC} from "../../redux/checksReducer";
+import {loadChecksState, loadReportState} from "../../utils/localStorage";
+import {saveContinueReportDataAC} from "../../redux/reportReducer";
 
 export type ParamsType = {
     check?: string
@@ -126,9 +128,7 @@ const Home = () => {
     }, [])
 
 
-
-
-    const handleOnClickUserMenu = (e:any) => {
+    const handleOnClickUserMenu = (e: any) => {
         // debugger
 
         dispatch(loginAppAC(e.target.innerHTML))
@@ -138,25 +138,22 @@ const Home = () => {
     }
 
 
-
-
     const handleClickContinueBtn = () => {
-        debugger
-        setSelectedTab(0)
-        // dispatch(saveContinueDataAC(avatar))
-        setOpenDialogAlert(false)
-        setAvatar(numberOfPlane)
 
+        setSelectedTab(0)
+        setAvatar(numberOfPlane)
+        setOpenDialogAlert(false)
+        debugger
+        dispatch(saveContinueChecksDataAC(loadChecksState(numberOfPlane)))
+        dispatch(saveContinueReportDataAC(loadReportState(numberOfPlane)))
     };
 
 
     const handleClickNewCheckBtn = () => {
-
-
-        // dispatch(saveNewDataAC())
         setOpenDialogAlert(false)
         setAvatar(numberOfPlane)
         setSelectedTab(0)
+        dispatch(saveNewDataAC(numberOfPlane))
 
 
     };
@@ -259,7 +256,7 @@ const Home = () => {
                             <Tooltip title="Open settings">
                                 <IconButton onClick={handleOpenUserMenu} sx={{p: 0}}>
                                     {/*<Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg"/>*/}
-                                    <Avatar  children={avatar?avatar.slice(5):'RA'}/>
+                                    <Avatar children={avatar ? avatar.slice(5) : 'RA'}/>
                                 </IconButton>
                             </Tooltip>
                             <Menu

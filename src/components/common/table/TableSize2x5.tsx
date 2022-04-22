@@ -16,9 +16,9 @@ import {saveChecksState, saveReportState} from "../../../utils/localStorage";
 
 export default function TableSize2x5(props: any) {
 
-    console.log('отрисовка компаненты Table')
     const numberOfPlane = useSelector((state: AppStateType) => state.app.numberOfPlane)
-
+    const checksReducer = useSelector((state: AppStateType) => state.checks)
+    const reportReducer = useSelector((state: AppStateType) => state.report)
     const params: ParamsType = useParams()
     const checks = useSelector((state: AppStateType) => state.checks[params.header ? params.header : 'head1'])
     const check = checks.filter((ch: CheckType) => ch.idCheck === params.check)[0]
@@ -33,8 +33,7 @@ export default function TableSize2x5(props: any) {
     const controlFunction = numToFunc[check.controlFunctions[props.indexOfTable]].bind(check)
     const valuesOfBlock = check.valuesOfBlocks[props.indexOfTable]
     const isHaveSettings = check.isHaveSettings[props.indexOfTable]
-    const directionOfCheck = check.directionsOfChecks
-
+    const directionOfCheck = check.directionsOfChecks1
     const [openDialogAlert, setOpenDialogAlert] = React.useState(false);
     const dispatch = useDispatch()
 
@@ -46,8 +45,21 @@ export default function TableSize2x5(props: any) {
 
     const handleAlertBtn2Click = () => {
         dispatch(addSettingsInReportAC(idCheck, pageNumber, typeOfBlock, typeOfSubBlock, resistor))
+
+
+
         setOpenDialogAlert(false)
     }
+
+
+    useEffect(() => {
+
+
+        // localStorage.setItem('checks' + numberOfPlane, JSON.stringify(checksReducer));
+
+        saveChecksState(checksReducer,numberOfPlane)
+        saveReportState(reportReducer,numberOfPlane)
+    }, [checksReducer,reportReducer])
 
 
     const onSubmit = () => {
@@ -73,11 +85,12 @@ export default function TableSize2x5(props: any) {
             props.indexOfTable))
 
 
-
     }
 
 
     useEffect(() => {
+            // localStorage.setItem('checks'+numberOfPlane, JSON.stringify(checksReducer));
+
             if (valuesOfBlock['channel1'] !== '') trigger('channel1')
             if (valuesOfBlock['channel2'] !== '') trigger('channel2')
             if (valuesOfBlock['channel3'] !== '') trigger('channel3')
@@ -86,17 +99,17 @@ export default function TableSize2x5(props: any) {
         , [])
 
 
-
-
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <table className={styles.table}>
                 <tr>
                     <td></td>
-                    <td colSpan={4}><div className={styles.tableDescription}><span>{numbersOfContacts}</span>
-                        <span>{directionOfCheck
-                            ? directionOfCheck[props.indexOfTable]
-                            : ''} </span></div></td>
+                    <td colSpan={4}>
+                        <div className={styles.tableDescription}><span>{numbersOfContacts}</span>
+                            <span>{directionOfCheck
+                                ? directionOfCheck[props.indexOfTable]
+                                : ''} </span></div>
+                    </td>
                 </tr>
                 <tr>
                     <td>{typeOfBlock} </td>

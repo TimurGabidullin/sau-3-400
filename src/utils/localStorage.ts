@@ -1,35 +1,11 @@
-import {AppStateType} from "../redux/store";
-
-import avatar from '../components/home/Home'
-
+import {ChecksType} from "../redux/checksReducer";
+import {ReportType} from "../redux/reportReducer";
 
 
-export const loadState = () => {
+export const saveChecksState = (checksReducer:ChecksType,numberOfPlane:string) => {
     try {
-        const serializedState = localStorage.getItem('state');
-        if (serializedState === null) {
-            return undefined;
-        }
-        return JSON.parse(serializedState);
-    } catch (err) {
-        return undefined;
-    }
-};
-
-export const saveState = (state:AppStateType) => {
-    try {
-        const serializedState = JSON.stringify(state);
-        localStorage.setItem('state', serializedState);
-    } catch (err) {
-        // Ignore write errors.
-    }
-};
-
-export const saveChecksState = (state:AppStateType) => {
-    try {
-        debugger
-        const serializedState = JSON.stringify(state.checks);
-        localStorage.setItem(`checksState${state.app.numberOfPlane}`, serializedState);
+        const checksState = JSON.stringify(checksReducer);
+        localStorage.setItem(`checks${numberOfPlane}`, checksState);
     } catch (err) {
         // Ignore write errors.
     }
@@ -37,24 +13,24 @@ export const saveChecksState = (state:AppStateType) => {
 
 export const loadChecksState = (numberOfPlane:string) => {
     try {
-        debugger
-        const serializedState = localStorage.getItem('checksState'+numberOfPlane);
-        if (serializedState === null) {
+        // debugger
+        let checksState = localStorage.getItem('checks'+numberOfPlane);
+        if (checksState === null) {
             return undefined;
         }
-        return JSON.parse(serializedState);
+        return JSON.parse(checksState);
+
     } catch (err) {
         return undefined;
     }
 };
 
-
 //-------------------Report----------------------------
 
-export const saveReportState = (state:AppStateType) => {
+export const saveReportState = (reportReducer:ReportType,numberOfPlane:string) => {
     try {
-        const serializedState = JSON.stringify(state.report);
-        localStorage.setItem('reportState', serializedState);
+        const reportState = JSON.stringify(reportReducer);
+        localStorage.setItem('report'+numberOfPlane, reportState);
     } catch (err) {
         // Ignore write errors.
     }
@@ -62,11 +38,11 @@ export const saveReportState = (state:AppStateType) => {
 
 export const loadReportState = (numberOfPlane:string) => {
     try {
-        const serializedState = localStorage.getItem(`reportState${numberOfPlane}`);
-        if (serializedState === null) {
+        const reportState = localStorage.getItem(`report${numberOfPlane}`);
+        if (reportState === null) {
             return undefined;
         }
-        return JSON.parse(serializedState);
+        return JSON.parse(reportState);
     } catch (err) {
         return undefined;
     }
