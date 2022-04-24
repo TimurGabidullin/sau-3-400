@@ -33,7 +33,7 @@ export default function TableSize2x5(props: any) {
     const controlFunction = numToFunc[check.controlFunctions[props.indexOfTable]].bind(check)
     const valuesOfBlock = check.valuesOfBlocks[props.indexOfTable]
     const isHaveSettings = check.isHaveSettings[props.indexOfTable]
-    const directionOfCheck = check.directionsOfChecks1
+    const directionOfCheck = check.directionsOfChecks
     const [openDialogAlert, setOpenDialogAlert] = React.useState(false);
     const dispatch = useDispatch()
 
@@ -177,6 +177,7 @@ export default function TableSize2x5(props: any) {
                     variant="outlined"
                     endIcon={<CalculateIcon/>}
                     color="secondary"
+                    sx={{transitionDuration:"0.5s"}}
 
                 >
                     Расчёт

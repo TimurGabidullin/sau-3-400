@@ -1,9 +1,10 @@
-import React, {useCallback} from 'react';
+import React from 'react';
 import {useParams} from "react-router-dom";
 import Paginator from "../common/paginator/paginator.";
 import Check1 from "./check/Check1";
 import Check2 from './check/Check2';
 import Check3 from './check/Check3';
+import TransitionGroupExample from "../report/trans";
 
 
 
@@ -24,11 +25,13 @@ function Checks(props:ChecksPropsType) {
     return (
         <div>
             <Paginator paginatorPageNumber={props.paginatorPageNumber} LinkToCheck={props.LinkToCheck}/>
-            {params.check==="check1"&&<Check1 />}
+            {params.check==="check1"&& <Check1 />}
 
             {params.check==="check2"&&<Check2 />}
 
             {params.check==="check3"&&<Check3 />}
+
+            {params.check==="check4"&&<TransitionGroupExample />}
 
             <Paginator paginatorPageNumber={props.paginatorPageNumber} LinkToCheck={props.LinkToCheck}/>
 

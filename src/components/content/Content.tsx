@@ -6,6 +6,8 @@ import {AppStateType} from "../../redux/store";
 import {CheckType} from "../../redux/checksReducer";
 import Container from "@mui/material/Container";
 import Typography from '@mui/material/Typography';
+const Fade = require("react-reveal/Fade")
+
 
 type ContentPropsType = {
     setSelectedTab: (value: number) => void
@@ -22,6 +24,7 @@ function Content(props: ContentPropsType) {
     return (
         <Container>
             <div className={styles.emptyDiv}></div>
+            <Fade top cascade>
             {header.map((h) => {
 
                 // @ts-ignore
@@ -51,7 +54,7 @@ function Content(props: ContentPropsType) {
                                             className={({isActive})=>(isActive?styles.active:styles.inactive)}
                                             to={`/home/checks/${h.idHeader}/${t.url}`}
                                         >
-                                            <Typography sx={{paddingLeft: '20px'}} variant="body1" component='p'>
+                                             <Typography sx={{paddingLeft: '20px'}} variant="body1" component='p'>
                                                 {t.title}
                                             </Typography>
                                         </NavLink>
@@ -61,7 +64,7 @@ function Content(props: ContentPropsType) {
                     )
                 }
             )}
-
+            </Fade>
         </Container>
 
     );

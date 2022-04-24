@@ -6,6 +6,7 @@ import Tab from "@mui/material/Tab";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import SettingsIcon from "@mui/icons-material/Settings";
 import Info from "../components/common/info/Info";
+const Fade = require("react-reveal/Fade")
 
 
 export const UniversalTabWithTable = (Table: React.FC, indexOfTable = 0) => {
@@ -23,7 +24,9 @@ export const UniversalTabWithTable = (Table: React.FC, indexOfTable = 0) => {
         console.log('TabWithTableProps', props)
 
         return (
+
             <Container maxWidth={"sm"}>
+                <Fade left>
                 <Box sx={{
                     maxWidth: '100%',
                     backgroundColor: '#f5f5f5',
@@ -50,7 +53,9 @@ export const UniversalTabWithTable = (Table: React.FC, indexOfTable = 0) => {
                         ? <Table {...props} indexOfTable={indexOfTable}/>
                         : <Info {...props} indexOfTable={indexOfTable}/>}
                 </Box>
+                </Fade>
             </Container>
+
         )
     }
     return TabWithTable

@@ -7,7 +7,8 @@ import {useParams} from "react-router-dom";
 import {CheckType} from "../../../redux/checksReducer";
 import UniversalTabWithTable from "../../../HOC/UniversalTabWithTable";
 import styles from "./Check.module.css";
-
+// @ts-ignore
+import Fade from 'react-reveal/Fade';
 
 type CheckPropsType = {
 
@@ -22,6 +23,8 @@ const Check1=(props: CheckPropsType)=> {
     const headerOfCheck = checks.filter((ch: CheckType) => ch.idCheck === params.check)[0].title
 
     return (
+
+        <Fade bottom cascade>
         <div className={styles.checkContainer}>
             <Typography sx={{padding: '0 20px',textIndent:'40px'}} variant="h6" component="h6">
                 {headerOfCheck}
@@ -49,6 +52,7 @@ const Check1=(props: CheckPropsType)=> {
 
 
         </div>
+            </Fade >
     );
 }
 

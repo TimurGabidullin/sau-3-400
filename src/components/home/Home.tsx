@@ -16,7 +16,7 @@ import Content from "../content/Content";
 import Report from "../report/Report";
 import styles from "./Home.module.css";
 import Checks from "../checks/Checks";
-import {Navigate, useNavigate, useParams} from 'react-router-dom'
+import {useNavigate, useParams} from 'react-router-dom'
 import {useCallback, useEffect} from "react";
 import AlertDialog from "../common/alertDialog/AlertDialog";
 import {useDispatch, useSelector} from "react-redux";
@@ -25,6 +25,11 @@ import {loginAppAC} from "../../redux/appReducer";
 import {saveContinueChecksDataAC, saveNewDataAC} from "../../redux/checksReducer";
 import {loadChecksState, loadReportState} from "../../utils/localStorage";
 import {saveContinueReportDataAC} from "../../redux/reportReducer";
+
+const Fade = require("react-reveal/Fade")
+const Flip = require("react-reveal/Flip")
+const Pulse = require("react-reveal/Pulse")
+
 
 export type ParamsType = {
     check?: string
@@ -171,8 +176,9 @@ const Home = () => {
                             component="div"
                             sx={{mr: 2, display: {xs: 'none', md: 'flex'}}}
                         >
-                            Volga-Dnepr
+                            <Flip> Volga-Dnepr</Flip>
                         </Typography>
+
 
                         <Box sx={{flexGrow: 1, display: {xs: 'flex', md: 'none'}}}>
                             <IconButton
@@ -211,14 +217,16 @@ const Home = () => {
                                 ))}
                             </Menu>
                         </Box>
+
                         <Typography
                             variant="h6"
                             noWrap
                             component="div"
                             sx={{flexGrow: 1, display: {xs: 'flex', md: 'none'}}}
                         >
-                            Volga-Dnepr
+                            <Flip> Volga-Dnepr </Flip>
                         </Typography>
+
 
                         {/*Содержание и отчет на большом экране*/}
 
@@ -230,23 +238,30 @@ const Home = () => {
                             textColor="inherit"
                             variant="fullWidth"
                             aria-label="full width tabs example"
-                            // aria-label="nav tabs example"
+
                         >
+
+
                             <Tab
                                 sx={{padding: "26px", maxWidth: "120px",}}
-                                label="Содержание"
+                                label={<Fade right>Содержание</Fade>}
                                 disabled={!isLogin}
                             />
+
+
                             <Tab
                                 sx={{padding: "26px", maxWidth: "120px"}}
-                                label="Проверки"
+                                label={<Fade right>Проверки</Fade>}
                                 disabled={!isLogin}
                             />
+
+
                             <Tab
                                 sx={{padding: "26px", minWidth: "120px", maxWidth: "120px"}}
-                                label="Отчёт"
+                                label={<Fade right>Отчёт</Fade>}
                                 disabled={!isLogin}
                             />
+
                         </Tabs>
 
 
@@ -256,31 +271,38 @@ const Home = () => {
                             <Tooltip title="Open settings">
                                 <IconButton onClick={handleOpenUserMenu} sx={{p: 0}}>
                                     {/*<Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg"/>*/}
-                                    <Avatar children={avatar ? avatar.slice(5) : 'RA'}/>
+                                    <Pulse count={5}>
+                                        <Avatar children={avatar ? avatar.slice(5) : 'RA'}/>
+                                    </Pulse>
+
                                 </IconButton>
                             </Tooltip>
-                            <Menu
-                                sx={{mt: '45px'}}
-                                id="menu-appbar"
-                                anchorEl={anchorElUser}
-                                anchorOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'right',
-                                }}
-                                keepMounted
-                                transformOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'right',
-                                }}
-                                open={Boolean(anchorElUser)}
-                                onClose={handleCloseUserMenu}
-                            >
-                                {settings.map((setting) => (
-                                    <MenuItem key={setting} onClick={handleOnClickUserMenu}>
-                                        <Typography textAlign="center">{setting}</Typography>
-                                    </MenuItem>
-                                ))}
-                            </Menu>
+                            <Fade left>
+                                <Menu
+                                    sx={{mt: '45px'}}
+                                    id="menu-appbar"
+                                    anchorEl={anchorElUser}
+                                    anchorOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'right',
+                                    }}
+                                    keepMounted
+
+                                    transformOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'right',
+                                    }}
+                                    open={Boolean(anchorElUser)}
+                                    onClose={handleCloseUserMenu}
+                                >
+                                    {settings.map((setting) => (
+                                        <MenuItem key={setting} onClick={handleOnClickUserMenu}>
+                                            <Typography textAlign="center">{setting}</Typography>
+                                        </MenuItem>
+                                    ))}
+                                </Menu>
+
+                            </Fade>
                         </Box>
                     </Toolbar>
                 </Container>

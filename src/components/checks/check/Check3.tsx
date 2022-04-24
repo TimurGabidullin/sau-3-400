@@ -8,7 +8,8 @@ import {CheckType} from "../../../redux/checksReducer";
 import UniversalTabWithTable from "../../../HOC/UniversalTabWithTable";
 import styles from "./Check.module.css";
 import {ParamsType} from "../../home/Home";
-
+// @ts-ignore
+import Fade from 'react-reveal/Fade';
 
 type CheckPropsType = {}
 
@@ -18,6 +19,7 @@ const Check3 = (props: CheckPropsType) => {
     const headerOfCheck = checks.filter((ch: CheckType) => ch.idCheck === params.check)[0].title
 
     return (
+        <Fade bottom cascade>
         <div className={styles.checkContainer}>
             <Typography sx={{padding: '0 20px',textIndent:'40px'}} variant="h6" component="h6">
                 {headerOfCheck}
@@ -122,7 +124,13 @@ const Check3 = (props: CheckPropsType) => {
             <p>Плавно вращая ручки датчиков &#936;<span>гмк</span> имитаторов ИМБ-5 и не допуская расхождения между
                 ними более, чем на 1°, установите значчение угла курса в пределах ±0,05°. </p>
             </Typography>
+
+
+
+
+
         </div>
+        </Fade >
     );
 }
 
