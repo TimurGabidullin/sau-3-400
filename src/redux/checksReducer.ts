@@ -1,10 +1,10 @@
 import {ActionsType} from "./store";
-import {loadChecksState} from "../utils/localStorage";
+
 
 export type ChecksType = { [head: string]: CheckType[] }
+// export type ChecksType = typeof initialState
 
 // type ControlFunctionType = (inputValue: string, channel: string, indexOfTable: number) => boolean
-
 
 export type CheckType = {
     title: string
@@ -19,18 +19,18 @@ export type CheckType = {
     controlFunctions: number[]
     controlValues: number[]
     valuesOfErrors: number[]
-    // valuesOfBlocks?: number[][]
-    valuesOfBlocks: { 'channel1': string, 'channel2': string, 'channel3': string, 'channel4': string }[]
 
+    valuesOfBlocks: { 'channel1': string, 'channel2': string, 'channel3': string, 'channel4': string }[]
+    additionalValues?: string[]
     isHaveSettings: boolean[]
     directionsOfChecks?: string[]
     subBlocks?: string[]
 
 }
 
-export function f1(inputValue: string, channel: string, indexOfTable: number = 0) {
+export function compareFunc(inputValue: string, channel: string, indexOfTable: number = 0) {
 
-    if(inputValue===''){
+    if (inputValue === '') {
         return true
     }
 
@@ -40,26 +40,41 @@ export function f1(inputValue: string, channel: string, indexOfTable: number = 0
         && +inputValue >= this.controlValues[indexOfTable] - this.valuesOfErrors[indexOfTable])
 }
 
-export function f0(inputValue: string, channel: string, indexOfTable: number = 0) {
+// export function emptyFunc(inputValue: string, channel: string, indexOfTable: number = 0) {
+//     return true
+// }
+
+export function emptyFunc() {
     return true
 }
 
 export function f2(inputValue: string, channel: string, indexOfTable: number = 0) {
 
-    if(inputValue===''){
+    if (inputValue === '') {
         return true
     }
 
     // @ts-ignore.
-    return f1.call(this, +inputValue / this.valuesOfBlocks[0][channel], channel, indexOfTable)
+    return compareFunc.call(this, +inputValue / this.valuesOfBlocks[0][channel], channel, indexOfTable)
 
 }
 
+export function universalFunc(inputValue: string, channel: string, indexOfTable: number = 0) {
+
+    if (inputValue === '') {
+        return true
+    }
+
+    // @ts-ignore.
+    return compareFunc.call(this, +inputValue - initialState['head1'][0].valuesOfBlocks[indexOfTable] / this.valuesOfBlocks[0][channel], channel, indexOfTable)
+
+}
 
 export const numToFunc = {
-    0: f0,
-    1: f1,
-    2: f2
+    0: emptyFunc,
+    1: compareFunc,
+    2: f2,
+    3: universalFunc,
 }
 
 
@@ -127,8 +142,8 @@ const initialState = {
             typesOfSubBlocks: ['', ''],
             resistors: ['', ''],
             numbersOfContacts: [
-                'U26/11 Ш35', 'U20/11 Ш35',
-                'U26/11 Ш35', 'U20/11 Ш35',
+                'U26/11 Ш35', 'U26/11 Ш35',
+                'U20/11 Ш35', 'U20/11 Ш35',
                 'U26/11 Ш35', 'U26/11 Ш35',
                 'U24/11 Ш35', 'U24/11 Ш35'
             ],
@@ -146,10 +161,10 @@ const initialState = {
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
             ],
-
+            additionalValues: [],
             directionsOfChecks: [
-                'На кабрирование', 'На кабрирование',
-                'На пикирование', 'На пикирование',
+                'На кабрирование', 'На пикирование',
+                'На кабрирование', 'На пикирование',
                 'Вправо', 'Влево',
                 'Вправо', 'Влево'],
             isHaveSettings: [true, true, true, true, true, true, true, true]
@@ -174,8 +189,6 @@ const initialState = {
             idCheck: 'check5',
             pageNumber: 482,
             paginatorNumber: 5
-
-
         } as CheckType,
 
         {
@@ -190,7 +203,7 @@ const initialState = {
 }
 
 
-export const checksReducer = (state: any = initialState, action: ActionsType): any => {
+export const checksReducer = (state: ChecksType = initialState, action: ActionsType): ChecksType => {
 
     switch (action.type) {
         case 'SAVE_DATA':
@@ -244,17 +257,15 @@ export const saveDataAC = (data: string[], head: string, idCheck: string, indexO
     indexOfTable
 }) as const
 
-export const saveNewDataAC = (numberOfPlane:string) => ({
+export const saveNewDataAC = (numberOfPlane: string) => ({
     type: 'NEW_DATA',
     numberOfPlane
 }) as const
 
-export const saveContinueChecksDataAC = (data:any) => ({
+export const saveContinueChecksDataAC = (data: any) => ({
     type: 'CONTINUE_DATA',
     data
 }) as const
-
-
 
 
 export default checksReducer;

@@ -7,8 +7,7 @@ import {useParams} from "react-router-dom";
 import {CheckType} from "../../../redux/checksReducer";
 import UniversalTabWithTable from "../../../HOC/UniversalTabWithTable";
 import styles from "./Check.module.css";
-// @ts-ignore
-import Fade from 'react-reveal/Fade';
+const Fade = require("react-reveal/Fade")
 
 type CheckPropsType = {
 

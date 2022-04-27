@@ -8,12 +8,13 @@ import {CheckType} from "../../../redux/checksReducer";
 import UniversalTabWithTable from "../../../HOC/UniversalTabWithTable";
 import styles from "./Check.module.css";
 import {ParamsType} from "../../home/Home";
-// @ts-ignore
-import Fade from 'react-reveal/Fade';
+const Fade = require("react-reveal/Fade")
+
 
 type CheckPropsType = {}
 
 const Check3 = (props: CheckPropsType) => {
+
     const params:ParamsType = useParams();
     const checks = useSelector((state: AppStateType) => state.checks[params.header? params.header : 'head1'])
     const headerOfCheck = checks.filter((ch: CheckType) => ch.idCheck === params.check)[0].title
@@ -43,8 +44,7 @@ const Check3 = (props: CheckPropsType) => {
                 <p>Произведите проверку, изменив направление задания тангажа.</p>
             </Typography>
 
-
-
+            {UniversalTabWithTable(TableSize2x5, 1)(props)}
 
             <Typography sx={{padding: '0 20px'}} variant="body1" component='p'>
                 <p> Измерьте с помощью пульта ППН-149 значение напряжения остоянного тока U<span>&#x394;Vк(п)</span>&#8544;(&#8545;,&#8546;,&#8547;)
@@ -57,13 +57,12 @@ const Check3 = (props: CheckPropsType) => {
                 <p>(U<span>&#x394;Vк(п)</span>&#8547;-U<span>&#x394;V0</span>&#8547;)/V<span>к(п)</span>&#8547;=-(0,5±0,05)В/°.</p>
             </Typography>
 
-            {UniversalTabWithTable(TableSize2x5, 1)(props)}
+            {UniversalTabWithTable(TableSize2x5, 2)(props)}
 
             <Typography sx={{padding: '0 20px'}} variant="body1" component='p'>
                 <p>Произведите проверку, изменив направление задания тангажа.</p>
             </Typography>
 
-            {UniversalTabWithTable(TableSize2x5, 2)(props)}
             {UniversalTabWithTable(TableSize2x5, 3)(props)}
 
             <Typography sx={{padding: '0 20px'}} variant="body1" component='p'>
@@ -124,10 +123,6 @@ const Check3 = (props: CheckPropsType) => {
             <p>Плавно вращая ручки датчиков &#936;<span>гмк</span> имитаторов ИМБ-5 и не допуская расхождения между
                 ними более, чем на 1°, установите значчение угла курса в пределах ±0,05°. </p>
             </Typography>
-
-
-
-
 
         </div>
         </Fade >
