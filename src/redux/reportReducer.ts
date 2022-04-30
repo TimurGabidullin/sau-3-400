@@ -1,9 +1,15 @@
 import {ActionsType} from "./store";
 
 
-export type ReportType = { [head: string]: string }
+export type ReportType = { [idCheck: string]: string }
 
-const initialState: ReportType = {}
+const initialState: ReportType = {
+    'check1': '1',
+    'check2': '2',
+    'check3': '3',
+    'check4': '4',
+
+}
 
 export const reportReducer = (state: ReportType = initialState, action: ActionsType): ReportType => {
     switch (action.type) {
@@ -17,10 +23,17 @@ export const reportReducer = (state: ReportType = initialState, action: ActionsT
             return initialState
 
         case 'CONTINUE_REPORT_DATA': {
-            debugger
-
-            // @ts-ignore
             return action.data;
+        }
+
+        case "ADD_NEW_REPORT": {
+            return {"head100": action.report, ...state};
+        }
+
+        case "REMOVE_REPORT": {
+            const newState = {...state}
+            delete newState[action.idCheck]
+            return newState;
         }
 
 
@@ -43,9 +56,19 @@ export const addSettingsInReportAC = (idCheck: string,
 }) as const
 
 
-export const saveContinueReportDataAC = (data:any) => ({
+export const saveContinueReportDataAC = (data: any) => ({
     type: 'CONTINUE_REPORT_DATA',
     data
+}) as const
+
+export const addNewReportAC = (report: string) => ({
+    type: 'ADD_NEW_REPORT',
+    report
+}) as const
+
+export const removeReportAC = (idCheck: string) => ({
+    type: 'REMOVE_REPORT',
+    idCheck
 }) as const
 
 export default reportReducer;

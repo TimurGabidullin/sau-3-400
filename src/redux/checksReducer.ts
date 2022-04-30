@@ -64,9 +64,9 @@ export function universalFunc(inputValue: string, channel: string, indexOfTable:
     if (inputValue === '') {
         return true
     }
-
+debugger
     // @ts-ignore.
-    return compareFunc.call(this, +inputValue - initialState['head1'][0].valuesOfBlocks[indexOfTable] / this.valuesOfBlocks[0][channel], channel, indexOfTable)
+    return compareFunc.call(this, +inputValue - initialState['head1'][0].valuesOfBlocks[0][channel] / this.valuesOfBlocks[0][channel], channel, indexOfTable)
 
 }
 
@@ -148,7 +148,7 @@ const initialState = {
                 'U24/11 Ш35', 'U24/11 Ш35'
             ],
             // controlFunctions: [f1, f1, f1, f1, f0, f0, f0, f0],
-            controlFunctions: [1, 1, 1, 1, 1, 1, 1, 1],
+            controlFunctions: [1, 1, 3, 3, 1, 1, 3, 3],
             controlValues: [3.5, -3.5, 3.5, -3.5, -1.89, 1.89, -2.24, 2.24],
             valuesOfErrors: [0.35, 0.35, 0.35, 0.35, 0.21, 0.21, 0.21, 0.21],
             valuesOfBlocks: [
@@ -179,8 +179,6 @@ const initialState = {
             idCheck: 'check4',
             pageNumber: 480,
             paginatorNumber: 4
-
-
         } as CheckType,
 
         {
@@ -244,8 +242,6 @@ export const checksReducer = (state: ChecksType = initialState, action: ActionsT
         default:
             return state
     }
-
-
 }
 
 
@@ -266,6 +262,5 @@ export const saveContinueChecksDataAC = (data: any) => ({
     type: 'CONTINUE_DATA',
     data
 }) as const
-
 
 export default checksReducer;

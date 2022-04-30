@@ -1,7 +1,12 @@
 import {combineReducers, createStore} from "redux";
 import headerReducer from "./headerReducer";
 import checksReducer, {saveContinueChecksDataAC, saveDataAC, saveNewDataAC} from "./checksReducer";
-import reportReducer, {addSettingsInReportAC, saveContinueReportDataAC} from "./reportReducer";
+import reportReducer, {
+    addNewReportAC,
+    addSettingsInReportAC,
+    removeReportAC,
+    saveContinueReportDataAC
+} from "./reportReducer";
 import appReducer, {loginAppAC, logoutAppAC} from "./appReducer";
 
 
@@ -36,11 +41,14 @@ export type ActionsType = ReturnType<typeof saveDataAC>
     | ReturnType<typeof saveNewDataAC>
     | ReturnType<typeof saveContinueChecksDataAC>
     | ReturnType<typeof saveContinueReportDataAC>
+    | ReturnType<typeof addNewReportAC>
+    | ReturnType<typeof removeReportAC>
 
 
 export type StoreType = typeof store
 
 //@ts-ignore
+
 window.store = store
 
 export default store
