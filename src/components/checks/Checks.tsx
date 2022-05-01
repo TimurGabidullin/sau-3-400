@@ -4,7 +4,8 @@ import Paginator from "../common/paginator/paginator.";
 import Check1 from "./check/Check1";
 import Check2 from './check/Check2';
 import Check3 from './check/Check3';
-import TransitionGroupExample from "../report/trans";
+import Check4 from './check/Check4';
+
 
 
 
@@ -31,7 +32,7 @@ function Checks(props:ChecksPropsType) {
 
             {params.check==="check3"&&<Check3 />}
 
-            {params.check==="check4"&&<TransitionGroupExample />}
+            {params.check==="check4"&&<Check4 />}
 
             <Paginator paginatorPageNumber={props.paginatorPageNumber} LinkToCheck={props.LinkToCheck}/>
 

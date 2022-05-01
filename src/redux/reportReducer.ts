@@ -1,13 +1,9 @@
 import {ActionsType} from "./store";
-
+import  {v4} from 'uuid';
 
 export type ReportType = { [idCheck: string]: string }
 
 const initialState: ReportType = {
-    'check1': '1',
-    'check2': '2',
-    'check3': '3',
-    'check4': '4',
 
 }
 
@@ -27,7 +23,7 @@ export const reportReducer = (state: ReportType = initialState, action: ActionsT
         }
 
         case "ADD_NEW_REPORT": {
-            return {"head100": action.report, ...state};
+            return {[v4()]: action.report, ...state};
         }
 
         case "REMOVE_REPORT": {
