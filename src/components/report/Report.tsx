@@ -4,8 +4,6 @@ import Button from '@mui/material/Button';
 import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
 import DeleteIcon from '@mui/icons-material/Delete';
 import {TransitionGroup} from 'react-transition-group';
 import {useDispatch, useSelector} from "react-redux";
@@ -13,11 +11,18 @@ import {AppStateType} from "../../redux/store";
 import TextField from '@mui/material/TextField';
 import {addNewReportAC, removeReportAC} from "../../redux/reportReducer";
 import {useForm} from "react-hook-form";
+import {useEffect} from "react";
+import Typography from "@mui/material/Typography";
+import Icon from '@mui/material/Icon';
 
+function Report() {
 
- function Report() {
-    const {register,  handleSubmit, formState: {errors}, getValues} = useForm();
-    const onSubmit = (data:any) => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
+    const {register, handleSubmit, formState: {errors}, getValues} = useForm();
+    const onSubmit = (data: any) => {
         debugger
         dispatch(addNewReportAC(data.report));
     }
@@ -29,8 +34,6 @@ import {useForm} from "react-hook-form";
     const handleRemoveReport = (idCheck: string) => {
         dispatch(removeReportAC(idCheck))
     };
-
-
 
 
     return (
@@ -45,17 +48,19 @@ import {useForm} from "react-hook-form";
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <TextField
                         // fullWidth
+                        color='secondary'
                         label='Введите отчёт'
                         id="fullWidth"
                         error={errors.report}
-                        {...register("report", { required: true })}
+                        {...register("report", {required: true})}
                     />
 
-                    <Button
-                        type={"submit"}
-                        variant="contained"
-                    >
-                        Добавить отчет
+                    <Button type={"submit"}>
+                        <Icon
+                            color='secondary'
+                            sx={{ fontSize: 40 }}
+                        >add_circle
+                        </Icon>
                     </Button>
                     {errors.report && <div>This field is required</div>}
                 </form>
@@ -67,15 +72,20 @@ import {useForm} from "react-hook-form";
                     <TransitionGroup>
                         {Object.keys(report).map((idCheck) => (
                             <Collapse key={idCheck}>
-                                {report[idCheck]}
-                                <IconButton
-                                    edge="end"
-                                    aria-label="delete"
-                                    title="Delete"
-                                    onClick={() => handleRemoveReport(idCheck)}
-                                >
-                                    <DeleteIcon/>
-                                </IconButton>
+                                <Typography sx={{padding: '0 20px'}} variant="body1" component='p'>
+                                    {report[idCheck]}
+                                    <IconButton
+                                        edge="end"
+                                        aria-label="delete"
+                                        title="Delete"
+                                        color='secondary'
+                                        onClick={() => handleRemoveReport(idCheck)}
+                                    >
+                                        <DeleteIcon/>
+                                    </IconButton>
+
+                                </Typography>
+
                             </Collapse>
                         ))}
                     </TransitionGroup>

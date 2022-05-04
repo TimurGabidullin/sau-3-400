@@ -7,7 +7,7 @@ import reportReducer, {
     removeReportAC,
     saveContinueReportDataAC
 } from "./reportReducer";
-import appReducer, {loginAppAC, logoutAppAC} from "./appReducer";
+import appReducer, {loginAppAC, logoutAppAC, setCurrentPageAC} from "./appReducer";
 
 
 let rootReducer = combineReducers({
@@ -43,6 +43,7 @@ export type ActionsType = ReturnType<typeof saveDataAC>
     | ReturnType<typeof saveContinueReportDataAC>
     | ReturnType<typeof addNewReportAC>
     | ReturnType<typeof removeReportAC>
+    | ReturnType<typeof setCurrentPageAC>
 
 
 export type StoreType = typeof store

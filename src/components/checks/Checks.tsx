@@ -5,7 +5,8 @@ import Check1 from "./check/Check1";
 import Check2 from './check/Check2';
 import Check3 from './check/Check3';
 import Check4 from './check/Check4';
-
+import Stepper from "../common/stepper/Stepper";
+import Container from "@mui/material/Container";
 
 
 
@@ -26,6 +27,7 @@ function Checks(props:ChecksPropsType) {
     return (
         <div>
             <Paginator paginatorPageNumber={props.paginatorPageNumber} LinkToCheck={props.LinkToCheck}/>
+            <Stepper paginatorPageNumber={props.paginatorPageNumber} LinkToCheck={props.LinkToCheck}/>
             {params.check==="check1"&& <Check1 />}
 
             {params.check==="check2"&&<Check2 />}
@@ -34,7 +36,7 @@ function Checks(props:ChecksPropsType) {
 
             {params.check==="check4"&&<Check4 />}
 
-            <Paginator paginatorPageNumber={props.paginatorPageNumber} LinkToCheck={props.LinkToCheck}/>
+            {/*<Paginator paginatorPageNumber={props.paginatorPageNumber} LinkToCheck={props.LinkToCheck}/>*/}
 
         </div>
     );

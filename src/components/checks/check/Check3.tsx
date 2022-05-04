@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import TableSize2x5 from "../../common/table/TableSize2x5";
 import Typography from "@mui/material/Typography";
 import {useSelector} from "react-redux";
@@ -18,6 +18,9 @@ const Check3 = (props: CheckPropsType) => {
     const params:ParamsType = useParams();
     const checks = useSelector((state: AppStateType) => state.checks[params.header? params.header : 'head1'])
     const headerOfCheck = checks.filter((ch: CheckType) => ch.idCheck === params.check)[0].title
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     return (
         <Fade bottom cascade>
