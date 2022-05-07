@@ -7,6 +7,8 @@ import {CheckType} from "../../redux/checksReducer";
 import Container from "@mui/material/Container";
 import Typography from '@mui/material/Typography';
 import {setCurrentPageAC} from "../../redux/appReducer";
+import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
+import AttachFileIcon from '@mui/icons-material/AttachFile';
 
 const Fade = require("react-reveal/Fade")
 
@@ -29,11 +31,10 @@ function Content(props: ContentPropsType) {
             <Fade top cascade>
                 {header.map((h) => {
 
-                        // @ts-ignore
                         return (
                             <ul className={styles.list}>
                                 <Typography sx={{padding: 0}} variant="h6" component='h6'>
-                                    {h.title}
+                                     <FlightTakeoffIcon/>  {h.title}
                                 </Typography>
                                 {
                                     checks[h.idHeader]
@@ -49,17 +50,13 @@ function Content(props: ContentPropsType) {
                                         .map((t) => <li onClick={() => {
                                             dispatch(setCurrentPageAC(t.prPageNum))
                                             props.LinkToCheck(h.idHeader, `${t.url}`, t.prPageNum)
-
                                         }
-
                                         }>
                                             <NavLink
-
                                                 className={({isActive}) => (isActive ? styles.active : styles.inactive)}
-                                                to={`/home/checks/${h.idHeader}/${t.url}`}
-                                            >
-                                                <Typography sx={{paddingLeft: '20px'}} variant="body1" component='p'>
-                                                    {t.title}
+                                                to={`/home/checks/${h.idHeader}/${t.url}`}>
+                                                <Typography sx={{}} variant="body1" component='p'>
+                                                   {t.title}
                                                 </Typography>
                                             </NavLink>
                                         </li>)

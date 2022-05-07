@@ -8,14 +8,16 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
 import {useCallback} from "react";
-
+import Grow from '@mui/material/Grow';
 const Transition = React.forwardRef(function Transition(
     props: TransitionProps & {
         children: React.ReactElement<any, any>;
     },
     ref: React.Ref<unknown>,
 ) {
-    return <Slide direction="up" ref={ref} {...props} />;
+    return <Slide  style={{ transitionDelay: '600ms'  }}    direction="down"  ref={ref} {...props} />;
+
+    // return <Grow   ref={ref} {...props} />;
 });
 
 
@@ -60,6 +62,7 @@ export default function AlertDialog(props:AlertDialogPropsType) {
             <Dialog
                 open={props.openDialogAlert}
                 TransitionComponent={Transition}
+
                 keepMounted
                 onClose={handleClose}
                 aria-describedby="alert-dialog-slide-description"

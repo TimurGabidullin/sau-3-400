@@ -132,16 +132,17 @@ const Home = () => {
         setAnchorElUser(null)
     }, [])
 
-
-    const handleOnClickUserMenu = (e: any) => {
-        // debugger
-
-        dispatch(loginAppAC(e.target.innerHTML))
+    const handleOnClickUserMenu = (setting:string) => {
+        dispatch(loginAppAC(setting))
         handleCloseUserMenu()
         setOpenDialogAlert(true)
-
     }
+    
+    const handleOnClickNavMenu = (e: any) => {
 
+        console.log(e.target.innerHTML)
+        handleCloseNavMenu()
+    }
 
     const handleClickContinueBtn = () => {
 
@@ -188,6 +189,7 @@ const Home = () => {
                                 aria-haspopup="true"
                                 onClick={handleOpenNavMenu}
                                 color="inherit"
+                                disabled={!avatar}
                             >
                                 <MenuIcon/>
                             </IconButton>
@@ -210,8 +212,12 @@ const Home = () => {
                                     display: {xs: 'block', md: 'none'},
                                 }}
                             >
-                                {pages.map((page) => (
-                                    <MenuItem key={page} onClick={handleCloseNavMenu}>
+                                {pages.map((page,index) => (
+                                    <MenuItem key={page} onClick={()=>{
+                                        debugger
+                                        setSelectedTab(index)
+                                        handleCloseNavMenu()
+                                    }}>
                                         <Typography textAlign="center">{page}</Typography>
                                     </MenuItem>
                                 ))}
@@ -272,9 +278,18 @@ const Home = () => {
                                 <IconButton onClick={handleOpenUserMenu} sx={{p: 0}}>
                                     {/*<Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg"/>*/}
                                     <Pulse count={5}>
-                                        <Avatar children={avatar ? avatar.slice(5) : 'RA'}/>
-                                    </Pulse>
 
+                                        {/*<div>{avatar ? avatar.slice(5) : 'RA'}</div>*/}
+                                        {/*<Avatar children={avatar ? avatar.slice(5) : 'RA'}/>*/}
+
+                                        <Avatar
+                                            sx={{ backgroundColor: '#F0F1F3',color:'#1976d2' }}
+                                            // alt="Remy Sharp"
+                                            // src="/broken-image.jpg"
+                                        >
+                                           {avatar.length===7 ? avatar.slice(5) : 'RA'}
+                                        </Avatar>
+                                    </Pulse>
                                 </IconButton>
                             </Tooltip>
                             <Fade left>
@@ -296,7 +311,7 @@ const Home = () => {
                                     onClose={handleCloseUserMenu}
                                 >
                                     {settings.map((setting) => (
-                                        <MenuItem key={setting} onClick={handleOnClickUserMenu}>
+                                        <MenuItem key={setting} onClick={()=>handleOnClickUserMenu(setting)}>
                                             <Typography textAlign="center">{setting}</Typography>
                                         </MenuItem>
                                     ))}

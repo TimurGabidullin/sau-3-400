@@ -36,7 +36,8 @@ function Checks(props:ChecksPropsType) {
 
             {params.check==="check4"&&<Check4 />}
 
-            {/*<Paginator paginatorPageNumber={props.paginatorPageNumber} LinkToCheck={props.LinkToCheck}/>*/}
+            <Paginator paginatorPageNumber={props.paginatorPageNumber} LinkToCheck={props.LinkToCheck}/>
+            <Stepper paginatorPageNumber={props.paginatorPageNumber} LinkToCheck={props.LinkToCheck}/>
 
         </div>
     );

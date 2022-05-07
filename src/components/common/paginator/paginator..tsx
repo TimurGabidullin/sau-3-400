@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
-import {useCallback} from "react";
+import {memo, useCallback} from "react";
 import {setCurrentPageAC} from "../../../redux/appReducer";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "../../../redux/store";
@@ -17,7 +17,8 @@ const getHeaderParameterUrl=(page:number)=>{
     else return 'head2'
 }
 
-export default function Paginator(props:PaginatorPropsType) {
+const Paginator=(props:PaginatorPropsType)=> {
+    debugger
     let currentPage=useSelector((state:AppStateType)=>state.app.currentPage)
 
     const dispatch = useDispatch()
@@ -33,8 +34,7 @@ export default function Paginator(props:PaginatorPropsType) {
 
     return (
         <Stack
-            sx={{padding: 2}}
-
+            sx={{flexGrow: 2, display: {xs: 'none', md: 'flex'}, padding:2}}
             spacing={2}
             direction="row"
             justifyContent="center"
@@ -54,3 +54,5 @@ export default function Paginator(props:PaginatorPropsType) {
         </Stack>
     );
 }
+
+export default memo(Paginator)

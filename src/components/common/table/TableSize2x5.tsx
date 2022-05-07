@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from "react";
+import React, {memo, useCallback, useEffect, useState} from "react";
 import TextField from "@mui/material/TextField";
 import {useForm} from "react-hook-form";
 import CalculateIcon from '@mui/icons-material/Calculate';
@@ -14,7 +14,7 @@ import {addSettingsInReportAC} from "../../../redux/reportReducer";
 import {saveChecksState, saveReportState} from "../../../utils/localStorage";
 
 
-export default function TableSize2x5(props: any) {
+const TableSize2x5 = (props: any) => {
 
     const numberOfPlane = useSelector((state: AppStateType) => state.app.numberOfPlane)
     const checksReducer = useSelector((state: AppStateType) => state.checks)
@@ -37,7 +37,9 @@ export default function TableSize2x5(props: any) {
     const [openDialogAlert, setOpenDialogAlert] = React.useState(false);
     const dispatch = useDispatch()
 
-    const {register, trigger, handleSubmit, formState: {errors}, getValues} = useForm();
+    const {register, trigger, handleSubmit, formState: {errors}, getValues} = useForm({
+        shouldFocusError:false
+    });
 
     const handleAlertBtn1Click = () => {
         setOpenDialogAlert(false)
@@ -45,7 +47,6 @@ export default function TableSize2x5(props: any) {
 
     const handleAlertBtn2Click = () => {
         dispatch(addSettingsInReportAC(idCheck, pageNumber, typeOfBlock, typeOfSubBlock, resistor))
-
 
 
         setOpenDialogAlert(false)
@@ -57,14 +58,13 @@ export default function TableSize2x5(props: any) {
 
         // localStorage.setItem('checks' + numberOfPlane, JSON.stringify(checksReducer));
 
-        saveChecksState(checksReducer,numberOfPlane)
-        saveReportState(reportReducer,numberOfPlane)
-    }, [checksReducer,reportReducer])
+        saveChecksState(checksReducer, numberOfPlane)
+        saveReportState(reportReducer, numberOfPlane)
+    }, [checksReducer, reportReducer])
+
+    const onSubmit = (e:any) => {
 
 
-    const onSubmit = () => {
-
-        console.log("submit")
         const inputValue1 = getValues("channel1");
         const inputValue2 = getValues("channel2");
         const inputValue3 = getValues("channel3");
@@ -115,14 +115,16 @@ export default function TableSize2x5(props: any) {
                     <td>{typeOfBlock} </td>
                     <td>
                         <TextField
+
                             sx={{marginTop: '10px'}}
                             color='secondary'
                             id="outlined-helperText"
                             label="1 канал"
+
                             defaultValue={valuesOfBlock['channel1']}
                             error={errors.channel1}
                             {...register("channel1",
-                                {validate: (value => controlFunction(value, 'channel1', props.indexOfTable))})}
+                                {validate: (value => controlFunction(numberOfPlane, value, 'channel1', props.indexOfTable))})}
                         />
                     </td>
                     <td>
@@ -135,7 +137,7 @@ export default function TableSize2x5(props: any) {
                             defaultValue={valuesOfBlock['channel2']}
                             error={errors.channel2}
                             {...register("channel2",
-                                {validate: (value => controlFunction(value, 'channel2', props.indexOfTable))})}
+                                {validate: (value => controlFunction(numberOfPlane, value, 'channel2', props.indexOfTable))})}
                         />
                     </td>
                     <td>
@@ -148,7 +150,7 @@ export default function TableSize2x5(props: any) {
                             defaultValue={valuesOfBlock['channel3']}
                             error={errors.channel3}
                             {...register("channel3",
-                                {validate: ((value) => controlFunction(value, 'channel3', props.indexOfTable))})}
+                                {validate: ((value) => controlFunction(numberOfPlane, value, 'channel3', props.indexOfTable))})}
                         />
                     </td>
                     <td>
@@ -161,7 +163,7 @@ export default function TableSize2x5(props: any) {
                             defaultValue={valuesOfBlock['channel4']}
                             error={errors.channel4}
                             {...register("channel4",
-                                {validate: (value => controlFunction(value, 'channel4', props.indexOfTable))})}
+                                {validate: (value => controlFunction(numberOfPlane, value, 'channel4', props.indexOfTable))})}
                         />
                     </td>
                 </tr>
@@ -177,7 +179,7 @@ export default function TableSize2x5(props: any) {
                     variant="outlined"
                     endIcon={<CalculateIcon/>}
                     color="secondary"
-                    sx={{transitionDuration:"0.5s"}}
+                    sx={{transitionDuration: "0.5s"}}
 
                 >
                     Расчёт
@@ -197,3 +199,5 @@ export default function TableSize2x5(props: any) {
 
     );
 }
+
+export default memo(TableSize2x5)

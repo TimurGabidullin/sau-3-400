@@ -11,17 +11,19 @@ import {AppStateType} from "../../redux/store";
 import TextField from '@mui/material/TextField';
 import {addNewReportAC, removeReportAC} from "../../redux/reportReducer";
 import {useForm} from "react-hook-form";
-import {useEffect} from "react";
+import {memo, useEffect} from "react";
 import Typography from "@mui/material/Typography";
 import Icon from '@mui/material/Icon';
+import styles from "./Report.module.css";
 
-function Report() {
+
+const Report=()=> {
 
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
-    const {register, handleSubmit, formState: {errors}, getValues} = useForm();
+    const {register, handleSubmit, formState: {errors}} = useForm();
     const onSubmit = (data: any) => {
         debugger
         dispatch(addNewReportAC(data.report));
@@ -38,23 +40,15 @@ function Report() {
 
     return (
         <div>
-
-            <Box
-                sx={{
-                    width: 500,
-                    maxWidth: '100%',
-                }}
-            >
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form onSubmit={handleSubmit(onSubmit)} className={styles.form} >
                     <TextField
-                        // fullWidth
+                        fullWidth
                         color='secondary'
                         label='Введите отчёт'
                         id="fullWidth"
                         error={errors.report}
                         {...register("report", {required: true})}
                     />
-
                     <Button type={"submit"}>
                         <Icon
                             color='secondary'
@@ -62,11 +56,13 @@ function Report() {
                         >add_circle
                         </Icon>
                     </Button>
-                    {errors.report && <div>This field is required</div>}
+
                 </form>
-            </Box>
-
-
+            <div>{errors.report &&
+            <Typography sx={{padding: '0 30px',color: '#ba000d'}} variant="body1" component='p'>
+                Поле должно быть заполнено.
+            </Typography>}
+            </div>
             <Box sx={{mt: 1}}>
                 <List>
                     <TransitionGroup>
@@ -89,11 +85,10 @@ function Report() {
                             </Collapse>
                         ))}
                     </TransitionGroup>
-
                 </List>
             </Box>
         </div>
     );
 }
 
-export default Report;
+export default memo(Report);

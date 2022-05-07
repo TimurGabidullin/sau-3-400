@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect} from 'react';
+import React, {memo, useCallback, useEffect} from 'react';
 import TableSize2x5 from "../../common/table/TableSize2x5";
 import Typography from "@mui/material/Typography";
 import {useSelector} from "react-redux";
@@ -59,4 +59,4 @@ const Check1=(props: CheckPropsType)=> {
     );
 }
 
-export default Check1;
+export default memo(Check1);

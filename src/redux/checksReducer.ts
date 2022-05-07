@@ -1,4 +1,5 @@
-import {ActionsType} from "./store";
+import store, {ActionsType} from "./store";
+import {loadChecksState} from "../utils/localStorage";
 
 
 export type ChecksType = { [head: string]: CheckType[] }
@@ -19,36 +20,28 @@ export type CheckType = {
     controlFunctions: number[]
     controlValues: number[]
     valuesOfErrors: number[]
-
     valuesOfBlocks: { 'channel1': string, 'channel2': string, 'channel3': string, 'channel4': string }[]
-    additionalValues?: string[]
     isHaveSettings: boolean[]
     directionsOfChecks?: string[]
     subBlocks?: string[]
 
 }
 
-export function compareFunc(inputValue: string, channel: string, indexOfTable: number = 0) {
-
+export function compareFunc(numberOfPlane:string,inputValue: string, channel: string, indexOfTable: number = 0) {
     if (inputValue === '') {
         return true
     }
-
     // @ts-ignore
     return (+inputValue <= this.controlValues[indexOfTable] + this.valuesOfErrors[indexOfTable]
         // @ts-ignore
         && +inputValue >= this.controlValues[indexOfTable] - this.valuesOfErrors[indexOfTable])
 }
 
-// export function emptyFunc(inputValue: string, channel: string, indexOfTable: number = 0) {
-//     return true
-// }
-
 export function emptyFunc() {
     return true
 }
 
-export function f2(inputValue: string, channel: string, indexOfTable: number = 0) {
+export function f2(numberOfPlane:string,inputValue: string, channel: string, indexOfTable: number = 0) {
 
     if (inputValue === '') {
         return true
@@ -59,17 +52,20 @@ export function f2(inputValue: string, channel: string, indexOfTable: number = 0
 
 }
 
-export function universalFunc(inputValue: string, channel: string, indexOfTable: number = 0) {
+export function universalFunc(numberOfPlane:string,inputValue: string, channel: string, indexOfTable: number = 0) {
 
     if (inputValue === '') {
         return true
     }
-debugger
+    debugger
+
+    let a = loadChecksState(numberOfPlane).head1[0].valuesOfBlocks[0][channel]
+    // console.log(a)
     // @ts-ignore.
-    return compareFunc.call(this, +inputValue - initialState['head1'][0].valuesOfBlocks[0][channel] / this.valuesOfBlocks[0][channel], channel, indexOfTable)
-
+    // return compareFunc.call(this, (+inputValue - initialState['head1'][0].valuesOfBlocks[0][channel]) , channel, indexOfTable)
+    // @ts-ignore.
+    return compareFunc.call(this, numberOfPlane,(+inputValue - a), channel, indexOfTable)
 }
-
 export const numToFunc = {
     0: emptyFunc,
     1: compareFunc,
@@ -87,8 +83,8 @@ const initialState = {
             pageNumber: 473,
             paginatorNumber: 1,
             typesOfBlocks: ['ВПК', 'ВБК'],
-            typesOfSubBlocks: ['2', '2'],
-            resistors: ['2', '2'],
+            typesOfSubBlocks: ['', 'ВГМ103-1'],
+            resistors: ['', 'R4'],
             numbersOfContacts: ['U21/11 Ш35', 'U24/11 Ш35'],
             // controlFunctions: [f1, f1],
             controlFunctions: [1, 1],
@@ -178,7 +174,40 @@ const initialState = {
             title: "Проверка передаточного коэффициента по сигналу угловой скорости тангажа",
             idCheck: 'check4',
             pageNumber: 480,
-            paginatorNumber: 4
+            paginatorNumber: 4,
+            typesOfBlocks: ['ВПК', 'ВПК', 'ВПК', 'ВПК', 'ВБК', 'ВБК', 'ВБК', 'ВБК'],
+            typesOfSubBlocks: ['', ''],
+            resistors: ['', ''],
+            numbersOfContacts: [
+                'U26/11 Ш35', 'U26/11 Ш35',
+                'U20/11 Ш35', 'U20/11 Ш35',
+                'U26/11 Ш35', 'U26/11 Ш35',
+                'U24/11 Ш35', 'U24/11 Ш35'
+            ],
+            // controlFunctions: [f1, f1, f1, f1, f0, f0, f0, f0],
+            controlFunctions: [1, 1, 3, 3, 1, 1, 3, 3],
+            controlValues: [3.5, -3.5, 3.5, -3.5, -1.89, 1.89, -2.24, 2.24],
+            valuesOfErrors: [0.35, 0.35, 0.35, 0.35, 0.21, 0.21, 0.21, 0.21],
+            valuesOfBlocks: [
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+            ],
+            additionalValues: [],
+            directionsOfChecks: [
+                'На кабрирование', 'На пикирование',
+                'На кабрирование', 'На пикирование',
+                'Вправо', 'Влево',
+                'Вправо', 'Влево'],
+            isHaveSettings: [true, true, true, true, true, true, true, true]
+
+
+
         } as CheckType,
 
         {
@@ -220,7 +249,6 @@ export const checksReducer = (state: ChecksType = initialState, action: ActionsT
                                         'channel3': action.data[2],
                                         'channel4': action.data[3]
                                     }
-
                                 }
                                 return data
                             })

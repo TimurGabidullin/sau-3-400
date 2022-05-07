@@ -5,7 +5,7 @@ import MobileStepper from '@mui/material/MobileStepper';
 import Button from '@mui/material/Button';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
-import {useCallback, useEffect} from "react";
+import {memo, useCallback, useEffect} from "react";
 import {useParams} from "react-router-dom";
 import {ParamsType} from "../../home/Home";
 import Container from "@mui/material/Container";
@@ -19,12 +19,12 @@ type StepperPropsType = {
 }
 
 const getHeaderParameterUrl=(page:number)=>{
-    if (page<4) return 'head1'
+    if (page<2) return 'head1'
     else return 'head2'
 }
 
 
-export default function Stepper(props:StepperPropsType) {
+const Stepper=(props:StepperPropsType)=> {
 debugger
     let currentPage=useSelector((state:AppStateType)=>state.app.currentPage)
     // const params: ParamsType = useParams();
@@ -51,7 +51,7 @@ debugger
 
     const handleBack = () => {
         setActiveStep((prevActiveStep) => prevActiveStep );
-        let headerUrl=getHeaderParameterUrl(activeStep)
+        let headerUrl=getHeaderParameterUrl(activeStep-2)
         let Url=`check${activeStep}`
         props.LinkToCheck(headerUrl,Url,activeStep)
         dispatch(setCurrentPageAC(activeStep))
@@ -59,9 +59,14 @@ debugger
 
     return (
         <Container  sx={{display:'flex',direction:'row',justifyContent:'center',alignItems:'center'}}  >
-        <Box sx={{maxWidth: 400,width:'100%'}}>
+        <Box
+
+            sx={{maxWidth: 400,width:'100%'}}>
+            {/*sx={{flexGrow: 2, display: {xs: 'none', md: 'flex'}, padding:2,maxWidth: 400,width:'100%'}}>*/}
+
+
             <MobileStepper
-                sx={{backgroundColor: '#F0F1F3',color:'#9c27b0'}}
+                sx={{backgroundColor: '#F0F1F3',color:'#9c27b0',flexGrow: 2, display: {xs: 'flex', md: 'none'},marginTop:'10px'}}
 
                 variant="text"
                 steps={maxSteps}
@@ -102,3 +107,6 @@ debugger
         </Container>
     )
 }
+
+
+export default memo(Stepper)

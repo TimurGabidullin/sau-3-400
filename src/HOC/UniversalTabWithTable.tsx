@@ -9,7 +9,7 @@ import Info from "../components/common/info/Info";
 const Fade = require("react-reveal/Fade")
 
 
-export const UniversalTabWithTable = (Table: React.FC, indexOfTable = 0) => {
+const UniversalTabWithTable = (Table: React.FC, indexOfTable = 0) => {
 
 
     const [selectTab, setSelectTab] = React.useState('table');

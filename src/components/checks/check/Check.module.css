@@ -1,6 +1,11 @@
 
+
+/*.checkContainer{*/
+/*    height: 100%;*/
+/*}*/
+
 .checkContainer p{
-    text-indent: 40px;
+    text-indent: 20px;
 }
 
 
