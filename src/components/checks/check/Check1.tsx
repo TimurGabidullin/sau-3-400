@@ -1,4 +1,8 @@
 import React, {memo, useCallback, useEffect} from 'react';
+
+import IconButton from '@mui/material/IconButton';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+
 import TableSize2x5 from "../../common/table/TableSize2x5";
 import Typography from "@mui/material/Typography";
 import {useSelector} from "react-redux";
@@ -7,13 +11,17 @@ import {useParams} from "react-router-dom";
 import {CheckType} from "../../../redux/checksReducer";
 import UniversalTabWithTable from "../../../HOC/UniversalTabWithTable";
 import styles from "./Check.module.css";
+import AlertDialog from "../../common/alertDialog/AlertDialog";
 const Fade = require("react-reveal/Fade")
+
+
 
 type CheckPropsType = {
 
 }
 
 const Check1=(props: CheckPropsType)=> {
+    const [openDialogAlert, setOpenDialogAlert] = React.useState(false);
     const params = useParams();
 
     // @ts-ignore
@@ -29,8 +37,10 @@ const Check1=(props: CheckPropsType)=> {
 
         <Fade bottom cascade>
         <div className={styles.checkContainer}>
-            <Typography sx={{padding: '0 20px',textIndent:'40px'}} variant="h6" component="h6">
-                {headerOfCheck}
+            <Typography sx={{padding: '0 20px'}} variant="h6" component="h6">
+                {headerOfCheck}<IconButton color="secondary" aria-label="add an alarm">
+                <InfoOutlinedIcon onClick={()=>setOpenDialogAlert(true)}/>
+            </IconButton>
             </Typography>
 
             <Typography sx={{padding: '0 20px'}} variant="body1" component='p'>
@@ -49,6 +59,13 @@ const Check1=(props: CheckPropsType)=> {
                     соединителя Ш35 ВБК-51-01 во всех каналах САУ. Значения напряжения должны быть ±0,1В.
                 </p>
             </Typography>
+
+            <AlertDialog openDialogAlert={openDialogAlert}
+                         setOpenDialogAlert={setOpenDialogAlert}
+                         headerText="ПОДГОТОВКА К ПРОВЕРКЕ"
+                         mainText="Выберите проверку"
+
+            />
 
             {UniversalTabWithTable(TableSize2x5,1)(props)}
 

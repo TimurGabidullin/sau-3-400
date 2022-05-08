@@ -24,12 +24,13 @@ const Transition = React.forwardRef(function Transition(
 type AlertDialogPropsType={
     openDialogAlert:boolean
     setOpenDialogAlert:(value:boolean)=>void
-    handleAlertBtn1Click:Function
-    handleAlertBtn2Click:Function
+    handleAlertBtn1Click?:Function
+    handleAlertBtn2Click?:Function
     headerText:string
     mainText:string
-    btnText1:string
-    btnText2:string
+    btnText1?:string
+    btnText2?:string
+
 
 }
 
@@ -50,10 +51,10 @@ export default function AlertDialog(props:AlertDialogPropsType) {
     };
 
     const handleBtn1Click =() => {
-        props.handleAlertBtn1Click();
+        if(props.handleAlertBtn1Click) props.handleAlertBtn1Click();
     };
     const handleBtn2Click =() => {
-        props.handleAlertBtn2Click();
+        if(props.handleAlertBtn2Click) props.handleAlertBtn2Click();
     };
 
 
@@ -74,8 +75,8 @@ export default function AlertDialog(props:AlertDialogPropsType) {
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleBtn1Click}>{props.btnText1}</Button>
-                    <Button onClick={handleBtn2Click}>{props.btnText2}</Button>
+                    <Button sx={{display:props.btnText1?'':'none'}} onClick={handleBtn1Click}>{props.btnText1}</Button>
+                    <Button sx={{display:props.btnText2?'':'none'}} onClick={handleBtn2Click}>{props.btnText2}</Button>
                 </DialogActions>
             </Dialog>
         </div>

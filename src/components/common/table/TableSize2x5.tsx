@@ -47,23 +47,16 @@ const TableSize2x5 = (props: any) => {
 
     const handleAlertBtn2Click = () => {
         dispatch(addSettingsInReportAC(idCheck, pageNumber, typeOfBlock, typeOfSubBlock, resistor))
-
-
         setOpenDialogAlert(false)
     }
 
 
     useEffect(() => {
-
-
-        // localStorage.setItem('checks' + numberOfPlane, JSON.stringify(checksReducer));
-
         saveChecksState(checksReducer, numberOfPlane)
         saveReportState(reportReducer, numberOfPlane)
     }, [checksReducer, reportReducer])
 
-    const onSubmit = (e:any) => {
-
+    const onSubmit = () => {
 
         const inputValue1 = getValues("channel1");
         const inputValue2 = getValues("channel2");
@@ -189,7 +182,8 @@ const TableSize2x5 = (props: any) => {
                              handleAlertBtn1Click={handleAlertBtn1Click}
                              handleAlertBtn2Click={handleAlertBtn2Click}
                              headerText="Занести регуллировку в ОТЧЁТ?"
-                             mainText="Значение 1 канала изменилось."
+                             mainText="Значение канала изменилось. Если вы занесли регуллировку в отчёт случайно,
+                             то её можно удалить в разделе 'ОТЧЕТ'."
                              btnText1="Нет"
                              btnText2="Да"
                 />

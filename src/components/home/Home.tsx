@@ -332,7 +332,8 @@ const Home = () => {
                          handleAlertBtn1Click={handleClickNewCheckBtn}
                          handleAlertBtn2Click={handleClickContinueBtn}
                          headerText="Выберите проверку"
-                         mainText="Выберите проверку"
+                         mainText="При нажатии на кнопку 'НОВАЯ ПРОВЕРКА' значения проверок выбранного самолета удаляются
+                         и проверка начинается заново."
                          btnText1="Новая проверка"
                          btnText2="Продолжить проверку"
             />
