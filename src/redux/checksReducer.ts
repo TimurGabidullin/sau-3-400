@@ -132,9 +132,9 @@ const initialState = {
             pageNumber: 475,
             paginatorNumber: 3,
             typesOfBlocks: ['ВПК', 'ВПК', 'ВПК', 'ВПК', 'ВБК', 'ВБК', 'ВБК', 'ВБК'],
-            typesOfSubBlocks: ['ВИ-78', 'ВИ-78', 'ВИ-78', 'ВИ-78','ВИ-78', 'ВИ-78', 'БС-47', 'БС-47'],
-            positionOfSubBlock: ['Х13', 'Х13', 'Х14', 'X14','Х21', 'Х21', 'Х15', 'X15'],
-            resistors: ['R1', 'R1','R1', 'R1','R1', 'R1','R3', 'R3'],
+            typesOfSubBlocks: ['ВИ-78', 'ВИ-78', 'ВИ-78', 'ВИ-78', 'ВИ-78', 'ВИ-78', 'БС-47', 'БС-47'],
+            positionOfSubBlock: ['Х13', 'Х13', 'Х14', 'X14', 'Х21', 'Х21', 'Х15', 'X15'],
+            resistors: ['R1', 'R1', 'R1', 'R1', 'R1', 'R1', 'R3', 'R3'],
             numbersOfContacts: [
                 'U26/11 Ш35', 'U26/11 Ш35',
                 'U20/11 Ш35', 'U20/11 Ш35',
@@ -191,7 +191,21 @@ const initialState = {
             title: "Проверка передаточного коэффициента по сигналу угловой скорости курса",
             idCheck: 'check5',
             pageNumber: 482,
-            paginatorNumber: 5
+            paginatorNumber: 5,
+            typesOfBlocks: ['ВПК', 'ВПК',],
+            typesOfSubBlocks: ['СУ-73', 'СУ-73'],
+            positionOfSubBlock: ['Х8', 'Х8'],
+            resistors: ['R7', 'R7'],
+            numbersOfContacts: ['U31/11 Ш35', 'U31/11 Ш35'],
+            controlFunctions: [1, 1],
+            controlValues: [-1.6, -1.6],
+            valuesOfErrors: [0.3, 0.3],
+            valuesOfBlocks: [
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},],
+            additionalValues: [],
+            directionsOfChecks: ['Вправо', 'Влево'],
+            isHaveSettings: [true, true]
         } as CheckType,
 
         {
@@ -199,7 +213,21 @@ const initialState = {
             title: "Проверка передаточного коэффициента по сигналу угловой скорости крена",
             idCheck: 'check6',
             pageNumber: 483,
-            paginatorNumber: 6
+            paginatorNumber: 6,
+            typesOfBlocks: ['ВБК', 'ВБК',],
+            typesOfSubBlocks: ['ВО104-1', 'ВО104-1'],
+            positionOfSubBlock: ['Х13', 'Х13'],
+            resistors: ['R5', 'R5'],
+            numbersOfContacts: ['U19/11 Ш37', 'U19/11 Ш37'],
+            controlFunctions: [1, 1],
+            controlValues: [1.8, -1.8],
+            valuesOfErrors: [0.3, 0.3],
+            valuesOfBlocks: [
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},],
+            additionalValues: [],
+            directionsOfChecks: ['Влево', 'Вправо'],
+            isHaveSettings: [true, true]
 
         } as CheckType,
     ],

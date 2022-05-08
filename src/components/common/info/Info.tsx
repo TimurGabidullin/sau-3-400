@@ -18,17 +18,23 @@ const Info = (props: any) => {
     const positionOfSubBlock = check.positionOfSubBlock[props.indexOfTable]
     const resistor = check.resistors[props.indexOfTable]
     const typeOfBlock = check.typesOfBlocks[props.indexOfTable]
+    const Pulse = require("react-reveal/Pulse")
 
 
     return (
-        isHaveSettings ?
-            <Typography sx={{padding: '20px 20px'}} variant="body1" component='p'>
-                Регулируйте регулировочными винтами резисторов {resistor} на субблоках {typeOfSubBlock}
-                ({positionOfSubBlock}-место установки) блоков {typeOfBlock}
-            </Typography>
-            : <Typography sx={{padding: '40px 20px', textAlign: 'center'}} variant="body1" component='p'>Вставка не
-                регуллируется </Typography>
 
+        isHaveSettings ?
+            <Pulse>
+                <Typography sx={{padding: '20px 20px'}} variant="body1" component='p'>
+                    Регулируйте регулировочными винтами резисторов {resistor} на субблоках {typeOfSubBlock}
+                    ({positionOfSubBlock}-место установки) блоков {typeOfBlock}
+                </Typography>
+            </Pulse>
+            : <Pulse>
+                <Typography sx={{padding: '40px 20px', textAlign: 'center'}} variant="body1" component='p'>Вставка
+                    не
+                    регуллируется </Typography>
+            </Pulse>
     );
 }
 

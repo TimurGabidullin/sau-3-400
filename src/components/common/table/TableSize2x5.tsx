@@ -12,6 +12,7 @@ import AlertDialog from "../alertDialog/AlertDialog";
 import {ParamsType} from "../../home/Home";
 import {addSettingsInReportAC} from "../../../redux/reportReducer";
 import {saveChecksState, saveReportState} from "../../../utils/localStorage";
+const Pulse = require("react-reveal/Pulse")
 
 
 const TableSize2x5 = (props: any) => {
@@ -93,6 +94,7 @@ const TableSize2x5 = (props: any) => {
 
 
     return (
+        <Pulse >
         <form onSubmit={handleSubmit(onSubmit)}>
             <table className={styles.table}>
                 <tr>
@@ -173,7 +175,6 @@ const TableSize2x5 = (props: any) => {
                     endIcon={<CalculateIcon/>}
                     color="secondary"
                     sx={{transitionDuration: "0.5s"}}
-
                 >
                     Расчёт
                 </Button>
@@ -190,7 +191,7 @@ const TableSize2x5 = (props: any) => {
             </div>
         </form>
 
-
+            </Pulse >
     );
 }
 
