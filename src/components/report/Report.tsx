@@ -15,6 +15,7 @@ import {memo, useEffect} from "react";
 import Typography from "@mui/material/Typography";
 import Icon from '@mui/material/Icon';
 import styles from "./Report.module.css";
+import {saveReportState} from "../../utils/localStorage";
 
 
 const Report=()=> {
@@ -35,6 +36,7 @@ const Report=()=> {
 
     const handleRemoveReport = (idCheck: string) => {
         dispatch(removeReportAC(idCheck))
+        // saveReportState()
     };
 
 
@@ -75,7 +77,10 @@ const Report=()=> {
                                         aria-label="delete"
                                         title="Delete"
                                         color='secondary'
-                                        onClick={() => handleRemoveReport(idCheck)}
+                                        onClick={() => {
+
+                                            handleRemoveReport(idCheck)
+                                        }}
                                     >
                                         <DeleteIcon/>
                                     </IconButton>

@@ -22,11 +22,11 @@ const UniversalCheckWithParams = (Check: React.FC) => {
     const checks = useSelector((state: AppStateType) => state.checks[params.header ? params.header : 'head1'])
     const headerOfCheck = checks.filter((ch: CheckType) => ch.idCheck === params.check)[0].title
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
+
 
     const CheckWithParams = () => {
+
+
 
         return (
 

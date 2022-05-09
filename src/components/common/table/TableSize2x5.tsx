@@ -12,11 +12,12 @@ import AlertDialog from "../alertDialog/AlertDialog";
 import {ParamsType} from "../../home/Home";
 import {addSettingsInReportAC} from "../../../redux/reportReducer";
 import {saveChecksState, saveReportState} from "../../../utils/localStorage";
+
 const Pulse = require("react-reveal/Pulse")
 
 
 const TableSize2x5 = (props: any) => {
-
+// debugger
     const numberOfPlane = useSelector((state: AppStateType) => state.app.numberOfPlane)
     const checksReducer = useSelector((state: AppStateType) => state.checks)
     const reportReducer = useSelector((state: AppStateType) => state.report)
@@ -38,8 +39,9 @@ const TableSize2x5 = (props: any) => {
     const [openDialogAlert, setOpenDialogAlert] = React.useState(false);
     const dispatch = useDispatch()
 
+
     const {register, trigger, handleSubmit, formState: {errors}, getValues} = useForm({
-        shouldFocusError:false
+        shouldFocusError: false
     });
 
     const handleAlertBtn1Click = () => {
@@ -47,7 +49,7 @@ const TableSize2x5 = (props: any) => {
     }
 
     const handleAlertBtn2Click = () => {
-        dispatch(addSettingsInReportAC(idCheck, pageNumber, typeOfBlock, typeOfSubBlock, resistor))
+        dispatch(addSettingsInReportAC(idCheck, pageNumber, typeOfBlock, typeOfSubBlock, resistor,1))
         setOpenDialogAlert(false)
     }
 
@@ -65,12 +67,32 @@ const TableSize2x5 = (props: any) => {
         const inputValue4 = getValues("channel4");
 
 
-        if ((inputValue1 !== valuesOfBlock["channel1"] && valuesOfBlock["channel1"] !== '' ||
-            inputValue2 !== valuesOfBlock["channel2"] && valuesOfBlock["channel2"] !== '' ||
-            inputValue3 !== valuesOfBlock["channel3"] && valuesOfBlock["channel3"] !== '' ||
-            inputValue4 !== valuesOfBlock["channel4"] && valuesOfBlock["channel4"] !== '') && isHaveSettings) {
-            setOpenDialogAlert(true)
+        // if ((inputValue1 !== valuesOfBlock["channel1"] && valuesOfBlock["channel1"] !== '' ||
+        //     inputValue2 !== valuesOfBlock["channel2"] && valuesOfBlock["channel2"] !== '' ||
+        //     inputValue3 !== valuesOfBlock["channel3"] && valuesOfBlock["channel3"] !== '' ||
+        //     inputValue4 !== valuesOfBlock["channel4"] && valuesOfBlock["channel4"] !== '') && isHaveSettings) {
+        //
+        //
+        //     setOpenDialogAlert(true)
+        // }
+
+        if(isHaveSettings){
+            if(inputValue1 !== valuesOfBlock["channel1"] && valuesOfBlock["channel1"] !== ''){
+                dispatch(addSettingsInReportAC(idCheck+'channel1', pageNumber, typeOfBlock, typeOfSubBlock, resistor,1))
+
+            }
+            if(inputValue2 !== valuesOfBlock["channel2"] && valuesOfBlock["channel2"] !== ''){
+                dispatch(addSettingsInReportAC(idCheck+'channel2', pageNumber, typeOfBlock, typeOfSubBlock, resistor,2))
+            }
+            if(inputValue3 !== valuesOfBlock["channel3"] && valuesOfBlock["channel3"] !== ''){
+                dispatch(addSettingsInReportAC(idCheck+'channel3', pageNumber, typeOfBlock, typeOfSubBlock, resistor,3))
+            }
+            if(inputValue4 !== valuesOfBlock["channel4"] && valuesOfBlock["channel4"] !== ''){
+                dispatch(addSettingsInReportAC(idCheck+'channel4', pageNumber, typeOfBlock, typeOfSubBlock, resistor,4))
+            }
         }
+
+
 
         dispatch(saveDataAC(
             [inputValue1, inputValue2, inputValue3, inputValue4],
@@ -94,104 +116,106 @@ const TableSize2x5 = (props: any) => {
 
 
     return (
-        <Pulse >
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <table className={styles.table}>
-                <tr>
-                    <td></td>
-                    <td colSpan={4}>
-                        <div className={styles.tableDescription}><span>{numbersOfContacts}</span>
-                            <span>{directionOfCheck
-                                ? directionOfCheck[props.indexOfTable]
-                                : ''} </span></div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>{typeOfBlock} </td>
-                    <td>
-                        <TextField
+        <Pulse>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <table className={styles.table}>
+                    <tr>
+                        <td></td>
+                        <td colSpan={4}>
+                            <div className={styles.tableDescription}><span>{numbersOfContacts}</span>
+                                <span>{directionOfCheck
+                                    ? directionOfCheck[props.indexOfTable]
+                                    : ''} </span></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>{typeOfBlock} </td>
+                        <td>
+                            <TextField
+                                type="number"
+                                inputProps={{step: 0.01}}
+                                sx={{marginTop: '10px'}}
+                                color='secondary'
+                                id="outlined-helperText"
+                                label="1 канал"
 
-                            sx={{marginTop: '10px'}}
-                            color='secondary'
-                            id="outlined-helperText"
-                            label="1 канал"
+                                defaultValue={valuesOfBlock['channel1']}
+                                error={errors.channel1}
+                                {...register("channel1",
+                                    {validate: (value => controlFunction(numberOfPlane, value, 'channel1', props.indexOfTable))})}
+                            />
+                        </td>
+                        <td>
+                            <TextField
+                                type="number"
+                                inputProps={{step: 0.01}}
+                                sx={{marginTop: '10px'}}
+                                color='secondary'
+                                id="outlined-helperText"
+                                label="2 канал"
+                                defaultValue={valuesOfBlock['channel2']}
+                                error={errors.channel2}
+                                {...register("channel2",
+                                    {validate: (value => controlFunction(numberOfPlane, value, 'channel2', props.indexOfTable))})}
+                            />
+                        </td>
+                        <td>
+                            <TextField
+                                type="number"
+                                inputProps={{step: 0.01}}
+                                sx={{marginTop: '10px'}}
+                                color='secondary'
+                                id="outlined-helperText"
+                                label="3 канал"
+                                defaultValue={valuesOfBlock['channel3']}
+                                error={errors.channel3}
+                                {...register("channel3",
+                                    {validate: ((value) => controlFunction(numberOfPlane, value, 'channel3', props.indexOfTable))})}
+                            />
+                        </td>
+                        <td>
+                            <TextField
+                                type="number"
+                                inputProps={{step: 0.01}}
+                                sx={{marginTop: '10px'}}
+                                color='secondary'
+                                id="outlined-helperText"
+                                label="4 канал"
+                                defaultValue={valuesOfBlock['channel4']}
+                                error={errors.channel4}
+                                {...register("channel4",
+                                    {validate: (value => controlFunction(numberOfPlane, value, 'channel4', props.indexOfTable))})}
+                            />
+                        </td>
+                    </tr>
+                </table>
 
-                            defaultValue={valuesOfBlock['channel1']}
-                            error={errors.channel1}
-                            {...register("channel1",
-                                {validate: (value => controlFunction(numberOfPlane, value, 'channel1', props.indexOfTable))})}
-                        />
-                    </td>
-                    <td>
-                        <TextField
+                <div className={styles.btn}>
 
-                            sx={{marginTop: '10px'}}
-                            color='secondary'
-                            id="outlined-helperText"
-                            label="2 канал"
-                            defaultValue={valuesOfBlock['channel2']}
-                            error={errors.channel2}
-                            {...register("channel2",
-                                {validate: (value => controlFunction(numberOfPlane, value, 'channel2', props.indexOfTable))})}
-                        />
-                    </td>
-                    <td>
-                        <TextField
-
-                            sx={{marginTop: '10px'}}
-                            color='secondary'
-                            id="outlined-helperText"
-                            label="3 канал"
-                            defaultValue={valuesOfBlock['channel3']}
-                            error={errors.channel3}
-                            {...register("channel3",
-                                {validate: ((value) => controlFunction(numberOfPlane, value, 'channel3', props.indexOfTable))})}
-                        />
-                    </td>
-                    <td>
-                        <TextField
-
-                            sx={{marginTop: '10px'}}
-                            color='secondary'
-                            id="outlined-helperText"
-                            label="4 канал"
-                            defaultValue={valuesOfBlock['channel4']}
-                            error={errors.channel4}
-                            {...register("channel4",
-                                {validate: (value => controlFunction(numberOfPlane, value, 'channel4', props.indexOfTable))})}
-                        />
-                    </td>
-                </tr>
-            </table>
-
-            {errors.exampleRequired && <span>This field is required</span>}
-
-            <div className={styles.btn}>
-
-                <Button
-                    onClick={onSubmit}
-                    type={"submit"}
-                    variant="outlined"
-                    endIcon={<CalculateIcon/>}
-                    color="secondary"
-                    sx={{transitionDuration: "0.5s"}}
-                >
-                    Расчёт
-                </Button>
-                <AlertDialog openDialogAlert={openDialogAlert}
-                             setOpenDialogAlert={setOpenDialogAlert}
-                             handleAlertBtn1Click={handleAlertBtn1Click}
-                             handleAlertBtn2Click={handleAlertBtn2Click}
-                             headerText="Занести регуллировку в ОТЧЁТ?"
-                             mainText="Значение канала изменилось. Если вы занесли регуллировку в отчёт случайно,
+                    <Button
+                        onClick={onSubmit}
+                        type={"submit"}
+                        variant="outlined"
+                        endIcon={<CalculateIcon/>}
+                        color="secondary"
+                        sx={{transitionDuration: "0.5s"}}
+                    >
+                        Расчёт
+                    </Button>
+                    <AlertDialog openDialogAlert={openDialogAlert}
+                                 setOpenDialogAlert={setOpenDialogAlert}
+                                 handleAlertBtn1Click={handleAlertBtn1Click}
+                                 handleAlertBtn2Click={handleAlertBtn2Click}
+                                 headerText="Занести регуллировку в ОТЧЁТ?"
+                                 mainText="Значение канала изменилось. Если вы занесли регуллировку в отчёт случайно,
                              то её можно удалить в разделе 'ОТЧЕТ'."
-                             btnText1="Нет"
-                             btnText2="Да"
-                />
-            </div>
-        </form>
+                                 btnText1="Нет"
+                                 btnText2="Да"
+                    />
+                </div>
+            </form>
 
-            </Pulse >
+        </Pulse>
     );
 }
 

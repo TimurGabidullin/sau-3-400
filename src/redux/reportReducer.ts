@@ -11,8 +11,8 @@ export const reportReducer = (state: ReportType = initialState, action: ActionsT
     switch (action.type) {
         case 'ADD_SETTINGS_IN_REPORT':
             return {
-                ...state, [action.idCheck]: `По тех карте 20.00.00 была произведена регуллировка вствки
-             ${action.typeOfSubBlock} блока ${action.typeOfBlock}-1 резистором ${action.resistor}
+                ...state, [action.idCheck]: `По тех карте 20.00.00 была произведена регуллировка вставки
+             ${action.typeOfSubBlock} блока ${action.typeOfBlock}-${action.numberOfChannel} резистором ${action.resistor}
               (книга 2, стр.${action.pageNumber})`
             }
         case 'NEW_DATA':
@@ -42,13 +42,17 @@ export const addSettingsInReportAC = (idCheck: string,
                                       pageNumber: number,
                                       typeOfBlock: string,
                                       typeOfSubBlock: string,
-                                      resistor: string) => ({
+                                      resistor: string,
+                                      numberOfChannel:number
+                                      ) => ({
     type: 'ADD_SETTINGS_IN_REPORT',
     idCheck,
     pageNumber,
     typeOfBlock,
     typeOfSubBlock,
-    resistor
+    resistor,
+    numberOfChannel
+
 }) as const
 
 

@@ -36,16 +36,6 @@ type AlertDialogPropsType={
 
 export default function AlertDialog(props:AlertDialogPropsType) {
 
-
-
-
-
-
-
-
-
-
-
     const handleClose =() => {
         props.setOpenDialogAlert(false);
     };

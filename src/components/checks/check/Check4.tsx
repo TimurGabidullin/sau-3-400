@@ -1,4 +1,4 @@
-import React, {memo} from 'react';
+import React, {memo, useEffect} from 'react';
 import TableSize2x5 from "../../common/table/TableSize2x5";
 import Typography from "@mui/material/Typography";
 import UniversalTabWithTable from "../../../HOC/UniversalTabWithTable";
@@ -8,7 +8,9 @@ const Fade = require("react-reveal/Fade")
 type CheckPropsType = {}
 
 const Check4 = (props: CheckPropsType) => {
-
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     return (
         <Fade bottom cascade>
                 <Typography sx={{padding: '0 20px'}} variant="body1" component='p'>
@@ -35,8 +37,8 @@ const Check4 = (props: CheckPropsType) => {
                 <Typography sx={{padding: '0 20px'}} variant="body1" component='p'>
                     <p> Остановите вращение платформы МПУ-1, отсоедините переходной жгут "БДГ" от БДГ-1 и снимите последний
                         с платформы МПУ-1.</p>
-                    <p> Установите поочередно БДГ-2, БДГ-3, БДГ-4 на поворотную платформу МПУ-1, произведите соответствующие
-                        проверки в каналах &#8545;,&#8546;,&#8547;.</p>
+                    <p> Устанавите поочередно БДГ-2, БДГ-3, БДГ-4 на поворотную платформу МПУ-1, произведите проверку
+                        в каналах &#8545;,&#8546;,&#8547;.</p>
                 </Typography>
 
                 <Typography sx={{padding: '0 20px'}} variant="body1" component='p'>

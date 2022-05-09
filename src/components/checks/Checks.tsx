@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useParams} from "react-router-dom";
 import Paginator from "../common/paginator/paginator.";
 import Check1 from "./check/Check1";
@@ -6,6 +6,7 @@ import Check2 from './check/Check2';
 import Check3 from './check/Check3';
 import Check4 from './check/Check4';
 import Check5 from './check/Check5';
+import Check6 from './check/Check6';
 
 
 import Check8 from './check/Check4';
@@ -23,34 +24,18 @@ type ChecksPropsType = {
 function Checks(props:ChecksPropsType) {
     const params = useParams();
 
-
-
     return (
         <div>
             <Paginator paginatorPageNumber={props.paginatorPageNumber} LinkToCheck={props.LinkToCheck}/>
             <Stepper paginatorPageNumber={props.paginatorPageNumber} LinkToCheck={props.LinkToCheck}/>
-            {/*{params.check==="check1"&& <Check1 />}*/}
-
             {params.check==="check1"&& UniversalCheckWithParams(Check1)()}
             {params.check==="check2"&& UniversalCheckWithParams(Check2)()}
             {params.check==="check3"&& UniversalCheckWithParams(Check3)()}
             {params.check==="check4"&& UniversalCheckWithParams(Check4)()}
             {params.check==="check5"&& UniversalCheckWithParams(Check5)()}
-            {/*{params.check==="check1"&& UniversalCheckWithParams(Check1)()}*/}
+            {params.check==="check6"&& UniversalCheckWithParams(Check6)()}
 
 
-            {/*{params.check==="check2"&&<Check2 />}*/}
-
-            {/*{params.check==="check3"&&<Check3 />}*/}
-
-            {/*{params.check==="check4"&&<Check4 />}*/}
-
-            {/*{params.check==="check5"&&<Check5 />}*/}
-
-            {/*{params.check==="check6"&&<Check6 />}*/}
-
-
-            {/*{params.check==="check8"&&<Check8 />}*/}
 
             <Paginator paginatorPageNumber={props.paginatorPageNumber} LinkToCheck={props.LinkToCheck}/>
             <Stepper paginatorPageNumber={props.paginatorPageNumber} LinkToCheck={props.LinkToCheck}/>

@@ -1,4 +1,4 @@
-import React, {memo} from 'react';
+import React, {memo, useEffect} from 'react';
 import TableSize2x5 from "../../common/table/TableSize2x5";
 import Typography from "@mui/material/Typography";
 import UniversalTabWithTable from "../../../HOC/UniversalTabWithTable";
@@ -9,7 +9,9 @@ const Fade = require("react-reveal/Fade")
 type CheckPropsType = {}
 
 const Check2 = (props: CheckPropsType) => {
-
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     return (
         <Fade bottom cascade>
             <Typography sx={{padding: '0 20px'}} variant="body1" component='p'>

@@ -14,7 +14,9 @@ const Fade = require("react-reveal/Fade")
 type CheckPropsType = {}
 
 const Check3 = (props: CheckPropsType) => {
-
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     return (
         <Fade bottom cascade>
             <Typography sx={{padding: '0 20px'}} variant="body1" component='p'>

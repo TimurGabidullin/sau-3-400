@@ -12,9 +12,17 @@ const initialState= [
         idHeader:"head1"
     } as HeaderType,
     {
-        title: "Проверка передаточных коэффициентов угловых скоростей тангажа, курса, крена. ",
+        title: "Проверка передаточных коэффициентов угловых скоростей тангажа, курса, крена.",
         idHeader:'head2'
+    } as HeaderType,
+
+    {
+        title: "Проверка срабатывания пороговых устройств по предельным значениям крена и тангажа.",
+        idHeader:'head3'
     } as HeaderType
+
+
+
 ]
 
 export const headerReducer = (state: HeaderType[] = initialState): HeaderType[] => {

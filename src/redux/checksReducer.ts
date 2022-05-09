@@ -220,7 +220,7 @@ const initialState = {
             resistors: ['R5', 'R5'],
             numbersOfContacts: ['U19/11 Ш37', 'U19/11 Ш37'],
             controlFunctions: [1, 1],
-            controlValues: [1.8, -1.8],
+            controlValues: [-1.8, 1.8],
             valuesOfErrors: [0.3, 0.3],
             valuesOfBlocks: [
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
@@ -228,8 +228,92 @@ const initialState = {
             additionalValues: [],
             directionsOfChecks: ['Влево', 'Вправо'],
             isHaveSettings: [true, true]
+        } as CheckType,
+    ],
+    "head3": [
+        {
+            title: "Проверка срабатывания пороговых устройств по предельным значениям крена на высотах > 200 м.",
+            idHeader: "3",
+            idCheck: 'check7',
+            pageNumber: 486,
+            paginatorNumber: 7,
+            typesOfBlocks: ['ВПК', 'ВБК'],
+            typesOfSubBlocks: ['', 'ВГМ103-1'],
+            positionOfSubBlock: ['', 'X14'],
+            resistors: ['', 'R4'],
+            numbersOfContacts: ['U21/11 Ш35', 'U24/11 Ш35'],
+            controlFunctions: [1, 1],
+            controlValues: [0, 0],
+            valuesOfErrors: [0.25, 0.1],
+            valuesOfBlocks: [
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''}],
+            isHaveSettings: [false, true]
+        } as CheckType,
+        {
+            title: "Проверка срабатывания пороговых устройств по предельным значениям крена на высотах ≤ 60 м.",
+            idHeader: "1",
+            idCheck: 'check2',
+            pageNumber: 474,
+            paginatorNumber: 2,
+            typesOfBlocks: ['ВБК', 'ВБК', 'ВБК', 'ВБК'],
+            typesOfSubBlocks: ['', 'ВГМ 103-1', '', 'ВГМ 103-1'],
+            positionOfSubBlock: ['', 'Х14', '', 'X14'],
+            resistors: ['', 'R6', '', 'R6'],
+            numbersOfContacts: [
+                'U23/11 Ш35', 'U24/11 Ш35',
+                'U23/11 Ш35', 'U24/11 Ш35'],
+            controlFunctions: [0, 2, 0, 2],
+            controlValues: [0, 2.25, 0, 2.25,],
+            valuesOfErrors: [0, 0.05, 0, 0.05],
+            valuesOfBlocks: [
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''}],
+            directionsOfChecks: [
+                'Вправо/вверх и 2Т', 'Вправо/вверх и 2Т',
+                'Влево/вниз и 2Т', 'Влево/вниз и 2Т',],
+            isHaveSettings: [false, true, false, true],
 
         } as CheckType,
+        {
+            title:  "Проверка срабатывания пороговых устройств по предельным значениям тангажа",
+            idHeader: "1",
+            idCheck: 'check3',
+            pageNumber: 475,
+            paginatorNumber: 3,
+            typesOfBlocks: ['ВПК', 'ВПК', 'ВПК', 'ВПК', 'ВБК', 'ВБК', 'ВБК', 'ВБК'],
+            typesOfSubBlocks: ['ВИ-78', 'ВИ-78', 'ВИ-78', 'ВИ-78', 'ВИ-78', 'ВИ-78', 'БС-47', 'БС-47'],
+            positionOfSubBlock: ['Х13', 'Х13', 'Х14', 'X14', 'Х21', 'Х21', 'Х15', 'X15'],
+            resistors: ['R1', 'R1', 'R1', 'R1', 'R1', 'R1', 'R3', 'R3'],
+            numbersOfContacts: [
+                'U26/11 Ш35', 'U26/11 Ш35',
+                'U20/11 Ш35', 'U20/11 Ш35',
+                'U26/11 Ш35', 'U26/11 Ш35',
+                'U24/11 Ш35', 'U24/11 Ш35'],
+            controlFunctions: [1, 1, 3, 3, 1, 1, 3, 3],
+            controlValues: [3.5, -3.5, 3.5, -3.5, -1.89, 1.89, -2.24, 2.24],
+            valuesOfErrors: [0.35, 0.35, 0.35, 0.35, 0.21, 0.21, 0.21, 0.21],
+            valuesOfBlocks: [
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},],
+            additionalValues: [],
+            directionsOfChecks: [
+                'На кабрирование', 'На пикирование',
+                'На кабрирование', 'На пикирование',
+                'Вправо', 'Влево',
+                'Вправо', 'Влево'],
+            isHaveSettings: [true, true, true, true, true, true, true, true]
+
+        } as CheckType
+
     ],
 }
 
