@@ -1,35 +1,16 @@
-import React, {memo, useEffect} from 'react';
+import React, {memo} from 'react';
 import TableSize2x5 from "../../common/table/TableSize2x5";
 import Typography from "@mui/material/Typography";
-import {useSelector} from "react-redux";
-import {AppStateType} from "../../../redux/store";
-import {useParams} from "react-router-dom";
-import {CheckType} from "../../../redux/checksReducer";
 import UniversalTabWithTable from "../../../HOC/UniversalTabWithTable";
-import styles from "./Check.module.css";
-import {ParamsType} from "../../home/Home";
-const Fade = require("react-reveal/Fade")
 
+const Fade = require("react-reveal/Fade")
 
 type CheckPropsType = {}
 
 const Check4 = (props: CheckPropsType) => {
 
-    const params: ParamsType = useParams();
-    const checks = useSelector((state: AppStateType) => state.checks[params.header ? params.header : 'head1'])
-    const headerOfCheck = checks.filter((ch: CheckType) => ch.idCheck === params.check)[0].title
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
-
     return (
         <Fade bottom cascade>
-            <div className={styles.checkContainer}>
-
-                <Typography sx={{padding: '0 20px', textIndent: '40px'}} variant="h6" component="h6">
-                    {headerOfCheck}
-                </Typography>
-
                 <Typography sx={{padding: '0 20px'}} variant="body1" component='p'>
                     <p> Соедините БДГ-1 с соответствующим соединителем фидера обьекта с помощью переходного жгута
                         "БДГ".</p>
@@ -65,8 +46,6 @@ const Check4 = (props: CheckPropsType) => {
                 <Typography sx={{padding: '0 20px'}} variant="body1" component='p'>
                     <p> На пульте ПС-172-02 нажмите кнопку-лампочку ТАНГАЖ ОТКЛ.</p>
                 </Typography>
-
-            </div>
         </Fade>
     );
 }

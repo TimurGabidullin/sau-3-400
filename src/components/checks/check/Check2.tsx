@@ -1,33 +1,17 @@
-import React, {memo, useEffect} from 'react';
+import React, {memo} from 'react';
 import TableSize2x5 from "../../common/table/TableSize2x5";
 import Typography from "@mui/material/Typography";
-import {useSelector} from "react-redux";
-import {AppStateType} from "../../../redux/store";
-import {useParams} from "react-router-dom";
-import {CheckType} from "../../../redux/checksReducer";
 import UniversalTabWithTable from "../../../HOC/UniversalTabWithTable";
-import styles from "./Check.module.css";
+
 const Fade = require("react-reveal/Fade")
 
 
 type CheckPropsType = {}
 
 const Check2 = (props: CheckPropsType) => {
-    const params = useParams();
-    const checks = useSelector((state: AppStateType) => state.checks[params.header ? params.header : 'head1'])
-    const headerOfCheck = checks.filter((ch: CheckType) => ch.idCheck === params.check)[0].title
-
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
 
     return (
         <Fade bottom cascade>
-        <div className={styles.checkContainer}>
-            <Typography sx={{padding: '0 20px',textIndent:'40px'}} variant="h6" component="h6">
-                {headerOfCheck}
-            </Typography>
-
             <Typography sx={{padding: '0 20px'}} variant="body1" component='p'>
                 <p> На пульте ПК-31-01 переключатель ИСКЛЮЧ ПОСАДКА установите в положение &#xC9;, ИСКЛЮЧ УСП
                     установите в положение "4".</p>
@@ -66,10 +50,8 @@ const Check2 = (props: CheckPropsType) => {
                 <p> Установите на имитаторе МИМ-70 переключатели ОТКЛОНЕНИЕ в положение "0".</p>
                 <p> На пульте ПС-172-02 нажмите кнопку КРЕН ОТКЛ. Убедитесь, что горят табло "КУРСОВАЯ СТАБИЛИЗ" на
                     на приборной доске лётчиков.</p>
-
             </Typography>
-        </div>
-        </Fade >
+        </ Fade>
     );
 }
 

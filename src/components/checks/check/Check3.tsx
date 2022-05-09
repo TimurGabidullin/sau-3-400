@@ -15,20 +15,8 @@ type CheckPropsType = {}
 
 const Check3 = (props: CheckPropsType) => {
 
-    const params:ParamsType = useParams();
-    const checks = useSelector((state: AppStateType) => state.checks[params.header? params.header : 'head1'])
-    const headerOfCheck = checks.filter((ch: CheckType) => ch.idCheck === params.check)[0].title
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
-
     return (
         <Fade bottom cascade>
-        <div className={styles.checkContainer}>
-            <Typography sx={{padding: '0 20px',textIndent:'40px'}} variant="h6" component="h6">
-                {headerOfCheck}
-            </Typography>
-
             <Typography sx={{padding: '0 20px'}} variant="body1" component='p'>
                 <p> Плавно вращая ручки датчиков ТАНГАЖ на имитаторах ИМБ-5 по (против) часовой стрелке и не допуская
                     расхождения между ними более, чем на 1°, установите значение угла тангажа:
@@ -127,7 +115,6 @@ const Check3 = (props: CheckPropsType) => {
                 ними более, чем на 1°, установите значчение угла курса в пределах ±0,05°. </p>
             </Typography>
 
-        </div>
         </Fade >
     );
 }

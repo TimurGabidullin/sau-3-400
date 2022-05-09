@@ -11,17 +11,14 @@ import Check5 from './check/Check5';
 import Check8 from './check/Check4';
 import Stepper from "../common/stepper/Stepper";
 import Container from "@mui/material/Container";
+import UniversalCheckWithParams from "../../HOC/UniversalCheckWithParams";
 
 
 
 type ChecksPropsType = {
     paginatorPageNumber:number
     LinkToCheck: (h:string,url: string,prPageNum:number) => void
-
 }
-
-
-
 
 function Checks(props:ChecksPropsType) {
     const params = useParams();
@@ -32,15 +29,23 @@ function Checks(props:ChecksPropsType) {
         <div>
             <Paginator paginatorPageNumber={props.paginatorPageNumber} LinkToCheck={props.LinkToCheck}/>
             <Stepper paginatorPageNumber={props.paginatorPageNumber} LinkToCheck={props.LinkToCheck}/>
-            {params.check==="check1"&& <Check1 />}
+            {/*{params.check==="check1"&& <Check1 />}*/}
 
-            {params.check==="check2"&&<Check2 />}
+            {params.check==="check1"&& UniversalCheckWithParams(Check1)()}
+            {params.check==="check2"&& UniversalCheckWithParams(Check2)()}
+            {params.check==="check3"&& UniversalCheckWithParams(Check3)()}
+            {params.check==="check4"&& UniversalCheckWithParams(Check4)()}
+            {params.check==="check5"&& UniversalCheckWithParams(Check5)()}
+            {/*{params.check==="check1"&& UniversalCheckWithParams(Check1)()}*/}
 
-            {params.check==="check3"&&<Check3 />}
 
-            {params.check==="check4"&&<Check4 />}
+            {/*{params.check==="check2"&&<Check2 />}*/}
 
-            {params.check==="check5"&&<Check5 />}
+            {/*{params.check==="check3"&&<Check3 />}*/}
+
+            {/*{params.check==="check4"&&<Check4 />}*/}
+
+            {/*{params.check==="check5"&&<Check5 />}*/}
 
             {/*{params.check==="check6"&&<Check6 />}*/}
 
