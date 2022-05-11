@@ -7,6 +7,7 @@ import Check3 from './check/Check3';
 import Check4 from './check/Check4';
 import Check5 from './check/Check5';
 import Check6 from './check/Check6';
+import Check7 from './check/Check7';
 
 
 import Check8 from './check/Check4';
@@ -34,6 +35,7 @@ function Checks(props:ChecksPropsType) {
             {params.check==="check4"&& UniversalCheckWithParams(Check4)()}
             {params.check==="check5"&& UniversalCheckWithParams(Check5)()}
             {params.check==="check6"&& UniversalCheckWithParams(Check6)()}
+            {params.check==="check7"&& UniversalCheckWithParams(Check7)()}
 
 
 

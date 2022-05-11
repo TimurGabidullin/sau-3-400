@@ -8,7 +8,7 @@ const Fade = require("react-reveal/Fade")
 
 type CheckPropsType = {}
 
-const Check8 = (props: CheckPropsType) => {
+const Check9 = (props: CheckPropsType) => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -84,4 +84,4 @@ const Check8 = (props: CheckPropsType) => {
 }
 
 
-export default memo(Check8);
+export default memo(Check9);

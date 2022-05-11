@@ -7,34 +7,37 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "../../../redux/store";
 
 type PaginatorPropsType = {
-    paginatorPageNumber:number
-    LinkToCheck: (h:string,url: string , prPageNum: number) => void
+    paginatorPageNumber: number
+    LinkToCheck: (h: string, url: string, prPageNum: number) => void
 }
 
 //useMemo надо внедрить
-const getHeaderParameterUrl=(page:number)=>{
-    if (page<4) return 'head1'
+const getHeaderParameterUrl = (page: number) => {
+    if (page < 4) return 'head1'
+    if (page > 3 && page < 7) return 'head2'
+    if (page > 6 && page < 10) return 'head3'
+
     else return 'head2'
 }
 
-const Paginator=(props:PaginatorPropsType)=> {
+const Paginator = (props: PaginatorPropsType) => {
     debugger
-    let currentPage=useSelector((state:AppStateType)=>state.app.currentPage)
+    let currentPage = useSelector((state: AppStateType) => state.app.currentPage)
 
     const dispatch = useDispatch()
 
-    const onChangeHandler=useCallback((e: React.ChangeEvent<unknown>,page:number) => {
-        let headerUrl=getHeaderParameterUrl(page)
-        let Url=`check${page}`
-        props.LinkToCheck(headerUrl,Url,page)
+    const onChangeHandler = useCallback((e: React.ChangeEvent<unknown>, page: number) => {
+        let headerUrl = getHeaderParameterUrl(page)
+        let Url = `check${page}`
+        props.LinkToCheck(headerUrl, Url, page)
         debugger
         dispatch(setCurrentPageAC(page))
 
-    },[])
+    }, [])
 
     return (
         <Stack
-            sx={{flexGrow: 2, display: {xs: 'none', md: 'flex'}, padding:2}}
+            sx={{flexGrow: 2, display: {xs: 'none', md: 'flex'}, padding: 2}}
             spacing={2}
             direction="row"
             justifyContent="center"

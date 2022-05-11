@@ -78,7 +78,7 @@ export const numToFunc = {
 const initialState = {
     "head1": [
         {
-            title: "Проверка нулевых сигналов",
+            title: "Проверка нулевых сигналов.",
             idHeader: "1",
             idCheck: 'check1',
             pageNumber: 473,
@@ -99,7 +99,7 @@ const initialState = {
 
         } as CheckType,
         {
-            title: "Проверка коэффициента передачи ВГМ 103-1",
+            title: "Проверка коэффициента передачи ВГМ 103-1.",
             idHeader: "1",
             idCheck: 'check2',
             pageNumber: 474,
@@ -126,7 +126,7 @@ const initialState = {
 
         } as CheckType,
         {
-            title: "Проверка масштабов",
+            title: "Проверка масштабов.",
             idHeader: "1",
             idCheck: 'check3',
             pageNumber: 475,
@@ -166,7 +166,7 @@ const initialState = {
     "head2": [
         {
             idHeader: "2",
-            title: "Проверка передаточного коэффициента по сигналу угловой скорости тангажа",
+            title: "Проверка передаточного коэффициента по сигналу угловой скорости тангажа.",
             idCheck: 'check4',
             pageNumber: 480,
             paginatorNumber: 4,
@@ -188,7 +188,7 @@ const initialState = {
 
         {
             idHeader: "2",
-            title: "Проверка передаточного коэффициента по сигналу угловой скорости курса",
+            title: "Проверка передаточного коэффициента по сигналу угловой скорости курса.",
             idCheck: 'check5',
             pageNumber: 482,
             paginatorNumber: 5,
@@ -210,7 +210,7 @@ const initialState = {
 
         {
             idHeader: "2",
-            title: "Проверка передаточного коэффициента по сигналу угловой скорости крена",
+            title: "Проверка передаточного коэффициента по сигналу угловой скорости крена.",
             idCheck: 'check6',
             pageNumber: 483,
             paginatorNumber: 6,
@@ -232,85 +232,65 @@ const initialState = {
     ],
     "head3": [
         {
-            title: "Проверка срабатывания пороговых устройств по предельным значениям крена на высотах > 200 м.",
+            title: "Проверка срабатывания пороговых устройств по предельным значениям крена на высотах H > 200 м.",
             idHeader: "3",
             idCheck: 'check7',
             pageNumber: 486,
             paginatorNumber: 7,
-            typesOfBlocks: ['ВПК', 'ВБК'],
-            typesOfSubBlocks: ['', 'ВГМ103-1'],
-            positionOfSubBlock: ['', 'X14'],
-            resistors: ['', 'R4'],
-            numbersOfContacts: ['U21/11 Ш35', 'U24/11 Ш35'],
+            typesOfBlocks: ['ВБК', 'ВБК'],
+            typesOfSubBlocks: ['УПО40-1', 'УПО40-1'],
+            positionOfSubBlock: ['Х5', 'X5'],
+            resistors: ['R1', 'R4'],
+            numbersOfContacts: ['U47/11 Ш35', 'U23/11 Ш35'],
             controlFunctions: [1, 1],
-            controlValues: [0, 0],
-            valuesOfErrors: [0.25, 0.1],
+            controlValues: [31, 31],
+            valuesOfErrors: [3, 3],
             valuesOfBlocks: [
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''}],
-            isHaveSettings: [false, true]
+            directionsOfChecks: ['Вправо', 'Влево'],
+            isHaveSettings: [true, true]
         } as CheckType,
         {
             title: "Проверка срабатывания пороговых устройств по предельным значениям крена на высотах ≤ 60 м.",
-            idHeader: "1",
-            idCheck: 'check2',
-            pageNumber: 474,
-            paginatorNumber: 2,
-            typesOfBlocks: ['ВБК', 'ВБК', 'ВБК', 'ВБК'],
-            typesOfSubBlocks: ['', 'ВГМ 103-1', '', 'ВГМ 103-1'],
-            positionOfSubBlock: ['', 'Х14', '', 'X14'],
-            resistors: ['', 'R6', '', 'R6'],
-            numbersOfContacts: [
-                'U23/11 Ш35', 'U24/11 Ш35',
-                'U23/11 Ш35', 'U24/11 Ш35'],
-            controlFunctions: [0, 2, 0, 2],
-            controlValues: [0, 2.25, 0, 2.25,],
-            valuesOfErrors: [0, 0.05, 0, 0.05],
+            idHeader: "3",
+            idCheck: 'check8',
+            pageNumber: 490,
+            paginatorNumber: 8,
+            typesOfBlocks: ['ВБК', 'ВБК'],
+            typesOfSubBlocks: ['УПО40-1', 'УПО40-1'],
+            positionOfSubBlock: ['Х5', 'X5'],
+            resistors: ['R3', 'R6'],
+            numbersOfContacts: ['U47/11 Ш35', 'U23/11 Ш35'],
+            controlFunctions: [1, 1],
+            controlValues: [4, 4],
+            valuesOfErrors: [1, 1],
             valuesOfBlocks: [
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
-                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
-                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''}],
-            directionsOfChecks: [
-                'Вправо/вверх и 2Т', 'Вправо/вверх и 2Т',
-                'Влево/вниз и 2Т', 'Влево/вниз и 2Т',],
-            isHaveSettings: [false, true, false, true],
+            directionsOfChecks: ['Вправо', 'Влево'],
+            isHaveSettings: [true, true]
 
         } as CheckType,
         {
-            title:  "Проверка срабатывания пороговых устройств по предельным значениям тангажа",
-            idHeader: "1",
-            idCheck: 'check3',
-            pageNumber: 475,
-            paginatorNumber: 3,
-            typesOfBlocks: ['ВПК', 'ВПК', 'ВПК', 'ВПК', 'ВБК', 'ВБК', 'ВБК', 'ВБК'],
-            typesOfSubBlocks: ['ВИ-78', 'ВИ-78', 'ВИ-78', 'ВИ-78', 'ВИ-78', 'ВИ-78', 'БС-47', 'БС-47'],
-            positionOfSubBlock: ['Х13', 'Х13', 'Х14', 'X14', 'Х21', 'Х21', 'Х15', 'X15'],
-            resistors: ['R1', 'R1', 'R1', 'R1', 'R1', 'R1', 'R3', 'R3'],
-            numbersOfContacts: [
-                'U26/11 Ш35', 'U26/11 Ш35',
-                'U20/11 Ш35', 'U20/11 Ш35',
-                'U26/11 Ш35', 'U26/11 Ш35',
-                'U24/11 Ш35', 'U24/11 Ш35'],
-            controlFunctions: [1, 1, 3, 3, 1, 1, 3, 3],
-            controlValues: [3.5, -3.5, 3.5, -3.5, -1.89, 1.89, -2.24, 2.24],
-            valuesOfErrors: [0.35, 0.35, 0.35, 0.35, 0.21, 0.21, 0.21, 0.21],
+            title:  "Проверка срабатывания пороговых устройств по предельным значениям тангажа.",
+            idHeader: "3",
+            idCheck: 'check9',
+            pageNumber: 493,
+            paginatorNumber: 9,
+            typesOfBlocks: ['ВПК', 'ВПК'],
+            typesOfSubBlocks: ['УПО40-1', 'УПО40-1'],
+            positionOfSubBlock: ['Х5', 'X5'],
+            resistors: ['R3', 'R6'],
+            numbersOfContacts: ['U47/11 Ш35', 'U23/11 Ш35'],
+            controlFunctions: [1, 1],
+            controlValues: [4, 4],
+            valuesOfErrors: [1, 1],
             valuesOfBlocks: [
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
-                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
-                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
-                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
-                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
-                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
-                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
-                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},],
-            additionalValues: [],
-            directionsOfChecks: [
-                'На кабрирование', 'На пикирование',
-                'На кабрирование', 'На пикирование',
-                'Вправо', 'Влево',
-                'Вправо', 'Влево'],
-            isHaveSettings: [true, true, true, true, true, true, true, true]
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''}],
+            directionsOfChecks: ['Вправо', 'Влево'],
+            isHaveSettings: [true, true]
 
         } as CheckType
 
