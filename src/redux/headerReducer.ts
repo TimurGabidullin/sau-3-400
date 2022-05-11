@@ -19,7 +19,15 @@ const initialState= [
     {
         title: "Проверка срабатывания пороговых устройств по предельным значениям крена и тангажа.",
         idHeader:'head3'
-    } as HeaderType
+    } as HeaderType,
+    {
+        title: "Проверка работы САУ в полуавтоматическом режиме захода на посадку.",
+        idHeader:'head4'
+    } as HeaderType,
+
+
+
+
 
 
 

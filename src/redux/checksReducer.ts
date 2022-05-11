@@ -241,7 +241,7 @@ const initialState = {
             typesOfSubBlocks: ['УПО40-1', 'УПО40-1'],
             positionOfSubBlock: ['Х5', 'X5'],
             resistors: ['R1', 'R4'],
-            numbersOfContacts: ['U47/11 Ш35', 'U23/11 Ш35'],
+            numbersOfContacts: ['U47/11 Ш36', 'U23/11 Ш36'],
             controlFunctions: [1, 1],
             controlValues: [31, 31],
             valuesOfErrors: [3, 3],
@@ -261,7 +261,7 @@ const initialState = {
             typesOfSubBlocks: ['УПО40-1', 'УПО40-1'],
             positionOfSubBlock: ['Х5', 'X5'],
             resistors: ['R3', 'R6'],
-            numbersOfContacts: ['U47/11 Ш35', 'U23/11 Ш35'],
+            numbersOfContacts: ['U47/11 Ш36', 'U23/11 Ш36'],
             controlFunctions: [1, 1],
             controlValues: [4, 4],
             valuesOfErrors: [1, 1],
@@ -273,16 +273,59 @@ const initialState = {
 
         } as CheckType,
         {
-            title:  "Проверка срабатывания пороговых устройств по предельным значениям тангажа.",
+            title: "Проверка срабатывания пороговых устройств по предельным значениям тангажа.",
             idHeader: "3",
             idCheck: 'check9',
             pageNumber: 493,
             paginatorNumber: 9,
             typesOfBlocks: ['ВПК', 'ВПК'],
             typesOfSubBlocks: ['УПО40-1', 'УПО40-1'],
+            positionOfSubBlock: ['Х32', 'X32'],
+            resistors: ['R4', 'R1'],
+            numbersOfContacts: ['U6/19 Ш37', 'U5/19 Ш37'],
+            controlFunctions: [1, 1],
+            controlValues: [15, 10],
+            valuesOfErrors: [2, 1.5],
+            valuesOfBlocks: [
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''}],
+            directionsOfChecks: ['На кабрирование', 'На пикирование'],
+            isHaveSettings: [true, true]
+        } as CheckType
+
+    ],
+    "head4": [
+        {
+            title: "Проверка передаточного коэффициента на индекс команд по сигналу крена.",
+            idHeader: "4",
+            idCheck: 'check10',
+            pageNumber: 498,
+            paginatorNumber: 10,
+            typesOfBlocks: ['ВБК', 'ВБК'],
+            typesOfSubBlocks: ["СУ-79", "СУ-79"],
+            positionOfSubBlock: ['Х20', 'X20'],
+            resistors: ['R1', 'R1'],
+            numbersOfContacts: ['U27/11 Ш37', 'U27/11 Ш37'],
+            controlFunctions: [1, 1],
+            controlValues: [5, 5],
+            valuesOfErrors: [0.5, 0.5],
+            valuesOfBlocks: [
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''}],
+            directionsOfChecks: ['Вправо', 'Влево'],
+            isHaveSettings: [true, true]
+        } as CheckType,
+        {
+            title: "Проверка передаточного коэффициента на индекс команд по сигналу крена.",
+            idHeader: "4",
+            idCheck: 'check11',
+            pageNumber: 501,
+            paginatorNumber: 11,
+            typesOfBlocks: ['ВБК', 'ВБК'],
+            typesOfSubBlocks: ['УПО40-1', 'УПО40-1'],
             positionOfSubBlock: ['Х5', 'X5'],
             resistors: ['R3', 'R6'],
-            numbersOfContacts: ['U47/11 Ш35', 'U23/11 Ш35'],
+            numbersOfContacts: ['U47/11 Ш36', 'U23/11 Ш36'],
             controlFunctions: [1, 1],
             controlValues: [4, 4],
             valuesOfErrors: [1, 1],
@@ -291,10 +334,11 @@ const initialState = {
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''}],
             directionsOfChecks: ['Вправо', 'Влево'],
             isHaveSettings: [true, true]
-
-        } as CheckType
+        } as CheckType,
 
     ],
+
+
 }
 
 
