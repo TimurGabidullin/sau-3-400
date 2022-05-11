@@ -51,7 +51,7 @@ const Check10 = (props: CheckPropsType) => {
                     КРЕН 2А, которая не должна гореть.</p>
                 <p> Установите значение текщего крена на отметку "0°".</p>
             </Typography>
-
+  
             {UniversalTabWithTable(TableSize2x5, 0)(props)}
             {UniversalTabWithTable(TableSize2x5, 1)(props)}
 
