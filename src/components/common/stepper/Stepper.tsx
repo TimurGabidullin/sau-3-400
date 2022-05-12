@@ -31,6 +31,7 @@ const getHeaderParameterUrl = (page: number) => {
     if (page < 2) return 'head1'
     if (page > 1 && page < 5) return 'head2'
     if (page > 4 && page < 8) return 'head3'
+    if (page > 7 && page < 11) return 'head4'
 
 
     else return 'head2'

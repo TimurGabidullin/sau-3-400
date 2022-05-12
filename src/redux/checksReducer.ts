@@ -316,19 +316,41 @@ const initialState = {
             isHaveSettings: [true, true]
         } as CheckType,
         {
-            title: "Проверка передаточного коэффициента на индекс команд по сигналу крена.",
+            title: "Проверка передаточного коэффициента на индекс команд по сигналу тангажа.",
             idHeader: "4",
             idCheck: 'check11',
             pageNumber: 501,
             paginatorNumber: 11,
-            typesOfBlocks: ['ВБК', 'ВБК'],
-            typesOfSubBlocks: ['УПО40-1', 'УПО40-1'],
-            positionOfSubBlock: ['Х5', 'X5'],
-            resistors: ['R3', 'R6'],
-            numbersOfContacts: ['U47/11 Ш36', 'U23/11 Ш36'],
+            typesOfBlocks: ['ВПК', 'ВПК'],
+            typesOfSubBlocks: ['СУ-79', 'СУ-79'],
+            positionOfSubBlock: ['Х21', 'X21'],
+            resistors: ['R1', 'R1'],
+            numbersOfContacts: ['U25/19 Ш37', 'U25/19 Ш37'],
             controlFunctions: [1, 1],
-            controlValues: [4, 4],
-            valuesOfErrors: [1, 1],
+            controlValues: [5, 5],
+            valuesOfErrors: [0.5, 0.5],
+            valuesOfBlocks: [
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''}],
+            directionsOfChecks: ['На пикирование', 'На кабрирование'],
+            isHaveSettings: [true, true]
+        } as CheckType,
+    ],
+    "head5": [
+        {
+            title: "Проверка работы САУ в режиме ПРИВЕДЕНИЕ В ГОРИЗОНТ.",
+            idHeader: "5",
+            idCheck: 'check12',
+            pageNumber: 498,
+            paginatorNumber: 12,
+            typesOfBlocks: ['ВБК', 'ВБК'],
+            typesOfSubBlocks: ["ВГМ103-1", "УГР41-1"],
+            positionOfSubBlock: ['Х14', 'X11'],
+            resistors: ['R1', 'R3'],
+            numbersOfContacts: ['U17/11 Ш35', 'U17/11 Ш35'],
+            controlFunctions: [1, 1],
+            controlValues: [5, 5],
+            valuesOfErrors: [0.5, 0.5],
             valuesOfBlocks: [
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''}],
@@ -336,6 +358,80 @@ const initialState = {
             isHaveSettings: [true, true]
         } as CheckType,
 
+    ],
+
+    "head6": [
+        {
+            title: "Проверка масштабов по сигналам датчика положения элеронов.",
+            idHeader: "6",
+            idCheck: 'check13',
+            pageNumber: 515,
+            paginatorNumber: 13,
+            typesOfBlocks: ['ВБК', 'ВБК', 'ВБК', 'ВБК', 'ВБК', 'ВБК'],
+            typesOfSubBlocks: ["", "", "ВО104-01", "", "", "ВО104-01"],
+            positionOfSubBlock: ['', '', 'X13', '', '', 'X13'],
+            resistors: ['', '', 'R4', '', '', 'R4'],
+            numbersOfContacts: ['U20/11 Ш35', 'U14/11 Ш35', 'U30/11 Ш35', 'U20/11 Ш35', 'U14/11 Ш35', 'U30/11 Ш35'],
+            controlFunctions: [0, 0, 1, 0, 0, 1],
+            controlValues: [0, 0, 0, 0, 0, 0],
+            valuesOfErrors: [0, 0, 0.3, 0, 0, 0.3],
+            valuesOfBlocks: [
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+            ],
+            directionsOfChecks: ['Вправо', 'Вправо', 'Вправо', 'Влево', 'Влево', 'Влево'],
+            isHaveSettings: [false, false, true, false, false, true,]
+        } as CheckType,
+    ],
+    "head7": [
+        {
+            title: "Проверка передаточного коэффициента при управлении от ручки КРЕН.",
+            idHeader: "7",
+            idCheck: 'check14',
+            pageNumber: 518,
+            paginatorNumber: 14,
+            typesOfBlocks: ['ВБК', 'ВБК'],
+            typesOfSubBlocks: ['БС-47', 'БС-47'],
+            positionOfSubBlock: ['Х15', 'Х15'],
+            resistors: ['R5', 'R5'],
+            numbersOfContacts: ['U24/11 Ш35', 'U24/11 Ш35'],
+            controlFunctions: [1, 1],
+            controlValues: [7.2, 7.2],
+            valuesOfErrors: [0.4, 0.4],
+            valuesOfBlocks: [
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+            ],
+            directionsOfChecks: ['Вправо', 'Влево'],
+            isHaveSettings: [true, true]
+        } as CheckType,
+    ],
+    "head8": [
+        {
+            title: "Проверка передаточного коэффициента по сигналу ЗК.",
+            idHeader: "8",
+            idCheck: 'check15',
+            pageNumber: 523,
+            paginatorNumber: 15,
+            typesOfBlocks: ['ВБК', 'ВБК'],
+            typesOfSubBlocks: ['БС-47', 'БС-47'],
+            positionOfSubBlock: ['Х15', 'Х15'],
+            resistors: ['R5', 'R5'],
+            numbersOfContacts: ['U24/11 Ш35', 'U24/11 Ш35'],
+            controlFunctions: [1, 1],
+            controlValues: [7.2, 7.2],
+            valuesOfErrors: [0.4, 0.4],
+            valuesOfBlocks: [
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+            ],
+            directionsOfChecks: ['Вправо', 'Влево'],
+            isHaveSettings: [true, true]
+        } as CheckType,
     ],
 
 

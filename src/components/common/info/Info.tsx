@@ -33,7 +33,7 @@ const Info = (props: any) => {
             : <Pulse>
                 <Typography sx={{padding: '40px 20px', textAlign: 'center'}} variant="body1" component='p'>Вставка
                     не
-                    регуллируется </Typography>
+                    регулируется </Typography>
             </Pulse>
     );
 }

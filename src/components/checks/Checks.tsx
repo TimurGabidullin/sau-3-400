@@ -11,9 +11,12 @@ import Check7 from './check/Check7';
 import Check8 from './check/Check8';
 import Check9 from './check/Check9';
 import Check10 from './check/Check10';
+import Check11 from './check/Check11';
+import Check12 from './check/Check12';
+import Check13 from './check/Check13';
+import Check14 from './check/Check14';
 
 import Stepper from "../common/stepper/Stepper";
-import Container from "@mui/material/Container";
 import UniversalCheckWithParams from "../../HOC/UniversalCheckWithParams";
 
 
@@ -39,6 +42,10 @@ function Checks(props: ChecksPropsType) {
             {params.check === "check8" && UniversalCheckWithParams(Check8)()}
             {params.check === "check9" && UniversalCheckWithParams(Check9)()}
             {params.check === "check10" && UniversalCheckWithParams(Check10)()}
+            {params.check === "check11" && UniversalCheckWithParams(Check11)()}
+            {params.check === "check12" && UniversalCheckWithParams(Check12)()}
+            {params.check === "check13" && UniversalCheckWithParams(Check13)()}
+            {params.check === "check14" && UniversalCheckWithParams(Check14)()}
 
 
             <Paginator paginatorPageNumber={props.paginatorPageNumber} LinkToCheck={props.LinkToCheck}/>
