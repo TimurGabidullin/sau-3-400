@@ -15,14 +15,22 @@ import {memo, useEffect} from "react";
 import Typography from "@mui/material/Typography";
 import Icon from '@mui/material/Icon';
 import styles from "./Report.module.css";
-import {saveReportState} from "../../utils/localStorage";
+import {saveChecksState, saveReportState} from "../../utils/localStorage";
 
 
 const Report=()=> {
 
+    const numberOfPlane = useSelector((state: AppStateType) => state.app.numberOfPlane)
+    const reportReducer = useSelector((state: AppStateType) => state.report)
+
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+
+    useEffect(() => {
+
+        saveReportState(reportReducer, numberOfPlane)
+    }, [ reportReducer])
 
     const {register, handleSubmit, formState: {errors}} = useForm();
     const onSubmit = (data: any) => {

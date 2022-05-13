@@ -417,6 +417,31 @@ const initialState = {
             idCheck: 'check15',
             pageNumber: 523,
             paginatorNumber: 15,
+            typesOfBlocks: ['ВБК', 'ВБК', 'ВБК', 'ВБК'],
+            typesOfSubBlocks: ['ВГМ103-1', 'БС-47', 'ВГМ103-1', 'ВГМ103-1'],
+            positionOfSubBlock: ['Х14', 'Х15', 'Х14', 'Х14'],
+            resistors: ['R5', 'R2', 'R9', 'R8'],
+            numbersOfContacts: ['U24/11 Ш35', 'U24/11 Ш35', 'U25/11 Ш35', 'U25/11 Ш35'],
+            controlFunctions: [1, 1, 1, 1],
+            controlValues: [0, 3.2, 5.8, 5.8,],
+            valuesOfErrors: [0.1, 0.3, 0.1, 0.1,],
+            valuesOfBlocks: [
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+            ],
+            directionsOfChecks: ['', '10° по часовой', '90° по часовой', '270° против часовой'],
+            isHaveSettings: [true, true, true, true]
+        } as CheckType,
+    ],
+    "head9": [
+        {
+            title: "Проверка передаточного коэффициента по сигналу ЗК.",
+            idHeader: "9",
+            idCheck: 'check16',
+            pageNumber: 523,
+            paginatorNumber: 15,
             typesOfBlocks: ['ВБК', 'ВБК'],
             typesOfSubBlocks: ['БС-47', 'БС-47'],
             positionOfSubBlock: ['Х15', 'Х15'],
@@ -433,7 +458,6 @@ const initialState = {
             isHaveSettings: [true, true]
         } as CheckType,
     ],
-
 
 }
 

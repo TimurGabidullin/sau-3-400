@@ -132,10 +132,13 @@ const TableSize2x5 = (props: any) => {
                         <td>{typeOfBlock} </td>
                         <td>
                             <TextField
+
                                 type="number"
                                 inputProps={{step: 0.01}}
+
                                 sx={{marginTop: '10px'}}
                                 color='secondary'
+                                // color={!errors.channel1&&getValues("channel1")?'success':'secondary'}
                                 id="outlined-helperText"
                                 label="1 канал"
 

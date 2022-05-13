@@ -41,7 +41,10 @@ const initialState= [
         title: "Проверка передаточного коэффициента по сигналу ЗК от ручки КУРС.",
         idHeader:'head8'
     } as HeaderType,
-
+    {
+        title: "Проверка работы канала КРЕНА в режиме ЗАХОД.",
+        idHeader:'head9'
+    } as HeaderType,
 
 ]
 
