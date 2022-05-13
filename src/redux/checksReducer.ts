@@ -49,7 +49,7 @@ export function dividerFunc(numberOfPlane: string, inputValue: string, channel: 
     }
 
     // @ts-ignore.
-    return compareFunc.call(this, +inputValue / this.valuesOfBlocks[0][channel], channel, indexOfTable)
+    return compareFunc.call(this, +inputValue / this.valuesOfBlocks[indexOfTable-1][channel], channel, indexOfTable)
 
 }
 
@@ -440,7 +440,7 @@ const initialState = {
             title: "Проверка передаточного коэффициента по сигналу ЗК.",
             idHeader: "9",
             idCheck: 'check16',
-            pageNumber: 523,
+            pageNumber: 532,
             paginatorNumber: 15,
             typesOfBlocks: ['ВБК', 'ВБК'],
             typesOfSubBlocks: ['УГР41-1', 'ВКП-100'],
@@ -457,6 +457,41 @@ const initialState = {
             directionsOfChecks: ['', ''],
             isHaveSettings: [true, true]
         } as CheckType,
+
+        {
+            title: "Проверка масштаба и ограничения по сигналу отклонения от равносигнальной линии курса Ек.",
+            idHeader: "9",
+            idCheck: 'check17',
+            pageNumber: 534,
+            paginatorNumber: 15,
+            typesOfBlocks: ['ВБК', 'ВБК', 'ВБК', 'ВБК', 'ВБК', 'ВБК', 'ВБК', 'ВБК'],
+            typesOfSubBlocks: ['', 'ВКП-100', '', 'ВКП-100', 'УГР41-1', 'УГР41-1', 'УГР41-1', 'УГР41-1'],
+            positionOfSubBlock: ['', 'Х12', '', 'Х12', 'X11', 'Х11', 'X11', 'Х11'],
+            resistors: ['', 'R5', '', 'R5', 'R6', 'R7', 'R6', 'R7'],
+            numbersOfContacts: [
+                'U5/6 Ш35', 'U22/11 Ш35', 'U5/6 Ш35', 'U22/11 Ш35',
+                'U5/6 Ш35', 'U22/11 Ш35', 'U5/6 Ш35', 'U22/11 Ш35'],
+            controlFunctions: [0, 2, 0, 2, 1, 1, 1, 1],
+            controlValues: [0, 35, 0, 35, 10, 7, -10, 7],// 10+-9.8>=0.2В
+            valuesOfErrors: [0, 3.5, 0, 35, 9.8, 0.7, 9.8, 0.7],
+            valuesOfBlocks: [
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+            ],
+            directionsOfChecks: [
+                'вправо/вверх и 2Т', 'вправо/вверх и 2Т', 'влево/вниз и 2Т', 'влево/вниз и 2Т',
+                'вправо/вверх и 7Т', 'вправо/вверх и 7Т', 'влево/вниз и 7Т', 'влево/вниз и 7Т',
+            ],
+            isHaveSettings: [false, true, false, true, true, true, true, true]
+        } as CheckType,
+
+
     ],
 
 }
