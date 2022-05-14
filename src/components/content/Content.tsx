@@ -7,8 +7,6 @@ import {CheckType} from "../../redux/checksReducer";
 import Container from "@mui/material/Container";
 import Typography from '@mui/material/Typography';
 import {setCurrentPageAC} from "../../redux/appReducer";
-import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
-import AttachFileIcon from '@mui/icons-material/AttachFile';
 
 const Fade = require("react-reveal/Fade")
 
@@ -38,7 +36,7 @@ function Content(props: ContentPropsType) {
                             <ul className={styles.list}>
                                 <Fade top cascade>
                                 <Typography sx={{padding: 0}} variant="h6" component='h6'>
-                                     <FlightTakeoffIcon/>  {h.title}
+                                    {h.title}
                                 </Typography>
                                 </Fade>
 

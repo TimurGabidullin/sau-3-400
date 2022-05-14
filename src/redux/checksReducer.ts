@@ -441,7 +441,7 @@ const initialState = {
             idHeader: "9",
             idCheck: 'check16',
             pageNumber: 532,
-            paginatorNumber: 15,
+            paginatorNumber: 16,
             typesOfBlocks: ['ВБК', 'ВБК'],
             typesOfSubBlocks: ['УГР41-1', 'ВКП-100'],
             positionOfSubBlock: ['Х11', 'Х12'],
@@ -463,7 +463,7 @@ const initialState = {
             idHeader: "9",
             idCheck: 'check17',
             pageNumber: 534,
-            paginatorNumber: 15,
+            paginatorNumber: 17,
             typesOfBlocks: ['ВБК', 'ВБК', 'ВБК', 'ВБК', 'ВБК', 'ВБК', 'ВБК', 'ВБК'],
             typesOfSubBlocks: ['', 'ВКП-100', '', 'ВКП-100', 'УГР41-1', 'УГР41-1', 'УГР41-1', 'УГР41-1'],
             positionOfSubBlock: ['', 'Х12', '', 'Х12', 'X11', 'Х11', 'X11', 'Х11'],
@@ -489,6 +489,34 @@ const initialState = {
                 'вправо/вверх и 7Т', 'вправо/вверх и 7Т', 'влево/вниз и 7Т', 'влево/вниз и 7Т',
             ],
             isHaveSettings: [false, true, false, true, true, true, true, true]
+        } as CheckType,
+
+        {
+            title: "Проверка передаточного коэффициента по сигналу Ек.",
+            idHeader: "9",
+            idCheck: 'check18',
+            pageNumber: 536,
+            paginatorNumber: 18,
+            typesOfBlocks: ['ВБК', 'ВБК', 'ВБК', 'ВБК'],
+            typesOfSubBlocks: ['', 'ВКП-100', '', 'ВКП-100'],
+            positionOfSubBlock: ['', 'Х12', '', 'Х12'],
+            resistors: ['', 'R8', '', 'R8'],
+            numbersOfContacts: [
+                'U5/6 Ш35', 'U24/11 Ш35', 'U5/6 Ш35', 'U24/11 Ш35'
+                ],
+            controlFunctions: [0, 2, 0, 2],
+            controlValues: [0, 19, 0, 19],
+            valuesOfErrors: [0, 2, 0, 2],
+            valuesOfBlocks: [
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+            ],
+            directionsOfChecks: [
+                'вправо и 2Т', 'вправо и 2Т', 'влево и 2Т', 'влево и 2Т'
+            ],
+            isHaveSettings: [false, true, false, true]
         } as CheckType,
 
 

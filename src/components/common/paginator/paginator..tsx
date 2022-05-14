@@ -19,9 +19,12 @@ const getHeaderParameterUrl = (page: number) => {
     if (page > 9 && page < 12) return 'head4'
     if (page > 11 && page < 13) return 'head5'
     if (page > 12 && page < 14) return 'head6'
-    if (page > 3 && page < 15) return 'head7'
+    if (page > 13 && page < 15) return 'head7'
+    if (page > 14 && page < 16) return 'head8'
+    if (page > 15 && page < 20) return 'head9'
 
-    else return 'head8'
+
+    else return 'head40'
 }
 
 const Paginator = (props: PaginatorPropsType) => {
