@@ -546,6 +546,32 @@ const initialState = {
             isHaveSettings: [false, true, false, true]
         } as CheckType,
 
+        {
+            title: "Проверка зоны нечувствительности по сигналу ΔΨзах.",
+            idHeader: "9",
+            idCheck: 'check20',
+            pageNumber: 538,
+            paginatorNumber: 20,
+            typesOfBlocks: ['ВБК', 'ВБК'],
+            typesOfSubBlocks: ['ВКП-100', 'ВКП-100'],
+            positionOfSubBlock: ['Х12', 'Х12'],
+            resistors: ['R5', 'R4'],
+            numbersOfContacts: [
+                'U23/11 Ш35', 'U23/11 Ш35'
+            ],
+            controlFunctions: [1, 1],
+            controlValues: [17.5, 17.5],
+            valuesOfErrors: [0.5, 0.5],
+            valuesOfBlocks: [
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+            ],
+            directionsOfChecks: ['вправо', 'вправо'],
+            isHaveSettings: [true, true]
+        } as CheckType,
+
+
+
     ],
 
 }
