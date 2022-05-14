@@ -437,7 +437,7 @@ const initialState = {
     ],
     "head9": [
         {
-            title: "Проверка передаточного коэффициента по сигналу ЗК.",
+            title: "Проверка центровки канала крена в режиме ЗАХОД.",
             idHeader: "9",
             idCheck: 'check16',
             pageNumber: 532,
@@ -518,7 +518,33 @@ const initialState = {
             ],
             isHaveSettings: [false, true, false, true]
         } as CheckType,
-
+        {
+            title: "Проверка передаточного коэффициента по сигналу Ек после захвата глиссады.",
+            idHeader: "9",
+            idCheck: 'check19',
+            pageNumber: 537,
+            paginatorNumber: 19,
+            typesOfBlocks: ['ВБК', 'ВБК', 'ВБК', 'ВБК'],
+            typesOfSubBlocks: ['', 'ВКП-100', '', 'ВКП-100'],
+            positionOfSubBlock: ['', 'Х12', '', 'Х12'],
+            resistors: ['', 'R8', '', 'R8'],
+            numbersOfContacts: [
+                'U5/6 Ш35', 'U24/11 Ш35', 'U5/6 Ш35', 'U24/11 Ш35'
+            ],
+            controlFunctions: [0, 2, 0, 2],
+            controlValues: [0, 19, 0, 19],
+            valuesOfErrors: [0, 2, 0, 2],
+            valuesOfBlocks: [
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+            ],
+            directionsOfChecks: [
+                'вправо и 2Т', 'вправо и 2Т', 'влево и 2Т', 'влево и 2Т'
+            ],
+            isHaveSettings: [false, true, false, true]
+        } as CheckType,
 
     ],
 
