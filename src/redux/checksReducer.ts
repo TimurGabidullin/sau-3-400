@@ -49,8 +49,17 @@ export function dividerFunc(numberOfPlane: string, inputValue: string, channel: 
     }
 
     // @ts-ignore.
-    return compareFunc.call(this, +inputValue / this.valuesOfBlocks[indexOfTable-1][channel], channel, indexOfTable)
+    return compareFunc.call(this, +inputValue / this.valuesOfBlocks[indexOfTable - 1][channel], channel, indexOfTable)
+}
 
+export function subtractionFunc(numberOfPlane: string, inputValue: string, channel: string, indexOfTable: number = 0) {
+
+    if (inputValue === '') {
+        return true
+    }
+
+    // @ts-ignore.
+    return compareFunc.call(this, +inputValue - this.valuesOfBlocks[indexOfTable - 1][channel], channel, indexOfTable)
 }
 
 export function universalFunc(numberOfPlane: string, inputValue: string, channel: string, indexOfTable: number = 0) {
@@ -72,6 +81,7 @@ export const numToFunc = {
     1: compareFunc,
     2: dividerFunc,
     3: universalFunc,
+    4: subtractionFunc
 }
 
 
@@ -503,7 +513,7 @@ const initialState = {
             resistors: ['', 'R8', '', 'R8'],
             numbersOfContacts: [
                 'U5/6 Ш35', 'U24/11 Ш35', 'U5/6 Ш35', 'U24/11 Ш35'
-                ],
+            ],
             controlFunctions: [0, 2, 0, 2],
             controlValues: [0, 19, 0, 19],
             valuesOfErrors: [0, 2, 0, 2],
@@ -566,11 +576,35 @@ const initialState = {
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
             ],
-            directionsOfChecks: ['вправо', 'вправо'],
+            directionsOfChecks: ['вправо', 'влево'],
             isHaveSettings: [true, true]
         } as CheckType,
 
-
+        {
+            title: "Проверка передаточного коэффициента по сигналу ΔΨзах.",
+            idHeader: "9",
+            idCheck: 'check21',
+            pageNumber: 540,
+            paginatorNumber: 21,
+            typesOfBlocks: ['ВБК', 'ВБК', 'ВБК', 'ВБК'],
+            typesOfSubBlocks: ['', 'ВКП-100', '', 'ВКП-100'],
+            positionOfSubBlock: ['', 'Х12', '', 'Х12'],
+            resistors: ['', 'R1', '', 'R1'],
+            numbersOfContacts: [
+                'U24/11 Ш35', 'U24/11 Ш35', 'U24/11 Ш35', 'U24/11 Ш35'
+            ],
+            controlFunctions: [0, 4, 0, 4],
+            controlValues: [0, -0.8, 0, 0.8],
+            valuesOfErrors: [0, 0.15, 0, 0.15],
+            valuesOfBlocks: [
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+            ],
+            directionsOfChecks: ['вправо', 'вправо', 'влево', 'влево'],
+            isHaveSettings: [false, true, false, true]
+        } as CheckType,
 
     ],
 
