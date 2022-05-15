@@ -613,11 +613,11 @@ const initialState = {
             pageNumber: 541,
             paginatorNumber: 22,
             typesOfBlocks: ['ВБК', 'ВБК'],
-            typesOfSubBlocks: ['', '', ],
+            typesOfSubBlocks: ['', '',],
             positionOfSubBlock: ['', ''],
-            resistors: ['', '', ],
+            resistors: ['', '',],
             numbersOfContacts: ['U24/11 Ш35', 'U24/11 Ш35'],
-            controlFunctions: [1, 1 ],
+            controlFunctions: [1, 1],
             controlValues: [1.6, -1.6],
             valuesOfErrors: [0.2, 0.2],
             valuesOfBlocks: [
@@ -625,7 +625,31 @@ const initialState = {
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
             ],
             directionsOfChecks: ['90° вправо', '90° влево'],
-            isHaveSettings: [false,  false]
+            isHaveSettings: [false, false]
+        } as CheckType,
+
+        {
+            title: "Проверка срабатывания пороговых устройств по сигналу предельных отклонений Eк",
+            idHeader: "9",
+            idCheck: 'check23',
+            pageNumber: 543,
+            paginatorNumber: 23,
+            typesOfBlocks: ['ВБК', 'ВБК', 'ВБК', 'ВБК'],
+            typesOfSubBlocks: ['УГР-41', 'УГР-41', 'УГР-41', 'УГР-41'],
+            positionOfSubBlock: ['Х11', 'Х11', 'Х11', 'Х11'],
+            resistors: ['R8', 'R8', 'R4', 'R4',],
+            numbersOfContacts: ['U1/11 Ш37', 'U1/11 Ш37', 'U2/11 Ш37', 'U2/11 Ш37'],
+            controlFunctions: [1, 1, 1, 1],
+            controlValues: [4, 0.15, 4, 0.15],
+            valuesOfErrors: [1, 0.15, 1, 0.15],
+            valuesOfBlocks: [
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+            ],
+            directionsOfChecks: ['вправо и КР', 'вправо и 1Т', 'влево и КР', 'влево и 1Т'],
+            isHaveSettings: [true, true, true, true]
         } as CheckType,
 
     ],
