@@ -18,6 +18,12 @@ import Check14 from './check/Check14';
 import Check15 from './check/Check15';
 import Check16 from './check/Check16';
 import Check17 from './check/Check17';
+import Check18 from './check/Check18';
+import Check19 from './check/Check19';
+import Check20 from './check/Check20';
+import Check21 from './check/Check21';
+import Check22 from './check/Check22';
+import Check23 from './check/Check23';
 // import Check18 from './check/Check18';
 
 import Stepper from "../common/stepper/Stepper";
@@ -53,6 +59,13 @@ function Checks(props: ChecksPropsType) {
             {params.check === "check15" && UniversalCheckWithParams(Check15)()}
             {params.check === "check16" && UniversalCheckWithParams(Check16)()}
             {params.check === "check17" && UniversalCheckWithParams(Check17)()}
+            {params.check === "check18" && UniversalCheckWithParams(Check18)()}
+            {params.check === "check19" && UniversalCheckWithParams(Check19)()}
+            {params.check === "check20" && UniversalCheckWithParams(Check20)()}
+            {params.check === "check21" && UniversalCheckWithParams(Check21)()}
+            {params.check === "check22" && UniversalCheckWithParams(Check22)()}
+            {params.check === "check23" && UniversalCheckWithParams(Check23)()}
+            {/*{params.check === "check17" && UniversalCheckWithParams(Check24)()}*/}
 
 
             <Paginator paginatorPageNumber={props.paginatorPageNumber} LinkToCheck={props.LinkToCheck}/>

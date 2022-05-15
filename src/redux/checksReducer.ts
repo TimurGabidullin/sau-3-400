@@ -581,7 +581,7 @@ const initialState = {
         } as CheckType,
 
         {
-            title: "Проверка передаточного коэффициента по сигналу ΔΨ<span>зах</span>",
+            title: "Проверка передаточного коэффициента по сигналу ΔΨзах.",
             idHeader: "9",
             idCheck: 'check21',
             pageNumber: 540,
@@ -607,7 +607,7 @@ const initialState = {
         } as CheckType,
 
         {
-            title: "Проверка ограничения заданного крена (γ<span>зад</span>) на высотах менее 200м.",
+            title: "Проверка ограничения заданного крена (γзад) на высотах менее 200м.",
             idHeader: "9",
             idCheck: 'check22',
             pageNumber: 541,
@@ -629,7 +629,7 @@ const initialState = {
         } as CheckType,
 
         {
-            title: "Проверка срабатывания пороговых устройств по сигналу предельных отклонений Eк",
+            title: "Проверка срабатывания пороговых устройств по сигналу предельных отклонений Eк.",
             idHeader: "9",
             idCheck: 'check23',
             pageNumber: 543,
@@ -655,7 +655,6 @@ const initialState = {
     ],
 
 }
-
 
 export const checksReducer = (state: ChecksType = initialState, action: ActionsType): ChecksType => {
 
