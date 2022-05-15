@@ -581,7 +581,7 @@ const initialState = {
         } as CheckType,
 
         {
-            title: "Проверка передаточного коэффициента по сигналу ΔΨзах.",
+            title: "Проверка передаточного коэффициента по сигналу ΔΨ<span>зах</span>",
             idHeader: "9",
             idCheck: 'check21',
             pageNumber: 540,
@@ -604,6 +604,28 @@ const initialState = {
             ],
             directionsOfChecks: ['вправо', 'вправо', 'влево', 'влево'],
             isHaveSettings: [false, true, false, true]
+        } as CheckType,
+
+        {
+            title: "Проверка ограничения заданного крена (γ<span>зад</span>) на высотах менее 200м.",
+            idHeader: "9",
+            idCheck: 'check22',
+            pageNumber: 541,
+            paginatorNumber: 22,
+            typesOfBlocks: ['ВБК', 'ВБК'],
+            typesOfSubBlocks: ['', '', ],
+            positionOfSubBlock: ['', ''],
+            resistors: ['', '', ],
+            numbersOfContacts: ['U24/11 Ш35', 'U24/11 Ш35'],
+            controlFunctions: [1, 1 ],
+            controlValues: [1.6, -1.6],
+            valuesOfErrors: [0.2, 0.2],
+            valuesOfBlocks: [
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+            ],
+            directionsOfChecks: ['90° вправо', '90° влево'],
+            isHaveSettings: [false,  false]
         } as CheckType,
 
     ],
