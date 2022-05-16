@@ -697,6 +697,29 @@ const initialState = {
             directionsOfChecks: [''],
             isHaveSettings: [true]
         } as CheckType,
+        {
+            title: "Проверка масштаба по сигналу nz.",
+            idHeader: "11",
+            idCheck: 'check26',
+            pageNumber: 551,
+            paginatorNumber: 26,
+            typesOfBlocks: ['ВБК'],
+            typesOfSubBlocks: ['ВН-77'],
+            positionOfSubBlock: ['Х33'],
+            resistors: ['R1'],
+            numbersOfContacts: ['U31/11 Ш35'],
+            controlFunctions: [1],
+            controlValues: [2.5],
+            valuesOfErrors: [0.2],
+            valuesOfBlocks: [
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+            ],
+            directionsOfChecks: [''],
+            isHaveSettings: [true]
+        } as CheckType,
+
+
+
     ],
 
 
