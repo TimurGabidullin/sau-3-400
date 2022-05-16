@@ -49,24 +49,6 @@ const TableSize2x5 = (props: any) => {
     }
 
     const handleAlertBtn2Click = () => {
-        // if(isHaveSettings){
-        //     if(inputValue1 !== valuesOfBlock["channel1"] && valuesOfBlock["channel1"] !== ''){
-        //         dispatch(addSettingsInReportAC(idCheck+'channel1', pageNumber, typeOfBlock, typeOfSubBlock, resistor,1))
-        //     }
-        //     if(inputValue2 !== valuesOfBlock["channel2"] && valuesOfBlock["channel2"] !== ''){
-        //         dispatch(addSettingsInReportAC(idCheck+'channel2', pageNumber, typeOfBlock, typeOfSubBlock, resistor,2))
-        //     }
-        //     if(inputValue3 !== valuesOfBlock["channel3"] && valuesOfBlock["channel3"] !== ''){
-        //         dispatch(addSettingsInReportAC(idCheck+'channel3', pageNumber, typeOfBlock, typeOfSubBlock, resistor,3))
-        //     }
-        //     if(inputValue4 !== valuesOfBlock["channel4"] && valuesOfBlock["channel4"] !== ''){
-        //         dispatch(addSettingsInReportAC(idCheck+'channel4', pageNumber, typeOfBlock, typeOfSubBlock, resistor,4))
-        //     }
-        // }
-
-
-
-
         dispatch(addSettingsInReportAC(idCheck, pageNumber, typeOfBlock, typeOfSubBlock, resistor,1))
         setOpenDialogAlert(false)
     }
@@ -97,6 +79,7 @@ const TableSize2x5 = (props: any) => {
         if(isHaveSettings){
             if(inputValue1 !== valuesOfBlock["channel1"] && valuesOfBlock["channel1"] !== ''){
                 dispatch(addSettingsInReportAC(idCheck+'channel1', pageNumber, typeOfBlock, typeOfSubBlock, resistor,1))
+
             }
             if(inputValue2 !== valuesOfBlock["channel2"] && valuesOfBlock["channel2"] !== ''){
                 dispatch(addSettingsInReportAC(idCheck+'channel2', pageNumber, typeOfBlock, typeOfSubBlock, resistor,2))
@@ -227,8 +210,8 @@ const TableSize2x5 = (props: any) => {
                                  handleAlertBtn1Click={handleAlertBtn1Click}
                                  handleAlertBtn2Click={handleAlertBtn2Click}
                                  headerText="Занести регуллировку в ОТЧЁТ?"
-                                 mainText='Значение канала изменилось. Если вы занесли регуллировку в отчёт случайно,
-                             то её можно удалить в разделе "ОТЧЕТ".'
+                                 mainText="Значение канала изменилось. Если вы занесли регуллировку в отчёт случайно,
+                             то её можно удалить в разделе 'ОТЧЕТ'."
                                  btnText1="Нет"
                                  btnText2="Да"
                     />

@@ -45,6 +45,11 @@ const initialState= [
         title: "Проверка работы канала КРЕНА в режиме ЗАХОД.",
         idHeader:'head9'
     } as HeaderType,
+    {
+        title: "Проверка передаточного числа по сигналу γзад от А-821, А-826.",
+        idHeader:'head10'
+    } as HeaderType,
+
 
 ]
 

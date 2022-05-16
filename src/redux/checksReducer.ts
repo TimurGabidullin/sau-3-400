@@ -652,6 +652,28 @@ const initialState = {
             isHaveSettings: [true, true, true, true]
         } as CheckType,
 
+        {
+            title: "Проверка передаточного числа по сигналу γзад от А-821.",
+            idHeader: "10",
+            idCheck: 'check24',
+            pageNumber: 546,
+            paginatorNumber: 24,
+            typesOfBlocks: ['ВБК', 'ВБК'],
+            typesOfSubBlocks: ['ВГМ103-1', 'ВГМ103-1'],
+            positionOfSubBlock: ['Х14', 'Х14'],
+            resistors: ['R2', 'R2',],
+            numbersOfContacts: ['U24/11 Ш35', 'U24/11 Ш35'],
+            controlFunctions: [1, 1],
+            controlValues: [4.4, -4.4],
+            valuesOfErrors: [0.2, 0.2],
+            valuesOfBlocks: [
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+            ],
+            directionsOfChecks: ['15° вправо', '15° влево'],
+            isHaveSettings: [true, true]
+        } as CheckType,
+
     ],
 
 }
