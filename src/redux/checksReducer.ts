@@ -697,6 +697,7 @@ const initialState = {
             directionsOfChecks: [''],
             isHaveSettings: [true]
         } as CheckType,
+
         {
             title: "Проверка масштаба по сигналу nz.",
             idHeader: "11",
@@ -718,7 +719,33 @@ const initialState = {
             isHaveSettings: [true]
         } as CheckType,
 
+        {
+            title: "Проверка порога срабатывания вычислителей сравнения канала КУРС.",
+            idHeader: "11",
+            idCheck: 'check27',
+            pageNumber: 556,
+            paginatorNumber: 27,
+            typesOfBlocks: ['ВБК','ВБК'],
+            typesOfSubBlocks: ['УС27-3','УС27-3'],
+            positionOfSubBlock: ['Х32','Х32'],
+            resistors: ['R1','R1'],
+            numbersOfContacts: ['',''],
+            controlFunctions: [1,1],
+            controlValues: [0,0],
+            valuesOfErrors: [0,0],
+            valuesOfBlocks: [
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+            ],
+            directionsOfChecks: ['положение "2"','положение "1"'],
+            isHaveSettings: [true,true]
+        } as CheckType,
 
+
+
+
+
+        
 
     ],
 
