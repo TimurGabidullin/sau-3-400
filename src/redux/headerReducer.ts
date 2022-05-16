@@ -50,6 +50,11 @@ const initialState= [
         idHeader:'head10'
     } as HeaderType,
 
+    {
+        title: "Проверка и регулировка канала КУРС.",
+        idHeader:'head11'
+    } as HeaderType,
+
 
 ]
 

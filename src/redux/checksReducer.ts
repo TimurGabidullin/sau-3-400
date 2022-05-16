@@ -651,7 +651,9 @@ const initialState = {
             directionsOfChecks: ['вправо и КР', 'вправо и 1Т', 'влево и КР', 'влево и 1Т'],
             isHaveSettings: [true, true, true, true]
         } as CheckType,
+    ],
 
+    "head10": [
         {
             title: "Проверка передаточного числа по сигналу γзад от А-821.",
             idHeader: "10",
@@ -673,8 +675,31 @@ const initialState = {
             directionsOfChecks: ['15° вправо', '15° влево'],
             isHaveSettings: [true, true]
         } as CheckType,
-
     ],
+    "head11": [
+        {
+            title: "Проверка центровки вычислителей канала КУРС.",
+            idHeader: "11",
+            idCheck: 'check25',
+            pageNumber: 550,
+            paginatorNumber: 25,
+            typesOfBlocks: ['ВБК'],
+            typesOfSubBlocks: ['ВН-77'],
+            positionOfSubBlock: ['Х33'],
+            resistors: ['R3'],
+            numbersOfContacts: ['U31/11 Ш35'],
+            controlFunctions: [1],
+            controlValues: [0],
+            valuesOfErrors: [0.95],
+            valuesOfBlocks: [
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+            ],
+            directionsOfChecks: [''],
+            isHaveSettings: [true]
+        } as CheckType,
+    ],
+
+
 
 }
 
