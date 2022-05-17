@@ -723,7 +723,7 @@ const initialState = {
             title: "Проверка порога срабатывания вычислителей сравнения канала КУРС.",
             idHeader: "11",
             idCheck: 'check27',
-            pageNumber: 556,
+            pageNumber: 552,
             paginatorNumber: 27,
             typesOfBlocks: ['ВБК','ВБК'],
             typesOfSubBlocks: ['УС27-3','УС27-3'],
@@ -741,11 +741,34 @@ const initialState = {
             isHaveSettings: [true,true]
         } as CheckType,
 
+        {
+            title: "Проверка передаточного числа по сигналу nz.",
+            idHeader: "11",
+            idCheck: 'check28',
+            pageNumber: 553,
+            paginatorNumber: 28,
+            typesOfBlocks: ['ВБК','ВБК','ВБК'],
+            typesOfSubBlocks: ['УС27-3','УС27-3','УС27-3'],
+            positionOfSubBlock: ['Х32','Х32','Х32'],
+            resistors: ['R6','R6','R6'],
+            numbersOfContacts: ['','',''],
+            controlFunctions: [1,1,1],
+            controlValues: [6.7,6.7,6.7],
+            valuesOfErrors: [1.3,1.3,1.3],
+            valuesOfBlocks: [
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+            ],
+            directionsOfChecks: ['','',''],
+            isHaveSettings: [true,true,true]
+        } as CheckType,
 
 
 
 
-        
+
+
 
     ],
 

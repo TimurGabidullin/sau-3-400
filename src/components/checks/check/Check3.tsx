@@ -1,13 +1,8 @@
 import React, {memo, useEffect} from 'react';
 import TableSize2x5 from "../../common/table/TableSize2x5";
 import Typography from "@mui/material/Typography";
-import {useSelector} from "react-redux";
-import {AppStateType} from "../../../redux/store";
-import {useParams} from "react-router-dom";
-import {CheckType} from "../../../redux/checksReducer";
 import UniversalTabWithTable from "../../../HOC/UniversalTabWithTable";
-import styles from "./Check.module.css";
-import {ParamsType} from "../../home/Home";
+
 const Fade = require("react-reveal/Fade")
 
 
