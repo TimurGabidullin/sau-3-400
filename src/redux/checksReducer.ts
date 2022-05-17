@@ -786,7 +786,27 @@ const initialState = {
             isHaveSettings: [true,true]
         } as CheckType,
 
+        {
+            title: "Проверка порога срабатывания вычислителей сравнения канала КУРС.",
+            idHeader: "11",
+            idCheck: 'check30',
+            pageNumber: 558,
+            paginatorNumber: 30,
+            typesOfBlocks: ['ВБК'],
+            typesOfSubBlocks: ['БК33-1'],
+            positionOfSubBlock: ['Х30'],
+            resistors: ['R3'],
+            numbersOfContacts: ['U29/11 Ш36'],
+            controlFunctions: [1],
+            controlValues: [0],
+            valuesOfErrors: [0.2],
+            valuesOfBlocks: [
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
 
+            ],
+            directionsOfChecks: [''],
+            isHaveSettings: [true,true]
+        } as CheckType,
 
 
 
