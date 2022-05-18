@@ -8,13 +8,17 @@ import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import AlertDialog from "../components/common/alertDialog/AlertDialog";
+import Snackbar from "@mui/material/Snackbar";
+import {message} from "antd";
+import SimpleSnackbar from '../components/common/snackbar/Snackbar';
+import {CheckPropsType} from "../components/checks/check/Check1";
 
 const Fade = require("react-reveal/Fade")
 
 
-const UniversalCheckWithParams = (Check: React.FC) => {
+const UniversalCheckWithParams = (Check: React.FC<CheckPropsType>) => {
 
-
+    const [openSnackbar, setOpenSnackbar] = React.useState(false);
     const [openDialogAlert, setOpenDialogAlert] = React.useState(false);
     const params = useParams();
 
@@ -38,14 +42,16 @@ const UniversalCheckWithParams = (Check: React.FC) => {
                     </IconButton>
                     </Typography>
 
-                    <Check/>
+                    <Check setOpenSnackbar={setOpenSnackbar}/>
 
                     <AlertDialog openDialogAlert={openDialogAlert}
                                  setOpenDialogAlert={setOpenDialogAlert}
                                  headerText="ПОДГОТОВКА К ПРОВЕРКЕ"
                                  mainText="Выберите проверку"
-
                     />
+
+                    <SimpleSnackbar openSnackbar={openSnackbar} setOpenSnackbar= {setOpenSnackbar} />
+
 
                 </div>
             </Fade>

@@ -1,7 +1,8 @@
 import React from 'react';
 import Home from "./components/home/Home";
 import {Navigate, Route, Routes} from "react-router-dom";
-
+import "antd/dist/antd.css";
+import {Button} from "antd";
 
 function App() {
 
@@ -27,6 +28,8 @@ function App() {
             <Route path={'home/:page'} element={<Home/>}/>
             {/*<Route path={'home/checks'} element={<Navigate replace to="/home/checks/head1/check1"/>}/>*/}
             <Route path={'home/checks/:header/:check'} element={<Home/>}/>
+
+
         </Routes>
     </div>
 

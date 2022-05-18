@@ -25,18 +25,23 @@ import Check21 from './check/Check21';
 import Check22 from './check/Check22';
 import Check23 from './check/Check23';
 // import Check18 from './check/Check18';
-
+import "antd/dist/antd.css";
 import Stepper from "../common/stepper/Stepper";
 import UniversalCheckWithParams from "../../HOC/UniversalCheckWithParams";
 
+import { message } from 'antd'
 
 type ChecksPropsType = {
     paginatorPageNumber: number
     LinkToCheck: (h: string, url: string, prPageNum: number) => void
+    // openSnackbar: boolean
+    // setOpenSnackbar: Function
+
 }
 
 function Checks(props: ChecksPropsType) {
     const params = useParams();
+    console.log('Checks')
 
     return (
         <div>
@@ -51,22 +56,21 @@ function Checks(props: ChecksPropsType) {
             {params.check === "check7" && UniversalCheckWithParams(Check7)()}
             {params.check === "check8" && UniversalCheckWithParams(Check8)()}
             {params.check === "check9" && UniversalCheckWithParams(Check9)()}
-            {params.check === "check10" && UniversalCheckWithParams(Check10)()}
-            {params.check === "check11" && UniversalCheckWithParams(Check11)()}
-            {params.check === "check12" && UniversalCheckWithParams(Check12)()}
-            {params.check === "check13" && UniversalCheckWithParams(Check13)()}
-            {params.check === "check14" && UniversalCheckWithParams(Check14)()}
-            {params.check === "check15" && UniversalCheckWithParams(Check15)()}
-            {params.check === "check16" && UniversalCheckWithParams(Check16)()}
-            {params.check === "check17" && UniversalCheckWithParams(Check17)()}
-            {params.check === "check18" && UniversalCheckWithParams(Check18)()}
-            {params.check === "check19" && UniversalCheckWithParams(Check19)()}
-            {params.check === "check20" && UniversalCheckWithParams(Check20)()}
-            {params.check === "check21" && UniversalCheckWithParams(Check21)()}
-            {params.check === "check22" && UniversalCheckWithParams(Check22)()}
-            {params.check === "check23" && UniversalCheckWithParams(Check23)()}
+            {/*{params.check === "check10" && UniversalCheckWithParams(Check10)()}*/}
+            {/*{params.check === "check11" && UniversalCheckWithParams(Check11)()}*/}
+            {/*{params.check === "check12" && UniversalCheckWithParams(Check12)()}*/}
+            {/*{params.check === "check13" && UniversalCheckWithParams(Check13)()}*/}
+            {/*{params.check === "check14" && UniversalCheckWithParams(Check14)()}*/}
+            {/*{params.check === "check15" && UniversalCheckWithParams(Check15)()}*/}
+            {/*{params.check === "check16" && UniversalCheckWithParams(Check16)()}*/}
+            {/*{params.check === "check17" && UniversalCheckWithParams(Check17)()}*/}
+            {/*{params.check === "check18" && UniversalCheckWithParams(Check18)()}*/}
+            {/*{params.check === "check19" && UniversalCheckWithParams(Check19)()}*/}
+            {/*{params.check === "check20" && UniversalCheckWithParams(Check20)()}*/}
+            {/*{params.check === "check21" && UniversalCheckWithParams(Check21)()}*/}
+            {/*{params.check === "check22" && UniversalCheckWithParams(Check22)()}*/}
+            {/*{params.check === "check23" && UniversalCheckWithParams(Check23)()}*/}
             {/*{params.check === "check17" && UniversalCheckWithParams(Check24)()}*/}
-
 
             <Paginator paginatorPageNumber={props.paginatorPageNumber} LinkToCheck={props.LinkToCheck}/>
             <Stepper paginatorPageNumber={props.paginatorPageNumber} LinkToCheck={props.LinkToCheck}/>

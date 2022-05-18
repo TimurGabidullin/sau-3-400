@@ -2,13 +2,17 @@ import React, {memo, useEffect} from 'react';
 import TableSize2x5 from "../../common/table/TableSize2x5";
 import Typography from "@mui/material/Typography";
 import UniversalTabWithTable from "../../../HOC/UniversalTabWithTable";
+import {message} from "antd";
 const Fade = require("react-reveal/Fade")
 
 
-type CheckPropsType = {}
+export type CheckPropsType = {
+    setOpenSnackbar: Function
+
+}
 
 const Check1 = (props: CheckPropsType) => {
-
+    console.log(  'check1'  )
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -33,6 +37,7 @@ const Check1 = (props: CheckPropsType) => {
             </Typography>
 
             {UniversalTabWithTable(TableSize2x5, 1)(props)}
+
         </Fade>
     );
 }

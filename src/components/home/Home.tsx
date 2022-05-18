@@ -17,7 +17,7 @@ import Report from "../report/Report";
 import styles from "./Home.module.css";
 import Checks from "../checks/Checks";
 import {useNavigate, useParams} from 'react-router-dom'
-import {useCallback, useEffect} from "react";
+import {memo, useCallback, useEffect} from "react";
 import AlertDialog from "../common/alertDialog/AlertDialog";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "../../redux/store";
@@ -25,6 +25,8 @@ import {loginAppAC} from "../../redux/appReducer";
 import {saveContinueChecksDataAC, saveNewDataAC} from "../../redux/checksReducer";
 import {loadChecksState, loadReportState} from "../../utils/localStorage";
 import {saveContinueReportDataAC} from "../../redux/reportReducer";
+import {message} from "antd";
+import SimpleSnackbar from "../common/snackbar/Snackbar";
 
 const Fade = require("react-reveal/Fade")
 const Flip = require("react-reveal/Flip")
@@ -324,9 +326,17 @@ const Home = () => {
             </AppBar>
             <div className={styles.main}>
                 {selectedTab === 0 && <Content setSelectedTab={setSelectedTab} LinkToCheck={LinkToCheck}/>}
-                {selectedTab === 1 && <Checks paginatorPageNumber={paginatorPageNumber} LinkToCheck={LinkToCheck}/>}
+                {selectedTab === 1 && <Checks
+                    paginatorPageNumber={paginatorPageNumber}
+                    LinkToCheck={LinkToCheck}
+                    // openSnackbar={openSnackbar}
+                    // setOpenSnackbar= {setOpenSnackbar}
+                />}
                 {selectedTab === 2 && <Report/>}
             </div>
+
+
+            {/*<SimpleSnackbar openSnackbar={openSnackbar} setOpenSnackbar= {setOpenSnackbar}    />*/}
             <AlertDialog openDialogAlert={openDialogAlert}
                          setOpenDialogAlert={setOpenDialogAlert}
                          handleAlertBtn1Click={handleClickNewCheckBtn}
@@ -337,6 +347,8 @@ const Home = () => {
                          btnText1="Новая проверка"
                          btnText2="Продолжить проверку"
             />
+
+
         </div>
     );
 }

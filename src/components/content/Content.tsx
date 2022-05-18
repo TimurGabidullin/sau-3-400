@@ -18,6 +18,8 @@ type ContentPropsType = {
 
 function Content(props: ContentPropsType) {
 
+    console.log("content")
+
     const header = useSelector((state: AppStateType) => state.header)
     const checks = useSelector((state: AppStateType) => state.checks)
     const dispatch = useDispatch()

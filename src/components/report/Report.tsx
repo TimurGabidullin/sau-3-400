@@ -19,6 +19,7 @@ import {saveChecksState, saveReportState} from "../../utils/localStorage";
 
 
 const Report=()=> {
+    console.log('Reports')
 
     const numberOfPlane = useSelector((state: AppStateType) => state.app.numberOfPlane)
     const reportReducer = useSelector((state: AppStateType) => state.report)
@@ -44,6 +45,7 @@ const Report=()=> {
 
     const handleRemoveReport = (idCheck: string) => {
         dispatch(removeReportAC(idCheck))
+
         // saveReportState()
     };
 

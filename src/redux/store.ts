@@ -1,6 +1,6 @@
 import {combineReducers, createStore} from "redux";
 import headerReducer from "./headerReducer";
-import checksReducer, {saveContinueChecksDataAC, saveDataAC, saveNewDataAC} from "./checksReducer";
+import checksReducer, {saveContinueChecksDataAC, saveDataAC, saveNewDataAC, saveSingleDataAC} from "./checksReducer";
 import reportReducer, {
     addNewReportAC,
     addSettingsInReportAC,
@@ -35,6 +35,7 @@ const store = createStore(rootReducer);
 
 
 export type ActionsType = ReturnType<typeof saveDataAC>
+    | ReturnType<typeof saveSingleDataAC>
     | ReturnType<typeof addSettingsInReportAC>
     | ReturnType<typeof loginAppAC>
     | ReturnType<typeof logoutAppAC>

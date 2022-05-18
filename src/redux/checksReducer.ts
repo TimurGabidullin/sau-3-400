@@ -725,20 +725,20 @@ const initialState = {
             idCheck: 'check27',
             pageNumber: 552,
             paginatorNumber: 27,
-            typesOfBlocks: ['ВБК','ВБК'],
-            typesOfSubBlocks: ['УС27-3','УС27-3'],
-            positionOfSubBlock: ['Х32','Х32'],
-            resistors: ['R1','R1'],
-            numbersOfContacts: ['',''],
-            controlFunctions: [1,1],
-            controlValues: [0,0],
-            valuesOfErrors: [0,0],
+            typesOfBlocks: ['ВБК', 'ВБК'],
+            typesOfSubBlocks: ['УС27-3', 'УС27-3'],
+            positionOfSubBlock: ['Х32', 'Х32'],
+            resistors: ['R1', 'R1'],
+            numbersOfContacts: ['', ''],
+            controlFunctions: [1, 1],
+            controlValues: [0, 0],
+            valuesOfErrors: [0, 0],
             valuesOfBlocks: [
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
             ],
-            directionsOfChecks: ['положение "2"','положение "1"'],
-            isHaveSettings: [true,true]
+            directionsOfChecks: ['положение "2"', 'положение "1"'],
+            isHaveSettings: [true, true]
         } as CheckType,
 
         {
@@ -747,21 +747,21 @@ const initialState = {
             idCheck: 'check28',
             pageNumber: 553,
             paginatorNumber: 28,
-            typesOfBlocks: ['ВБК','ВБК','ВБК'],
-            typesOfSubBlocks: ['УС27-3','УС27-3','УС27-3'],
-            positionOfSubBlock: ['Х32','Х32','Х32'],
-            resistors: ['R6','R6','R6'],
-            numbersOfContacts: ['','',''],
-            controlFunctions: [1,1,1],
-            controlValues: [6.7,6.7,6.7],
-            valuesOfErrors: [1.3,1.3,1.3],
+            typesOfBlocks: ['ВБК', 'ВБК', 'ВБК'],
+            typesOfSubBlocks: ['УС27-3', 'УС27-3', 'УС27-3'],
+            positionOfSubBlock: ['Х32', 'Х32', 'Х32'],
+            resistors: ['R6', 'R6', 'R6'],
+            numbersOfContacts: ['', '', ''],
+            controlFunctions: [1, 1, 1],
+            controlValues: [6.7, 6.7, 6.7],
+            valuesOfErrors: [1.3, 1.3, 1.3],
             valuesOfBlocks: [
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
             ],
-            directionsOfChecks: ['','',''],
-            isHaveSettings: [true,true,true]
+            directionsOfChecks: ['', '', ''],
+            isHaveSettings: [true, true, true]
         } as CheckType,
 
         {
@@ -770,24 +770,24 @@ const initialState = {
             idCheck: 'check29',
             pageNumber: 556,
             paginatorNumber: 29,
-            typesOfBlocks: ['ВБК','ВБК'],
-            typesOfSubBlocks: ['ВС-4-02','ВС-4-02'],
-            positionOfSubBlock: ['Х31','Х31'],
-            resistors: ['R1','R2'],
-            numbersOfContacts: ['U21/11 Ш36','U21/11 Ш36'],
-            controlFunctions: [1,1],
-            controlValues: [2.9,2.9],
-            valuesOfErrors: [1.1,1.1],
+            typesOfBlocks: ['ВБК', 'ВБК'],
+            typesOfSubBlocks: ['ВС-4-02', 'ВС-4-02'],
+            positionOfSubBlock: ['Х31', 'Х31'],
+            resistors: ['R1', 'R2'],
+            numbersOfContacts: ['U21/11 Ш36', 'U21/11 Ш36'],
+            controlFunctions: [1, 1],
+            controlValues: [2.9, 2.9],
+            valuesOfErrors: [1.1, 1.1],
             valuesOfBlocks: [
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
             ],
-            directionsOfChecks: ['по часовой','против часовой'],
-            isHaveSettings: [true,true]
+            directionsOfChecks: ['по часовой', 'против часовой'],
+            isHaveSettings: [true, true]
         } as CheckType,
 
         {
-            title: "Проверка порога срабатывания вычислителей сравнения канала КУРС.",
+            title: "Проверка центровки блока контроля сервопривода канала КУРСА.",
             idHeader: "11",
             idCheck: 'check30',
             pageNumber: 558,
@@ -805,14 +805,82 @@ const initialState = {
 
             ],
             directionsOfChecks: [''],
-            isHaveSettings: [true,true]
+            isHaveSettings: [true, true]
+        } as CheckType,
+
+        {
+            title: "Проверка порога срабатывания блока контроля сервопривода канала КУРС.",
+            idHeader: "11",
+            idCheck: 'check31',
+            pageNumber: 558,
+            paginatorNumber: 31,
+            typesOfBlocks: ['ВБК', 'ВБК', 'ВБК', 'ВБК'],
+            typesOfSubBlocks: ['БК33-1', 'БК33-1', 'БК33-1', 'БК33-1'],
+            positionOfSubBlock: ['Х30', 'Х30', 'Х30', 'Х30'],
+            resistors: ['R6', 'R5', 'R6', 'R5'],
+            numbersOfContacts: ['', '', '', ''],
+            controlFunctions: [1, 1, 1, 1],
+            controlValues: [2.9, 2.9, 2.9, 2.9],
+            valuesOfErrors: [1.1, 1.1, 1.1, 1.1],
+            valuesOfBlocks: [
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+            ],
+            directionsOfChecks: ['По часовой', 'Против часовой', 'По часовой', 'Против часовой'],
+            isHaveSettings: [true, true, true, true]
+        } as CheckType,
+
+        {
+            title: "Проверка порога срабатывания блока контроля сервопривода канала КУРС.",
+            idHeader: "11",
+            idCheck: 'check31',
+            pageNumber: 558,
+            paginatorNumber: 31,
+            typesOfBlocks: ['ВБК', 'ВБК', 'ВБК', 'ВБК'],
+            typesOfSubBlocks: ['БК33-1', 'БК33-1', 'БК33-1', 'БК33-1'],
+            positionOfSubBlock: ['Х30', 'Х30', 'Х30', 'Х30'],
+            resistors: ['R6', 'R5', 'R6', 'R5'],
+            numbersOfContacts: ['', '', '', ''],
+            controlFunctions: [1, 1, 1, 1],
+            controlValues: [2.9, 2.9, 2.9, 2.9],
+            valuesOfErrors: [1.1, 1.1, 1.1, 1.1],
+            valuesOfBlocks: [
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+            ],
+            directionsOfChecks: ['По часовой', 'Против часовой', 'По часовой', 'Против часовой'],
+            isHaveSettings: [true, true, true, true]
         } as CheckType,
 
 
 
     ],
-
-
+    "head12": [
+        {
+            title: "Проверка центровки вычислителей канала КУРС.",
+            idHeader: "12",
+            idCheck: 'check31',
+            pageNumber: 550,
+            paginatorNumber: 33,
+            typesOfBlocks: ['ВБК'],
+            typesOfSubBlocks: ['ВН-77'],
+            positionOfSubBlock: ['Х33'],
+            resistors: ['R3'],
+            numbersOfContacts: ['U31/11 Ш35'],
+            controlFunctions: [1],
+            controlValues: [0],
+            valuesOfErrors: [0.95],
+            valuesOfBlocks: [
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+            ],
+            directionsOfChecks: [''],
+            isHaveSettings: [true]
+        } as CheckType,
+    ]
 
 }
 
@@ -843,6 +911,28 @@ export const checksReducer = (state: ChecksType = initialState, action: ActionsT
                 })
             }
 
+        case 'SAVE_SINGLE_DATA':
+            return {
+                ...state,
+                [action.head]: state[action.head].map((check: CheckType) => {
+                    if (check.idCheck === action.idCheck) {
+                        return {
+                            ...check, valuesOfBlocks: check.valuesOfBlocks?.map((data, i) => {
+                                if (i === action.indexOfTable) {
+                                    // debugger
+                                    return {
+                                        ...data,
+                                        [action.channel]: action.value
+                                    }
+                                }
+                                return data
+                            })
+                        }
+                    } else return check;
+                })
+            }
+
+
         case 'NEW_DATA':
 
             return initialState
@@ -865,6 +955,16 @@ export const saveDataAC = (data: string[], head: string, idCheck: string, indexO
     head,
     idCheck,
     indexOfTable
+}) as const
+
+
+export const saveSingleDataAC = (value: string, head: string, idCheck: string, indexOfTable: number, channel: string) => ({
+    type: 'SAVE_SINGLE_DATA',
+    value,
+    head,
+    idCheck,
+    indexOfTable,
+    channel
 }) as const
 
 export const saveNewDataAC = (numberOfPlane: string) => ({
