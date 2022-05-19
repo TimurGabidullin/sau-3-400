@@ -54,7 +54,10 @@ const initialState= [
         title: "Проверка и регулировка канала КУРС.",
         idHeader:'head11'
     } as HeaderType,
-
+    {
+        title: "Проверка масштабов по сигналам датчика положения руля высоты.",
+        idHeader:'head11'
+    } as HeaderType,
 
 ]
 

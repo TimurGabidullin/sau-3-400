@@ -859,24 +859,29 @@ const initialState = {
     ],
     "head12": [
         {
-            title: "Проверка центровки вычислителей канала КУРС.",
+            title: "Проверка масштабов по сигналам датчика положения руля высоты.",
             idHeader: "12",
-            idCheck: 'check31',
-            pageNumber: 550,
+            idCheck: 'check33',
+            pageNumber: 576,
             paginatorNumber: 33,
-            typesOfBlocks: ['ВБК'],
-            typesOfSubBlocks: ['ВН-77'],
-            positionOfSubBlock: ['Х33'],
-            resistors: ['R3'],
-            numbersOfContacts: ['U31/11 Ш35'],
-            controlFunctions: [1],
-            controlValues: [0],
-            valuesOfErrors: [0.95],
+            typesOfBlocks: ['ВПК', 'ВПК', 'ВПК', 'ВПК', 'ВПК', 'ВПК'],
+            typesOfSubBlocks: ["", "", "ВИ-78", "", "", "ВИ-78"],
+            positionOfSubBlock: ['', '', 'X25', '', '', 'X25'],
+            resistors: ['', '', 'R4', '', '', 'R4'],
+            numbersOfContacts: ['U36/19 Ш37', 'U14/11 Ш35', 'U31/11 Ш35', 'U36/19 Ш37', 'U14/11 Ш35', 'U31/11 Ш35'],
+            controlFunctions: [0, 0, 1, 0, 0, 1],//?????????????????????????????????????????????????????
+            controlValues: [0, 0, 0, 0, 0, 0],
+            valuesOfErrors: [0, 0, 0.3, 0, 0, 0.3],
             valuesOfBlocks: [
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
             ],
-            directionsOfChecks: [''],
-            isHaveSettings: [true]
+            directionsOfChecks: ['Вправо', 'Вправо', 'Вправо', 'Влево', 'Влево', 'Влево'],
+            isHaveSettings: [false, false, true, false, false, true,]
         } as CheckType,
     ]
 

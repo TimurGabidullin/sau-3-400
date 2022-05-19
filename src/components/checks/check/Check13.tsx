@@ -46,7 +46,7 @@ const Check13 = (props: CheckPropsType) => {
             {UniversalTabWithTable(TableSize2x5, 2)(props)}
 
             <Typography sx={{padding: '0 20px'}} variant="body1" component='p'>
-                <p> повторите проверку, устанавливая напряжения U<span>вых</span>=минус (3±1)В.</p>
+                <p> Повторите проверку, устанавливая напряжения U<span>вых</span>=минус (3±1)В.</p>
             </Typography>
 
             {UniversalTabWithTable(TableSize2x5, 3)(props)}
