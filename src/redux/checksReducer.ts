@@ -833,27 +833,25 @@ const initialState = {
         } as CheckType,
 
         {
-            title: "Проверка порога срабатывания блока контроля сервопривода канала КУРС.",
+            title: "Проверка обнуления блоков контроля сервопривода канала КУРС.",
             idHeader: "11",
-            idCheck: 'check31',
-            pageNumber: 558,
-            paginatorNumber: 31,
-            typesOfBlocks: ['ВБК', 'ВБК', 'ВБК', 'ВБК'],
-            typesOfSubBlocks: ['БК33-1', 'БК33-1', 'БК33-1', 'БК33-1'],
-            positionOfSubBlock: ['Х30', 'Х30', 'Х30', 'Х30'],
-            resistors: ['R6', 'R5', 'R6', 'R5'],
-            numbersOfContacts: ['', '', '', ''],
-            controlFunctions: [1, 1, 1, 1],
-            controlValues: [2.9, 2.9, 2.9, 2.9],
-            valuesOfErrors: [1.1, 1.1, 1.1, 1.1],
+            idCheck: 'check32',
+            pageNumber: 560,
+            paginatorNumber: 32,
+            typesOfBlocks: ['ВБК', 'ВБК'],
+            typesOfSubBlocks: ['БК33-1', 'БК33-1'],
+            positionOfSubBlock: ['Х30', 'Х30'],
+            resistors: ['R1', 'R2'],
+            numbersOfContacts: ['U29/11 Ш36', 'U29/11 Ш36', ],
+            controlFunctions: [1, 1],
+            controlValues: [0, 0],
+            valuesOfErrors: [0.5, 0.5],
             valuesOfBlocks: [
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
-                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
-                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
             ],
-            directionsOfChecks: ['По часовой', 'Против часовой', 'По часовой', 'Против часовой'],
-            isHaveSettings: [true, true, true, true]
+            directionsOfChecks: ['По часовой', 'Против часовой'],
+            isHaveSettings: [true, true]
         } as CheckType,
 
 

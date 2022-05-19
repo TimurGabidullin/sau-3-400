@@ -7,7 +7,8 @@ const Fade = require("react-reveal/Fade")
 
 
 export type CheckPropsType = {
-    setOpenSnackbar: Function
+
+    // handleClickVariant: Function
 
 }
 

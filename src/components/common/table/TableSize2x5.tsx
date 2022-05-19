@@ -13,9 +13,13 @@ import {ParamsType} from "../../home/Home";
 import {addSettingsInReportAC} from "../../../redux/reportReducer";
 import {saveChecksState, saveReportState} from "../../../utils/localStorage";
 import "antd/dist/antd.css";
-import {message} from "antd";
-import Snackbar from "@mui/material/Snackbar";
-import SimpleSnackbar from "../snackbar/Snackbar";
+
+import {useSnackbar} from "notistack";
+
+
+
+
+
 
 
 const Pulse = require("react-reveal/Pulse")
@@ -43,15 +47,11 @@ const TableSize2x5 = (props: any) => {
     const isHaveSettings = check.isHaveSettings[props.indexOfTable]
     const directionOfCheck = check.directionsOfChecks
     const [openDialogAlert, setOpenDialogAlert] = React.useState(false);
-    const [openMessageAlert, setOpenMessageAlert] = React.useState(false);
     const dispatch = useDispatch()
 
 
 
-
-
-
-
+    const { enqueueSnackbar } = useSnackbar();
 
     const {register, trigger, handleSubmit, formState: {errors}, getValues} = useForm({
         shouldFocusError: false
@@ -70,120 +70,31 @@ const TableSize2x5 = (props: any) => {
     useEffect(() => {
         saveChecksState(checksReducer, numberOfPlane)
         saveReportState(reportReducer, numberOfPlane)
-        // message.info('This is a normal message');
 
     }, [checksReducer, reportReducer])
 
-    //
-    // useEffect(() => {
-    //
-    //             message.info('This is a normal message');
-    //
-    // },[reportReducer])
 
-    const onClickBtn = () => {
-
-message.info('This is a normal message');
-
+    const inputFunc=(channel:"channel1"|"channel2"|"channel3"|"channel4")=>{
+        const inputValue = getValues(channel);
+        if (inputValue !== valuesOfBlock[channel]) {
+            if (valuesOfBlock[channel] !== '' && inputValue !== '') {
+                enqueueSnackbar(`${channel[7]} канал добавлен в ОТЧЕТ`);
+                dispatch(addSettingsInReportAC(idCheck + channel, pageNumber, typeOfBlock, typeOfSubBlock, resistor, 1))
+            }
+            dispatch(saveSingleDataAC(
+                inputValue,
+                params.header ? params.header : "head1",
+                params.check ? params.check : "check1",
+                props.indexOfTable, channel))
+        }
     }
 
-
-
-
         const onSubmit = () => {
-
-        const inputValue1 = getValues("channel1");
-        const inputValue2 = getValues("channel2");
-        const inputValue3 = getValues("channel3");
-        const inputValue4 = getValues("channel4");
-
-
-
-        // if ((inputValue1 !== valuesOfBlock["channel1"] && valuesOfBlock["channel1"] !== '' ||
-        //     inputValue2 !== valuesOfBlock["channel2"] && valuesOfBlock["channel2"] !== '' ||
-        //     inputValue3 !== valuesOfBlock["channel3"] && valuesOfBlock["channel3"] !== '' ||
-        //     inputValue4 !== valuesOfBlock["channel4"] && valuesOfBlock["channel4"] !== '') && isHaveSettings) {
-        //
-        //
-        //     setOpenDialogAlert(true)
-        // }
-
         if (isHaveSettings) {
-            if (inputValue1 !== valuesOfBlock["channel1"]) {
-                if (valuesOfBlock["channel1"] !== '' && inputValue1 !== '') {
-
-                    props.setOpenSnackbar(true)
-                    dispatch(addSettingsInReportAC(idCheck + 'channel1', pageNumber, typeOfBlock, typeOfSubBlock, resistor, 1))
-                }
-                dispatch(saveSingleDataAC(
-                    inputValue1,
-                    params.header ? params.header : "head1",
-                    params.check ? params.check : "check1",
-                    props.indexOfTable, 'channel1'))
-            }
-
-            if (inputValue2 !== valuesOfBlock["channel2"]) {
-                if (valuesOfBlock["channel2"] !== '') {
-                    dispatch(addSettingsInReportAC(idCheck + 'channel2', pageNumber, typeOfBlock, typeOfSubBlock, resistor, 2))
-                }
-                dispatch(saveSingleDataAC(
-                    inputValue2,
-                    params.header ? params.header : "head1",
-                    params.check ? params.check : "check1",
-                    props.indexOfTable, 'channel2'))
-            }
-
-            if (inputValue3 !== valuesOfBlock["channel3"]) {
-                if (valuesOfBlock["channel3"] !== '') {
-                    dispatch(addSettingsInReportAC(idCheck + 'channel3', pageNumber, typeOfBlock, typeOfSubBlock, resistor, 3))
-                }
-                dispatch(saveSingleDataAC(
-                    inputValue3,
-                    params.header ? params.header : "head1",
-                    params.check ? params.check : "check1",
-                    props.indexOfTable, 'channel3'))
-            }
-
-            if (inputValue4 !== valuesOfBlock["channel4"]) {
-                if (valuesOfBlock["channel4"] !== '') {
-                    dispatch(addSettingsInReportAC(idCheck + 'channel4', pageNumber, typeOfBlock, typeOfSubBlock, resistor, 4))
-                }
-                dispatch(saveSingleDataAC(
-                    inputValue4,
-                    params.header ? params.header : "head1",
-                    params.check ? params.check : "check1",
-                    props.indexOfTable, 'channel4'))
-            }
-
-
-            //
-            // dispatch(saveDataAC(
-            //     [inputValue1, inputValue2, inputValue3, inputValue4],
-            //     params.header ? params.header : "head1",
-            //     params.check ? params.check : "check1",
-            //     props.indexOfTable))
-
-            //
-            // dispatch(saveSingleDataAC(
-            //     inputValue1,
-            //     params.header ? params.header : "head1",
-            //     params.check ? params.check : "check1",
-            //     props.indexOfTable, 'channel1'))
-            // dispatch(saveSingleDataAC(
-            //     inputValue2,
-            //     params.header ? params.header : "head1",
-            //     params.check ? params.check : "check1",
-            //     props.indexOfTable, 'channel2'))
-            // dispatch(saveSingleDataAC(
-            //     inputValue3,
-            //     params.header ? params.header : "head1",
-            //     params.check ? params.check : "check1",
-            //     props.indexOfTable, 'channel3'))
-            // dispatch(saveSingleDataAC(
-            //     inputValue4,
-            //     params.header ? params.header : "head1",
-            //     params.check ? params.check : "check1",
-            //     props.indexOfTable, 'channel4'))
+            inputFunc('channel1')
+            inputFunc('channel2')
+            inputFunc('channel3')
+            inputFunc('channel4')
 
         }
     }
@@ -289,11 +200,6 @@ message.info('This is a normal message');
                     >
                         Расчёт
                     </Button>
-
-
-
-
-
 
 
                     <AlertDialog openDialogAlert={openDialogAlert}

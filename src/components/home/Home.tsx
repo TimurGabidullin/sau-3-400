@@ -25,8 +25,7 @@ import {loginAppAC} from "../../redux/appReducer";
 import {saveContinueChecksDataAC, saveNewDataAC} from "../../redux/checksReducer";
 import {loadChecksState, loadReportState} from "../../utils/localStorage";
 import {saveContinueReportDataAC} from "../../redux/reportReducer";
-import {message} from "antd";
-import SimpleSnackbar from "../common/snackbar/Snackbar";
+import { useSnackbar } from 'notistack';
 
 const Fade = require("react-reveal/Fade")
 const Flip = require("react-reveal/Flip")
@@ -138,12 +137,6 @@ const Home = () => {
         dispatch(loginAppAC(setting))
         handleCloseUserMenu()
         setOpenDialogAlert(true)
-    }
-    
-    const handleOnClickNavMenu = (e: any) => {
-
-        console.log(e.target.innerHTML)
-        handleCloseNavMenu()
     }
 
     const handleClickContinueBtn = () => {
@@ -328,15 +321,10 @@ const Home = () => {
                 {selectedTab === 0 && <Content setSelectedTab={setSelectedTab} LinkToCheck={LinkToCheck}/>}
                 {selectedTab === 1 && <Checks
                     paginatorPageNumber={paginatorPageNumber}
-                    LinkToCheck={LinkToCheck}
-                    // openSnackbar={openSnackbar}
-                    // setOpenSnackbar= {setOpenSnackbar}
-                />}
+                    LinkToCheck={LinkToCheck}/>}
                 {selectedTab === 2 && <Report/>}
             </div>
 
-
-            {/*<SimpleSnackbar openSnackbar={openSnackbar} setOpenSnackbar= {setOpenSnackbar}    />*/}
             <AlertDialog openDialogAlert={openDialogAlert}
                          setOpenDialogAlert={setOpenDialogAlert}
                          handleAlertBtn1Click={handleClickNewCheckBtn}
