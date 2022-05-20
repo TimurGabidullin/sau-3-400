@@ -29,7 +29,7 @@ const getHeaderParameterUrl = (page: number) => {
 }
 
 const Paginator = (props: PaginatorPropsType) => {
-    debugger
+    // debugger
     let currentPage = useSelector((state: AppStateType) => state.app.currentPage)
 
     const dispatch = useDispatch()

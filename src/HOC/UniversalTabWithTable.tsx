@@ -48,6 +48,7 @@ const UniversalTabWithTable = (Table: React.FC, indexOfTable = 0) => {
 
                         <Tab value="table" label="Таблица" icon={<FormatListBulletedIcon/>} iconPosition='end'/>
                         <Tab value="info" label="Инфо" icon={<SettingsIcon/>} iconPosition='end'/>
+                        {/*<Tab value="info" label="Инфо" icon={<SettingsIcon/>} iconPosition='end'/>*/}
                     </Tabs>
                     {selectTab === 'table'
                         ? <Table {...props} indexOfTable={indexOfTable}/>

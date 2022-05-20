@@ -21,17 +21,25 @@ export type CheckType = {
     controlFunctions: number[]
     controlValues: number[]
     valuesOfErrors: number[]
-    valuesOfBlocks: { 'channel1': string, 'channel2': string, 'channel3': string, 'channel4': string }[]
+    // valuesOfBlocks: { 'channel1': string, 'channel2': string, 'channel3': string, 'channel4': string }[]
+    valuesOfBlocks: { [key:string]: string}[]
     isHaveSettings: boolean[]
     directionsOfChecks?: string[]
     subBlocks?: string[]
+    // recomendValues?:number[]
 
 }
 
 export function compareFunc(numberOfPlane: string, inputValue: string, channel: string, indexOfTable: number = 0) {
+
+    debugger
+
     if (inputValue === '') {
         return true
     }
+
+
+
     // @ts-ignore
     return (+inputValue <= this.controlValues[indexOfTable] + this.valuesOfErrors[indexOfTable]
         // @ts-ignore
@@ -42,14 +50,14 @@ export function emptyFunc() {
     return true
 }
 
-export function dividerFunc(numberOfPlane: string, inputValue: string, channel: string, indexOfTable: number = 0) {
-
+export function dividerFunc(numberOfPlane: string, inputValue: string, channel: string, indexOfTable: number = 0,) {
+debugger
     if (inputValue === '') {
         return true
     }
 
     // @ts-ignore.
-    return compareFunc.call(this, +inputValue / this.valuesOfBlocks[indexOfTable - 1][channel], channel, indexOfTable)
+    return compareFunc.call(this, numberOfPlane,+inputValue / this.valuesOfBlocks[indexOfTable - 1][channel], channel, indexOfTable)
 }
 
 export function subtractionFunc(numberOfPlane: string, inputValue: string, channel: string, indexOfTable: number = 0) {
@@ -61,16 +69,30 @@ export function subtractionFunc(numberOfPlane: string, inputValue: string, chann
     // @ts-ignore.
     return compareFunc.call(this, +inputValue - this.valuesOfBlocks[indexOfTable - 1][channel], channel, indexOfTable)
 }
+//
+// export function universalFunc(numberOfPlane: string, inputValue: string, channel: string, indexOfTable: number = 0) {
+//
+//     if (inputValue === '') {
+//         return true
+//     }
+//     debugger
+//     let value = 0
+//     if (indexOfTable === 2 || indexOfTable === 3) value = loadChecksState(numberOfPlane).head1[0].valuesOfBlocks[0][channel]
+//     if (indexOfTable === 6 || indexOfTable === 7) value = loadChecksState(numberOfPlane).head1[0].valuesOfBlocks[1][channel]
+//
+//     // @ts-ignore.
+//     return compareFunc.call(this, numberOfPlane, (+inputValue - value), channel, indexOfTable)
+// }
 
-export function universalFunc(numberOfPlane: string, inputValue: string, channel: string, indexOfTable: number = 0) {
+export function universalFunc(numberOfPlane: string, inputValue: string, channel: string, indexOfTable: number = 0,name:string) {
 
     if (inputValue === '') {
         return true
     }
     debugger
     let value = 0
-    if (indexOfTable === 2 || indexOfTable === 2) value = loadChecksState(numberOfPlane).head1[0].valuesOfBlocks[0][channel]
-    if (indexOfTable === 6 || indexOfTable === 7) value = loadChecksState(numberOfPlane).head1[0].valuesOfBlocks[1][channel]
+    if (name==='Х14') value = loadChecksState(numberOfPlane).head1[0].valuesOfBlocks[0][channel]
+    if (name==='Х15') value = loadChecksState(numberOfPlane).head1[0].valuesOfBlocks[1][channel]
 
     // @ts-ignore.
     return compareFunc.call(this, numberOfPlane, (+inputValue - value), channel, indexOfTable)
@@ -151,7 +173,7 @@ const initialState = {
                 'U26/11 Ш35', 'U26/11 Ш35',
                 'U24/11 Ш35', 'U24/11 Ш35'],
             controlFunctions: [1, 1, 3, 3, 1, 1, 3, 3],
-            controlValues: [3.5, -3.5, 3.5, -3.5, -1.89, 1.89, -2.24, 2.24],
+            controlValues: [3.5, -3.5, -3.5, 3.5, -1.89, 1.89, -2.24, 2.24],
             valuesOfErrors: [0.35, 0.35, 0.35, 0.35, 0.21, 0.21, 0.21, 0.21],
             valuesOfBlocks: [
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
@@ -208,7 +230,7 @@ const initialState = {
             resistors: ['R7', 'R7'],
             numbersOfContacts: ['U31/11 Ш35', 'U31/11 Ш35'],
             controlFunctions: [1, 1],
-            controlValues: [-1.6, -1.6],
+            controlValues: [-1.6, 1.6],
             valuesOfErrors: [0.3, 0.3],
             valuesOfBlocks: [
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},

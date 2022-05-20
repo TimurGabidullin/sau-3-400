@@ -33,10 +33,12 @@ const Report=()=> {
         saveReportState(reportReducer, numberOfPlane)
     }, [ reportReducer])
 
-    const {register, handleSubmit, formState: {errors}} = useForm();
+    const {register, handleSubmit,resetField, formState: {errors}} = useForm();
     const onSubmit = (data: any) => {
         debugger
         dispatch(addNewReportAC(data.report));
+        resetField('report')
+
     }
 
     const report = useSelector((state: AppStateType) => state.report)
@@ -54,6 +56,7 @@ const Report=()=> {
         <div>
                 <form onSubmit={handleSubmit(onSubmit)} className={styles.form} >
                     <TextField
+                        inputProps={{ autocomplete:"off"}}
                         fullWidth
                         color='secondary'
                         label='Введите отчёт'

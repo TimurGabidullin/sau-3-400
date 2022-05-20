@@ -31,15 +31,34 @@ const getHeaderParameterUrl = (page: number) => {
     if (page < 2) return 'head1'
     if (page > 1 && page < 5) return 'head2'
     if (page > 4 && page < 8) return 'head3'
-    if (page > 7 && page < 11) return 'head4'
+    if (page > 7 && page < 10) return 'head4'
+    if (page > 9 && page < 11) return 'head5'
+    if (page > 10 && page < 12) return 'head6'
+    if (page > 11 && page < 13) return 'head7'
+    if (page > 12 && page < 14) return 'head8'
+    if (page > 13 && page < 22) return 'head9'
+    if (page > 21 && page < 23) return 'head10'
 
 
-    else return 'head2'
+    // if (page < 4) return 'head1'
+    // if (page > 3 && page < 7) return 'head2'
+    // if (page > 6 && page < 10) return 'head3'
+    // if (page > 9 && page < 12) return 'head4'
+    // if (page > 11 && page < 13) return 'head5'
+
+    // if (page > 12 && page < 14) return 'head6'
+    // if (page > 13 && page < 15) return 'head7'
+    // if (page > 14 && page < 16) return 'head8'
+    // if (page > 15 && page < 24) return 'head9'
+    // if (page > 23 && page < 25) return 'head10'
+
+
+    else return 'head32'
 }
 
 
 const Stepper = (props: StepperPropsType) => {
-    debugger
+    // debugger
     let currentPage = useSelector((state: AppStateType) => state.app.currentPage)
     // const params: ParamsType = useParams();
     const theme = useTheme();

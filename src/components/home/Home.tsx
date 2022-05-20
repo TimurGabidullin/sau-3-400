@@ -105,7 +105,7 @@ const Home = () => {
     )
 
     const pages = ['Содержание', "Проверки", 'Отчет'];
-    const settings = ['RA82043', 'RA82081'];
+    const settings = ['RA82043','RA82044','RA82045','RA82046','RA82047','RA82048' ];
 
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
@@ -318,6 +318,7 @@ const Home = () => {
                 </Container>
             </AppBar>
             <div className={styles.main}>
+
                 {selectedTab === 0 && <Content setSelectedTab={setSelectedTab} LinkToCheck={LinkToCheck}/>}
                 {selectedTab === 1 && <Checks
                     paginatorPageNumber={paginatorPageNumber}

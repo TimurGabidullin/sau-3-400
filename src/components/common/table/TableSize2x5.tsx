@@ -37,6 +37,7 @@ const TableSize2x5 = (props: any) => {
     const idCheck = check.idCheck
     const pageNumber = check.pageNumber
     const typeOfSubBlock = check.typesOfSubBlocks[props.indexOfTable]
+    const positionOfSubBlock = check.positionOfSubBlock[props.indexOfTable]
     const resistor = check.resistors[props.indexOfTable]
     const headerOfCheck = check.title
     const numbersOfContacts = check.numbersOfContacts[props.indexOfTable]
@@ -51,20 +52,20 @@ const TableSize2x5 = (props: any) => {
 
 
 
-    const { enqueueSnackbar } = useSnackbar();
+    const {enqueueSnackbar} = useSnackbar();
 
     const {register, trigger, handleSubmit, formState: {errors}, getValues} = useForm({
         shouldFocusError: false
     });
 
-    const handleAlertBtn1Click = () => {
-        setOpenDialogAlert(false)
-    }
-
-    const handleAlertBtn2Click = () => {
-        dispatch(addSettingsInReportAC(idCheck, pageNumber, typeOfBlock, typeOfSubBlock, resistor, 1))
-        setOpenDialogAlert(false)
-    }
+    // const handleAlertBtn1Click = () => {
+    //     setOpenDialogAlert(false)
+    // }
+    //
+    // const handleAlertBtn2Click = () => {
+    //     dispatch(addSettingsInReportAC(idCheck, pageNumber, typeOfBlock, typeOfSubBlock, resistor, 1))
+    //     setOpenDialogAlert(false)
+    // }
 
 
     useEffect(() => {
@@ -74,12 +75,15 @@ const TableSize2x5 = (props: any) => {
     }, [checksReducer, reportReducer])
 
 
-    const inputFunc=(channel:"channel1"|"channel2"|"channel3"|"channel4")=>{
+    const inputFunc = (channel: "channel1" | "channel2" | "channel3" | "channel4") => {
         const inputValue = getValues(channel);
         if (inputValue !== valuesOfBlock[channel]) {
-            if (valuesOfBlock[channel] !== '' && inputValue !== '') {
+            if (valuesOfBlock[channel] !== '' && inputValue !== '' && isHaveSettings) {
+
                 enqueueSnackbar(`${channel[7]} канал добавлен в ОТЧЕТ`);
-                dispatch(addSettingsInReportAC(idCheck + channel, pageNumber, typeOfBlock, typeOfSubBlock, resistor, 1))
+
+
+                dispatch(addSettingsInReportAC(idCheck + channel+positionOfSubBlock+resistor, pageNumber, typeOfBlock, typeOfSubBlock,positionOfSubBlock, resistor, 1))
             }
             dispatch(saveSingleDataAC(
                 inputValue,
@@ -89,14 +93,19 @@ const TableSize2x5 = (props: any) => {
         }
     }
 
-        const onSubmit = () => {
-        if (isHaveSettings) {
-            inputFunc('channel1')
-            inputFunc('channel2')
-            inputFunc('channel3')
-            inputFunc('channel4')
+    const onSubmit = () => {
+        // if (isHaveSettings) {
+        //     inputFunc('channel1')
+        //     inputFunc('channel2')
+        //     inputFunc('channel3')
+        //     inputFunc('channel4')
+        // }
+        inputFunc('channel1')
+        inputFunc('channel2')
+        inputFunc('channel3')
+        inputFunc('channel4')
 
-        }
+
     }
 
     useEffect(() => {
@@ -127,9 +136,10 @@ const TableSize2x5 = (props: any) => {
                         <td>{typeOfBlock} </td>
                         <td>
                             <TextField
-
+                                // autocomplete="off"
                                 type="number"
-                                inputProps={{step: 0.01}}
+
+                                inputProps={{step: 0.01, autocomplete:"off"}}
 
                                 sx={{marginTop: '10px'}}
                                 color='secondary'
@@ -140,13 +150,13 @@ const TableSize2x5 = (props: any) => {
                                 defaultValue={valuesOfBlock['channel1']}
                                 error={errors.channel1}
                                 {...register("channel1",
-                                    {validate: (value => controlFunction(numberOfPlane, value, 'channel1', props.indexOfTable))})}
+                                    {validate: (value => controlFunction(numberOfPlane, value, 'channel1', props.indexOfTable,positionOfSubBlock))})}
                             />
                         </td>
                         <td>
                             <TextField
                                 type="number"
-                                inputProps={{step: 0.01}}
+                                inputProps={{step: 0.01, autocomplete:"off"}}
                                 sx={{marginTop: '10px'}}
                                 color='secondary'
                                 id="outlined-helperText"
@@ -160,7 +170,7 @@ const TableSize2x5 = (props: any) => {
                         <td>
                             <TextField
                                 type="number"
-                                inputProps={{step: 0.01}}
+                                inputProps={{step: 0.01, autocomplete:"off"}}
                                 sx={{marginTop: '10px'}}
                                 color='secondary'
                                 id="outlined-helperText"
@@ -174,7 +184,7 @@ const TableSize2x5 = (props: any) => {
                         <td>
                             <TextField
                                 type="number"
-                                inputProps={{step: 0.01}}
+                                inputProps={{step: 0.01, autocomplete:"off"}}
                                 sx={{marginTop: '10px'}}
                                 color='secondary'
                                 id="outlined-helperText"
@@ -202,16 +212,16 @@ const TableSize2x5 = (props: any) => {
                     </Button>
 
 
-                    <AlertDialog openDialogAlert={openDialogAlert}
-                                 setOpenDialogAlert={setOpenDialogAlert}
-                                 handleAlertBtn1Click={handleAlertBtn1Click}
-                                 handleAlertBtn2Click={handleAlertBtn2Click}
-                                 headerText="Занести регуллировку в ОТЧЁТ?"
-                                 mainText="Значение канала изменилось. Если вы занесли регуллировку в отчёт случайно,
-                             то её можно удалить в разделе 'ОТЧЕТ'."
-                                 btnText1="Нет"
-                                 btnText2="Да"
-                    />
+                    {/*<AlertDialog openDialogAlert={openDialogAlert}*/}
+                    {/*             setOpenDialogAlert={setOpenDialogAlert}*/}
+                    {/*             handleAlertBtn1Click={handleAlertBtn1Click}*/}
+                    {/*             handleAlertBtn2Click={handleAlertBtn2Click}*/}
+                    {/*             headerText="Занести регуллировку в ОТЧЁТ?"*/}
+                    {/*             mainText="Значение канала изменилось. Если вы занесли регуллировку в отчёт случайно,*/}
+                    {/*         то её можно удалить в разделе 'ОТЧЕТ'."*/}
+                    {/*             btnText1="Нет"*/}
+                    {/*             btnText2="Да"*/}
+                    {/*/>*/}
                 </div>
             </form>
 

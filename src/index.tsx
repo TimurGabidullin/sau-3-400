@@ -7,15 +7,30 @@ import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
 import store from "./redux/store";
 import { SnackbarProvider } from 'notistack';
+import Box from '@mui/material/Box';
+import {Zoom} from "@mui/material";
 
 
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>
         <BrowserRouter>
-            <SnackbarProvider maxSnack={3}>
+
+
+            <SnackbarProvider maxSnack={4}
+                              autoHideDuration={1000}
+                              anchorOrigin={{
+                                  vertical: 'top',
+                                  horizontal: 'right',
+                              }}
+                              TransitionComponent={Zoom}
+            >
+
             <App/>
+
+
             </SnackbarProvider>
+
 
         </BrowserRouter>
         </Provider>

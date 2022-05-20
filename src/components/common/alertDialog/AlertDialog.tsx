@@ -27,7 +27,7 @@ type AlertDialogPropsType={
     handleAlertBtn1Click?:Function
     handleAlertBtn2Click?:Function
     headerText:string
-    mainText:string
+    mainText:any
     btnText1?:string
     btnText2?:string
 

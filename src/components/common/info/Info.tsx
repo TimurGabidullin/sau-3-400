@@ -1,24 +1,80 @@
 import React, {memo} from "react";
-import {CheckType} from "../../../redux/checksReducer";
+import {CheckType, numToFunc} from "../../../redux/checksReducer";
 import {useSelector} from "react-redux";
 import {AppStateType} from "../../../redux/store";
 import {useParams} from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import {ParamsType} from "../../home/Home";
 import Container from "@mui/material/Container";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+import IconButton from "@mui/material/IconButton";
+import AlertDialog from "../alertDialog/AlertDialog";
 
 
 const Info = (props: any) => {
 
     const params: ParamsType = useParams()
     const checks = useSelector((state: AppStateType) => state.checks[params.header ? params.header : 'head1'])
+    const checksReducer = useSelector((state: AppStateType) => state.checks)
     const check = checks.filter((ch: CheckType) => ch.idCheck === params.check)[0]
     const isHaveSettings = check.isHaveSettings[props.indexOfTable]
     const typeOfSubBlock = check.typesOfSubBlocks[props.indexOfTable]
     const positionOfSubBlock = check.positionOfSubBlock[props.indexOfTable]
     const resistor = check.resistors[props.indexOfTable]
     const typeOfBlock = check.typesOfBlocks[props.indexOfTable]
+    const controlValues = check.controlValues
+    const valuesOfErrors = check.valuesOfErrors
+    const controlFunction = check.controlFunctions[props.indexOfTable]
+    debugger
+
+
     const Pulse = require("react-reveal/Pulse")
+
+    const [openDialogAlert, setOpenDialogAlert] = React.useState(false);
+
+    let recomendValues = [
+        controlValues[props.indexOfTable],
+        controlValues[props.indexOfTable],
+        controlValues[props.indexOfTable],
+        controlValues[props.indexOfTable],
+    ]
+
+    let textForRecomend =
+        <Typography sx={{padding: '20px 20px'}} variant="body1" component='p'>
+            {recomendValues.map((value, index) => <p>{index + 1} канал - {value} В</p>)}
+        </Typography>
+
+
+    if (params.check === 'check2' && (props.indexOfTable === 1 || props.indexOfTable === 3)) {
+        recomendValues = recomendValues.map((value, index) => {
+                return value * +check.valuesOfBlocks[props.indexOfTable - 1][`channel${index + 1}`]
+            }
+        )
+        textForRecomend = <Typography sx={{padding: '20px 20px'}} variant="body1" component='p'>
+            {recomendValues.map((value, index) => {
+                if (value) {
+                    return <p>{index + 1} канал - {value} В</p>
+                } else return <p>Введите U23/11 для {index + 1} канала</p>
+            })
+            }
+        </Typography>
+    }
+
+    if (params.check === 'check3' && (props.indexOfTable === 2 || props.indexOfTable === 3)) {
+        recomendValues = recomendValues.map((value, index) => {
+                return value + +checksReducer['head1'][0].valuesOfBlocks[0][`channel${index + 1}`]
+            }
+        )
+        textForRecomend =
+            <Typography sx={{padding: '20px 20px'}} variant="body1" component='p'>
+                {recomendValues.map((value, index) => {
+                    if (value) {
+                        return <p>{index + 1} канал - {value} В</p>
+                    } else return <p>Введите U23/11 для {index + 1} канала</p>
+                })
+                }
+            </Typography>
+    }
 
 
     return (
@@ -28,13 +84,26 @@ const Info = (props: any) => {
                 <Typography sx={{padding: '20px 20px'}} variant="body1" component='p'>
                     Регулируйте регулировочными винтами резисторов {resistor} на субблоках {typeOfSubBlock}
                     ({positionOfSubBlock}-место установки) блоков {typeOfBlock}
+                    {controlFunction !== 0 ?
+                        <IconButton color="secondary" aria-label="add an alarm">
+                            <InfoOutlinedIcon onClick={() => setOpenDialogAlert(true)}/>
+                        </IconButton>
+                        : ''
+                    }
+                    <AlertDialog openDialogAlert={openDialogAlert}
+                                 setOpenDialogAlert={setOpenDialogAlert}
+                                 headerText="Регулировка"
+                                 mainText={textForRecomend}
+                    />
                 </Typography>
             </Pulse>
             : <Pulse>
                 <Typography sx={{padding: '40px 20px', textAlign: 'center'}} variant="body1" component='p'>Вставка
-                    не
-                    регулируется </Typography>
+                    не регулируется
+                </Typography>
             </Pulse>
+
+
     );
 }
 
