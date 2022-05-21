@@ -24,6 +24,8 @@ const Info = (props: any) => {
     const typeOfBlock = check.typesOfBlocks[props.indexOfTable]
     const controlValues = check.controlValues
     const valuesOfErrors = check.valuesOfErrors
+    const unit = check.unit
+
     const controlFunction = check.controlFunctions[props.indexOfTable]
     debugger
 
@@ -41,7 +43,9 @@ const Info = (props: any) => {
 
     let textForRecomend =
         <Typography sx={{padding: '20px 20px'}} variant="body1" component='p'>
-            {recomendValues.map((value, index) => <p>{index + 1} канал - {value} В</p>)}
+            {recomendValues.map((value, index) =>{
+             return <p>{index + 1} канал {value}±{valuesOfErrors[props.indexOfTable]} {unit}.</p>
+            })}
         </Typography>
 
 
@@ -53,8 +57,8 @@ const Info = (props: any) => {
         textForRecomend = <Typography sx={{padding: '20px 20px'}} variant="body1" component='p'>
             {recomendValues.map((value, index) => {
                 if (value) {
-                    return <p>{index + 1} канал - {value} В</p>
-                } else return <p>Введите U23/11 для {index + 1} канала</p>
+                    return <p>{index + 1} канал  {value}±{valuesOfErrors[props.indexOfTable]} {unit}.</p>
+                } else return <p>Введите U23/11 для {index + 1} канала.</p>
             })
             }
         </Typography>
@@ -69,12 +73,82 @@ const Info = (props: any) => {
             <Typography sx={{padding: '20px 20px'}} variant="body1" component='p'>
                 {recomendValues.map((value, index) => {
                     if (value) {
-                        return <p>{index + 1} канал - {value} В</p>
-                    } else return <p>Введите U23/11 для {index + 1} канала</p>
+                        return <p>{index + 1} канал {value}±{valuesOfErrors[props.indexOfTable]} {unit}</p>
+                    } else return <p>Введите U23/11 для {index + 1} канала.</p>
                 })
                 }
             </Typography>
     }
+
+    if (params.check === 'check13' && (props.indexOfTable === 2 || props.indexOfTable === 5)) {
+        recomendValues = recomendValues.map((value, index) => {
+            return +checksReducer['head6'][0].valuesOfBlocks[props.indexOfTable-2][`channel${index + 1}`]
+            }
+        )
+        textForRecomend = <Typography sx={{padding: '20px 20px'}} variant="body1" component='p'>
+            {recomendValues.map((value, index) => {
+                if (value) {
+                    return <p>{index + 1} канал  {value}±{valuesOfErrors[props.indexOfTable]} {unit}.</p>
+                } else return <p>Введите U20/11 для {index + 1} канала.</p>
+            })
+            }
+        </Typography>
+    }
+
+    if (params.check === 'check17' && (props.indexOfTable === 1 || props.indexOfTable === 3)) {
+        recomendValues = recomendValues.map((value, index) => {
+                return value*+checksReducer['head9'][1].valuesOfBlocks[props.indexOfTable-1][`channel${index + 1}`]
+            }
+        )
+        textForRecomend = <Typography sx={{padding: '20px 20px'}} variant="body1" component='p'>
+            {recomendValues.map((value, index) => {
+                if (value) {
+                    return <p>{index + 1} канал  {value}±{valuesOfErrors[props.indexOfTable]*
+                    +checksReducer['head9'][1].valuesOfBlocks[props.indexOfTable-1][`channel${index + 1}`]} {unit}.</p>
+                } else return <p>Введите U5/6 для {index + 1} канала.</p>
+            })
+            }
+        </Typography>
+    }
+    if (params.check === 'check19' && (props.indexOfTable === 1 || props.indexOfTable === 3)) {
+        recomendValues = recomendValues.map((value, index) => {
+                return value*+checksReducer['head9'][3].valuesOfBlocks[props.indexOfTable-1][`channel${index + 1}`]
+            }
+        )
+        textForRecomend = <Typography sx={{padding: '20px 20px'}} variant="body1" component='p'>
+            {recomendValues.map((value, index) => {
+                if (value) {
+                    return <p>{index + 1} канал  {value}±{valuesOfErrors[props.indexOfTable]*
+                    +checksReducer['head9'][3].valuesOfBlocks[props.indexOfTable-1][`channel${index + 1}`]} {unit}.</p>
+                } else return <p>Введите U5/6 для {index + 1} канала.</p>
+            })
+            }
+        </Typography>
+    }
+
+    if (params.check === 'check21' && (props.indexOfTable === 1 || props.indexOfTable === 3)) {
+        recomendValues = recomendValues.map((value, index) => {
+                let u: string = checksReducer['head9'][5].valuesOfBlocks[props.indexOfTable - 1][`channel${index + 1}`]
+                if (u !== '') {
+                    return value + +u
+                } else return 0
+            }
+        )
+        textForRecomend = <Typography sx={{padding: '20px 20px'}} variant="body1" component='p'>
+            {recomendValues.map((value, index) => {
+                if (value) {
+                    return <p>{index + 1} канал  {value}±{valuesOfErrors[props.indexOfTable]} {unit}.</p>
+                } else return <p>Введите U19 для {index + 1} канала.</p>
+            })
+            }
+        </Typography>
+    }
+
+
+
+
+
+
 
 
     return (

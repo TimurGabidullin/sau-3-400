@@ -83,7 +83,7 @@ const Report=()=> {
                     <TransitionGroup>
                         {Object.keys(report).map((idCheck) => (
                             <Collapse key={idCheck}>
-                                <Typography sx={{padding: '0 0px',textIndent: '40px'}} variant="body1" component='p'>
+                                <Typography sx={{padding: '0 10px',textIndent: '20px'}} variant="body1" component='p'>
                                     {report[idCheck]}
                                     <IconButton
                                         edge="end"

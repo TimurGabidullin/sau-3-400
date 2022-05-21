@@ -58,8 +58,8 @@ const Check10 = (props: CheckPropsType) => {
 
             <Typography sx={{padding: '0 20px'}} variant="body1" component='p'>
                 <p> П Р И М Е Ч А Н И Е .</p>
-                <p>    &#8544;(&#8547;) канал работает на ПКП<span>прав</span></p>
-                <p>  &#8546;(&#8545;)канал работает на ПКП<span>лев</span></p>
+                <p>    &#8544;(&#8547;) канал работает на ПКП<span>прав</span>.</p>
+                <p>  &#8546;(&#8545;)канал работает на ПКП<span>лев</span>.</p>
             </Typography>
 
 

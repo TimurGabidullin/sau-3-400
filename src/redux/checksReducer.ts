@@ -26,6 +26,7 @@ export type CheckType = {
     isHaveSettings: boolean[]
     directionsOfChecks?: string[]
     subBlocks?: string[]
+    unit:string
     // recomendValues?:number[]
 
 }
@@ -65,9 +66,9 @@ export function subtractionFunc(numberOfPlane: string, inputValue: string, chann
     if (inputValue === '') {
         return true
     }
-
+debugger
     // @ts-ignore.
-    return compareFunc.call(this, +inputValue - this.valuesOfBlocks[indexOfTable - 1][channel], channel, indexOfTable)
+    return compareFunc.call(this, numberOfPlane,+inputValue - this.valuesOfBlocks[indexOfTable - 1][channel], channel, indexOfTable)
 }
 //
 // export function universalFunc(numberOfPlane: string, inputValue: string, channel: string, indexOfTable: number = 0) {
@@ -93,6 +94,7 @@ export function universalFunc(numberOfPlane: string, inputValue: string, channel
     let value = 0
     if (name==='Х14') value = loadChecksState(numberOfPlane).head1[0].valuesOfBlocks[0][channel]
     if (name==='Х15') value = loadChecksState(numberOfPlane).head1[0].valuesOfBlocks[1][channel]
+    if (name==='Х13') value = loadChecksState(numberOfPlane).head6[0].valuesOfBlocks[indexOfTable-2][channel]
 
     // @ts-ignore.
     return compareFunc.call(this, numberOfPlane, (+inputValue - value), channel, indexOfTable)
@@ -126,7 +128,8 @@ const initialState = {
             valuesOfBlocks: [
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''}],
-            isHaveSettings: [false, true]
+            isHaveSettings: [false, true],
+            unit:'В'
 
 
         } as CheckType,
@@ -155,6 +158,7 @@ const initialState = {
                 'Вправо/вверх и 2Т', 'Вправо/вверх и 2Т',
                 'Влево/вниз и 2Т', 'Влево/вниз и 2Т',],
             isHaveSettings: [false, true, false, true],
+            unit:'В'
 
         } as CheckType,
         {
@@ -190,7 +194,8 @@ const initialState = {
                 'На кабрирование', 'На пикирование',
                 'Вправо', 'Влево',
                 'Вправо', 'Влево'],
-            isHaveSettings: [true, true, true, true, true, true, true, true]
+            isHaveSettings: [true, true, true, true, true, true, true, true],
+            unit:'В'
 
         } as CheckType
 
@@ -215,7 +220,9 @@ const initialState = {
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},],
             additionalValues: [],
             directionsOfChecks: ['На пикирование', 'На кабрирование'],
-            isHaveSettings: [true, true]
+            isHaveSettings: [true, true],
+            unit:'В'
+
         } as CheckType,
 
         {
@@ -237,7 +244,9 @@ const initialState = {
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},],
             additionalValues: [],
             directionsOfChecks: ['Вправо', 'Влево'],
-            isHaveSettings: [true, true]
+            isHaveSettings: [true, true],
+            unit:'В'
+
         } as CheckType,
 
         {
@@ -259,7 +268,9 @@ const initialState = {
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},],
             additionalValues: [],
             directionsOfChecks: ['Влево', 'Вправо'],
-            isHaveSettings: [true, true]
+            isHaveSettings: [true, true],
+            unit:'В'
+
         } as CheckType,
     ],
     "head3": [
@@ -281,7 +292,9 @@ const initialState = {
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''}],
             directionsOfChecks: ['Вправо', 'Влево'],
-            isHaveSettings: [true, true]
+            isHaveSettings: [true, true],
+            unit:'В'
+
         } as CheckType,
         {
             title: "Проверка срабатывания пороговых устройств по предельным значениям крена на высотах ≤ 60 м.",
@@ -301,7 +314,9 @@ const initialState = {
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''}],
             directionsOfChecks: ['Вправо', 'Влево'],
-            isHaveSettings: [true, true]
+            isHaveSettings: [true, true],
+            unit:'В'
+
 
         } as CheckType,
         {
@@ -322,7 +337,9 @@ const initialState = {
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''}],
             directionsOfChecks: ['На кабрирование', 'На пикирование'],
-            isHaveSettings: [true, true]
+            isHaveSettings: [true, true],
+            unit:'В'
+
         } as CheckType
 
     ],
@@ -345,7 +362,9 @@ const initialState = {
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''}],
             directionsOfChecks: ['Вправо', 'Влево'],
-            isHaveSettings: [true, true]
+            isHaveSettings: [true, true],
+            unit:'В'
+
         } as CheckType,
         {
             title: "Проверка передаточного коэффициента на индекс команд по сигналу тангажа.",
@@ -365,7 +384,9 @@ const initialState = {
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''}],
             directionsOfChecks: ['На пикирование', 'На кабрирование'],
-            isHaveSettings: [true, true]
+            isHaveSettings: [true, true],
+            unit:'В'
+
         } as CheckType,
     ],
     "head5": [
@@ -381,13 +402,15 @@ const initialState = {
             resistors: ['R1', 'R3'],
             numbersOfContacts: ['U17/11 Ш35', 'U17/11 Ш35'],
             controlFunctions: [1, 1],
-            controlValues: [5, 5],
-            valuesOfErrors: [0.5, 0.5],
+            controlValues: [3, 3],
+            valuesOfErrors: [0.6, 0.6],
             valuesOfBlocks: [
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''}],
             directionsOfChecks: ['Вправо', 'Влево'],
-            isHaveSettings: [true, true]
+            isHaveSettings: [true, true],
+            unit:'°'
+
         } as CheckType,
 
     ],
@@ -401,10 +424,10 @@ const initialState = {
             paginatorNumber: 13,
             typesOfBlocks: ['ВБК', 'ВБК', 'ВБК', 'ВБК', 'ВБК', 'ВБК'],
             typesOfSubBlocks: ["", "", "ВО104-01", "", "", "ВО104-01"],
-            positionOfSubBlock: ['', '', 'X13', '', '', 'X13'],
+            positionOfSubBlock: ['', '', 'Х13', '', '', 'Х13'],
             resistors: ['', '', 'R4', '', '', 'R4'],
             numbersOfContacts: ['U20/11 Ш35', 'U14/11 Ш35', 'U30/11 Ш35', 'U20/11 Ш35', 'U14/11 Ш35', 'U30/11 Ш35'],
-            controlFunctions: [0, 0, 1, 0, 0, 1],
+            controlFunctions: [0, 0, 3, 0, 0, 3],
             controlValues: [0, 0, 0, 0, 0, 0],
             valuesOfErrors: [0, 0, 0.3, 0, 0, 0.3],
             valuesOfBlocks: [
@@ -416,7 +439,9 @@ const initialState = {
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
             ],
             directionsOfChecks: ['Вправо', 'Вправо', 'Вправо', 'Влево', 'Влево', 'Влево'],
-            isHaveSettings: [false, false, true, false, false, true,]
+            isHaveSettings: [false, false, true, false, false, true,],
+            unit:'В'
+
         } as CheckType,
     ],
     "head7": [
@@ -432,14 +457,16 @@ const initialState = {
             resistors: ['R5', 'R5'],
             numbersOfContacts: ['U24/11 Ш35', 'U24/11 Ш35'],
             controlFunctions: [1, 1],
-            controlValues: [7.2, 7.2],
+            controlValues: [-7.2, 7.2],
             valuesOfErrors: [0.4, 0.4],
             valuesOfBlocks: [
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
             ],
             directionsOfChecks: ['Вправо', 'Влево'],
-            isHaveSettings: [true, true]
+            isHaveSettings: [true, true],
+            unit:'В'
+
         } as CheckType,
     ],
     "head8": [
@@ -455,7 +482,7 @@ const initialState = {
             resistors: ['R5', 'R2', 'R9', 'R8'],
             numbersOfContacts: ['U24/11 Ш35', 'U24/11 Ш35', 'U25/11 Ш35', 'U25/11 Ш35'],
             controlFunctions: [1, 1, 1, 1],
-            controlValues: [0, 3.2, 5.8, 5.8,],
+            controlValues: [0, -3.2, -5.8, -5.8,],
             valuesOfErrors: [0.1, 0.3, 0.1, 0.1,],
             valuesOfBlocks: [
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
@@ -464,7 +491,9 @@ const initialState = {
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
             ],
             directionsOfChecks: ['', '10° по часовой', '90° по часовой', '270° против часовой'],
-            isHaveSettings: [true, true, true, true]
+            isHaveSettings: [true, true, true, true],
+            unit:'В'
+
         } as CheckType,
     ],
     "head9": [
@@ -487,7 +516,9 @@ const initialState = {
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
             ],
             directionsOfChecks: ['', ''],
-            isHaveSettings: [true, true]
+            isHaveSettings: [true, true],
+            unit:'В'
+
         } as CheckType,
 
         {
@@ -504,8 +535,8 @@ const initialState = {
                 'U5/6 Ш35', 'U22/11 Ш35', 'U5/6 Ш35', 'U22/11 Ш35',
                 'U5/6 Ш35', 'U22/11 Ш35', 'U5/6 Ш35', 'U22/11 Ш35'],
             controlFunctions: [0, 2, 0, 2, 1, 1, 1, 1],
-            controlValues: [0, 35, 0, 35, 10, 7, -10, 7],// 10+-9.8>=0.2В
-            valuesOfErrors: [0, 3.5, 0, 35, 9.8, 0.7, 9.8, 0.7],
+            controlValues: [0, 35, 0, 35, 10, 7, -10, -7],// 10+-9.8>=0.2В
+            valuesOfErrors: [0, 3.5, 0, 3.5, 9.8, 0.7, 9.8, 0.7],
             valuesOfBlocks: [
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
@@ -520,7 +551,9 @@ const initialState = {
                 'вправо/вверх и 2Т', 'вправо/вверх и 2Т', 'влево/вниз и 2Т', 'влево/вниз и 2Т',
                 'вправо/вверх и 7Т', 'вправо/вверх и 7Т', 'влево/вниз и 7Т', 'влево/вниз и 7Т',
             ],
-            isHaveSettings: [false, true, false, true, true, true, true, true]
+            isHaveSettings: [false, true, false, true, true, true, true, true],
+            unit:'В'
+
         } as CheckType,
 
         {
@@ -548,7 +581,9 @@ const initialState = {
             directionsOfChecks: [
                 'вправо и 2Т', 'вправо и 2Т', 'влево и 2Т', 'влево и 2Т'
             ],
-            isHaveSettings: [false, true, false, true]
+            isHaveSettings: [false, false, false, false],//------------------?????????????
+            unit:'В'
+
         } as CheckType,
         {
             title: "Проверка передаточного коэффициента по сигналу Ек после захвата глиссады.",
@@ -575,7 +610,9 @@ const initialState = {
             directionsOfChecks: [
                 'вправо и 2Т', 'вправо и 2Т', 'влево и 2Т', 'влево и 2Т'
             ],
-            isHaveSettings: [false, true, false, true]
+            isHaveSettings: [false, true, false, true],
+            unit:'В'
+
         } as CheckType,
 
         {
@@ -599,7 +636,9 @@ const initialState = {
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
             ],
             directionsOfChecks: ['вправо', 'влево'],
-            isHaveSettings: [true, true]
+            isHaveSettings: [true, true],
+            unit:'°'
+
         } as CheckType,
 
         {
@@ -625,7 +664,9 @@ const initialState = {
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
             ],
             directionsOfChecks: ['вправо', 'вправо', 'влево', 'влево'],
-            isHaveSettings: [false, true, false, true]
+            isHaveSettings: [false, true, false, true],
+            unit:'В'
+
         } as CheckType,
 
         {
@@ -640,14 +681,16 @@ const initialState = {
             resistors: ['', '',],
             numbersOfContacts: ['U24/11 Ш35', 'U24/11 Ш35'],
             controlFunctions: [1, 1],
-            controlValues: [1.6, -1.6],
+            controlValues: [-1.6, 1.6],
             valuesOfErrors: [0.2, 0.2],
             valuesOfBlocks: [
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
             ],
             directionsOfChecks: ['90° вправо', '90° влево'],
-            isHaveSettings: [false, false]
+            isHaveSettings: [false, false],
+            unit:'В'
+
         } as CheckType,
 
         {
@@ -671,7 +714,9 @@ const initialState = {
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
             ],
             directionsOfChecks: ['вправо и КР', 'вправо и 1Т', 'влево и КР', 'влево и 1Т'],
-            isHaveSettings: [true, true, true, true]
+            isHaveSettings: [true, true, true, true],
+            unit:'В'
+
         } as CheckType,
     ],
 
@@ -695,7 +740,9 @@ const initialState = {
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
             ],
             directionsOfChecks: ['15° вправо', '15° влево'],
-            isHaveSettings: [true, true]
+            isHaveSettings: [true, true],
+            unit:'В'
+
         } as CheckType,
     ],
     "head11": [
@@ -717,7 +764,9 @@ const initialState = {
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
             ],
             directionsOfChecks: [''],
-            isHaveSettings: [true]
+            isHaveSettings: [true],
+            unit:'В'
+
         } as CheckType,
 
         {
@@ -738,7 +787,9 @@ const initialState = {
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
             ],
             directionsOfChecks: [''],
-            isHaveSettings: [true]
+            isHaveSettings: [true],
+            unit:'В'
+
         } as CheckType,
 
         {
@@ -760,7 +811,9 @@ const initialState = {
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
             ],
             directionsOfChecks: ['положение "2"', 'положение "1"'],
-            isHaveSettings: [true, true]
+            isHaveSettings: [true, true],
+            unit:'В'
+
         } as CheckType,
 
         {
@@ -783,7 +836,9 @@ const initialState = {
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
             ],
             directionsOfChecks: ['', '', ''],
-            isHaveSettings: [true, true, true]
+            isHaveSettings: [true, true, true],
+            unit:'В'
+
         } as CheckType,
 
         {
@@ -805,7 +860,9 @@ const initialState = {
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
             ],
             directionsOfChecks: ['по часовой', 'против часовой'],
-            isHaveSettings: [true, true]
+            isHaveSettings: [true, true],
+            unit:'В'
+
         } as CheckType,
 
         {
@@ -827,7 +884,9 @@ const initialState = {
 
             ],
             directionsOfChecks: [''],
-            isHaveSettings: [true, true]
+            isHaveSettings: [true, true],
+            unit:'В'
+
         } as CheckType,
 
         {
@@ -851,7 +910,9 @@ const initialState = {
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
             ],
             directionsOfChecks: ['По часовой', 'Против часовой', 'По часовой', 'Против часовой'],
-            isHaveSettings: [true, true, true, true]
+            isHaveSettings: [true, true, true, true],
+            unit:'В'
+
         } as CheckType,
 
         {
@@ -873,7 +934,9 @@ const initialState = {
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
             ],
             directionsOfChecks: ['По часовой', 'Против часовой'],
-            isHaveSettings: [true, true]
+            isHaveSettings: [true, true],
+            unit:'В'
+
         } as CheckType,
 
 
@@ -903,7 +966,9 @@ const initialState = {
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
             ],
             directionsOfChecks: ['Вправо', 'Вправо', 'Вправо', 'Влево', 'Влево', 'Влево'],
-            isHaveSettings: [false, false, true, false, false, true,]
+            isHaveSettings: [false, false, true, false, false, true,],
+            unit:'В'
+
         } as CheckType,
     ]
 

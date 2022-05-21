@@ -164,7 +164,7 @@ const TableSize2x5 = (props: any) => {
                                 defaultValue={valuesOfBlock['channel2']}
                                 error={errors.channel2}
                                 {...register("channel2",
-                                    {validate: (value => controlFunction(numberOfPlane, value, 'channel2', props.indexOfTable))})}
+                                    {validate: (value => controlFunction(numberOfPlane, value, 'channel2', props.indexOfTable,positionOfSubBlock))})}
                             />
                         </td>
                         <td>
@@ -178,7 +178,7 @@ const TableSize2x5 = (props: any) => {
                                 defaultValue={valuesOfBlock['channel3']}
                                 error={errors.channel3}
                                 {...register("channel3",
-                                    {validate: ((value) => controlFunction(numberOfPlane, value, 'channel3', props.indexOfTable))})}
+                                    {validate: ((value) => controlFunction(numberOfPlane, value, 'channel3', props.indexOfTable,positionOfSubBlock))})}
                             />
                         </td>
                         <td>
@@ -192,7 +192,7 @@ const TableSize2x5 = (props: any) => {
                                 defaultValue={valuesOfBlock['channel4']}
                                 error={errors.channel4}
                                 {...register("channel4",
-                                    {validate: (value => controlFunction(numberOfPlane, value, 'channel4', props.indexOfTable))})}
+                                    {validate: (value => controlFunction(numberOfPlane, value, 'channel4', props.indexOfTable,positionOfSubBlock))})}
                             />
                         </td>
                     </tr>
