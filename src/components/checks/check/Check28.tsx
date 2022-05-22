@@ -46,6 +46,7 @@ const Check28 = (props: CheckPropsType) => {
             </Typography>
 
             {UniversalTabWithTable(TableSize2x5, 2)(props)}
+            {UniversalTabWithTable(TableSize2x5, 3)(props)}
 
             <Typography sx={{padding: '0 20px'}} variant="body1" component='p'>
                 <p> На пульте ПС-172-02 нажмите кнопку-лампочку КУРС &#8545; и произведите эту же проверку.</p>

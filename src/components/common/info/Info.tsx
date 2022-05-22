@@ -9,10 +9,12 @@ import Container from "@mui/material/Container";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import IconButton from "@mui/material/IconButton";
 import AlertDialog from "../alertDialog/AlertDialog";
+import styles from "./Info.module.css"
 
 
 const Info = (props: any) => {
 
+    // const indexOfTable=props
     const params: ParamsType = useParams()
     const checks = useSelector((state: AppStateType) => state.checks[params.header ? params.header : 'head1'])
     const checksReducer = useSelector((state: AppStateType) => state.checks)
@@ -44,7 +46,7 @@ const Info = (props: any) => {
     let textForRecomend =
         <Typography sx={{padding: '20px 20px'}} variant="body1" component='p'>
             {recomendValues.map((value, index) =>{
-             return <p>{index + 1} канал {value}±{valuesOfErrors[props.indexOfTable]} {unit}.</p>
+             return <p>{index + 1} канал должен быть {value}±{valuesOfErrors[props.indexOfTable]} {unit}.</p>
             })}
         </Typography>
 
@@ -58,7 +60,7 @@ const Info = (props: any) => {
             {recomendValues.map((value, index) => {
                 if (value) {
                     return <p>{index + 1} канал  {value}±{valuesOfErrors[props.indexOfTable]} {unit}.</p>
-                } else return <p>Введите U23/11 для {index + 1} канала.</p>
+                } else return <p className={styles.recomend}>Введите U<span>23/11</span> для {index + 1} канала.</p>
             })
             }
         </Typography>
@@ -74,12 +76,12 @@ const Info = (props: any) => {
                 {recomendValues.map((value, index) => {
                     if (value) {
                         return <p>{index + 1} канал {value}±{valuesOfErrors[props.indexOfTable]} {unit}</p>
-                    } else return <p>Введите U23/11 для {index + 1} канала.</p>
+                    } else return <p className={styles.recomend}>Введите U<span>23/11</span> для {index + 1} канала.</p>
                 })
                 }
             </Typography>
     }
-
+//-------------------------------------одинаковые функции--------------------------------------------
     if (params.check === 'check13' && (props.indexOfTable === 2 || props.indexOfTable === 5)) {
         recomendValues = recomendValues.map((value, index) => {
             return +checksReducer['head6'][0].valuesOfBlocks[props.indexOfTable-2][`channel${index + 1}`]
@@ -89,11 +91,28 @@ const Info = (props: any) => {
             {recomendValues.map((value, index) => {
                 if (value) {
                     return <p>{index + 1} канал  {value}±{valuesOfErrors[props.indexOfTable]} {unit}.</p>
-                } else return <p>Введите U20/11 для {index + 1} канала.</p>
+                } else return <p className={styles.recomend}>Введите U<span>20/11</span> для {index + 1} канала.</p>
             })
             }
         </Typography>
     }
+    if (params.check === 'check33' && (props.indexOfTable === 2 || props.indexOfTable === 5)) {
+        recomendValues = recomendValues.map((value, index) => {
+                return +checksReducer['head12'][0].valuesOfBlocks[props.indexOfTable-2][`channel${index + 1}`]
+            }
+        )
+        textForRecomend = <Typography sx={{padding: '20px 20px'}} variant="body1" component='p'>
+            {recomendValues.map((value, index) => {
+                if (value) {
+                    return <p>{index + 1} канал  {value}±{valuesOfErrors[props.indexOfTable]} {unit}.</p>
+                } else return <p className={styles.recomend}>Введите U<span>36/19</span> для {index + 1} канала.</p>
+            })
+            }
+        </Typography>
+    }
+
+    //--------------------------------------------------------------------------------------------------
+
 
     if (params.check === 'check17' && (props.indexOfTable === 1 || props.indexOfTable === 3)) {
         recomendValues = recomendValues.map((value, index) => {
@@ -105,7 +124,7 @@ const Info = (props: any) => {
                 if (value) {
                     return <p>{index + 1} канал  {value}±{valuesOfErrors[props.indexOfTable]*
                     +checksReducer['head9'][1].valuesOfBlocks[props.indexOfTable-1][`channel${index + 1}`]} {unit}.</p>
-                } else return <p>Введите U5/6 для {index + 1} канала.</p>
+                } else return <p className={styles.recomend}>Введите U<span>5/6</span> для {index + 1} канала.</p>
             })
             }
         </Typography>
@@ -120,7 +139,7 @@ const Info = (props: any) => {
                 if (value) {
                     return <p>{index + 1} канал  {value}±{valuesOfErrors[props.indexOfTable]*
                     +checksReducer['head9'][3].valuesOfBlocks[props.indexOfTable-1][`channel${index + 1}`]} {unit}.</p>
-                } else return <p>Введите U5/6 для {index + 1} канала.</p>
+                } else return <p className={styles.recomend}>Введите U<span>5/6</span> для {index + 1} канала.</p>
             })
             }
         </Typography>
@@ -138,13 +157,18 @@ const Info = (props: any) => {
             {recomendValues.map((value, index) => {
                 if (value) {
                     return <p>{index + 1} канал  {value}±{valuesOfErrors[props.indexOfTable]} {unit}.</p>
-                } else return <p>Введите U19 для {index + 1} канала.</p>
+                } else return <p className={styles.recomend}>Введите U<span>19</span> для {index + 1} канала.</p>
             })
             }
         </Typography>
     }
 
+    if (params.check === 'check27') {
 
+        textForRecomend = <Typography sx={{padding: '20px 20px'}} variant="body1" component='p'>
+           <p> Педали не должны двигаться.</p>
+        </Typography>
+    }
 
 
 
@@ -155,9 +179,9 @@ const Info = (props: any) => {
 
         isHaveSettings ?
             <Pulse>
-                <Typography sx={{padding: '20px 20px'}} variant="body1" component='p'>
+                <Typography sx={{padding: '20px 10px'}} variant="body1" component='p'>
                     Регулируйте регулировочными винтами резисторов {resistor} на субблоках {typeOfSubBlock}
-                    ({positionOfSubBlock}-место установки) блоков {typeOfBlock}
+                    ({positionOfSubBlock} - место установки) блоков {typeOfBlock}.
                     {controlFunction !== 0 ?
                         <IconButton color="secondary" aria-label="add an alarm">
                             <InfoOutlinedIcon onClick={() => setOpenDialogAlert(true)}/>
@@ -166,7 +190,7 @@ const Info = (props: any) => {
                     }
                     <AlertDialog openDialogAlert={openDialogAlert}
                                  setOpenDialogAlert={setOpenDialogAlert}
-                                 headerText="Регулировка"
+                                 headerText="Рекомендации"
                                  mainText={textForRecomend}
                     />
                 </Typography>
@@ -176,8 +200,6 @@ const Info = (props: any) => {
                     не регулируется
                 </Typography>
             </Pulse>
-
-
     );
 }
 

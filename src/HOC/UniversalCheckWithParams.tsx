@@ -48,7 +48,8 @@ const UniversalCheckWithParams = (Check: React.FC<CheckPropsType>) => {
                     <AlertDialog openDialogAlert={openDialogAlert}
                                  setOpenDialogAlert={setOpenDialogAlert}
                                  headerText="ПОДГОТОВКА К ПРОВЕРКЕ"
-                                 mainText="Выберите проверку"
+                                 mainText="Сюда можно занести особенности каждой проверки.Для занесения заметок обратитесь
+                                 к разработчику приложения."
                     />
 
                 </div>

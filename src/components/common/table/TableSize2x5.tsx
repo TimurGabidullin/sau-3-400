@@ -79,11 +79,8 @@ const TableSize2x5 = (props: any) => {
         const inputValue = getValues(channel);
         if (inputValue !== valuesOfBlock[channel]) {
             if (valuesOfBlock[channel] !== '' && inputValue !== '' && isHaveSettings) {
-
                 enqueueSnackbar(`${channel[7]} канал добавлен в ОТЧЕТ`);
-
-
-                dispatch(addSettingsInReportAC(idCheck + channel+positionOfSubBlock+resistor, pageNumber, typeOfBlock, typeOfSubBlock,positionOfSubBlock, resistor, 1))
+                dispatch(addSettingsInReportAC(idCheck + channel+positionOfSubBlock+resistor, pageNumber, typeOfBlock, typeOfSubBlock,positionOfSubBlock, resistor, +channel[7]))
             }
             dispatch(saveSingleDataAC(
                 inputValue,
@@ -94,18 +91,10 @@ const TableSize2x5 = (props: any) => {
     }
 
     const onSubmit = () => {
-        // if (isHaveSettings) {
-        //     inputFunc('channel1')
-        //     inputFunc('channel2')
-        //     inputFunc('channel3')
-        //     inputFunc('channel4')
-        // }
         inputFunc('channel1')
         inputFunc('channel2')
         inputFunc('channel3')
         inputFunc('channel4')
-
-
     }
 
     useEffect(() => {
@@ -133,7 +122,7 @@ const TableSize2x5 = (props: any) => {
                         </td>
                     </tr>
                     <tr>
-                        <td>{typeOfBlock} </td>
+                        <td style={{paddingTop:'7px'}}>{typeOfBlock}</td>
                         <td>
                             <TextField
                                 // autocomplete="off"
@@ -206,7 +195,6 @@ const TableSize2x5 = (props: any) => {
                         variant="outlined"
                         endIcon={<CalculateIcon/>}
                         color="secondary"
-                        sx={{transitionDuration: "0.5s"}}
                     >
                         Расчёт
                     </Button>

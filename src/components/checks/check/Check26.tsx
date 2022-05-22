@@ -24,6 +24,7 @@ const Check26 = (props: CheckPropsType) => {
             </Typography>
 
                 {UniversalTabWithTable(TableSize2x5, 0)(props)}
+                {UniversalTabWithTable(TableSize2x5, 1)(props)}
 
             <Typography sx={{padding: '0 20px'}} variant="body1" component='p'>
                 <p> На пульте ПС-172-02 нажмите кнопку-лампочку КУРС ОТКЛ. Шкалы на поворотном столе КПА-5 установите в

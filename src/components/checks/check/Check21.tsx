@@ -31,8 +31,8 @@ const Check21 = (props: CheckPropsType) => {
                 <p> На пульте ПС-172-02 нажмите кнопку-лампочку КРЕН, на пульте ПР-173-02 кнопку-лампочку ГОРИЗ.</p>
                 <p> Измерьте с помощью вольтметра ИП&#8544; пульта ППН-149 значение напряжения постоянного тока между
                     контактами 24 и 11 контрольного соединителя Ш35 блока ВБК-51-01 каналов &#8544;,&#8545;,&#8546;,&#8547; -
-                    U<span>19</span>&#8544;,U<span>19</span>&#8545;,U<span>19</span>&#8546;,U<span>19</span>&#8547;,
-                    (U<span>341</span>&#8544;,U<span>341</span>&#8545;,U<span>341</span>&#8546;,U<span>341</span>&#8547;).</p>
+                    U<span>19</span>&#8544;, U<span>19</span>&#8545;, U<span>19</span>&#8546;, U<span>19</span>&#8547;,
+                    (U<span>341</span>&#8544;, U<span>341</span>&#8545;, U<span>341</span>&#8546;, U<span>341</span>&#8547;).</p>
             </Typography>
 
             {UniversalTabWithTable(TableSize2x5, 0)(props)}
@@ -41,8 +41,8 @@ const Check21 = (props: CheckPropsType) => {
                 <p> Измените значение заданного курса на СК<span>лев</span> и СК<span>прав</span> в сторону
                     увеличения на 3° &#936;<span>зад</span>=22° и &#936;<span>зад</span>=338° и измерьте значение
                 напряжения между контактами 24 и 11 контрольного соединителя Ш35 блока ВБК-51-01.</p>
-                <p> U<span>22</span>&#8544;,U<span>22</span>&#8545;,U<span>22</span>&#8546;,U<span>22</span>&#8547;,
-                    (U<span>338</span>&#8544;,U<span>338</span>&#8545;,U<span>338</span>&#8546;,U<span>338</span>&#8547;).</p>
+                <p> U<span>22</span>&#8544;, U<span>22</span>&#8545;, U<span>22</span>&#8546;, U<span>22</span>&#8547;,
+                    (U<span>338</span>&#8544;, U<span>338</span>&#8545;, U<span>338</span>&#8546;, U<span>338</span>&#8547;).</p>
                 <p> Проверьте, что</p>
                 <p> U<span>22</span>&#8544; - U<span>19</span>&#8544;=минус (0.8±0.15)В.</p>
                 <p> U<span>22</span>&#8545; - U<span>19</span>&#8545;=минус (0.8±0.15)В.</p>
@@ -55,10 +55,10 @@ const Check21 = (props: CheckPropsType) => {
             <Typography sx={{padding: '0 20px'}} variant="body1" component='p'>
                 <p> Произведите проверку, задавая значения заданного курса 341° и 338°.</p>
                 <p> Проверьте, что</p>
-                <p> U<span>338</span>&#8544; -U <span>341</span>&#8544;=+(0.8±0.15)В.</p>
-                <p> U<span>338</span>&#8545; -U <span>341</span>&#8545;=+(0.8±0.15)В.</p>
-                <p> U<span>338</span>&#8546; -U <span>341</span>&#8546;=+(0.8±0.15)В.</p>
-                <p> U<span>338</span>&#8547; -U <span>341</span>&#8547;=+(0.8±0.15)В.</p>
+                <p> U<span>338</span>&#8544; - U<span>341</span>&#8544; = +(0.8±0.15)В.</p>
+                <p> U<span>338</span>&#8545; - U<span>341</span>&#8545; = +(0.8±0.15)В.</p>
+                <p> U<span>338</span>&#8546; - U<span>341</span>&#8546; = +(0.8±0.15)В.</p>
+                <p> U<span>338</span>&#8547; - U<span>341</span>&#8547; = +(0.8±0.15)В.</p>
             </Typography>
 
             {UniversalTabWithTable(TableSize2x5, 2)(props)}
