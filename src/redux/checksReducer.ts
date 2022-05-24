@@ -1164,6 +1164,29 @@ const initialState = {
             unit: 'м'
         } as CheckType,
 
+        {
+            title: "Проверка передаточного коэффициента по сигналу Eг.",
+            idHeader: "15",
+            idCheck: 'check41',
+            pageNumber: 598,
+            paginatorNumber: 41,
+            typesOfBlocks: ['ВПК', 'ВПК', 'ВПК' ],
+            typesOfSubBlocks: ["ВГ-220", "", "ВГ-220" ],
+            positionOfSubBlock: ['Х27', '', 'Х27'],
+            resistors: ['R9', '', 'R4'],
+            numbersOfContacts: ['U30/11 Ш35', 'U5/6 Ш35', 'U30/11 Ш35'],
+            controlFunctions: [1, 1, 2],
+            controlValues: [0, 0.085, 17],
+            valuesOfErrors: [0.2, 0.015, 4 ],
+            valuesOfBlocks: [
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''}],
+            directionsOfChecks: ['Отклонение "0"', 'Влево/вниз и 2 Т', 'Влево/вниз и 2 Т'],
+            isHaveSettings: [true, false, true],
+            unit: 'В'
+        } as CheckType,
+
     ],
 
 }

@@ -36,8 +36,7 @@ const Check39 = (props: CheckPropsType) => {
             {UniversalTabWithTable(TableSize2x5, 1)(props)}
 
             <Typography sx={{padding: '0 20px'}} variant="body1" component='p'>
-            <p> Произведите проверку для каналов, указанных в скобках, и для входного сигнала, указанного в
-                    скобках.</p>
+            <p> Произведите проверку для каналов, указанных в скобках, и для входного сигнала, указанного в скобках.</p>
             </Typography>
 
             {UniversalTabWithTable(TableSize2x5, 2)(props)}
