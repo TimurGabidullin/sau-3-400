@@ -64,15 +64,15 @@ const initialState= [
         idHeader:'head13'
     } as HeaderType,
 
-    // {
-    //     title: "Проверка передаточных коэффициентов по сигналам ИКВСП-1-7.",
-    //     idHeader:'head14'
-    // } as HeaderType,
-    //
-    // {
-    //     title: "Проверка работы канала тангажа в режиме ЗАХОД.",
-    //     idHeader:'head15'
-    // } as HeaderType,
+    {
+        title: "Проверка передаточных коэффициентов по сигналам ИКВСП-1-7.",
+        idHeader:'head14'
+    } as HeaderType,
+
+    {
+        title: "Проверка работы канала тангажа в режиме ЗАХОД.",
+        idHeader:'head15'
+    } as HeaderType,
     //
     // {
     //     title: "",

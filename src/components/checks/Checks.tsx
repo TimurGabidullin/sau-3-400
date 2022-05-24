@@ -35,7 +35,16 @@ import Check31 from './check/Check31';
 import Check32 from './check/Check32';
 import Check33 from './check/Check33';
 import Check34 from './check/Check34';
-// import Check35 from './check/Check35';
+import Check35 from './check/Check35';
+import Check36 from './check/Check36';
+import Check37 from './check/Check37';
+import Check38 from './check/Check38';
+import Check39 from './check/Check39';
+import Check40 from './check/Check40';
+import Check41 from './check/Check41';
+import Check42 from './check/Check42';
+import Check43 from './check/Check43';
+// import Check44 from './check/Check44';
 
 import "antd/dist/antd.css";
 import Stepper from "../common/stepper/Stepper";
@@ -96,7 +105,16 @@ function Checks(props: ChecksPropsType) {
             {params.check === "check32" && UniversalCheckWithParams(Check32)()}
             {params.check === "check33" && UniversalCheckWithParams(Check33)()}
             {params.check === "check34" && UniversalCheckWithParams(Check34)()}
-            {/*{params.check === "check35" && UniversalCheckWithParams(Check35)()}*/}
+            {params.check === "check35" && UniversalCheckWithParams(Check35)()}
+            {params.check === "check36" && UniversalCheckWithParams(Check36)()}
+            {params.check === "check37" && UniversalCheckWithParams(Check37)()}
+            {params.check === "check38" && UniversalCheckWithParams(Check38)()}
+            {params.check === "check39" && UniversalCheckWithParams(Check39)()}
+            {params.check === "check40" && UniversalCheckWithParams(Check40)()}
+            {params.check === "check41" && UniversalCheckWithParams(Check41)()}
+            {params.check === "check42" && UniversalCheckWithParams(Check42)()}
+            {params.check === "check43" && UniversalCheckWithParams(Check43)()}
+            {/*{params.check === "check44" && UniversalCheckWithParams(Check44)()}*/}
 
             <Paginator paginatorPageNumber={props.paginatorPageNumber} LinkToCheck={props.LinkToCheck}/>
             <Stepper paginatorPageNumber={props.paginatorPageNumber} LinkToCheck={props.LinkToCheck}/>

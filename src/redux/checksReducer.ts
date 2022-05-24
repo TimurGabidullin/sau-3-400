@@ -66,7 +66,8 @@ export function subtractionFunc(numberOfPlane: string, inputValue: string, chann
         return true
     }
 
-    // if (key==='Х14') value = loadChecksState(numberOfPlane).head1[0].valuesOfBlocks[0][channel]
+   // let index=1
+   //  if (key==='Х14') index=2
 
     debugger
     // @ts-ignore.
@@ -988,8 +989,8 @@ const initialState = {
             positionOfSubBlock: ['', 'Х8', 'X14', 'Х8'],
             resistors: ['', 'R2', 'R2', 'R3'],
             numbersOfContacts: ['U19/11 Ш35', 'U19/11 Ш35', 'U21/11 Ш35', 'U21/11 Ш35'],
-            controlFunctions: [0, 4, 1, 1],//?????????????????????????????????????????????????????
-            controlValues: [0, 1.9, 3.8, 7.6],
+            controlFunctions: [0, 4, 1, 1],
+            controlValues: [0, 1.9,-3.8,-7.6],
             valuesOfErrors: [0, 0.3, 0.6, 0.6],
             valuesOfBlocks: [
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
@@ -1018,14 +1019,14 @@ const initialState = {
             resistors: ['R2', 'R6', 'R6'],
             numbersOfContacts: ['U30/11 Ш35', 'U30/11 Ш35', 'U30/11 Ш35'],
             controlFunctions: [1, 1, 1],
-            controlValues: [0, 1.5, 1.5],
+            controlValues: [0, -1.5, 1.5],
             valuesOfErrors: [0.05, 0.2, 0.2],
             valuesOfBlocks: [
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
             ],
-            directionsOfChecks: ['', '+50 м', '-50 м'],
+            directionsOfChecks: ['Н=5000м', 'Н=5050м', 'H=4950м'],
             isHaveSettings: [true, true, true],
             unit: 'В'
 
@@ -1043,14 +1044,14 @@ const initialState = {
             resistors: ['R1', 'R3', 'R3'],
             numbersOfContacts: ['U30/11 Ш35', 'U30/11 Ш35', 'U30/11 Ш35'],
             controlFunctions: [1, 1, 1],
-            controlValues: [0, 3, 3],
+            controlValues: [0, 3, -3],
             valuesOfErrors: [0.05, 0.6, 0.6],
             valuesOfBlocks: [
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
             ],
-            directionsOfChecks: ['', '+30 км/ч', '-30 км/ч'],
+            directionsOfChecks: ['Vпр=450км/ч', 'Vпр=480 км/ч', 'Vпр=420 км/ч'],
             isHaveSettings: [true, true, true],
             unit: 'В'
 
@@ -1068,14 +1069,14 @@ const initialState = {
             resistors: ['R2', 'R4', 'R4'],
             numbersOfContacts: ['U30/11 Ш35', 'U30/11 Ш35', 'U30/11 Ш35'],
             controlFunctions: [1, 1, 1],
-            controlValues: [0, 1.2, 1.2],
+            controlValues: [0, 1.2, -1.2],
             valuesOfErrors: [0.05, 0.2, 0.2],
             valuesOfBlocks: [
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
             ],
-            directionsOfChecks: ['', '+0,44', '-0,40'],
+            directionsOfChecks: ['М=0.42', 'М=0,44', 'М=0,40'],
             isHaveSettings: [true, true, true],
             unit: 'В'
 
@@ -1120,7 +1121,7 @@ const initialState = {
             numbersOfContacts: [
                 'U5/6 Ш35', 'U38/11 Ш35', 'U5/6 Ш35', 'U38/11 Ш35', 'U39/40 Ш35', 'U41/11 Ш35', 'U42/11 Ш35'
             ],
-            controlFunctions: [0, 1, 0, 1, 0, 2, 2,],
+            controlFunctions: [0, 2, 0, 2, 0, 2, 2,],
             controlValues: [0, 44.44, 0, 44.44, 0, 0.4, 1],
             valuesOfErrors: [0, 4.44, 0, 4.44, 0, 0.02, 0.05],
             valuesOfBlocks: [

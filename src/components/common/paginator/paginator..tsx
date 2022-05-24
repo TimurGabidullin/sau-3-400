@@ -26,9 +26,11 @@ const getHeaderParameterUrl = (page: number) => {
     if (page > 24 && page < 33) return 'head11'
     if (page > 32 && page < 34) return 'head12'
     if (page > 33 && page < 35) return 'head13'
+    if (page > 34 && page < 38) return 'head14'
+    if (page > 37 && page < 45) return 'head15'
 
 
-    else return 'head40'
+    else return 'head16'
 }
 
 const Paginator = (props: PaginatorPropsType) => {
@@ -56,7 +58,7 @@ const Paginator = (props: PaginatorPropsType) => {
         >
             <Pagination
                 shape="rounded"
-                count={35}
+                count={44}
                 variant="outlined"
                 color="secondary"
                 defaultPage={1}
