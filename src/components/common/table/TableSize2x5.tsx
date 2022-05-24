@@ -17,11 +17,6 @@ import "antd/dist/antd.css";
 import {useSnackbar} from "notistack";
 
 
-
-
-
-
-
 const Pulse = require("react-reveal/Pulse")
 
 
@@ -49,7 +44,6 @@ const TableSize2x5 = (props: any) => {
     const directionOfCheck = check.directionsOfChecks
     const [openDialogAlert, setOpenDialogAlert] = React.useState(false);
     const dispatch = useDispatch()
-
 
 
     const {enqueueSnackbar} = useSnackbar();
@@ -80,7 +74,14 @@ const TableSize2x5 = (props: any) => {
         if (inputValue !== valuesOfBlock[channel]) {
             if (valuesOfBlock[channel] !== '' && inputValue !== '' && isHaveSettings) {
                 enqueueSnackbar(`${channel[7]} канал добавлен в ОТЧЕТ`);
-                dispatch(addSettingsInReportAC(idCheck + channel+positionOfSubBlock+resistor, pageNumber, typeOfBlock, typeOfSubBlock,positionOfSubBlock, resistor, +channel[7]))
+                dispatch(addSettingsInReportAC(
+                    idCheck + channel + positionOfSubBlock + resistor,
+                    pageNumber,
+                    typeOfBlock,
+                    typeOfSubBlock,
+                    positionOfSubBlock,
+                    resistor,
+                    +channel[7]))
             }
             dispatch(saveSingleDataAC(
                 inputValue,
@@ -122,13 +123,13 @@ const TableSize2x5 = (props: any) => {
                         </td>
                     </tr>
                     <tr>
-                        <td style={{paddingTop:'7px'}}>{typeOfBlock}</td>
+                        <td style={{paddingTop: '7px'}}>{typeOfBlock}</td>
                         <td>
                             <TextField
                                 // autocomplete="off"
                                 type="number"
 
-                                inputProps={{step: 0.01, autocomplete:"off"}}
+                                inputProps={{step: 0.01, autocomplete: "off"}}
 
                                 sx={{marginTop: '10px'}}
                                 color='secondary'
@@ -139,13 +140,13 @@ const TableSize2x5 = (props: any) => {
                                 defaultValue={valuesOfBlock['channel1']}
                                 error={errors.channel1}
                                 {...register("channel1",
-                                    {validate: (value => controlFunction(numberOfPlane, value, 'channel1', props.indexOfTable,positionOfSubBlock))})}
+                                    {validate: (value => controlFunction(numberOfPlane, value, 'channel1', props.indexOfTable, positionOfSubBlock))})}
                             />
                         </td>
                         <td>
                             <TextField
                                 type="number"
-                                inputProps={{step: 0.01, autocomplete:"off"}}
+                                inputProps={{step: 0.01, autocomplete: "off"}}
                                 sx={{marginTop: '10px'}}
                                 color='secondary'
                                 id="outlined-helperText"
@@ -153,13 +154,13 @@ const TableSize2x5 = (props: any) => {
                                 defaultValue={valuesOfBlock['channel2']}
                                 error={errors.channel2}
                                 {...register("channel2",
-                                    {validate: (value => controlFunction(numberOfPlane, value, 'channel2', props.indexOfTable,positionOfSubBlock))})}
+                                    {validate: (value => controlFunction(numberOfPlane, value, 'channel2', props.indexOfTable, positionOfSubBlock))})}
                             />
                         </td>
                         <td>
                             <TextField
                                 type="number"
-                                inputProps={{step: 0.01, autocomplete:"off"}}
+                                inputProps={{step: 0.01, autocomplete: "off"}}
                                 sx={{marginTop: '10px'}}
                                 color='secondary'
                                 id="outlined-helperText"
@@ -167,13 +168,13 @@ const TableSize2x5 = (props: any) => {
                                 defaultValue={valuesOfBlock['channel3']}
                                 error={errors.channel3}
                                 {...register("channel3",
-                                    {validate: ((value) => controlFunction(numberOfPlane, value, 'channel3', props.indexOfTable,positionOfSubBlock))})}
+                                    {validate: ((value) => controlFunction(numberOfPlane, value, 'channel3', props.indexOfTable, positionOfSubBlock))})}
                             />
                         </td>
                         <td>
                             <TextField
                                 type="number"
-                                inputProps={{step: 0.01, autocomplete:"off"}}
+                                inputProps={{step: 0.01, autocomplete: "off"}}
                                 sx={{marginTop: '10px'}}
                                 color='secondary'
                                 id="outlined-helperText"
@@ -181,7 +182,7 @@ const TableSize2x5 = (props: any) => {
                                 defaultValue={valuesOfBlock['channel4']}
                                 error={errors.channel4}
                                 {...register("channel4",
-                                    {validate: (value => controlFunction(numberOfPlane, value, 'channel4', props.indexOfTable,positionOfSubBlock))})}
+                                    {validate: (value => controlFunction(numberOfPlane, value, 'channel4', props.indexOfTable, positionOfSubBlock))})}
                             />
                         </td>
                     </tr>
@@ -215,6 +216,6 @@ const TableSize2x5 = (props: any) => {
 
         </Pulse>
     );
-    }
+}
 
 export default memo(TableSize2x5)

@@ -17,7 +17,7 @@ const Transition = React.forwardRef(function Transition(
     ref: React.Ref<unknown>,
 ) {
     return <Slide
-        // style={{transitionDelay: '600ms'}}
+        style={{transitionDelay: '500ms'}}
         direction="down" ref={ref} {...props} />;
 
     // return <Grow   ref={ref} {...props} />;

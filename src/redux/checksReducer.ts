@@ -988,7 +988,7 @@ const initialState = {
             positionOfSubBlock: ['', 'Х8', 'X14', 'Х8'],
             resistors: ['', 'R2', 'R2', 'R3'],
             numbersOfContacts: ['U19/11 Ш35', 'U19/11 Ш35', 'U21/11 Ш35', 'U21/11 Ш35'],
-            controlFunctions: [0, 4, 4, 4],//?????????????????????????????????????????????????????
+            controlFunctions: [0, 4, 1, 1],//?????????????????????????????????????????????????????
             controlValues: [0, 1.9, 3.8, 7.6],
             valuesOfErrors: [0, 0.3, 0.6, 0.6],
             valuesOfBlocks: [
@@ -1007,28 +1007,76 @@ const initialState = {
 
     "head14": [
         {
-            title: "Проверка передаточных коэффициентов по сигналам ИКВСП-1-7.",
+            title: "Проверка передаточного коэффициента по сигналаму изменения высоты ΔH.",
             idHeader: "14",
             idCheck: 'check35',
             pageNumber: 583,
             paginatorNumber: 35,
-            typesOfBlocks: ['ВПК', 'ВПК', 'ВПК', 'ВПК'],
-            typesOfSubBlocks: ["", "СУ-73", "ВИ-78", "СУ-73"],
-            positionOfSubBlock: ['', 'Х8', 'X14', 'Х8'],
-            resistors: ['', 'R2', 'R2', 'R3'],
-            numbersOfContacts: ['U19/11 Ш35', 'U19/11 Ш35', 'U21/11 Ш35', 'U21/11 Ш35'],
-            controlFunctions: [0, 4, 4, 4],//?????????????????????????????????????????????????????
-            controlValues: [0, 1.9, 3.8, 7.6],
-            valuesOfErrors: [0, 0.3, 0.6, 0.6],
+            typesOfBlocks: ['ВПК', 'ВПК', 'ВПК'],
+            typesOfSubBlocks: ["УГР49-1", "УГР49-1", 'УГР49-1'],
+            positionOfSubBlock: ['Х31', 'Х31', 'Х31'],
+            resistors: ['R2', 'R6', 'R6'],
+            numbersOfContacts: ['U30/11 Ш35', 'U30/11 Ш35', 'U30/11 Ш35'],
+            controlFunctions: [1, 1, 1],
+            controlValues: [0, 1.5, 1.5],
+            valuesOfErrors: [0.05, 0.2, 0.2],
             valuesOfBlocks: [
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
-                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
-
             ],
-            directionsOfChecks: ['Вправо', 'Вправо', 'Вправо', 'Влево'],
-            isHaveSettings: [false, true, true, true],
+            directionsOfChecks: ['', '+50 м', '-50 м'],
+            isHaveSettings: [true, true, true],
+            unit: 'В'
+
+        } as CheckType,
+
+        {
+            title: "Проверка передаточного коэффициента по сигналаму изменения скорости ΔV.",
+            idHeader: "14",
+            idCheck: 'check36',
+            pageNumber: 585,
+            paginatorNumber: 36,
+            typesOfBlocks: ['ВПК', 'ВПК', 'ВПК'],
+            typesOfSubBlocks: ["УГР48", "УГР48", 'УГР48'],
+            positionOfSubBlock: ['Х24', 'Х24', 'Х24'],
+            resistors: ['R1', 'R3', 'R3'],
+            numbersOfContacts: ['U30/11 Ш35', 'U30/11 Ш35', 'U30/11 Ш35'],
+            controlFunctions: [1, 1, 1],
+            controlValues: [0, 3, 3],
+            valuesOfErrors: [0.05, 0.6, 0.6],
+            valuesOfBlocks: [
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+            ],
+            directionsOfChecks: ['', '+30 км/ч', '-30 км/ч'],
+            isHaveSettings: [true, true, true],
+            unit: 'В'
+
+        } as CheckType,
+
+        {
+            title: "Проверка передаточного коэффициента по сигналаму изменения скорости М - ΔМ.",
+            idHeader: "14",
+            idCheck: 'check37',
+            pageNumber: 586,
+            paginatorNumber: 37,
+            typesOfBlocks: ['ВПК', 'ВПК', 'ВПК'],
+            typesOfSubBlocks: ["УГР48", "УГР48", 'УГР48'],
+            positionOfSubBlock: ['Х24', 'Х24', 'Х24'],
+            resistors: ['R2', 'R4', 'R4'],
+            numbersOfContacts: ['U30/11 Ш35', 'U30/11 Ш35', 'U30/11 Ш35'],
+            controlFunctions: [1, 1, 1],
+            controlValues: [0, 1.2, 1.2],
+            valuesOfErrors: [0.05, 0.2, 0.2],
+            valuesOfBlocks: [
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+            ],
+            directionsOfChecks: ['', '+0,44', '-0,40'],
+            isHaveSettings: [true, true, true],
             unit: 'В'
 
         } as CheckType,
@@ -1046,7 +1094,7 @@ const initialState = {
             positionOfSubBlock: ['Х20', 'Х16', 'X10'],
             resistors: ['R2', 'R2', 'R2'],
             numbersOfContacts: ['U38/11 Ш35', 'U41/11 Ш35', 'U42/11 Ш35'],
-            controlFunctions: [1, 1, 1],//?????????????????????????????????????????????????????
+            controlFunctions: [1, 1, 1],
             controlValues: [0, 0, 0],
             valuesOfErrors: [0.1, 0.1, 0.1],
             valuesOfBlocks: [
@@ -1091,7 +1139,30 @@ const initialState = {
             unit: 'В'
 
         } as CheckType,
-
+        {
+            title: "Проверка порогов срабатывания компараторов по сигналам радиовысотомера.",
+            idHeader: "15",
+            idCheck: 'check40',
+            pageNumber: 594,
+            paginatorNumber: 40,
+            typesOfBlocks: ['ВПК', 'ВПК', 'ВПК', 'ВПК', ],
+            typesOfSubBlocks: ["УГР41-1", "УГР41-1", "УГР41-1", "УГР41-1", ],
+            positionOfSubBlock: ['Х16', 'Х16', 'Х16', 'Х10'],
+            resistors: ['R3', 'R8', 'R4','R3'],
+            numbersOfContacts: [
+                'U8/19 Ш37', 'U9/19 Ш37', 'U10/19 Ш37', 'U11/19 Ш37',],
+            controlFunctions: [1, 1, 1, 1,],
+            controlValues: [200, 100, 60, 30.5, ],
+            valuesOfErrors: [10, 10, 5, 2.5, ],
+            valuesOfBlocks: [
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
+                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''}],
+            directionsOfChecks: ['Hрв=200м', 'Hрв=100м', 'Hрв=60м', 'Hрв=30м'],
+            isHaveSettings: [true, true, true, true],
+            unit: 'м'
+        } as CheckType,
 
     ],
 

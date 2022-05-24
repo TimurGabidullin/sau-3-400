@@ -46,7 +46,7 @@ const Info = (props: any) => {
     let textForRecomend =
         <Typography sx={{padding: '20px 20px'}} variant="body1" component='p'>
             {recomendValues.map((value, index) =>{
-             return <p>{index + 1} канал должен быть {value}±{valuesOfErrors[props.indexOfTable]} {unit}.</p>
+             return <p>{index + 1} канал должен быть {value}±{valuesOfErrors[props.indexOfTable]}{unit}.</p>
             })}
         </Typography>
 
@@ -180,8 +180,8 @@ const Info = (props: any) => {
         isHaveSettings ?
             <Pulse>
                 <Typography sx={{padding: '20px 10px'}} variant="body1" component='p'>
-                    Регулируйте регулировочными винтами резисторов {resistor} на субблоках {typeOfSubBlock}
-                    ({positionOfSubBlock} - место установки) блоков {typeOfBlock}.
+                    Регулируйте регулировочными винтами резисторов {resistor} на субблоках
+                    {typeOfSubBlock} ({positionOfSubBlock} - место установки) блоков {typeOfBlock}.
                     {controlFunction !== 0 ?
                         <IconButton color="secondary" aria-label="add an alarm">
                             <InfoOutlinedIcon onClick={() => setOpenDialogAlert(true)}/>
