@@ -18,15 +18,6 @@ type StepperPropsType = {
     LinkToCheck: (h: string, url: string, prPageNum: number) => void
 }
 
-
-// const getHeaderParameterUrl = (page: number) => {
-//     if (page < 4) return 'head1'
-//     if (page > 3 && page < 7) return 'head2'
-//     if (page > 6 && page < 10) return 'head3'
-//
-//     else return 'head2'
-// }
-
 const getHeaderParameterUrl = (page: number) => {
     if (page < 2) return 'head1'
     if (page > 1 && page < 5) return 'head2'
@@ -41,23 +32,8 @@ const getHeaderParameterUrl = (page: number) => {
     if (page > 22 && page < 31) return 'head11'
     if (page > 30 && page < 32) return 'head12'
     if (page > 31 && page < 33) return 'head13'
-    // if (page > 34 && page < 35) return 'head13'
-
-
-
-
-    // if (page < 4) return 'head1'
-    // if (page > 3 && page < 7) return 'head2'
-    // if (page > 6 && page < 10) return 'head3'
-    // if (page > 9 && page < 12) return 'head4'
-    // if (page > 11 && page < 13) return 'head5'
-
-    // if (page > 12 && page < 14) return 'head6'
-    // if (page > 13 && page < 15) return 'head7'
-    // if (page > 14 && page < 16) return 'head8'
-    // if (page > 15 && page < 24) return 'head9'
-    // if (page > 23 && page < 25) return 'head10'
-
+    if (page > 32 && page < 36) return 'head14'
+    if (page > 35 && page < 44) return 'head15'
 
     else return 'head40'
 }
@@ -71,7 +47,7 @@ const Stepper = (props: StepperPropsType) => {
     const dispatch = useDispatch()
 
     const [activeStep, setActiveStep] = React.useState(currentPage - 1);
-    const maxSteps = 35;
+    const maxSteps = 43;
 
     useEffect(() => {
         setActiveStep(currentPage - 1)

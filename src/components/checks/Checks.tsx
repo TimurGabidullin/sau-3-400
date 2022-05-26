@@ -44,13 +44,10 @@ import Check40 from './check/Check40';
 import Check41 from './check/Check41';
 import Check42 from './check/Check42';
 import Check43 from './check/Check43';
-// import Check44 from './check/Check44';
 
-import "antd/dist/antd.css";
 import Stepper from "../common/stepper/Stepper";
 import UniversalCheckWithParams from "../../HOC/UniversalCheckWithParams";
 
-import { message } from 'antd'
 
 type ChecksPropsType = {
     paginatorPageNumber: number
@@ -114,7 +111,7 @@ function Checks(props: ChecksPropsType) {
             {params.check === "check41" && UniversalCheckWithParams(Check41)()}
             {params.check === "check42" && UniversalCheckWithParams(Check42)()}
             {params.check === "check43" && UniversalCheckWithParams(Check43)()}
-            {/*{params.check === "check44" && UniversalCheckWithParams(Check44)()}*/}
+
 
             <Paginator paginatorPageNumber={props.paginatorPageNumber} LinkToCheck={props.LinkToCheck}/>
             <Stepper paginatorPageNumber={props.paginatorPageNumber} LinkToCheck={props.LinkToCheck}/>

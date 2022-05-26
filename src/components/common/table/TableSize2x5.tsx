@@ -12,7 +12,6 @@ import AlertDialog from "../alertDialog/AlertDialog";
 import {ParamsType} from "../../home/Home";
 import {addSettingsInReportAC} from "../../../redux/reportReducer";
 import {saveChecksState, saveReportState} from "../../../utils/localStorage";
-import "antd/dist/antd.css";
 
 import {useSnackbar} from "notistack";
 

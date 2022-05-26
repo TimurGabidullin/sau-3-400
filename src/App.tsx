@@ -1,8 +1,7 @@
 import React from 'react';
 import Home from "./components/home/Home";
 import {Navigate, Route, Routes} from "react-router-dom";
-import "antd/dist/antd.css";
-import {Button} from "antd";
+
 
 function App() {
 

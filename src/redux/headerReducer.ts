@@ -73,11 +73,6 @@ const initialState= [
         title: "Проверка работы канала тангажа в режиме ЗАХОД.",
         idHeader:'head15'
     } as HeaderType,
-    //
-    // {
-    //     title: "",
-    //     idHeader:'head16'
-    // } as HeaderType,
 
 ]
 

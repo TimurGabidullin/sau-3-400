@@ -979,7 +979,7 @@ const initialState = {
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
             ],
-            directionsOfChecks: ['Вправо', 'Вправо', 'Вправо', 'Влево', 'Влево', 'Влево'],
+            directionsOfChecks: ['Uвых=+(3±0,1)В', '', 'ИСКЛЮЧ УСП "0"', 'Uвых=+(3±0,1)В', '', 'ИСКЛЮЧ УСП "0"'],
             isHaveSettings: [false, false, true, false, false, true,],
             unit: 'В'
 
@@ -1209,10 +1209,8 @@ const initialState = {
             numbersOfContacts: ['U17/19 Ш37', 'U17/19 Ш37',
                 'U1/19 Ш37', 'U1/19 Ш37', 'U2/19 Ш37', 'U2/19 Ш37'],
             controlFunctions: [1, 1, 1, 1, 1, 1],
-            controlValues: [4, -5,
-                4, -5, 4, -5],
-            valuesOfErrors: [1, 5.3,
-                1, 5.3, 1, 5.3],
+            controlValues: [4, -5, 4, -5, 4, -5],
+            valuesOfErrors: [1, 5.3, 1, 5.3, 1, 5.3],
             valuesOfBlocks: [
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},

@@ -14,11 +14,8 @@ const Check42 = (props: CheckPropsType) => {
     }, []);
     return (
         <Fade bottom cascade>
-            <Typography sx={{padding: '0 20px'}} variant="h6" component='p'>
-                <p> Проверка порога срабатывания компаратора по сигналу ЗАХВАТ ГЛИССАДЫ.</p>
-            </Typography>
-
             <Typography sx={{padding: '0 20px'}} variant="body1" component='p'>
+                <p><b>Проверка порога срабатывания компаратора по сигналу ЗАХВАТ ГЛИССАДЫ.</b></p>
                 <p> На пульте ПК-31-01 переключатель ИСКЛЮЧ ПОСАДКА в положение &#xC9;<span>г</span>, ИСКЛЮЧ УСП - в
                     положение "4".</p>
                 <p> На пульте ПР-173-02 переключатель режимов работы установите в положение ЗАХОД.</p>
@@ -46,11 +43,8 @@ const Check42 = (props: CheckPropsType) => {
 
             {UniversalTabWithTable(TableSize2x5, 1)(props)}
 
-            <Typography sx={{padding: '0 20px'}} variant="h6" component='p'>
-                <p> Проверка порога срабатывания компараторов по сигналу предельных отклонений Е<span>г пред</span>.</p>
-            </Typography>
-
             <Typography sx={{padding: '0 20px'}} variant="body1" component='p'>
+                <p><b>Проверка порога срабатывания компараторов по сигналу предельных отклонений Е<span>г пред</span>.</b></p>
                 <p> На пульте ПК-31-01 переключатель ИСКЛЮЧ ПОСАДКА в положение &#xC9;<span>г</span>, ИСКЛЮЧ УСП - в
                     положение "4".</p>
                 <p> На пульте ПР-173-02 переключатель режимов работы установите в положение ЗАХОД.</p>

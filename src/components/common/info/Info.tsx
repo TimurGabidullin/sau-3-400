@@ -181,6 +181,8 @@ const Info = (props: any) => {
     }
 
 
+
+
     // if (params.check === 'check39' && (props.indexOfTable === 5 || props.indexOfTable === 6)) {
     //     recomendValues = recomendValues.map((value, index) => {
     //             return value*+checksReducer['head15'][1].valuesOfBlocks[4][`channel${index + 1}`]
@@ -272,9 +274,14 @@ const Info = (props: any) => {
         </Typography>
     }
 
+    if (params.check === 'check42' && props.indexOfTable === 1
+        || props.indexOfTable === 3
+        || props.indexOfTable === 5) {
 
-
-
+        textForRecomend = <Typography sx={{padding: '20px 20px'}} variant="body1" component='p'>
+            <p> Значение напряжения должно быть не более 0,3В</p>
+        </Typography>
+    }
 
 
     return (

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
-import {memo, useCallback} from "react";
+import {memo, useCallback, useMemo} from "react";
 import {setCurrentPageAC} from "../../../redux/appReducer";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "../../../redux/store";
@@ -12,7 +12,7 @@ type PaginatorPropsType = {
 }
 
 //useMemo надо внедрить
-const getHeaderParameterUrl = (page: number) => {
+const getHeaderParameterUrl =(page: number) => {
     if (page < 4) return 'head1'
     if (page > 3 && page < 7) return 'head2'
     if (page > 6 && page < 10) return 'head3'
@@ -27,8 +27,7 @@ const getHeaderParameterUrl = (page: number) => {
     if (page > 32 && page < 34) return 'head12'
     if (page > 33 && page < 35) return 'head13'
     if (page > 34 && page < 38) return 'head14'
-    if (page > 37 && page < 45) return 'head15'
-
+    if (page > 37 && page < 44) return 'head15'
 
     else return 'head16'
 }
@@ -58,7 +57,7 @@ const Paginator = (props: PaginatorPropsType) => {
         >
             <Pagination
                 shape="rounded"
-                count={44}
+                count={43}
                 variant="outlined"
                 color="secondary"
                 defaultPage={1}
