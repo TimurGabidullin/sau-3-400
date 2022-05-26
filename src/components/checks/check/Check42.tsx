@@ -44,7 +44,7 @@ const Check42 = (props: CheckPropsType) => {
                 <p> Значение напряжения должно быть не более 0,3В.</p>
             </Typography>
 
-            {UniversalTabWithTable(TableSize2x5, 0)(props)}
+            {UniversalTabWithTable(TableSize2x5, 1)(props)}
 
             <Typography sx={{padding: '0 20px'}} variant="h6" component='p'>
                 <p> Проверка порога срабатывания компараторов по сигналу предельных отклонений Е<span>г пред</span>.</p>
@@ -66,7 +66,7 @@ const Check42 = (props: CheckPropsType) => {
                 <p> Значение напряжения должно быть в пределах 3-5В.</p>
             </Typography>
 
-            {UniversalTabWithTable(TableSize2x5, 0)(props)}
+            {UniversalTabWithTable(TableSize2x5, 2)(props)}
 
             <Typography sx={{padding: '0 20px'}} variant="body1" component='p'>
                 <p> На имитаторах МИМ-70 переключатели ОТКЛОНЕНИЕ установите в положение "влево/вниз" и 2Т.</p>
@@ -75,7 +75,7 @@ const Check42 = (props: CheckPropsType) => {
                 <p> Значение напряжения должно не более 0,3В.</p>
             </Typography>
 
-            {UniversalTabWithTable(TableSize2x5, 0)(props)}
+            {UniversalTabWithTable(TableSize2x5, 3)(props)}
 
             <Typography sx={{padding: '0 20px'}} variant="body1" component='p'>
                 <p> На имитаторах МИМ-70 переключатели ОТКЛОНЕНИЕ установите в положение "вправо/вверх" и 1Т.</p>
@@ -84,7 +84,7 @@ const Check42 = (props: CheckPropsType) => {
                 <p> Значение напряжения должно в пределах 3-5В.</p>
             </Typography>
 
-            {UniversalTabWithTable(TableSize2x5, 0)(props)}
+            {UniversalTabWithTable(TableSize2x5, 4)(props)}
 
             <Typography sx={{padding: '0 20px'}} variant="body1" component='p'>
                 <p> На имитаторах МИМ-70 переключатели ОТКЛОНЕНИЕ установите в положение "вправо/вверх" и 2Т.</p>
@@ -93,7 +93,7 @@ const Check42 = (props: CheckPropsType) => {
                 <p> Значение напряжения должно не более 0,3В.</p>
             </Typography>
 
-            {UniversalTabWithTable(TableSize2x5, 0)(props)}
+            {UniversalTabWithTable(TableSize2x5, 5)(props)}
 
             <Typography sx={{padding: '0 20px'}} variant="body1" component='p'>
                 <p> В соответствии с ТУ выпустите закрылки в посадочное положение.</p>

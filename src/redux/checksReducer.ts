@@ -50,14 +50,19 @@ export function emptyFunc() {
     return true
 }
 
-export function dividerFunc(numberOfPlane: string, inputValue: string, channel: string, indexOfTable: number = 0,) {
+export function dividerFunc(numberOfPlane: string, inputValue: string, channel: string, indexOfTable: number = 0,key:string) {
     debugger
     if (inputValue === '') {
         return true
     }
 
+    let index=1
+     if (key==='Х10'&&indexOfTable===6) index=2
+
+
+
     // @ts-ignore.
-    return compareFunc.call(this, numberOfPlane, +inputValue / this.valuesOfBlocks[indexOfTable - 1][channel], channel, indexOfTable)
+    return compareFunc.call(this, numberOfPlane, +inputValue / this.valuesOfBlocks[indexOfTable - index][channel], channel, indexOfTable)
 }
 
 export function subtractionFunc(numberOfPlane: string, inputValue: string, channel: string, indexOfTable: number = 0, key: string) {
@@ -114,6 +119,9 @@ export const numToFunc = {
 }
 
 
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
 const initialState = {
     "head1": [
         {
@@ -1194,13 +1202,13 @@ const initialState = {
             idCheck: 'check42',
             pageNumber: 600,
             paginatorNumber: 42,
-            typesOfBlocks: ['ВПК', 'ВПК', 'ВПК','ВПК', 'ВПК', 'ВПК'],
-            typesOfSubBlocks: ["", "", "","", "", ""],
-            positionOfSubBlock: ['Х', '', 'Х','Х', '', 'Х'],
-            resistors: ['R9', '', 'R4','R9', '', 'R4'],
+            typesOfBlocks: ['ВПК', 'ВПК', 'ВПК', 'ВПК', 'ВПК', 'ВПК'],
+            typesOfSubBlocks: ["УГР41-1", "УГР41-1", "УГР41-1", "УГР41-1", "УГР41-1", "УГР41-1"],
+            positionOfSubBlock: ['Х20', 'Х20', 'Х20', 'Х20', 'Х20', 'Х20'],
+            resistors: ['R3', 'R3', 'R8', 'R8', 'R4', 'R4'],
             numbersOfContacts: ['U17/19 Ш37', 'U17/19 Ш37',
                 'U1/19 Ш37', 'U1/19 Ш37', 'U2/19 Ш37', 'U2/19 Ш37'],
-            controlFunctions: [1, 1, 1,1, 1, 1],
+            controlFunctions: [1, 1, 1, 1, 1, 1],
             controlValues: [4, -5,
                 4, -5, 4, -5],
             valuesOfErrors: [1, 5.3,
@@ -1226,29 +1234,17 @@ const initialState = {
             idCheck: 'check43',
             pageNumber: 603,
             paginatorNumber: 43,
-            typesOfBlocks: ['ВПК', 'ВПК', 'ВПК','ВПК', 'ВПК', 'ВПК'],
-            typesOfSubBlocks: ["", "", "","", "", ""],
-            positionOfSubBlock: ['Х', '', 'Х','Х', '', 'Х'],
-            resistors: ['R9', '', 'R4','R9', '', 'R4'],
-            numbersOfContacts: ['U17/19 Ш37', 'U17/19 Ш37',
-                'U1/19 Ш37', 'U1/19 Ш37', 'U2/19 Ш37', 'U2/19 Ш37'],
-            controlFunctions: [1, 1, 1,1, 1, 1],
-            controlValues: [4, -5,
-                4, -5, 4, -5],
-            valuesOfErrors: [1, 5.3,
-                1, 5.3, 1, 5.3],
-            valuesOfBlocks: [
-                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
-                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
-                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
-                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
-                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
-                {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
-
-            ],
-            directionsOfChecks: ['Отклонение "0"', 'Влево/вниз и КР',
-                'Влево/вниз и 1Т', 'Влево/вниз и 2Т', 'Вправо/вверх и 1Т', 'Вправо/вверх и 2Т',],
-            isHaveSettings: [true, true, true, true, true, true],
+            typesOfBlocks: ['ВПК'],
+            typesOfSubBlocks: ["ВВП-74"],
+            positionOfSubBlock: ['Х34'],
+            resistors: ['R2'],
+            numbersOfContacts: ['U30/11 Ш35'],
+            controlFunctions: [1],
+            controlValues: [5],
+            valuesOfErrors: [0.5],
+            valuesOfBlocks: [{'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''}],
+            directionsOfChecks: [''],
+            isHaveSettings: [true],
             unit: 'В'
         } as CheckType,
 

@@ -129,7 +129,7 @@ const TableSize2x5 = (props: any) => {
                                 // autocomplete="off"
                                 type="number"
 
-                                inputProps={{step: 0.01, autocomplete: "off"}}
+                                inputProps={{step: 0.001, autocomplete: "off"}}
 
                                 sx={{marginTop: '10px'}}
                                 color='secondary'
@@ -146,7 +146,7 @@ const TableSize2x5 = (props: any) => {
                         <td>
                             <TextField
                                 type="number"
-                                inputProps={{step: 0.01, autocomplete: "off"}}
+                                inputProps={{step: 0.001, autocomplete: "off"}}
                                 sx={{marginTop: '10px'}}
                                 color='secondary'
                                 id="outlined-helperText"
@@ -160,7 +160,7 @@ const TableSize2x5 = (props: any) => {
                         <td>
                             <TextField
                                 type="number"
-                                inputProps={{step: 0.01, autocomplete: "off"}}
+                                inputProps={{step: 0.001, autocomplete: "off"}}
                                 sx={{marginTop: '10px'}}
                                 color='secondary'
                                 id="outlined-helperText"
@@ -174,7 +174,7 @@ const TableSize2x5 = (props: any) => {
                         <td>
                             <TextField
                                 type="number"
-                                inputProps={{step: 0.01, autocomplete: "off"}}
+                                inputProps={{step: 0.001, autocomplete: "off"}}
                                 sx={{marginTop: '10px'}}
                                 color='secondary'
                                 id="outlined-helperText"
