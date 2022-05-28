@@ -41,9 +41,9 @@ export function compareFunc(numberOfPlane: string, inputValue: string, channel: 
 
 
     // @ts-ignore
-    return (+inputValue <= this.controlValues[indexOfTable] + this.valuesOfErrors[indexOfTable]
+    return ((+inputValue).toFixed(2) <= +(this.controlValues[indexOfTable] + this.valuesOfErrors[indexOfTable]).toFixed(3)
         // @ts-ignore
-        && +inputValue >= this.controlValues[indexOfTable] - this.valuesOfErrors[indexOfTable])
+        && +inputValue >= (this.controlValues[indexOfTable] - this.valuesOfErrors[indexOfTable]).toFixed(3))
 }
 
 export function emptyFunc() {
@@ -182,7 +182,7 @@ const initialState = {
             paginatorNumber: 3,
             typesOfBlocks: ['ВПК', 'ВПК', 'ВПК', 'ВПК', 'ВБК', 'ВБК', 'ВБК', 'ВБК'],
             typesOfSubBlocks: ['ВИ-78', 'ВИ-78', 'ВИ-78', 'ВИ-78', 'ВИ-78', 'ВИ-78', 'БС-47', 'БС-47'],
-            positionOfSubBlock: ['Х13', 'Х13', 'Х14', 'X14', 'Х21', 'Х21', 'Х15', 'X15'],
+            positionOfSubBlock: ['Х13', 'Х13', 'Х14', 'X14', 'Х21', 'Х21', 'Х15', 'Х15'],
             resistors: ['R1', 'R1', 'R1', 'R1', 'R1', 'R1', 'R3', 'R3'],
             numbersOfContacts: [
                 'U26/11 Ш35', 'U26/11 Ш35',
@@ -288,7 +288,7 @@ const initialState = {
     ],
     "head3": [
         {
-            title: "Проверка срабатывания пороговых устройств по предельным значениям крена на высотах H > 200 м.",
+            title: "Проверка срабатывания пороговых устройств по предельным значениям крена на высотах H > 200м.",
             idHeader: "3",
             idCheck: 'check7',
             pageNumber: 486,
@@ -310,7 +310,7 @@ const initialState = {
 
         } as CheckType,
         {
-            title: "Проверка срабатывания пороговых устройств по предельным значениям крена на высотах ≤ 60 м.",
+            title: "Проверка срабатывания пороговых устройств по предельным значениям крена на высотах ≤ 60м.",
             idHeader: "3",
             idCheck: 'check8',
             pageNumber: 490,

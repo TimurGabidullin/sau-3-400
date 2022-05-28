@@ -43,7 +43,7 @@ export default function AlertDialog(props: AlertDialogPropsType) {
         props.setOpenDialogAlert(false);
     };
 
-    const handleBtn1Click = () => {
+    const handleBtn1Click =() => {
         if (props.handleAlertBtn1Click) props.handleAlertBtn1Click();
     };
     const handleBtn2Click = () => {

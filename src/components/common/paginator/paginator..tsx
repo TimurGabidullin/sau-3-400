@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
-import {memo, useCallback, useMemo} from "react";
+import {memo, useCallback} from "react";
 import {setCurrentPageAC} from "../../../redux/appReducer";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "../../../redux/store";
@@ -12,7 +12,7 @@ type PaginatorPropsType = {
 }
 
 //useMemo надо внедрить
-const getHeaderParameterUrl =(page: number) => {
+const getHeaderParameterUrl = (page: number) => {
     if (page < 4) return 'head1'
     if (page > 3 && page < 7) return 'head2'
     if (page > 6 && page < 10) return 'head3'

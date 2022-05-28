@@ -106,6 +106,7 @@ const Home = () => {
 
     const pages = ['Содержание', "Проверки", 'Отчет'];
     const settings = ['RA82043','RA82044','RA82045','RA82046','RA82047','RA82048' ];
+    // const settings = ['RA82010','RA82011','RA82013','RA82014','RA82035','RA82040','RA82041' ];
 
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
@@ -129,11 +130,11 @@ const Home = () => {
         setAnchorElUser(event.currentTarget);
     }, []);
 
-    const handleCloseUserMenu = useCallback(() => {
+    const handleCloseUserMenu = () => {
         setAnchorElUser(null)
-    }, [])
+    }
 
-    const handleOnClickUserMenu = (setting:string) => {
+    const handleOnClickUserMenu =(setting:string) => {
         dispatch(loginAppAC(setting))
         handleCloseUserMenu()
         setOpenDialogAlert(true)
@@ -145,8 +146,11 @@ const Home = () => {
         setAvatar(numberOfPlane)
         setOpenDialogAlert(false)
         debugger
-        dispatch(saveContinueChecksDataAC(loadChecksState(numberOfPlane)))
-        dispatch(saveContinueReportDataAC(loadReportState(numberOfPlane)))
+        if(loadChecksState(numberOfPlane)) {
+            dispatch(saveContinueChecksDataAC(loadChecksState(numberOfPlane)))
+            dispatch(saveContinueReportDataAC(loadReportState(numberOfPlane)))
+        }
+
     };
 
 
@@ -173,6 +177,8 @@ const Home = () => {
                             sx={{mr: 2, display: {xs: 'none', md: 'flex'}}}
                         >
                             <Flip> Volga-Dnepr</Flip>
+                            {/*<Flip> УЗГА инжиниринг</Flip>*/}
+
                         </Typography>
 
 
@@ -226,6 +232,7 @@ const Home = () => {
                             sx={{flexGrow: 1, display: {xs: 'flex', md: 'none'}}}
                         >
                             <Flip> Volga-Dnepr </Flip>
+                            {/*<Flip> УЗГА инжиниринг </Flip>*/}
                         </Typography>
 
 

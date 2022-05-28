@@ -34,6 +34,7 @@ const Check1 = (props: CheckPropsType) => {
                     тока U<span>&#x394;&#936;0</span>&#8544;(&#8545;,&#8546;,&#8547;) между контактами 24 и 11 контрольного
                     соединителя Ш35 ВБК-51-01 во всех каналах САУ. Значения напряжения должны быть ±0,1В.
                 </p>
+
             </Typography>
 
             {UniversalTabWithTable(TableSize2x5, 1)(props)}

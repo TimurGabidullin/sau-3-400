@@ -11,7 +11,7 @@ import {AppStateType} from "../../redux/store";
 import TextField from '@mui/material/TextField';
 import {addNewReportAC, removeReportAC} from "../../redux/reportReducer";
 import {useForm} from "react-hook-form";
-import {memo, useEffect} from "react";
+import {memo, useCallback, useEffect} from "react";
 import Typography from "@mui/material/Typography";
 import Icon from '@mui/material/Icon';
 import styles from "./Report.module.css";
@@ -45,11 +45,11 @@ const Report=()=> {
     const dispatch = useDispatch()
 
 
-    const handleRemoveReport = (idCheck: string) => {
+    const handleRemoveReport =  useCallback((idCheck: string) => {
         dispatch(removeReportAC(idCheck))
 
         // saveReportState()
-    };
+    }, []);
 
 
     return (
