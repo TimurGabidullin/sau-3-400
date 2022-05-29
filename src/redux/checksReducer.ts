@@ -41,9 +41,9 @@ export function compareFunc(numberOfPlane: string, inputValue: string, channel: 
 
 
     // @ts-ignore
-    return ((+inputValue).toFixed(2) <= +(this.controlValues[indexOfTable] + this.valuesOfErrors[indexOfTable]).toFixed(3)
+    return ((+inputValue) <= +((this.controlValues[indexOfTable]*1000 + this.valuesOfErrors[indexOfTable]*1000)/1000)
         // @ts-ignore
-        && +inputValue >= (this.controlValues[indexOfTable] - this.valuesOfErrors[indexOfTable]).toFixed(3))
+        && +inputValue >= +(Math.round(this.controlValues[indexOfTable]*1000) - Math.round(this.valuesOfErrors[indexOfTable]*1000))/1000)
 }
 
 export function emptyFunc() {
@@ -62,7 +62,7 @@ export function dividerFunc(numberOfPlane: string, inputValue: string, channel: 
 
 
     // @ts-ignore.
-    return compareFunc.call(this, numberOfPlane, +inputValue / this.valuesOfBlocks[indexOfTable - index][channel], channel, indexOfTable)
+    return compareFunc.call(this, numberOfPlane, +inputValue*1000 / (1000*this.valuesOfBlocks[indexOfTable - index][channel]), channel, indexOfTable)
 }
 
 export function subtractionFunc(numberOfPlane: string, inputValue: string, channel: string, indexOfTable: number = 0, key: string) {
@@ -107,7 +107,7 @@ export function universalFunc(numberOfPlane: string, inputValue: string, channel
     if (key === 'Х25') value = loadChecksState(numberOfPlane).head12[0].valuesOfBlocks[indexOfTable - 2][channel]
 
     // @ts-ignore.
-    return compareFunc.call(this, numberOfPlane, (+inputValue - value), channel, indexOfTable)
+    return compareFunc.call(this, numberOfPlane, (+inputValue*1000 - value*1000)/1000, channel, indexOfTable)
 }
 
 export const numToFunc = {
@@ -1007,7 +1007,7 @@ const initialState = {
                 {'channel1': '', 'channel2': '', 'channel3': '', 'channel4': ''},
 
             ],
-            directionsOfChecks: ['Вправо', 'Вправо', 'Вправо', 'Влево'],
+            directionsOfChecks: ['', 'Внутр. закр. 40°', '', 'Внешн. закр. 40°'],
             isHaveSettings: [false, true, true, true],
             unit: 'В'
 

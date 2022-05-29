@@ -58,15 +58,7 @@ const Check23 = (props: CheckPropsType) => {
             </Typography>
 
 
-            <Typography sx={{padding: '0 20px'}} variant="body1" component='p'>
 
-            </Typography>
-
-            {UniversalTabWithTable(TableSize2x5, 1)(props)}
-
-            <Typography sx={{padding: '0 20px'}} variant="body1" component='p'>
-
-            </Typography>
         </Fade>
     );
 }
